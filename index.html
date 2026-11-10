@@ -355,6 +355,20 @@ body{
   --sh:0 1px 3px rgba(30,58,110,.08),0 1px 2px rgba(30,58,110,.05);
   --sh2:0 4px 20px rgba(30,58,110,.13),0 2px 6px rgba(30,58,110,.07);
 }
+/* ═══ VENTAS DARK MODE OVERRIDE ═══ */
+html:not([data-theme="light"]) #pageVentas {
+  --azul:#4f7fff;--azul2:#7aabff;--azul3:#1a2a50;--azul4:#1e3060;--azulx:#141e38;
+  --nar:#f26522;--nar2:#ff8040;--nar3:#2a1800;--nar4:#3a2200;
+  --bg:#0d1017;--w:#141820;--s1:#1a2030;--s2:#202840;
+  --brd:#263050;--brd2:#304060;
+  --tx:#dde3f0;--tx2:#7a88a8;--tx3:#3e4e6a;
+  --gn:#2dbd7e;--gn2:#0a2820;--gn3:#0a3828;
+  --rd:#e05555;--rd2:#2a0a0a;--rd3:#3a1010;
+  --yl:#e8b84b;--yl2:#2a1e00;--yl3:#3a2a00;
+  --bl:#4f7fff;--bl2:#0a1428;--bl3:#0e1e3a;
+  --sh:0 2px 12px rgba(0,0,0,.4);
+  --sh2:0 8px 40px rgba(0,0,0,.55);
+}
 #pageVentas body {background:var(--bg);color:var(--tx);font-family:var(--sf);min-height:100vh;font-size:13px;line-height:1.5}
 
 /* LOGIN */
@@ -1458,7 +1472,7 @@ select option{background:var(--surface2);}
   <div class="modal">
     <div class="modal-hdr">
       <div class="modal-ttl" id="v-modalTtl">Detalle</div>
-      <button class="modal-close" onclick="closeModal()">✕</button>
+      <button class="modal-close" onclick="v_closeModal()">✕</button>
     </div>
     <div class="modal-body" id="v-modalBody"></div>
     <div class="modal-footer" id="v-modalFooter"></div>
@@ -1515,12 +1529,12 @@ select option{background:var(--surface2);}
     <input type="file" id="logo-file-input" accept="image/*" onchange="handleLogoUpload(event)">
   </div>
   <nav class="nav-tabs">
-    <div class="nav-tab active" data-page="page-venc" onclick="switchTab(this)">📋 Vencimientos <span class="badge" id="bdg-venc">0</span></div>
-    <div class="nav-tab" data-page="page-masiva" onclick="switchTab(this)">🗂️ Carga Masiva</div>
-    <div class="nav-tab" data-page="page-proy" onclick="switchTab(this)">📅 Proyección <span class="badge" id="bdg-proy">0</span></div>
-    <div class="nav-tab" data-page="page-hist" onclick="switchTab(this)">✅ Histórico <span class="badge" id="bdg-hist">0</span></div>
-    <div class="nav-tab" data-page="page-prov" onclick="switchTab(this)">🏭 Proveedores</div>
-    <div class="nav-tab" data-page="page-config" onclick="switchTab(this)">⚙️ Config</div>
+    <div class="nav-tab active" data-page="page-venc" onclick="fin_switchTab(this)">📋 Vencimientos <span class="badge" id="bdg-venc">0</span></div>
+    <div class="nav-tab" data-page="page-masiva" onclick="fin_switchTab(this)">🗂️ Carga Masiva</div>
+    <div class="nav-tab" data-page="page-proy" onclick="fin_switchTab(this)">📅 Proyección <span class="badge" id="bdg-proy">0</span></div>
+    <div class="nav-tab" data-page="page-hist" onclick="fin_switchTab(this)">✅ Histórico <span class="badge" id="bdg-hist">0</span></div>
+    <div class="nav-tab" data-page="page-prov" onclick="fin_switchTab(this)">🏭 Proveedores</div>
+    <div class="nav-tab" data-page="page-config" onclick="fin_switchTab(this)">⚙️ Config</div>
   </nav>
   <button class="theme-toggle-btn" id="fin-theme-toggle-btn" onclick="finToggleTheme()" title="Cambiar tema">☀️ Claro</button>
   <span class="user-chip" id="fin-user-chip" style="display:none"></span>
@@ -1529,22 +1543,22 @@ select option{background:var(--surface2);}
 
 <!-- BOTTOM NAV (mobile) -->
 <nav class="bottom-nav" id="bottom-nav">
-  <button class="bottom-nav-item active" data-page="page-venc" onclick="switchTabMobile(this)">
+  <button class="bottom-nav-item active" data-page="page-venc" onclick="fin_switchTabMobile(this)">
     <span class="bn-icon">📋</span><span class="bn-label">Vencim.</span>
   </button>
-  <button class="bottom-nav-item" data-page="page-masiva" onclick="switchTabMobile(this)">
+  <button class="bottom-nav-item" data-page="page-masiva" onclick="fin_switchTabMobile(this)">
     <span class="bn-icon">🗂️</span><span class="bn-label">C. Masiva</span>
   </button>
-  <button class="bottom-nav-item" data-page="page-proy" onclick="switchTabMobile(this)">
+  <button class="bottom-nav-item" data-page="page-proy" onclick="fin_switchTabMobile(this)">
     <span class="bn-icon">📅</span><span class="bn-label">Proyec.</span>
   </button>
-  <button class="bottom-nav-item" data-page="page-hist" onclick="switchTabMobile(this)">
+  <button class="bottom-nav-item" data-page="page-hist" onclick="fin_switchTabMobile(this)">
     <span class="bn-icon">✅</span><span class="bn-label">Histór.</span>
   </button>
-  <button class="bottom-nav-item" data-page="page-prov" onclick="switchTabMobile(this)">
+  <button class="bottom-nav-item" data-page="page-prov" onclick="fin_switchTabMobile(this)">
     <span class="bn-icon">🏭</span><span class="bn-label">Proveed.</span>
   </button>
-  <button class="bottom-nav-item" data-page="page-config" onclick="switchTabMobile(this)">
+  <button class="bottom-nav-item" data-page="page-config" onclick="fin_switchTabMobile(this)">
     <span class="bn-icon">⚙️</span><span class="bn-label">Config</span>
   </button>
 </nav>
@@ -1754,7 +1768,7 @@ select option{background:var(--surface2);}
       <div class="config-card-title">🗂️ Rubros</div>
       <div class="config-card-desc">Impuestos, Servicios, Proveedores, Alquileres...</div>
       <div id="list-rubros"></div>
-      <div class="config-add-row"><input type="text" id="new-rubro" placeholder="Nuevo rubro..." maxlength="40"><button class="btn btn-primary btn-sm" onclick="addRubro()">+ Agregar</button></div>
+      <div class="config-add-row"><input type="text" id="new-rubro" placeholder="Nuevo rubro..." maxlength="40"><button class="btn btn-primary btn-sm" onclick="fin_addRubro()">+ Agregar</button></div>
     </div>
     <div class="config-card">
       <div class="config-card-title">🏢 Orígenes</div>
@@ -1778,7 +1792,7 @@ select option{background:var(--surface2);}
         <div class="modal-title" id="modal-ttl">Nuevo Vencimiento</div>
         <div class="modal-sub">Cargar o editar un pago</div>
       </div>
-      <button class="modal-close" onclick="closeModal()">✕</button>
+      <button class="modal-close" onclick="fin_closeModal()">✕</button>
     </div>
     <div class="form-grid">
       <div class="form-field full">
@@ -1824,8 +1838,8 @@ select option{background:var(--surface2);}
     <div class="modal-footer" style="justify-content:space-between;">
       <button class="btn btn-danger btn-sm" id="del-btn" onclick="deleteRecord()" style="display:none;">🗑 Eliminar</button>
       <div style="display:flex;gap:9px;margin-left:auto;">
-        <button class="btn btn-ghost" onclick="closeModal()">Cancelar</button>
-        <button class="btn btn-primary" onclick="saveRecord()">Guardar</button>
+        <button class="btn btn-ghost" onclick="fin_closeModal()">Cancelar</button>
+        <button class="btn btn-primary" onclick="fin_saveRecord()">Guardar</button>
       </div>
     </div>
   </div>
@@ -1839,7 +1853,7 @@ select option{background:var(--surface2);}
         <div class="popup-title" id="pop-title">Detalle</div>
         <div class="popup-sub" id="pop-sub"></div>
       </div>
-      <button class="popup-close" onclick="closePopup()">✕</button>
+      <button class="popup-close" onclick="fin_closePopup()">✕</button>
     </div>
     <div id="pop-body"></div>
   </div>
@@ -1853,7 +1867,7 @@ select option{background:var(--surface2);}
         <div class="modal-title" id="mc-title">Nuevo Concepto</div>
         <div class="modal-sub">Un concepto es una fila de la grilla mensual</div>
       </div>
-      <button class="modal-close" onclick="closeModalConcepto()">✕</button>
+      <button class="modal-close" onclick="fin_closeModalConcepto()">✕</button>
     </div>
     <div class="form-grid">
       <div class="form-field full">
@@ -1866,7 +1880,7 @@ select option{background:var(--surface2);}
       </div>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-ghost" onclick="closeModalConcepto()">Cancelar</button>
+      <button class="btn btn-ghost" onclick="fin_closeModalConcepto()">Cancelar</button>
       <button class="btn btn-primary" onclick="saveConcepto()">Guardar</button>
     </div>
   </div>
@@ -1880,7 +1894,7 @@ select option{background:var(--surface2);}
         <div class="modal-title" id="mvm-title">Vencimiento</div>
         <div class="modal-sub" id="mvm-sub">—</div>
       </div>
-      <button class="modal-close" onclick="closeModalVencMes()">✕</button>
+      <button class="modal-close" onclick="fin_closeModalVencMes()">✕</button>
     </div>
     <div class="form-grid">
       <div class="form-field">
@@ -1918,7 +1932,7 @@ select option{background:var(--surface2);}
     <div class="modal-footer" style="justify-content:space-between;">
       <button class="btn btn-danger btn-sm" id="mvm-del-btn" onclick="deleteVencMes()" style="display:none;">🗑 Eliminar</button>
       <div style="display:flex;gap:9px;margin-left:auto;">
-        <button class="btn btn-ghost" onclick="closeModalVencMes()">Cancelar</button>
+        <button class="btn btn-ghost" onclick="fin_closeModalVencMes()">Cancelar</button>
         <button class="btn btn-primary" onclick="saveVencMes()">Guardar</button>
       </div>
     </div>
@@ -2449,7 +2463,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 /* ============================================================
    HELPERS
 ============================================================ */
-function toast(msg){const el=document.getElementById('v-toast');el.textContent=msg;el.classList.add('on');clearTimeout(window._tt);window._tt=setTimeout(()=>el.classList.remove('on'),3200);}
+function v_toast(msg){const el=document.getElementById('v-toast');el.textContent=msg;el.classList.add('on');clearTimeout(window._tt);window._tt=setTimeout(()=>el.classList.remove('on'),3200);}
 function fmtMoney(n){if(n===null||n===undefined||isNaN(n))return '—';return '$ '+n.toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function fmtPct(n){if(n===null||n===undefined||isNaN(n))return '—';return (n*100).toFixed(1)+'%';}
 function toPct(frac){return (frac===null||frac===undefined||isNaN(frac))?'':+(frac*100).toFixed(4);}
@@ -2511,7 +2525,7 @@ function navTo(pid,el){
   if(pid==='p-tablero')renderTablero();
   if(pid==='p-hist')renderHist();
   if(pid==='p-export')renderExport();
-  if(pid==='p-config')renderConfig();
+  if(pid==='p-config')v_renderConfig();
 }
 
 function initApp(){
@@ -2668,7 +2682,7 @@ function handleMaestroFile(file){
           renderMaestro();
           return;
         }
-        toast('No pude reconocer el formato. Revisá que tenga una hoja con columnas COD / ARTICULO / COSTO.');
+        v_toast('No pude reconocer el formato. Revisá que tenga una hoja con columnas COD / ARTICULO / COSTO.');
         return;
       }
       const rubroPorCod={};
@@ -2678,11 +2692,11 @@ function handleMaestroFile(file){
       saveMaestro(MAESTRO);
       if(ARTICULOS_DATA){mergeArticulos();}else{aplicarAnulados();}
       guardarVersionMaestro('Carga de Excel: '+file.name);
-      toast('Maestro actualizado: '+MAESTRO.items.length+' artículos ('+MAESTRO.eanCount+' con EAN, '+result.revCount+' con margen revendedor)'+textoAnulados());
+      v_toast('Maestro actualizado: '+MAESTRO.items.length+' artículos ('+MAESTRO.eanCount+' con EAN, '+result.revCount+' con margen revendedor)'+textoAnulados());
       renderMaestro();
     }catch(err){
       console.error(err);
-      toast('Error leyendo el archivo: '+err.message);
+      v_toast('Error leyendo el archivo: '+err.message);
     }
   };
   reader.readAsArrayBuffer(file);
@@ -2783,12 +2797,12 @@ function handleArticulosFile(file){
       const wb=XLSX.read(new Uint8Array(e.target.result),{type:'array'});
       const result=parseArticulosChessWorkbook(wb);
       if(!result||!result.count){
-        toast('No reconocí columnas Código / Descripción / Cód. Barra en ese archivo.');
+        v_toast('No reconocí columnas Código / Descripción / Cód. Barra en ese archivo.');
         return;
       }
       aplicarArticulosComoBase(result,file.name);
       renderMaestro();
-    }catch(err){console.error(err);toast('Error leyendo el archivo: '+err.message);}
+    }catch(err){console.error(err);v_toast('Error leyendo el archivo: '+err.message);}
   };
   reader.readAsArrayBuffer(file);
 }
@@ -2857,7 +2871,7 @@ function aplicarArticulosComoBase(result,fileName){
   const r=construirMaestroDesdeArticulos(result,fileName);
   const sinCosto=MAESTRO.items.filter(i=>!i.costo).length;
   guardarVersionMaestro('Base de artículos: '+fileName);
-  toast('Maestro armado desde Chess: '+r.total+' artículos activos ('+(result.anulados?result.anulados.length:0)+' anulados quedaron afuera'+(r.quitados?', '+r.quitados+' que ya no están se sacaron':'')+'). Sin costo todavía: '+sinCosto+' — se completan con "Cargar proveedor".');
+  v_toast('Maestro armado desde Chess: '+r.total+' artículos activos ('+(result.anulados?result.anulados.length:0)+' anulados quedaron afuera'+(r.quitados?', '+r.quitados+' que ya no están se sacaron':'')+'). Sin costo todavía: '+sinCosto+' — se completan con "Cargar proveedor".');
 }
 // Quita del maestro los artículos anulados en Chess (columna "Anulado" = SI). Devuelve cuántos sacó.
 let ultimosAnuladosQuitados=0;
@@ -2910,7 +2924,7 @@ let _pedirTextoCb=null, _pedirTextoCancel=null;
 function pedirTexto(titulo,label,valor,onOk,onCancel){
   _pedirTextoCb=onOk; _pedirTextoCancel=onCancel||null;
   document.getElementById('v-modalTtl').textContent=titulo;
-  document.getElementById('v-modalBody').innerHTML=`<label class="fld">${escapeHtml(label)}<input type="text" id="ptInput" value="${escapeHtml(valor||'')}" autocomplete="off" onkeydown="if(event.key==='Enter'){event.preventDefault();pedirTextoOk();}"></label>`;
+  document.getElementById('v-modalBody').innerHTML=`<label class="fld">${v_escapeHtml(label)}<input type="text" id="ptInput" value="${v_escapeHtml(valor||'')}" autocomplete="off" onkeydown="if(event.key==='Enter'){event.preventDefault();pedirTextoOk();}"></label>`;
   document.getElementById('v-modalFooter').innerHTML=`<button class="btn b-gh" onclick="pedirTextoCancel()">Cancelar</button><button class="btn b-nar" onclick="pedirTextoOk()">Aceptar</button>`;
   document.getElementById('v-modalBg').classList.add('on');
   setTimeout(()=>{const i=document.getElementById('ptInput'); if(i){i.focus();i.select();}},30);
@@ -2918,14 +2932,14 @@ function pedirTexto(titulo,label,valor,onOk,onCancel){
 function pedirTextoOk(){
   const i=document.getElementById('ptInput');
   const t=(i?i.value:'').trim();
-  if(!t){toast('Escribí un nombre');return;}
+  if(!t){v_toast('Escribí un nombre');return;}
   const cb=_pedirTextoCb; _pedirTextoCb=null; _pedirTextoCancel=null;
-  closeModal();
+  v_closeModal();
   if(cb)cb(t);
 }
 function pedirTextoCancel(){
   const cb=_pedirTextoCancel; _pedirTextoCb=null; _pedirTextoCancel=null;
-  closeModal();
+  v_closeModal();
   if(cb)cb();
 }
 // Pide el nombre de un rubro nuevo en un cuadro propio (prompt() del navegador está bloqueado en muchos entornos)
@@ -2939,7 +2953,7 @@ function pedirRubroNuevo(onOk,onCancel){
 }
 function rubroOptionsHtml(valorActual){
   return `<option value="">— sin rubro —</option>`
-    + RUBROS.map(r=>`<option value="${escapeHtml(r)}" ${r===valorActual?'selected':''}>${escapeHtml(r)}</option>`).join('')
+    + RUBROS.map(r=>`<option value="${v_escapeHtml(r)}" ${r===valorActual?'selected':''}>${v_escapeHtml(r)}</option>`).join('')
     + `<option value="__nuevo__">+ Nuevo rubro...</option>`;
 }
 function asignarRubroItem(cod,valor){
@@ -2950,7 +2964,7 @@ function asignarRubroItem(cod,valor){
   }
   it.rubro=valor||null;
   saveMaestro(MAESTRO);
-  toast('Rubro actualizado');
+  v_toast('Rubro actualizado');
   renderMaestro();
 }
 function maestroFiltrados(){
@@ -2986,13 +3000,13 @@ function aplicarRubroSeleccion(){
     pedirRubroNuevo(t=>{renderMaestro();document.getElementById('bulkRubroSel').value=t;aplicarRubroSeleccion();},()=>renderMaestro());
     return;
   }
-  if(!valor){toast('Elegí un rubro para asignar');return;}
+  if(!valor){v_toast('Elegí un rubro para asignar');return;}
   const afectados=MAESTRO.items.filter(i=>maestroSel.has(i.cod));
-  if(!afectados.length){toast('No hay artículos seleccionados — tildá los que quieras');return;}
+  if(!afectados.length){v_toast('No hay artículos seleccionados — tildá los que quieras');return;}
   afectados.forEach(it=>{it.rubro=valor;});
   saveMaestro(MAESTRO);
   maestroSel.clear();
-  toast('✓ Rubro "'+valor+'" asignado a '+afectados.length+' artículos');
+  v_toast('✓ Rubro "'+valor+'" asignado a '+afectados.length+' artículos');
   renderMaestro();
 }
 function actualizarInfoMaestro(){
@@ -3020,13 +3034,13 @@ function aplicarRubroMasivo(){
     pedirRubroNuevo(t=>{renderMaestro();document.getElementById('bulkRubroSel').value=t;aplicarRubroMasivo();},()=>renderMaestro());
     return;
   }
-  if(!valor){toast('Elegí un rubro para asignar');return;}
+  if(!valor){v_toast('Elegí un rubro para asignar');return;}
   const afectados=maestroFiltrados();
-  if(!afectados.length){toast('No hay artículos que coincidan con el filtro actual');return;}
+  if(!afectados.length){v_toast('No hay artículos que coincidan con el filtro actual');return;}
   if(!confirm(`Vas a asignar el rubro "${valor}" a ${afectados.length} artículo(s) (los que ves filtrados ahora). ¿Confirmar?`))return;
   afectados.forEach(it=>{it.rubro=valor;});
   saveMaestro(MAESTRO);
-  toast('✓ Rubro asignado a '+afectados.length+' artículos');
+  v_toast('✓ Rubro asignado a '+afectados.length+' artículos');
   renderMaestro();
 }
 function renderMaestro(){
@@ -3065,15 +3079,15 @@ function renderMaestro(){
     <div class="kpi c-bl"><div class="kpi-v">${MAESTRO.revCount||0}</div><div class="kpi-l">Con margen revendedor</div></div>
     <div class="kpi ${sinRubro?'c-yl':''}"><div class="kpi-v">${sinRubro}</div><div class="kpi-l">Sin rubro asignado</div></div>
     <div class="kpi ${sinCosto?'c-yl':''}"><div class="kpi-v">${sinCosto}</div><div class="kpi-l">Sin costo cargado</div></div>
-    <div class="kpi"><div class="kpi-v" style="font-size:11px">${new Date(MAESTRO.fecha).toLocaleDateString('es-AR')}</div><div class="kpi-l">Costos · ${escapeHtml(MAESTRO.fuente)}</div></div>
-    <div class="kpi"><div class="kpi-v" style="font-size:11px">${MAESTRO.fechaArticulos?new Date(MAESTRO.fechaArticulos).toLocaleDateString('es-AR'):'— sin cargar —'}</div><div class="kpi-l">EAN · ${MAESTRO.fuenteArticulos?escapeHtml(MAESTRO.fuenteArticulos):'subí el Excel de Artículos'}</div></div>
+    <div class="kpi"><div class="kpi-v" style="font-size:11px">${new Date(MAESTRO.fecha).toLocaleDateString('es-AR')}</div><div class="kpi-l">Costos · ${v_escapeHtml(MAESTRO.fuente)}</div></div>
+    <div class="kpi"><div class="kpi-v" style="font-size:11px">${MAESTRO.fechaArticulos?new Date(MAESTRO.fechaArticulos).toLocaleDateString('es-AR'):'— sin cargar —'}</div><div class="kpi-l">EAN · ${MAESTRO.fuenteArticulos?v_escapeHtml(MAESTRO.fuenteArticulos):'subí el Excel de Artículos'}</div></div>
   </div>
   <div class="c-bar">
-    <input class="srch" placeholder="🔎 Buscar artículo, proveedor o código..." value="${escapeHtml(maestroFilter)}" oninput="maestroFilter=this.value;renderMaestroLista()"/>
+    <input class="srch" placeholder="🔎 Buscar artículo, proveedor o código..." value="${v_escapeHtml(maestroFilter)}" oninput="maestroFilter=this.value;renderMaestroLista()"/>
     <select id="maestroRubroSel" style="max-width:180px" onchange="maestroRubroFiltro=this.value;renderMaestro()">
       <option value="" ${maestroRubroFiltro===''?'selected':''}>Todos los rubros</option>
       <option value="__sin__" ${maestroRubroFiltro==='__sin__'?'selected':''}>— sin rubro —</option>
-      ${RUBROS.map(r=>`<option value="${escapeHtml(r)}" ${maestroRubroFiltro===r?'selected':''}>${escapeHtml(r)}</option>`).join('')}
+      ${RUBROS.map(r=>`<option value="${v_escapeHtml(r)}" ${maestroRubroFiltro===r?'selected':''}>${v_escapeHtml(r)}</option>`).join('')}
     </select>
     <div class="sp"></div>
     <button class="btn b-bl b-sm" onclick="document.getElementById('fiA2').click()">📦 Actualizar maestro (Artículos Chess)</button>
@@ -3100,8 +3114,8 @@ function rowMaestroHtml(it){
   return `<tr>
     <td><input type="checkbox" ${maestroSel.has(it.cod)?'checked':''} onchange="toggleSel(${it.cod},this.checked)"></td>
     <td class="mn">${it.cod}</td>
-    <td>${escapeHtml(it.prov)}</td>
-    <td>${escapeHtml(it.articulo)}</td>
+    <td>${v_escapeHtml(it.prov)}</td>
+    <td>${v_escapeHtml(it.articulo)}</td>
     <td class="r">${fmtMoney(it.costo)}</td>
     <td class="r">${fmtPct(it.desc1)}</td>
     <td class="r">${fmtPct(it.desc2)}</td>
@@ -3113,7 +3127,7 @@ function rowMaestroHtml(it){
     <td><button class="btn b-gh b-sm" onclick="openEditItem(${it.cod})">✎</button></td>
   </tr>`;
 }
-function escapeHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function v_escapeHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 
 function openEditItem(cod){
   const it=MAESTRO.items.find(i=>i.cod===cod); if(!it)return;
@@ -3130,7 +3144,7 @@ function openEditItem(cod){
       <label class="fld" id="edRubroNuevoWrap" style="display:none">Nombre del rubro nuevo<input type="text" id="edRubroNuevo" autocomplete="off"></label>
     </div>
     <div class="note" style="margin-top:14px">Costo Final y Neto se recalculan automáticamente con estos valores.</div>`;
-  document.getElementById('v-modalFooter').innerHTML=`<button class="btn b-gh" onclick="closeModal()">Cancelar</button><button class="btn b-nar" onclick="saveEditItem(${cod})">Guardar</button>`;
+  document.getElementById('v-modalFooter').innerHTML=`<button class="btn b-gh" onclick="v_closeModal()">Cancelar</button><button class="btn b-nar" onclick="saveEditItem(${cod})">Guardar</button>`;
   document.getElementById('v-modalBg').classList.add('on');
 }
 function saveEditItem(cod){
@@ -3152,9 +3166,9 @@ function saveEditItem(cod){
   }
   it.rubro=rubroVal||null;
   saveMaestro(MAESTRO);
-  closeModal(); toast('Artículo actualizado'); renderMaestro();
+  v_closeModal(); v_toast('Artículo actualizado'); renderMaestro();
 }
-function closeModal(){document.getElementById('v-modalBg').classList.remove('on');}
+function v_closeModal(){document.getElementById('v-modalBg').classList.remove('on');}
 
 /* ============================================================
    PAGE: CARGAR PROVEEDOR
@@ -3184,7 +3198,7 @@ function renderCarga(){
         <label style="font-weight:600;font-size:12px">1. ¿De qué proveedor es la lista de precios?</label>
         <select id="cargaProv" style="padding:9px;border:1.5px solid var(--brd2);border-radius:9px;font-size:13px" onchange="cargaProvSel=this.value;var e=document.getElementById('errBoxP');if(e)e.style.display='none'">
           <option value="">— Elegí un proveedor del sistema —</option>
-          ${proveedoresSistema().map(x=>`<option value="${escapeHtml(x.nombre)}" ${x.nombre===cargaProvSel?'selected':''}>${escapeHtml(x.nombre)} (${x.cant} artículos)</option>`).join('')}
+          ${proveedoresSistema().map(x=>`<option value="${v_escapeHtml(x.nombre)}" ${x.nombre===cargaProvSel?'selected':''}>${v_escapeHtml(x.nombre)} (${x.cant} artículos)</option>`).join('')}
         </select>
       </div>
       <div class="dz" id="dzP" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')"
@@ -3367,7 +3381,7 @@ function renderCargaReview(){
   const conMatch=total-sinMatch;
   p.innerHTML=`
   <div class="c-bar">
-    <div><div class="cb-ttl">Revisar carga · ${escapeHtml(st.proveedor)}</div><div class="cb-sub">${escapeHtml(st.fuente)}</div></div>
+    <div><div class="cb-ttl">Revisar carga · ${v_escapeHtml(st.proveedor)}</div><div class="cb-sub">${v_escapeHtml(st.fuente)}</div></div>
     <div class="sp"></div>
     <span class="pill" style="background:var(--gn2);color:var(--gn);border-color:var(--gn3)">${conMatch} emparejados</span>
     <span class="pill" style="background:var(--rd2);color:var(--rd);border-color:var(--rd3)">${sinMatch} sin coincidencia</span>
@@ -3394,8 +3408,8 @@ function rowCargaHtml(it,idx){
   const rowCls = it.matchCod===null? 'row-r' : (it.matchScore<0.99&&it.matchScore>0?'row-y':'');
   return `<tr class="${rowCls}">
     <td><input type="checkbox" ${it.usar?'checked':''} ${it.matchCod===null?'disabled':''} onchange="CARGA_STATE.items[${idx}].usar=this.checked"></td>
-    <td style="max-width:220px">${escapeHtml(it.raw.descripcion)}<div class="cb-sub" style="margin-top:2px">cod prov: ${escapeHtml(it.raw.codigoProv||'—')} ${it.raw.ean?'· EAN '+escapeHtml(it.raw.ean):''}</div></td>
-    <td>${m? escapeHtml(m.articulo)+' <span class="mn" style="color:var(--tx3)">('+m.cod+')</span>' : `<button class="btn b-gh b-sm" onclick="abrirMatchManual(${idx})">🔍 Buscar manualmente</button>`}</td>
+    <td style="max-width:220px">${v_escapeHtml(it.raw.descripcion)}<div class="cb-sub" style="margin-top:2px">cod prov: ${v_escapeHtml(it.raw.codigoProv||'—')} ${it.raw.ean?'· EAN '+v_escapeHtml(it.raw.ean):''}</div></td>
+    <td>${m? v_escapeHtml(m.articulo)+' <span class="mn" style="color:var(--tx3)">('+m.cod+')</span>' : `<button class="btn b-gh b-sm" onclick="abrirMatchManual(${idx})">🔍 Buscar manualmente</button>`}</td>
     <td class="mn" style="font-size:10px">${it.matchCod===null?'—':it.method+' '+(it.matchScore<1?'('+Math.round(it.matchScore*100)+'%)':'')}</td>
     <td class="r">${costoActual!=null?fmtMoney(costoActual):'—'}</td>
     <td class="r">
@@ -3410,12 +3424,12 @@ function rowCargaHtml(it,idx){
 function abrirMatchManual(idx){
   const it=CARGA_STATE.items[idx];
   document.getElementById('v-modalTtl').textContent='Emparejar manualmente';
-  const opts=MAESTRO.items.map(m=>`<option value="${m.cod}">${m.cod} — ${escapeHtml(m.articulo)} (${escapeHtml(m.prov)})</option>`).join('');
+  const opts=MAESTRO.items.map(m=>`<option value="${m.cod}">${m.cod} — ${v_escapeHtml(m.articulo)} (${v_escapeHtml(m.prov)})</option>`).join('');
   document.getElementById('v-modalBody').innerHTML=`
-    <div style="margin-bottom:10px;color:var(--tx2)">Proveedor dice: <strong>${escapeHtml(it.raw.descripcion)}</strong></div>
+    <div style="margin-bottom:10px;color:var(--tx2)">Proveedor dice: <strong>${v_escapeHtml(it.raw.descripcion)}</strong></div>
     <input class="srch" style="width:100%;margin-bottom:10px" id="matchSearch" placeholder="🔎 Filtrar artículo del maestro..." oninput="filtrarMatchSelect()">
     <select id="matchSelect" size="10" style="width:100%">${opts}</select>`;
-  document.getElementById('v-modalFooter').innerHTML=`<button class="btn b-gh" onclick="closeModal()">Cancelar</button><button class="btn b-nar" onclick="confirmarMatchManual(${idx})">Usar este artículo</button>`;
+  document.getElementById('v-modalFooter').innerHTML=`<button class="btn b-gh" onclick="v_closeModal()">Cancelar</button><button class="btn b-nar" onclick="confirmarMatchManual(${idx})">Usar este artículo</button>`;
   document.getElementById('v-modalBg').classList.add('on');
 }
 function filtrarMatchSelect(){
@@ -3426,19 +3440,19 @@ function filtrarMatchSelect(){
 function confirmarMatchManual(idx){
   const sel=document.getElementById('matchSelect');
   const cod=Number(sel.value);
-  if(!cod){toast('Elegí un artículo');return;}
+  if(!cod){v_toast('Elegí un artículo');return;}
   const it=CARGA_STATE.items[idx];
   it.matchCod=cod; it.matchScore=1; it.method='manual'; it.usar=true;
   // guardar en memoria persistente
   const mapKey=normKey(CARGA_STATE.proveedor)+'|'+normText(it.raw.descripcion);
   MAPDB[mapKey]=cod; saveMap(MAPDB);
-  closeModal(); renderCargaReview();
+  v_closeModal(); renderCargaReview();
 }
 
 function confirmarAplicar(){
   const st=CARGA_STATE;
   const aplicar=st.items.filter(i=>i.usar&&i.matchCod!==null&&i.nuevoCosto!=null);
-  if(!aplicar.length){toast('No hay cambios seleccionados para aplicar');return;}
+  if(!aplicar.length){v_toast('No hay cambios seleccionados para aplicar');return;}
   if(!confirm('Vas a actualizar el costo de '+aplicar.length+' artículos. ¿Confirmar?'))return;
   const detalle=[];
   aplicar.forEach(a=>{
@@ -3458,7 +3472,7 @@ function confirmarAplicar(){
   HIST.unshift({id:uid(),fecha:new Date().toISOString(),proveedor:st.proveedor,fuente:st.fuente,cantidad:detalle.length,variacionPromedio:variacionProm,detalle});
   saveHist(HIST);
   document.getElementById('navH').textContent=HIST.length;
-  toast('✓ '+detalle.length+' costos actualizados');
+  v_toast('✓ '+detalle.length+' costos actualizados');
   const provAplicado=st.proveedor;
   CARGA_STATE=null; cargaProvSel='';
   renderCarga();
@@ -3520,17 +3534,17 @@ function renderMargenes(){
     <span class="fl" style="margin-left:8px">Proveedor:</span>
     <select id="margenProvSel" onchange="margenProv=this.value;mostrarEditorFormula=false;renderMargenes()" style="min-width:170px">
       <option value="">— Todos —</option>
-      ${provs.map(pv=>`<option value="${escapeHtml(pv)}" ${margenProv===pv?'selected':''}>${escapeHtml(pv)}</option>`).join('')}
+      ${provs.map(pv=>`<option value="${v_escapeHtml(pv)}" ${margenProv===pv?'selected':''}>${v_escapeHtml(pv)}</option>`).join('')}
     </select>
     <div class="sp"></div>
     <label style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--tx3);cursor:pointer;white-space:nowrap">
       <input type="checkbox" ${margenDetalle?'checked':''} onchange="margenDetalle=this.checked;renderMargenes()"> Ver fórmula completa (Parcial 1 / Parcial 2)
     </label>
-    <input class="srch" placeholder="🔎 Buscar..." value="${escapeHtml(margenBusq)}" oninput="margenBusq=this.value;renderMargenes()">
+    <input class="srch" placeholder="🔎 Buscar..." value="${v_escapeHtml(margenBusq)}" oninput="margenBusq=this.value;renderMargenes()">
   </div>
   ${margenProv?`
   <div class="cfg-card" style="margin:12px 20px">
-    <h3>⚙ Acciones masivas · ${escapeHtml(margenProv)} <span class="cb-sub">(${filtered.length} artículos con este filtro)</span></h3>
+    <h3>⚙ Acciones masivas · ${v_escapeHtml(margenProv)} <span class="cb-sub">(${filtered.length} artículos con este filtro)</span></h3>
     <div class="cfg-row">
       <div><div class="cfg-lbl">Actualizar costo de todos los artículos filtrados</div><div class="cfg-hint">ej: 8 para +8%, -5 para -5%</div></div>
       <div style="display:flex;gap:6px;align-items:center">
@@ -3540,7 +3554,7 @@ function renderMargenes(){
     </div>
     <div class="cfg-row">
       <div><div class="cfg-lbl">Aplicar descuentos a todos los artículos filtrados</div>
-        <div class="cfg-hint">${mem?`último usado para ${escapeHtml(margenProv)}: Desc.1 ${fmtPct(mem.desc1)} · Desc.2 ${fmtPct(mem.desc2)} (${new Date(mem.fecha).toLocaleDateString('es-AR')})`:'sin descuentos guardados para este proveedor todavía'}</div></div>
+        <div class="cfg-hint">${mem?`último usado para ${v_escapeHtml(margenProv)}: Desc.1 ${fmtPct(mem.desc1)} · Desc.2 ${fmtPct(mem.desc2)} (${new Date(mem.fecha).toLocaleDateString('es-AR')})`:'sin descuentos guardados para este proveedor todavía'}</div></div>
       <div style="display:flex;gap:6px;align-items:center">
         <input type="number" step="0.1" id="bulkDesc1" placeholder="Desc.1 %" value="${mem?toPct(mem.desc1):''}" style="width:80px">
         <input type="number" step="0.1" id="bulkDesc2" placeholder="Desc.2 %" value="${mem?toPct(mem.desc2):''}" style="width:80px">
@@ -3548,15 +3562,15 @@ function renderMargenes(){
       </div>
     </div>
     <div class="cfg-row">
-      <div><div class="cfg-lbl">Fórmula de cálculo para ${escapeHtml(margenProv)}</div>
-        <div class="cfg-hint">${fcGuardada?`guardada el ${new Date(fcGuardada.fecha).toLocaleDateString('es-AR')}`:(FORMULA_DEFAULT_POR_PROV[normKey(margenProv)]?`usando "${escapeHtml(fc.nombre)}" (fórmula por defecto para ${escapeHtml(margenProv)}, todavía no la guardaste explícitamente)`:'usando la fórmula estándar (todavía no se guardó una específica para este proveedor)')}</div></div>
+      <div><div class="cfg-lbl">Fórmula de cálculo para ${v_escapeHtml(margenProv)}</div>
+        <div class="cfg-hint">${fcGuardada?`guardada el ${new Date(fcGuardada.fecha).toLocaleDateString('es-AR')}`:(FORMULA_DEFAULT_POR_PROV[normKey(margenProv)]?`usando "${v_escapeHtml(fc.nombre)}" (fórmula por defecto para ${v_escapeHtml(margenProv)}, todavía no la guardaste explícitamente)`:'usando la fórmula estándar (todavía no se guardó una específica para este proveedor)')}</div></div>
       <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
         <select id="fcFormulaSel" style="min-width:280px" onchange="if(this.value==='__nueva__'){mostrarEditorFormula=true;renderMargenes();}">
-          ${FORMULAS.map(f=>`<option value="${f.id}" ${fc.id===f.id?'selected':''}>${escapeHtml(f.nombre)}${f.builtin?'':' (personalizada)'}</option>`).join('')}
+          ${FORMULAS.map(f=>`<option value="${f.id}" ${fc.id===f.id?'selected':''}>${v_escapeHtml(f.nombre)}${f.builtin?'':' (personalizada)'}</option>`).join('')}
           <option value="__nueva__">➕ Crear fórmula nueva…</option>
         </select>
         <button class="btn b-nar b-sm" onclick="guardarFormulaProveedor()">Guardar para este proveedor</button>
-        ${!fc.builtin?`<button class="btn b-rd b-sm" onclick="if(confirm('¿Borrar la fórmula personalizada \\'${escapeHtml(fc.nombre).replace(/'/g,"\\'")}\\'? Los proveedores que la tengan asignada vuelven a la fórmula estándar.')){borrarFormula('${fc.id}');renderMargenes();}">🗑 Borrar esta fórmula</button>`:''}
+        ${!fc.builtin?`<button class="btn b-rd b-sm" onclick="if(confirm('¿Borrar la fórmula personalizada \\'${v_escapeHtml(fc.nombre).replace(/'/g,"\\'")}\\'? Los proveedores que la tengan asignada vuelven a la fórmula estándar.')){borrarFormula('${fc.id}');renderMargenes();}">🗑 Borrar esta fórmula</button>`:''}
       </div>
       <div id="fcComposicion" class="cfg-hint mn" style="width:100%;margin-top:6px;line-height:1.7">${composicionFormulaHtml(fc)}</div>
     </div>
@@ -3570,7 +3584,7 @@ function renderMargenes(){
       <div class="cfg-row"><div class="cfg-lbl">Neto</div><input id="nfNeto" value="PARCIAL2*(1+MARGEN)" oninput="actualizarPreviewFormula()" style="flex:1;min-width:200px;font-family:var(--mn)"></div>
       <div class="cfg-hint">Vista previa con Costo=$1000 · Desc.1=10% · Desc.2=5% · Margen=20%: <b id="nfPreview" class="mn">${(()=>{const r=previewFormula('COSTO*(1-DESC1)','PARCIAL1*(1-DESC2)','PARCIAL2*(1+MARGEN)');return `Parcial1 ${fmtMoney(r.p1)} · Parcial2 ${fmtMoney(r.p2)} · Neto ${fmtMoney(r.neto)}`;})()}</b></div>
       <div style="display:flex;gap:6px;margin-top:10px">
-        <button class="btn b-bl b-sm" onclick="guardarNuevaFormula()">Guardar y usar en ${escapeHtml(margenProv)}</button>
+        <button class="btn b-bl b-sm" onclick="guardarNuevaFormula()">Guardar y usar en ${v_escapeHtml(margenProv)}</button>
         <button class="btn b-sm" onclick="mostrarEditorFormula=false;renderMargenes()">Cancelar</button>
       </div>
     </div>`:''}
@@ -3585,7 +3599,7 @@ function renderMargenes(){
 function rowMargenHtml(it){
   const l1 = it.neto*(1+(CFG.listas.iva||0)/100);
   return `<tr class="${it.sem==='r'?'row-r':it.sem==='y'?'row-y':''}">
-    <td class="mn">${it.cod}</td><td>${escapeHtml(it.prov)}</td><td>${escapeHtml(it.articulo)}</td>
+    <td class="mn">${it.cod}</td><td>${v_escapeHtml(it.prov)}</td><td>${v_escapeHtml(it.articulo)}</td>
     <td class="r"><input type="number" step="0.01" value="${it.costo}" style="width:88px;text-align:right" onchange="editMargenCampo(${it.cod},'costo',this.value)"></td>
     <td class="r"><input type="number" step="0.1" value="${toPct(it.desc1)}" style="width:64px;text-align:right" onchange="editMargenCampo(${it.cod},'desc1',this.value)"></td>
     ${margenDetalle?`<td class="r mn" title="Costo × (1 − Desc.1)">${fmtMoney(it.parcial1)}</td>`:''}
@@ -3638,14 +3652,14 @@ function redondearArriba(v){
 function editListaCampo(cod,valor){
   const it=MAESTRO.items.find(i=>i.cod===cod); if(!it)return;
   const l1=numOr(valor);
-  if(!l1||l1<=0){toast('Ingresá un precio de Lista 1 válido');renderMargenes();return;}
+  if(!l1||l1<=0){v_toast('Ingresá un precio de Lista 1 válido');renderMargenes();return;}
   const ivaFrac=(CFG.listas.iva||0)/100;
   const netoDeseado=l1/(1+ivaFrac);
   it.margen=invertMargenDesdeNeto(it,netoDeseado);
   it.neto=null; // el margen ya refleja el precio pedido; no forzamos un neto aparte
   it.fechaActualizado=new Date().toISOString();
   saveMaestro(MAESTRO);
-  toast('✓ Margen recalculado a partir de Lista 1');
+  v_toast('✓ Margen recalculado a partir de Lista 1');
   renderMargenes();
 }
 function redondearLista(cod){
@@ -3658,9 +3672,9 @@ function redondearLista(cod){
 }
 function aplicarCostoMasivo(){
   const pct=numOr(document.getElementById('bulkPct').value);
-  if(!pct){toast('Ingresá un porcentaje distinto de cero');return;}
+  if(!pct){v_toast('Ingresá un porcentaje distinto de cero');return;}
   const afectados=MAESTRO.items.filter(i=>i.prov===margenProv);
-  if(!afectados.length){toast('No hay artículos de ese proveedor');return;}
+  if(!afectados.length){v_toast('No hay artículos de ese proveedor');return;}
   if(!confirm(`Vas a ${pct>0?'aumentar':'reducir'} el costo ${Math.abs(pct)}% de ${afectados.length} artículos de ${margenProv}. ¿Confirmar?`))return;
   const detalle=[];
   afectados.forEach(it=>{
@@ -3674,14 +3688,14 @@ function aplicarCostoMasivo(){
   HIST.unshift({id:uid(),fecha:new Date().toISOString(),proveedor:margenProv,fuente:'actualización masiva '+pct+'%',cantidad:detalle.length,variacionPromedio:pct/100,detalle});
   saveHist(HIST);
   document.getElementById('navH').textContent=HIST.length;
-  toast('✓ Costo actualizado en '+detalle.length+' artículos');
+  v_toast('✓ Costo actualizado en '+detalle.length+' artículos');
   renderMargenes();
 }
 function aplicarDescuentoMasivo(){
   const d1=document.getElementById('bulkDesc1').value, d2=document.getElementById('bulkDesc2').value;
-  if(d1===''&&d2===''){toast('Ingresá al menos un descuento');return;}
+  if(d1===''&&d2===''){v_toast('Ingresá al menos un descuento');return;}
   const afectados=MAESTRO.items.filter(i=>i.prov===margenProv);
-  if(!afectados.length){toast('No hay artículos de ese proveedor');return;}
+  if(!afectados.length){v_toast('No hay artículos de ese proveedor');return;}
   if(!confirm(`Vas a aplicar Desc.1 ${d1?d1+'%':'(sin cambio)'} · Desc.2 ${d2?d2+'%':'(sin cambio)'} a ${afectados.length} artículos de ${margenProv}. ¿Confirmar?`))return;
   afectados.forEach(it=>{
     if(d1!=='')it.desc1=fromPct(d1);
@@ -3690,15 +3704,15 @@ function aplicarDescuentoMasivo(){
   });
   saveMaestro(MAESTRO);
   recordarDescuento(margenProv, d1!==''?fromPct(d1):afectados[0].desc1, d2!==''?fromPct(d2):afectados[0].desc2);
-  toast('✓ Descuento aplicado a '+afectados.length+' artículos');
+  v_toast('✓ Descuento aplicado a '+afectados.length+' artículos');
   renderMargenes();
 }
 function guardarFormulaProveedor(){
   if(!margenProv)return;
   const sel=document.getElementById('fcFormulaSel').value;
-  if(sel==='__nueva__'){toast('Completá y guardá la fórmula nueva primero');return;}
+  if(sel==='__nueva__'){v_toast('Completá y guardá la fórmula nueva primero');return;}
   guardarFormulaCfg(margenProv,sel);
-  toast('✓ Fórmula guardada para '+margenProv);
+  v_toast('✓ Fórmula guardada para '+margenProv);
   renderMargenes();
 }
 function previewFormula(p1expr,p2expr,netoExpr){
@@ -3710,10 +3724,10 @@ function previewFormula(p1expr,p2expr,netoExpr){
 }
 function composicionFormulaHtml(f){
   const r=previewFormula(f.parcial1,f.parcial2,f.neto);
-  return `<div>Composición de "<b>${escapeHtml(f.nombre)}</b>":</div>
-    <div>Parcial 1 = <span class="mn">${escapeHtml(f.parcial1)}</span></div>
-    <div>Parcial 2 (Costo Final) = <span class="mn">${escapeHtml(f.parcial2)}</span></div>
-    <div>Neto = <span class="mn">${escapeHtml(f.neto)}</span></div>
+  return `<div>Composición de "<b>${v_escapeHtml(f.nombre)}</b>":</div>
+    <div>Parcial 1 = <span class="mn">${v_escapeHtml(f.parcial1)}</span></div>
+    <div>Parcial 2 (Costo Final) = <span class="mn">${v_escapeHtml(f.parcial2)}</span></div>
+    <div>Neto = <span class="mn">${v_escapeHtml(f.neto)}</span></div>
     <div style="margin-top:4px">Con Costo=$1.000 · Desc.1=10% · Desc.2=5% · Margen=20% da: Parcial1 ${fmtMoney(r.p1)} · Parcial2 ${fmtMoney(r.p2)} · Neto ${fmtMoney(r.neto)}</div>`;
 }
 function mostrarComposicionFormula(formulaId){
@@ -3731,17 +3745,17 @@ function actualizarPreviewFormula(){
 }
 function guardarNuevaFormula(){
   const nombre=(document.getElementById('nfNombre').value||'').trim();
-  if(!nombre){toast('Ingresá un nombre para la fórmula');return;}
+  if(!nombre){v_toast('Ingresá un nombre para la fórmula');return;}
   const p1e=document.getElementById('nfP1').value.trim();
   const p2e=document.getElementById('nfP2').value.trim();
   const netoe=document.getElementById('nfNeto').value.trim();
-  if(!p1e||!p2e||!netoe){toast('Completá las 3 fórmulas');return;}
+  if(!p1e||!p2e||!netoe){v_toast('Completá las 3 fórmulas');return;}
   const r=previewFormula(p1e,p2e,netoe);
-  if(!isFinite(r.p1)||!isFinite(r.p2)||!isFinite(r.neto)){toast('La fórmula tiene un error de sintaxis, revisala');return;}
+  if(!isFinite(r.p1)||!isFinite(r.p2)||!isFinite(r.neto)){v_toast('La fórmula tiene un error de sintaxis, revisala');return;}
   const f=crearFormula(nombre,p1e,p2e,netoe);
   guardarFormulaCfg(margenProv,f.id);
   mostrarEditorFormula=false;
-  toast('✓ Fórmula "'+nombre+'" creada y aplicada a '+margenProv);
+  v_toast('✓ Fórmula "'+nombre+'" creada y aplicada a '+margenProv);
   renderMargenes();
 }
 
@@ -3766,20 +3780,20 @@ function renderHist(){
   const buscadorHtml=`
   <div class="cfg-card" style="margin:14px 20px">
     <h3>🔎 Buscar precio anterior de un artículo</h3>
-    <input class="srch" style="width:100%" placeholder="Nombre del artículo..." value="${escapeHtml(histBusq)}" oninput="histBusq=this.value;renderHist()">
+    <input class="srch" style="width:100%" placeholder="Nombre del artículo..." value="${v_escapeHtml(histBusq)}" oninput="histBusq=this.value;renderHist()">
     ${!VERSIONES.length?'<div class="cfg-hint" style="margin-top:8px">Todavía no hay versiones guardadas — se crean solas cada vez que subís un Excel, cargás una lista de proveedor, o aplicás una actualización masiva.</div>':''}
     ${q&&resultadosArt.length?resultadosArt.map(r=>`
       <div style="margin-top:12px">
-        <strong>${escapeHtml(r.nombre)}</strong> <span class="cb-sub">(${r.cod})</span>
+        <strong>${v_escapeHtml(r.nombre)}</strong> <span class="cb-sub">(${r.cod})</span>
         <table style="margin-top:6px"><thead><tr><th>Fecha</th><th>Motivo</th><th class="r">Costo</th><th class="r">Margen</th><th class="r">Neto</th></tr></thead>
-        <tbody>${r.puntos.map(p=>`<tr><td class="mn">${new Date(p.fecha).toLocaleDateString('es-AR')}</td><td class="cb-sub">${escapeHtml(p.motivo)}</td><td class="r">${fmtMoney(p.item.costo)}</td><td class="r">${fmtPct(p.item.margen)}</td><td class="r bold">${fmtMoney(p.item.neto)}</td></tr>`).join('')}</tbody></table>
+        <tbody>${r.puntos.map(p=>`<tr><td class="mn">${new Date(p.fecha).toLocaleDateString('es-AR')}</td><td class="cb-sub">${v_escapeHtml(p.motivo)}</td><td class="r">${fmtMoney(p.item.costo)}</td><td class="r">${fmtPct(p.item.margen)}</td><td class="r bold">${fmtMoney(p.item.neto)}</td></tr>`).join('')}</tbody></table>
       </div>`).join(''):(q?'<div class="cfg-hint" style="margin-top:8px">No encontré ningún artículo guardado con ese nombre en versiones anteriores.</div>':'')}
   </div>
   ${VERSIONES.length?`
   <div class="cfg-card" style="margin:0 20px 14px">
     <h3>📚 Versiones completas guardadas (${VERSIONES.length})</h3>
     ${VERSIONES.map(v=>`<div class="cfg-row">
-      <div><strong>${new Date(v.fecha).toLocaleString('es-AR')}</strong><div class="cb-sub">${escapeHtml(v.motivo)} · ${v.items.length} artículos</div></div>
+      <div><strong>${new Date(v.fecha).toLocaleString('es-AR')}</strong><div class="cb-sub">${v_escapeHtml(v.motivo)} · ${v.items.length} artículos</div></div>
       <div style="display:flex;gap:6px">
         <button class="btn b-gh b-sm" onclick="verVersionCompleta('${v.id}')">👁 Ver</button>
         <button class="btn b-gn b-sm" onclick="exportarVersion('${v.id}')">⬇ Excel</button>
@@ -3799,14 +3813,14 @@ function renderHist(){
   ${HIST.map(h=>`
     <div class="cfg-card">
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <div><strong style="color:var(--azul)">${escapeHtml(h.proveedor)}</strong> <span class="cb-sub">· ${new Date(h.fecha).toLocaleString('es-AR')}</span></div>
+        <div><strong style="color:var(--azul)">${v_escapeHtml(h.proveedor)}</strong> <span class="cb-sub">· ${new Date(h.fecha).toLocaleString('es-AR')}</span></div>
         <div><span class="pill" style="background:var(--azul3);color:var(--azul);border-color:var(--brd2)">${h.cantidad} artículos</span>
         <span class="pill" style="background:${h.variacionPromedio>0?'var(--rd2)':'var(--gn2)'};color:${h.variacionPromedio>0?'var(--rd)':'var(--gn)'};border-color:${h.variacionPromedio>0?'var(--rd3)':'var(--gn3)'}">variación prom. ${(h.variacionPromedio*100).toFixed(1)}%</span></div>
       </div>
-      <div class="cfg-hint" style="margin-top:6px">Archivo: ${escapeHtml(h.fuente)}</div>
+      <div class="cfg-hint" style="margin-top:6px">Archivo: ${v_escapeHtml(h.fuente)}</div>
       <details style="margin-top:8px"><summary style="cursor:pointer;font-size:11px;color:var(--tx3)">Ver detalle</summary>
         <table style="margin-top:8px"><thead><tr><th>Cod</th><th>Artículo</th><th class="r">Costo Anterior</th><th class="r">Costo Nuevo</th></tr></thead>
-        <tbody>${h.detalle.map(d=>`<tr><td class="mn">${d.cod}</td><td>${escapeHtml(d.articulo)}</td><td class="r">${fmtMoney(d.costoAnterior)}</td><td class="r">${fmtMoney(d.costoNuevo)}</td></tr>`).join('')}</tbody></table>
+        <tbody>${h.detalle.map(d=>`<tr><td class="mn">${d.cod}</td><td>${v_escapeHtml(d.articulo)}</td><td class="r">${fmtMoney(d.costoAnterior)}</td><td class="r">${fmtMoney(d.costoNuevo)}</td></tr>`).join('')}</tbody></table>
       </details>
     </div>`).join('')}
   </div>`;
@@ -3815,10 +3829,10 @@ function verVersionCompleta(id){
   const v=VERSIONES.find(x=>x.id===id); if(!v)return;
   document.getElementById('v-modalTtl').textContent='Versión del '+new Date(v.fecha).toLocaleString('es-AR');
   document.getElementById('v-modalBody').innerHTML=`
-    <div class="cfg-hint" style="margin-bottom:10px">${escapeHtml(v.motivo)}</div>
+    <div class="cfg-hint" style="margin-bottom:10px">${v_escapeHtml(v.motivo)}</div>
     <table><thead><tr><th>Cod</th><th>Proveedor</th><th>Artículo</th><th class="r">Costo</th><th class="r">Margen</th><th class="r">Neto</th></tr></thead>
-    <tbody>${v.items.map(it=>`<tr><td class="mn">${it.cod}</td><td>${escapeHtml(it.prov)}</td><td>${escapeHtml(it.articulo)}</td><td class="r">${fmtMoney(it.costo)}</td><td class="r">${fmtPct(it.margen)}</td><td class="r bold">${fmtMoney(it.neto)}</td></tr>`).join('')}</tbody></table>`;
-  document.getElementById('v-modalFooter').innerHTML=`<button class="btn b-gh" onclick="closeModal()">Cerrar</button>`;
+    <tbody>${v.items.map(it=>`<tr><td class="mn">${it.cod}</td><td>${v_escapeHtml(it.prov)}</td><td>${v_escapeHtml(it.articulo)}</td><td class="r">${fmtMoney(it.costo)}</td><td class="r">${fmtPct(it.margen)}</td><td class="r bold">${fmtMoney(it.neto)}</td></tr>`).join('')}</tbody></table>`;
+  document.getElementById('v-modalFooter').innerHTML=`<button class="btn b-gh" onclick="v_closeModal()">Cerrar</button>`;
   document.getElementById('v-modalBg').classList.add('on');
 }
 function exportarVersion(id){
@@ -3855,7 +3869,7 @@ function exportarChess(){
 function exportarSoloModificados(){
   const hoy=new Date().toDateString();
   const items=MAESTRO.items.filter(it=>it.fechaActualizado&&new Date(it.fechaActualizado).toDateString()===hoy);
-  if(!items.length){toast('No hay artículos actualizados hoy');return;}
+  if(!items.length){v_toast('No hay artículos actualizados hoy');return;}
   const rows=[['COD','PROVEEDOR','ARTICULO','NETO','NETO REVENDEDOR','PRECIO SIN IVA SUPER']];
   items.forEach(it=>{
     const c=calcItem(it);
@@ -3874,14 +3888,14 @@ function dateStamp(){const d=new Date();return d.toISOString().slice(0,10);}
 /* ============================================================
    PAGE: CONFIG
 ============================================================ */
-function renderConfig(){
+function v_renderConfig(){
   const p=document.getElementById('p-config');
   p.innerHTML=`
   <div class="cfg-wrap">
     <div class="cfg-card">
       <h3>🔒 Acceso</h3>
       <div class="cfg-row"><div><div class="cfg-lbl">Cambiar clave</div><div class="cfg-hint">se pide al abrir la app</div></div>
-      <input type="text" id="cfgPass" value="${escapeHtml(CFG.password)}" style="width:160px"></div>
+      <input type="text" id="cfgPass" value="${v_escapeHtml(CFG.password)}" style="width:160px"></div>
     </div>
     <div class="cfg-card">
       <h3>📊 Umbrales de margen (lista normal)</h3>
@@ -3892,7 +3906,7 @@ function renderConfig(){
     <div class="cfg-card">
       <h3>🗺 Emparejamiento aprendido</h3>
       <div class="cfg-row"><div class="cfg-lbl">Coincidencias guardadas</div><span class="mn">${Object.keys(MAPDB).length}</span></div>
-      <button class="btn b-rd b-sm" style="margin-top:8px" onclick="if(confirm('¿Borrar toda la memoria de emparejamiento?')){MAPDB={};saveMap(MAPDB);toast('Memoria borrada');renderConfig();}">🗑 Borrar memoria de emparejamiento</button>
+      <button class="btn b-rd b-sm" style="margin-top:8px" onclick="if(confirm('¿Borrar toda la memoria de emparejamiento?')){MAPDB={};saveMap(MAPDB);v_toast('Memoria borrada');v_renderConfig();}">🗑 Borrar memoria de emparejamiento</button>
     </div>
     <div class="cfg-card">
       <h3>⚠ Zona de riesgo</h3>
@@ -3905,7 +3919,7 @@ function rubrosCfgHtml(){
   const cuenta={};
   ((MAESTRO&&MAESTRO.items)||[]).forEach(i=>{ if(i.rubro)cuenta[i.rubro]=(cuenta[i.rubro]||0)+1; });
   const filas=RUBROS.length? RUBROS.map((r,i)=>`
-    <div class="cfg-row"><div class="cfg-lbl">${escapeHtml(r)} <span class="mn" style="color:var(--tx3)">· ${cuenta[r]||0} artículos</span></div>
+    <div class="cfg-row"><div class="cfg-lbl">${v_escapeHtml(r)} <span class="mn" style="color:var(--tx3)">· ${cuenta[r]||0} artículos</span></div>
       <div style="display:flex;gap:6px"><button class="btn b-gh b-sm" onclick="cfgRenombrarRubro(${i})">✎ Renombrar</button><button class="btn b-rd b-sm" onclick="cfgBorrarRubro(${i})">🗑</button></div></div>`).join('')
     : `<div class="cfg-hint" style="padding:6px 0">Todavía no hay rubros creados.</div>`;
   return `<h3>🏷 Rubros</h3>${filas}
@@ -3916,7 +3930,7 @@ function refrescarRubrosCfg(){
   if(c)c.innerHTML=rubrosCfgHtml();
 }
 function cfgNuevoRubro(){
-  pedirRubroNuevo(()=>{toast('Rubro creado');refrescarRubrosCfg();});
+  pedirRubroNuevo(()=>{v_toast('Rubro creado');refrescarRubrosCfg();});
 }
 function cfgRenombrarRubro(i){
   const viejo=RUBROS[i]; if(viejo===undefined)return;
@@ -3931,7 +3945,7 @@ function cfgRenombrarRubro(i){
     asegurarRubro(nuevo);
     saveRubros(RUBROS);
     if(maestroRubroFiltro===viejo)maestroRubroFiltro=nuevo;
-    toast('Rubro actualizado');
+    v_toast('Rubro actualizado');
     refrescarRubrosCfg();
   });
 }
@@ -3944,7 +3958,7 @@ function cfgBorrarRubro(i){
   RUBROS=RUBROS.filter((x,k)=>k!==i);
   saveRubros(RUBROS);
   if(maestroRubroFiltro===r)maestroRubroFiltro='';
-  toast('Rubro borrado');
+  v_toast('Rubro borrado');
   refrescarRubrosCfg();
 }
 function borrarTodoLocal(){
@@ -3952,7 +3966,7 @@ function borrarTodoLocal(){
   try{
     Object.keys(localStorage).filter(k=>k.indexOf('dl_precios_')===0).forEach(k=>localStorage.removeItem(k));
   }catch(e){}
-  toast('Todo borrado — recargando...');
+  v_toast('Todo borrado — recargando...');
   setTimeout(()=>location.reload(),600);
 }
 function guardarConfig(){
@@ -3960,7 +3974,7 @@ function guardarConfig(){
   CFG.margenRojo=numOr(document.getElementById('cfgRojo').value);
   CFG.margenAmarillo=numOr(document.getElementById('cfgAmar').value);
   saveCfg(CFG);
-  toast('Configuración guardada');
+  v_toast('Configuración guardada');
 }
 
 /* ============================================================
@@ -3998,16 +4012,16 @@ function renderListas(){
   <div class="c-bar">
     <select id="listasProvSel" onchange="listasProv=this.value;renderListas()" style="min-width:170px">
       <option value="">— Todos los proveedores —</option>
-      ${provs.map(pv=>`<option value="${escapeHtml(pv)}" ${listasProv===pv?'selected':''}>${escapeHtml(pv)}</option>`).join('')}
+      ${provs.map(pv=>`<option value="${v_escapeHtml(pv)}" ${listasProv===pv?'selected':''}>${v_escapeHtml(pv)}</option>`).join('')}
     </select>
-    <input class="srch" placeholder="🔎 Buscar artículo..." value="${escapeHtml(listasBusq)}" oninput="listasBusq=this.value;renderListas()">
+    <input class="srch" placeholder="🔎 Buscar artículo..." value="${v_escapeHtml(listasBusq)}" oninput="listasBusq=this.value;renderListas()">
     <div class="sp"></div>
     <button class="btn b-gn b-sm" onclick="exportarListas()">⬇ Descargar Excel de listas</button>
   </div>
   <div class="tbl-wrap"><table>
     <thead><tr><th>Cod</th><th>Proveedor</th><th>Artículo</th><th class="r">Neto</th><th class="r">Lista 1</th><th class="r">Lista 2</th><th class="r">Lista 3</th><th class="r">Lista 4</th></tr></thead>
     <tbody>${items.slice(0,400).map(it=>{const l=calcListas(it);return `<tr>
-      <td class="mn">${it.cod}</td><td>${escapeHtml(it.prov)}</td><td>${escapeHtml(it.articulo)}</td>
+      <td class="mn">${it.cod}</td><td>${v_escapeHtml(it.prov)}</td><td>${v_escapeHtml(it.articulo)}</td>
       <td class="r">${fmtMoney(l.neto)}</td><td class="r bold">${fmtMoney(l.l1)}</td><td class="r">${fmtMoney(l.l2)}</td><td class="r">${fmtMoney(l.l3)}</td><td class="r">${fmtMoney(l.l4)}</td>
     </tr>`;}).join('')}</tbody>
   </table></div>
@@ -4022,7 +4036,7 @@ function guardarListas(){
     lista4:numOr(document.getElementById('l4pct').value)
   };
   saveCfg(CFG);
-  toast('Listas actualizadas');
+  v_toast('Listas actualizadas');
   renderListas();
 }
 function exportarListas(){
@@ -4114,7 +4128,7 @@ function renderOfertas(){
   }catch(e){
     console.error('Error en Ofertas:', e);
     p.innerHTML=`<div class="empty"><div class="empty-ico">⚠</div><div>Hubo un error mostrando Ofertas.</div>
-      <div class="cfg-hint" style="max-width:420px;text-align:center">${escapeHtml(e.message)}</div>
+      <div class="cfg-hint" style="max-width:420px;text-align:center">${v_escapeHtml(e.message)}</div>
       <button class="btn b-rd b-sm" onclick="if(confirm('¿Borrar ofertas, objetivos y contactos guardados para intentar solucionarlo?')){
         localStorage.removeItem(LS_OFERTAS);localStorage.removeItem(LS_OFERTA_META);localStorage.removeItem(LS_OBJETIVOS);
         localStorage.removeItem(LS_VENDEDORES);localStorage.removeItem(LS_CLIENTES);
@@ -4143,9 +4157,9 @@ function renderOfertasInner(p){
         <button class="fb ${ofertaDestino==='marca'?'on':''}" onclick="ofertaDestino='marca';renderOfertas()">🏬 Por Marca</button>
       </div>
       ${ofertaDestino==='marca'?`<label class="fld" style="max-width:280px;margin-top:12px">Marca / Proveedor<select id="ofMarcaSel" onchange="OFERTA_META.marcaSeleccionada=this.value;saveMeta(OFERTA_META);renderOfertas()">
-        ${provs.map(pv=>`<option value="${escapeHtml(pv)}" ${OFERTA_META.marcaSeleccionada===pv?'selected':''}>${escapeHtml(pv)}</option>`).join('')}
+        ${provs.map(pv=>`<option value="${v_escapeHtml(pv)}" ${OFERTA_META.marcaSeleccionada===pv?'selected':''}>${v_escapeHtml(pv)}</option>`).join('')}
       </select></label>
-      <div class="cfg-hint" style="margin-top:6px">Los artículos de abajo se filtran solo a ${escapeHtml(OFERTA_META.marcaSeleccionada)}.</div>`:
+      <div class="cfg-hint" style="margin-top:6px">Los artículos de abajo se filtran solo a ${v_escapeHtml(OFERTA_META.marcaSeleccionada)}.</div>`:
       `<div class="cfg-hint" style="margin-top:8px">${ofertaDestino==='cliente'?'Ofertas puntuales para un cliente, con precio fijo o por vencimiento.':'Ofertas generales para que tus vendedores ofrezcan en la calle.'}</div>`}
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
         <label class="fld">Vigencia desde<input type="date" id="ofDesde" value="${OFERTA_META.desde||''}" onchange="OFERTA_META.desde=this.value;saveMeta(OFERTA_META)"></label>
@@ -4156,14 +4170,14 @@ function renderOfertasInner(p){
 
     <div class="cfg-card">
       <h3>➕ Agregar artículo a la oferta</h3>
-      ${ofertaDestino!=='marca'?`<input class="srch" style="width:100%" placeholder="🔎 Buscar artículo por nombre o proveedor..." value="${escapeHtml(ofertaBusq)}" oninput="ofertaBusq=this.value;renderOfertas()">`
-      :`<input class="srch" style="width:100%" placeholder="🔎 Filtrar dentro de ${escapeHtml(OFERTA_META.marcaSeleccionada)}..." value="${escapeHtml(ofertaBusq)}" oninput="ofertaBusq=this.value;renderOfertas()">`}
+      ${ofertaDestino!=='marca'?`<input class="srch" style="width:100%" placeholder="🔎 Buscar artículo por nombre o proveedor..." value="${v_escapeHtml(ofertaBusq)}" oninput="ofertaBusq=this.value;renderOfertas()">`
+      :`<input class="srch" style="width:100%" placeholder="🔎 Filtrar dentro de ${v_escapeHtml(OFERTA_META.marcaSeleccionada)}..." value="${v_escapeHtml(ofertaBusq)}" oninput="ofertaBusq=this.value;renderOfertas()">`}
       ${busqResults.length?`<div style="margin-top:10px;max-height:220px;overflow-y:auto;border:1px solid var(--brd);border-radius:9px">
         ${busqResults.map(it=>{const l=calcListas(it);return `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid var(--s2)">
-          <div><strong>${escapeHtml(it.articulo)}</strong><div class="cb-sub">${escapeHtml(it.prov)} · Costo ${fmtMoney(it.costo)} · Lista 1: ${fmtMoney(l.l1)}</div></div>
+          <div><strong>${v_escapeHtml(it.articulo)}</strong><div class="cb-sub">${v_escapeHtml(it.prov)} · Costo ${fmtMoney(it.costo)} · Lista 1: ${fmtMoney(l.l1)}</div></div>
           <button class="btn b-nar b-sm" onclick="agregarOferta(${it.cod})">+ Agregar</button>
         </div>`;}).join('')}
-      </div>`:(ofertaDestino==='marca'?`<div class="cfg-hint" style="margin-top:8px">No hay artículos de ${escapeHtml(OFERTA_META.marcaSeleccionada)} que coincidan.</div>`:'')}
+      </div>`:(ofertaDestino==='marca'?`<div class="cfg-hint" style="margin-top:8px">No hay artículos de ${v_escapeHtml(OFERTA_META.marcaSeleccionada)} que coincidan.</div>`:'')}
     </div>
 
     <div class="cfg-card">
@@ -4175,7 +4189,7 @@ function renderOfertasInner(p){
     <div class="cfg-card">
       <h3>📦 Promociones por volumen</h3>
       ${(OFERTA_META.promosVolumen||[]).length?(OFERTA_META.promosVolumen||[]).map(pv=>`<div class="cfg-row">
-        <div><strong>${escapeHtml(pv.grupo)}</strong><div class="cb-sub">por ${pv.cantidad} ${escapeHtml(pv.unidad||'unidades')} o más → ${pv.descuentoPct}% descuento</div></div>
+        <div><strong>${v_escapeHtml(pv.grupo)}</strong><div class="cb-sub">por ${pv.cantidad} ${v_escapeHtml(pv.unidad||'unidades')} o más → ${pv.descuentoPct}% descuento</div></div>
         <button class="btn b-rd b-sm" onclick="quitarPromoVolumen('${pv.id}')">✕</button>
       </div>`).join(''):'<div class="cfg-hint">Sin promociones por volumen cargadas.</div>'}
       <div style="display:grid;grid-template-columns:1.4fr 0.8fr 0.9fr 0.7fr auto;gap:6px;margin-top:10px;align-items:end">
@@ -4192,7 +4206,7 @@ function renderOfertasInner(p){
     ${ofertaDestino!=='marca'?`
     <div class="cfg-card">
       <h3>👤 ${destinoLabel()}</h3>
-      <div id="destList">${lista.length?lista.map((v,i)=>`<div class="cfg-row"><div>${escapeHtml(v.nombre)} ${v.telefono?'<span class="cb-sub">'+escapeHtml(v.telefono)+'</span>':''}</div><button class="btn b-rd b-sm" onclick="eliminarDestinatario(${i})">✕</button></div>`).join(''):'<div class="cfg-hint">Sin '+destinoLabel().toLowerCase()+' cargados todavía.</div>'}</div>
+      <div id="destList">${lista.length?lista.map((v,i)=>`<div class="cfg-row"><div>${v_escapeHtml(v.nombre)} ${v.telefono?'<span class="cb-sub">'+v_escapeHtml(v.telefono)+'</span>':''}</div><button class="btn b-rd b-sm" onclick="eliminarDestinatario(${i})">✕</button></div>`).join(''):'<div class="cfg-hint">Sin '+destinoLabel().toLowerCase()+' cargados todavía.</div>'}</div>
       <div style="display:flex;gap:8px;margin-top:10px">
         <input type="text" id="destNombre" placeholder="Nombre">
         <input type="text" id="destTelefono" placeholder="Teléfono (opcional)">
@@ -4205,7 +4219,7 @@ function renderOfertasInner(p){
       <h3>🖨 Vista previa e impresión</h3>
       <div class="cfg-hint" style="margin-bottom:10px">Usá "Imprimir" y elegí "Guardar como PDF" en el diálogo del navegador.</div>
       ${ofertaDestino!=='marca'&&lista.length?`<label class="fld" style="max-width:260px;margin-bottom:12px">Mostrar oferta para<select id="previewNombreSel" onchange="ofertaPreviewNombre=this.value;renderOfertas()">
-        ${lista.map(v=>`<option value="${escapeHtml(v.nombre)}" ${ofertaPreviewNombre===v.nombre?'selected':''}>${escapeHtml(v.nombre)}</option>`).join('')}
+        ${lista.map(v=>`<option value="${v_escapeHtml(v.nombre)}" ${ofertaPreviewNombre===v.nombre?'selected':''}>${v_escapeHtml(v.nombre)}</option>`).join('')}
       </select></label>`:''}
       <button class="btn b-nar" onclick="window.print()">🖨 Imprimir / Guardar como PDF</button>
     </div>
@@ -4250,7 +4264,7 @@ function rowOfertaHtml(o){
       ${dias!=null?`<span class="cb-sub" style="align-self:center;color:${dias<0?'var(--rd)':dias<=7?'var(--yl)':'var(--tx3)'}">${dias<0?'vencido hace '+Math.abs(dias)+'d':'vence en '+dias+'d'}</span>`:''}`;
   }
   return `<div class="cfg-row" style="align-items:flex-end;flex-wrap:wrap;gap:8px">
-    <div style="flex:1;min-width:200px"><strong>${escapeHtml(it.articulo)}</strong><div class="cb-sub">${escapeHtml(it.prov)} (${it.cod}) · lista 1 normal ${fmtMoney(l.l1)}</div>
+    <div style="flex:1;min-width:200px"><strong>${v_escapeHtml(it.articulo)}</strong><div class="cb-sub">${v_escapeHtml(it.prov)} (${it.cod}) · lista 1 normal ${fmtMoney(l.l1)}</div>
       <div class="modo-tabs">
         <span class="modo-tab ${o.modo==='precio'?'on':''}" onclick="cambiarModoOferta(${o.cod},'precio')">Precio fijo</span>
         <span class="modo-tab ${o.modo==='descuento'?'on':''}" onclick="cambiarModoOferta(${o.cod},'descuento')">% Descuento</span>
@@ -4263,7 +4277,7 @@ function rowOfertaHtml(o){
 }
 
 function agregarOferta(cod){
-  if(OFERTAS.find(o=>o.cod===cod)){toast('Ya está en la oferta');return;}
+  if(OFERTAS.find(o=>o.cod===cod)){v_toast('Ya está en la oferta');return;}
   const it=MAESTRO.items.find(i=>i.cod===cod);
   const l=calcListas(it);
   const modoDefault = ofertaDestino==='marca'?'descuento':'precio';
@@ -4272,7 +4286,7 @@ function agregarOferta(cod){
   else{ nuevo.precioOferta=+(l.l1*0.9).toFixed(2); }
   OFERTAS.push(nuevo);
   saveOfertas(OFERTAS);
-  toast('Agregado a ofertas');
+  v_toast('Agregado a ofertas');
   ofertaBusq=''; renderOfertas();
 }
 function cambiarModoOferta(cod,modo){
@@ -4298,7 +4312,7 @@ function agregarPromoVolumen(){
   const cantidad=numOr(document.getElementById('pvCantidad').value);
   const unidad=document.getElementById('pvUnidad').value.trim();
   const descuentoPct=numOr(document.getElementById('pvDescuento').value);
-  if(!grupo||!cantidad||!descuentoPct){toast('Completá grupo, cantidad y descuento');return;}
+  if(!grupo||!cantidad||!descuentoPct){v_toast('Completá grupo, cantidad y descuento');return;}
   if(!OFERTA_META.promosVolumen)OFERTA_META.promosVolumen=[];
   OFERTA_META.promosVolumen.push({id:uid(),grupo,cantidad,unidad,descuentoPct});
   saveMeta(OFERTA_META);
@@ -4312,7 +4326,7 @@ function quitarPromoVolumen(id){
 function agregarDestinatario(){
   const nombre=document.getElementById('destNombre').value.trim();
   const telefono=document.getElementById('destTelefono').value.trim();
-  if(!nombre){toast('Completá el nombre');return;}
+  if(!nombre){v_toast('Completá el nombre');return;}
   const list=destinoList();
   list.push({nombre,telefono});
   saveList(destinoStorageKey(),list);
@@ -4338,7 +4352,7 @@ function renderOfertaPreview(nombreDestino){
     if(o.modo==='precio'){
       const precioOf = o.precioOferta!=null? o.precioOferta : 0;
       itemsHtml+=`<div class="ps-item-desc">
-        <div class="ps-nombre">${escapeHtml(it.articulo)}</div>
+        <div class="ps-nombre">${v_escapeHtml(it.articulo)}</div>
         <div class="ps-linea">Costo ---- $${it.costo.toFixed(0)}</div>
         <div class="ps-linea">Precio: <span class="ps-precio-pub">$${precioOf.toFixed(0)}</span></div>
       </div>`;
@@ -4346,7 +4360,7 @@ function renderOfertaPreview(nombreDestino){
       const pDist=it.costo*(1-(o.descuentoPct||0)/100);
       const pPub = o.precioPublico!=null? o.precioPublico : pDist*(1+(o.margenPublico||0)/100);
       itemsHtml+=`<div class="ps-item-desc">
-        <div class="ps-nombre">${escapeHtml(it.articulo)}</div>
+        <div class="ps-nombre">${v_escapeHtml(it.articulo)}</div>
         <div class="ps-linea">Costo ---- $${it.costo.toFixed(0)} &nbsp;·&nbsp; Descuento ${o.descuentoPct}%</div>
         <div class="ps-linea">Precio Venta Distribuidor: $${pDist.toFixed(2)}</div>
         <div class="ps-linea">Precio Venta Público: <span class="ps-precio-pub">$${pPub.toFixed(0)}</span></div>
@@ -4355,7 +4369,7 @@ function renderOfertaPreview(nombreDestino){
       const pDist=it.costo*(1-(o.descuentoPct||0)/100);
       const pPub = o.precioPublico!=null? o.precioPublico : pDist*(1+(o.margenPublico||0)/100);
       itemsHtml+=`<div class="ps-item-desc">
-        <div class="ps-nombre">${escapeHtml(it.articulo)}${o.fechaVencimiento?' — VTO '+fmtDateAR(o.fechaVencimiento):''}</div>
+        <div class="ps-nombre">${v_escapeHtml(it.articulo)}${o.fechaVencimiento?' — VTO '+fmtDateAR(o.fechaVencimiento):''}</div>
         <div class="ps-linea">Costo ---- $${it.costo.toFixed(0)} &nbsp;·&nbsp; Descuento ${o.descuentoPct}%</div>
         <div class="ps-linea">Precio Venta Distribuidor: $${pDist.toFixed(2)}</div>
         <div class="ps-linea">Precio Venta Público: <span class="ps-precio-pub">$${pPub.toFixed(0)}</span></div>
@@ -4365,9 +4379,9 @@ function renderOfertaPreview(nombreDestino){
   const promosHtml=(OFERTA_META.promosVolumen||[]).map(pv=>`▪ ${pv.grupo} — por ${pv.cantidad} ${pv.unidad||'unidades'} o más: ${pv.descuentoPct}% descuento`).join('\n');
   return `<div class="print-sheet">
     <h1>DISTRIBUIDORA LUCAS</h1>
-    <div class="ps-sub">${escapeHtml(tituloDestino(nombreDestino))}${encabezadoFecha?' · '+encabezadoFecha:''}</div>
+    <div class="ps-sub">${v_escapeHtml(tituloDestino(nombreDestino))}${encabezadoFecha?' · '+encabezadoFecha:''}</div>
     ${itemsHtml}
-    ${promosHtml?`<div class="ps-promos">${escapeHtml(promosHtml)}</div>`:''}
+    ${promosHtml?`<div class="ps-promos">${v_escapeHtml(promosHtml)}</div>`:''}
     <div class="ps-footer">Consultanos por más info</div>
   </div>`;
 }
@@ -4385,11 +4399,11 @@ function renderObjetivosPanel(){
       ${OBJETIVOS.length?OBJETIVOS.map((o,i)=>rowObjetivoHtml(o,i)).join(''):'<div class="cfg-hint">Sin objetivos cargados todavía.</div>'}
       <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--s2)">
         <label class="fld" style="max-width:260px">Marca<select id="objMarcaSel" onchange="objFormMarca=this.value;renderOfertas()">
-          ${provs.map(pv=>`<option value="${escapeHtml(pv)}" ${objFormMarca===pv?'selected':''}>${escapeHtml(pv)}</option>`).join('')}
+          ${provs.map(pv=>`<option value="${v_escapeHtml(pv)}" ${objFormMarca===pv?'selected':''}>${v_escapeHtml(pv)}</option>`).join('')}
         </select></label>
-        <label class="fld" style="margin-top:8px">Artículos de ${escapeHtml(objFormMarca)} <span class="cb-sub">(Ctrl/Cmd+click para elegir varios)</span>
+        <label class="fld" style="margin-top:8px">Artículos de ${v_escapeHtml(objFormMarca)} <span class="cb-sub">(Ctrl/Cmd+click para elegir varios)</span>
           <select id="objArticulos" multiple size="6" style="width:100%">
-            ${articulosMarca.map(a=>`<option value="${a.cod}">${escapeHtml(a.articulo)}</option>`).join('')}
+            ${articulosMarca.map(a=>`<option value="${a.cod}">${v_escapeHtml(a.articulo)}</option>`).join('')}
           </select>
         </label>
         <div style="display:grid;grid-template-columns:0.8fr 0.9fr 0.7fr 0.7fr 1fr 1fr auto;gap:6px;margin-top:10px;align-items:end">
@@ -4413,9 +4427,9 @@ function rowObjetivoHtml(o,i){
   const arts = codigos.map(c=>{const m=MAESTRO.items.find(x=>x.cod===c);return m?m.articulo:c;}).join(', ');
   return `<div class="cfg-row" style="flex-direction:column;align-items:stretch">
     <div style="display:flex;justify-content:space-between;gap:10px">
-      <div><strong>${escapeHtml(o.marca)}</strong> <span class="cb-sub">${escapeHtml(arts)}</span><div class="cb-sub">${fmtDateAR(o.vigenciaDesde)} al ${fmtDateAR(o.vigenciaHasta)}</div></div>
+      <div><strong>${v_escapeHtml(o.marca)}</strong> <span class="cb-sub">${v_escapeHtml(arts)}</span><div class="cb-sub">${fmtDateAR(o.vigenciaDesde)} al ${fmtDateAR(o.vigenciaHasta)}</div></div>
       <div style="display:flex;gap:8px;align-items:center;flex-shrink:0">
-        <span class="mn" style="font-size:11px">${vendido} / ${o.objetivoValor} ${escapeHtml(o.objetivoUnidad||'')} ${cumplido?'✅':''}</span>
+        <span class="mn" style="font-size:11px">${vendido} / ${o.objetivoValor} ${v_escapeHtml(o.objetivoUnidad||'')} ${cumplido?'✅':''}</span>
         <span class="cb-sub">recompensa ${o.recompensaValor}${o.recompensaTipo}</span>
         <button class="btn b-rd b-sm" onclick="eliminarObjetivo(${i})">✕</button>
       </div>
@@ -4433,7 +4447,7 @@ function agregarObjetivo(){
   const recompensaTipo=document.getElementById('objRecompTipo').value;
   const vigenciaDesde=document.getElementById('objDesde').value;
   const vigenciaHasta=document.getElementById('objHasta').value;
-  if(!marca||!codigos.length||!objetivoValor){toast('Completá marca, artículos y objetivo');return;}
+  if(!marca||!codigos.length||!objetivoValor){v_toast('Completá marca, artículos y objetivo');return;}
   OBJETIVOS.push({marca,codigos,objetivoValor,objetivoUnidad,recompensaValor,recompensaTipo,vigenciaDesde,vigenciaHasta});
   saveObjetivos(OBJETIVOS);
   renderOfertas();
@@ -4519,7 +4533,7 @@ function handleVentasFile(file){
       VENTAS={items:parsed.items,fecha:new Date().toISOString(),fuente:file.name,rangoDesde:parsed.rangoDesde,rangoHasta:parsed.rangoHasta};
       saveVentas(VENTAS);
       guardarResumenMes();
-      toast('Ventas cargadas: '+parsed.items.length+' líneas');
+      v_toast('Ventas cargadas: '+parsed.items.length+' líneas');
       renderTablero();
     }catch(err){console.error(err);showErrV('Error leyendo el archivo: '+err.message);}
   };
@@ -4670,7 +4684,7 @@ function renderTableroDashboard(){
 
   p.innerHTML=`
   <div class="c-bar">
-    <div><div class="cb-ttl">Tablero de Ventas</div><div class="cb-sub">${escapeHtml(VENTAS.fuente)} · ${VENTAS.rangoDesde?new Date(VENTAS.rangoDesde).toLocaleDateString('es-AR'):'?'} al ${VENTAS.rangoHasta?new Date(VENTAS.rangoHasta).toLocaleDateString('es-AR'):'?'}</div></div>
+    <div><div class="cb-ttl">Tablero de Ventas</div><div class="cb-sub">${v_escapeHtml(VENTAS.fuente)} · ${VENTAS.rangoDesde?new Date(VENTAS.rangoDesde).toLocaleDateString('es-AR'):'?'} al ${VENTAS.rangoHasta?new Date(VENTAS.rangoHasta).toLocaleDateString('es-AR'):'?'}</div></div>
     <div class="sp"></div>
     <button class="btn b-gh b-sm" onclick="document.getElementById('fiV2').click()">🔁 Reemplazar ventas</button>
     <input type="file" id="fiV2" accept=".xlsx,.xls" style="display:none" onchange="handleVentasFile(this.files[0])"/>
@@ -4680,7 +4694,7 @@ function renderTableroDashboard(){
     <div class="kpi"><div class="kpi-v">${totalBultos.toLocaleString('es-AR')}</div><div class="kpi-l">Bultos vendidos</div></div>
     <div class="kpi"><div class="kpi-v">${provList.length}</div><div class="kpi-l">Proveedores con venta</div></div>
     ${proy?`<div class="kpi c-nar"><div class="kpi-v">${fmtMoney(totalImporte*proy.factor)}</div><div class="kpi-l">Proyección fin de mes (día ${proy.diasTranscurridos}/${proy.diasDelMes})</div></div>`:''}
-    ${varMes!=null?`<div class="kpi ${varMes>=0?'c-gn':'c-rd'}"><div class="kpi-v">${varMes>0?'+':''}${(varMes*100).toFixed(1)}%</div><div class="kpi-l">vs. mes anterior (${escapeHtml(mesAnterior.mesLabel)})</div></div>`:''}
+    ${varMes!=null?`<div class="kpi ${varMes>=0?'c-gn':'c-rd'}"><div class="kpi-v">${varMes>0?'+':''}${(varMes*100).toFixed(1)}%</div><div class="kpi-l">vs. mes anterior (${v_escapeHtml(mesAnterior.mesLabel)})</div></div>`:''}
   </div>
   <div class="tbl-grid">
     <div class="chart-card"><h4>📊 Ventas por proveedor</h4><canvas id="chProv" height="220"></canvas></div>
@@ -4694,7 +4708,7 @@ function renderTableroDashboard(){
       <h4>🏆 Ranking de proveedores</h4>
       <table><thead><tr><th>Proveedor</th><th class="r">Facturado</th><th class="r">%</th><th class="r">Bultos</th><th class="r">Artículos</th><th class="r">Margen realizado</th></tr></thead>
       <tbody>${provList.map(p=>`<tr>
-        <td>${escapeHtml(p.prov)}</td><td class="r bold">${fmtMoney(p.importe)}</td><td class="r">${(p.participacion*100).toFixed(1)}%</td>
+        <td>${v_escapeHtml(p.prov)}</td><td class="r bold">${fmtMoney(p.importe)}</td><td class="r">${(p.participacion*100).toFixed(1)}%</td>
         <td class="r">${p.bultos.toLocaleString('es-AR')}</td><td class="r">${p.articulos}</td>
         <td class="r">${p.margenReal!=null?fmtPct(p.margenReal):'—'}</td>
       </tr>`).join('')}</tbody></table>
@@ -4702,7 +4716,7 @@ function renderTableroDashboard(){
     <div class="chart-card full">
       <h4>🔝 Top 10 artículos por facturación</h4>
       <table><thead><tr><th>Cod</th><th>Artículo</th><th>Proveedor</th><th class="r">Facturado</th><th class="r">Bultos</th></tr></thead>
-      <tbody>${topArt.map(a=>`<tr><td class="mn">${a.cod}</td><td>${escapeHtml(a.descripcion)}</td><td>${escapeHtml(a.prov)}</td><td class="r">${fmtMoney(a.importe)}</td><td class="r">${a.bultos.toLocaleString('es-AR')}</td></tr>`).join('')}</tbody></table>
+      <tbody>${topArt.map(a=>`<tr><td class="mn">${a.cod}</td><td>${v_escapeHtml(a.descripcion)}</td><td>${v_escapeHtml(a.prov)}</td><td class="r">${fmtMoney(a.importe)}</td><td class="r">${a.bultos.toLocaleString('es-AR')}</td></tr>`).join('')}</tbody></table>
     </div>
   </div>`;
 
@@ -4717,12 +4731,12 @@ function renderDecisionPanel(provList,topArt){
   // proveedores de alto volumen y margen bajo el objetivo/umbral
   provList.filter(p=>p.margenReal!=null).forEach(p=>{
     if(p.participacion>=0.05 && p.margenReal<umbralRojo){
-      items.push({tipo:'alerta',txt:`<strong>${escapeHtml(p.prov)}</strong> representa el ${(p.participacion*100).toFixed(1)}% de la facturación pero su margen realizado es de ${fmtPct(p.margenReal)} — por debajo del umbral de ${CFG.margenRojo}%. Prioridad para renegociar costos o ajustar precio.`});
+      items.push({tipo:'alerta',txt:`<strong>${v_escapeHtml(p.prov)}</strong> representa el ${(p.participacion*100).toFixed(1)}% de la facturación pero su margen realizado es de ${fmtPct(p.margenReal)} — por debajo del umbral de ${CFG.margenRojo}%. Prioridad para renegociar costos o ajustar precio.`});
     }
   });
   const buenos = provList.filter(p=>p.margenReal!=null&&p.margenReal>=umbralRojo&&p.participacion>=0.03).sort((a,b)=>b.margenReal-a.margenReal).slice(0,2);
   buenos.forEach(p=>{
-    items.push({tipo:'oport',txt:`<strong>${escapeHtml(p.prov)}</strong> combina buen volumen (${(p.participacion*100).toFixed(1)}%) con margen sano (${fmtPct(p.margenReal)}) — candidato a potenciar o pedir mejores condiciones por escala.`});
+    items.push({tipo:'oport',txt:`<strong>${v_escapeHtml(p.prov)}</strong> combina buen volumen (${(p.participacion*100).toFixed(1)}%) con margen sano (${fmtPct(p.margenReal)}) — candidato a potenciar o pedir mejores condiciones por escala.`});
   });
   // articulos con costo actualizado recientemente y alta venta
   const recientes=HIST.length?HIST[0]:null;
@@ -4730,7 +4744,7 @@ function renderDecisionPanel(provList,topArt){
     const codsRecientes=new Set(recientes.detalle.map(d=>d.cod));
     const impactados=topArt.filter(a=>codsRecientes.has(a.cod));
     if(impactados.length){
-      items.push({tipo:'info',txt:`${impactados.length} de los artículos más vendidos tuvieron cambio de costo en la última actualización (${new Date(recientes.fecha).toLocaleDateString('es-AR')}) — revisar si el precio de venta ya lo refleja: ${impactados.map(a=>escapeHtml(a.descripcion)).slice(0,4).join(', ')}${impactados.length>4?'...':''}`});
+      items.push({tipo:'info',txt:`${impactados.length} de los artículos más vendidos tuvieron cambio de costo en la última actualización (${new Date(recientes.fecha).toLocaleDateString('es-AR')}) — revisar si el precio de venta ya lo refleja: ${impactados.map(a=>v_escapeHtml(a.descripcion)).slice(0,4).join(', ')}${impactados.length>4?'...':''}`});
     }
   }
   const sinIdent=provList.find(p=>p.prov==='SIN IDENTIFICAR');
@@ -4768,6 +4782,28 @@ function dibujarCharts(topProv,mesAnterior){
 }
 
 // Expose for shell activation
+// Expose onclick-called functions to global scope
+window.navTo = typeof navTo === 'function' ? navTo : null;
+window.tryLogin = typeof tryLogin === 'function' ? tryLogin : null;
+window.v_closeModal = typeof v_closeModal === 'function' ? v_closeModal : null;
+window.v_toast = typeof v_toast === 'function' ? v_toast : null;
+window.v_renderConfig = typeof v_renderConfig === 'function' ? v_renderConfig : null;
+window.v_escapeHtml = typeof v_escapeHtml === 'function' ? v_escapeHtml : null;
+window.renderMaestro = typeof renderMaestro === 'function' ? renderMaestro : null;
+window.renderCarga = typeof renderCarga === 'function' ? renderCarga : null;
+window.renderMargenes = typeof renderMargenes === 'function' ? renderMargenes : null;
+window.renderListas = typeof renderListas === 'function' ? renderListas : null;
+window.renderOfertas = typeof renderOfertas === 'function' ? renderOfertas : null;
+window.renderTablero = typeof renderTablero === 'function' ? renderTablero : null;
+window.renderHist = typeof renderHist === 'function' ? renderHist : null;
+window.renderExport = typeof renderExport === 'function' ? renderExport : null;
+window.saveEditItem = typeof saveEditItem === 'function' ? saveEditItem : null;
+window.confirmarMatchManual = typeof confirmarMatchManual === 'function' ? confirmarMatchManual : null;
+window.guardarNuevaFormula = typeof guardarNuevaFormula === 'function' ? guardarNuevaFormula : null;
+window.borrarFormula = typeof borrarFormula === 'function' ? borrarFormula : null;
+window.saveMap = typeof saveMap === 'function' ? saveMap : null;
+window.pedirTextoOk = typeof pedirTextoOk === 'function' ? pedirTextoOk : null;
+window.eliminarDestinatario = typeof eliminarDestinatario === 'function' ? eliminarDestinatario : null;
 window._ventasInitApp = typeof initApp === 'function' ? initApp : (typeof window.initApp === 'function' ? window.initApp : null);
 })();
 </script>
@@ -4813,7 +4849,7 @@ async function finDoLogin() {
   if (logoutBtn) logoutBtn.style.display = '';
   finHideLoginScreen();
   await load();
-  renderAll();
+  fin_renderAll();
 }
 async function finDoLogout() {
   await supa.auth.signOut();
@@ -4955,8 +4991,8 @@ async function load(){
     renderLogoArea(defaultLogo);
   }
 }
-// save() is now a no-op: all persistence goes through Supabase per-operation
-function save(){ /* Supabase mode: handled per operation */ }
+// fin_save() is now a no-op: all persistence goes through Supabase per-operation
+function fin_save(){ /* Supabase mode: handled per operation */ }
 
 // ── LOGO ──
 function renderLogoArea(dataUrl){
@@ -4990,14 +5026,14 @@ function fs(n){
   return '$'+num.toFixed(0);
 }
 function fd(d){if(!d)return '—';const[y,m,dd]=d.split('-');return `${dd}/${m}/${y}`;}
-function today(){return new Date().toISOString().split('T')[0];}
+function fin_today(){return new Date().toISOString().split('T')[0];}
 
 // ── TEMA CLARO / OSCURO ──
 (function initTheme(){
   const saved=localStorage.getItem('dl-theme')||'dark';
-  applyTheme(saved);
+  fin_applyTheme(saved);
 })();
-function applyTheme(t){
+function fin_applyTheme(t){
   document.documentElement.setAttribute('data-theme',t);
   const btn=document.getElementById('fin-theme-toggle-btn');
   if(btn){btn.textContent=t==='light'?'🌙 Oscuro':'☀️ Claro';}
@@ -5005,7 +5041,7 @@ function applyTheme(t){
 }
 function finToggleTheme(){
   const cur=document.documentElement.getAttribute('data-theme')||'dark';
-  applyTheme(cur==='dark'?'light':'dark');
+  fin_applyTheme(cur==='dark'?'light':'dark');
 }
 function daysLeft(f){
   if(!f)return null;
@@ -5013,13 +5049,13 @@ function daysLeft(f){
   t.setHours(0,0,0,0);
   return Math.round((d-t)/86400000);
 }
-function isOv(f,e){return e!=='pagado'&&f&&f<today();}
+function isOv(f,e){return e!=='pagado'&&f&&f<fin_today();}
 function isSoon(f,e){
   if(e==='pagado')return false;
   const d=daysLeft(f);
   return d!==null&&d>=0&&d<7;
 }
-function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function fin_escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 
 // ── DATE KEY for pivot (agrupar por dia/semana/mes/año) ──
 function dateKey(d,seg){
@@ -5056,14 +5092,14 @@ function keyLabel(k,seg){
 }
 
 // ── NAVIGATION ──
-function switchTab(el){
+function fin_switchTab(el){
   document.querySelectorAll('.nav-tab').forEach(n=>n.classList.remove('active'));
   el.classList.add('active');
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(el.dataset.page).classList.add('active');
   refreshPage(el.dataset.page);
 }
-function switchTabMobile(el){
+function fin_switchTabMobile(el){
   document.querySelectorAll('.bottom-nav-item').forEach(n=>n.classList.remove('active'));
   el.classList.add('active');
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -5077,7 +5113,7 @@ function refreshPage(p){
   if(p==='page-masiva')renderMasiva();
   if(p==='page-proy'){buildPivotToolbar('proy');renderPivot('proy');}
   if(p==='page-hist'){buildPivotToolbar('hist');renderPivot('hist');}
-  if(p==='page-config')renderConfig();
+  if(p==='page-config')fin_renderConfig();
   if(p==='page-prov')renderProvAcuerdos();
 }
 
@@ -5101,15 +5137,15 @@ function renderVenc(){
   // populate selects
   const flt=document.getElementById('flt-rubro');
   const cur=flt.value;
-  flt.innerHTML='<option value="">Todos</option>'+ST.rubros.map(r=>`<option value="${escapeHtml(r)}">${escapeHtml(r)}</option>`).join('');
+  flt.innerHTML='<option value="">Todos</option>'+ST.rubros.map(r=>`<option value="${fin_escapeHtml(r)}">${fin_escapeHtml(r)}</option>`).join('');
   flt.value=cur;
   const fltM=document.getElementById('flt-medio');
   const curM=fltM.value;
-  fltM.innerHTML='<option value="">Todos</option>'+ST.medios.map(m=>`<option value="${escapeHtml(m)}">${escapeHtml(m)}</option>`).join('');
+  fltM.innerHTML='<option value="">Todos</option>'+ST.medios.map(m=>`<option value="${fin_escapeHtml(m)}">${fin_escapeHtml(m)}</option>`).join('');
   fltM.value=curM;
   const fltO=document.getElementById('flt-origen');
   const curO=fltO.value;
-  fltO.innerHTML='<option value="">Todos</option>'+ST.origenes.map(o=>`<option value="${escapeHtml(o)}">${escapeHtml(o)}</option>`).join('');
+  fltO.innerHTML='<option value="">Todos</option>'+ST.origenes.map(o=>`<option value="${fin_escapeHtml(o)}">${fin_escapeHtml(o)}</option>`).join('');
   fltO.value=curO;
 
   const q=(document.getElementById('srch-venc').value||'').toLowerCase().trim();
@@ -5180,7 +5216,7 @@ function renderVenc(){
       let dlHtml='';
       if(r.estado!=='pagado'&&dl!==null){
         if(dl<0)dlHtml=`<span class="dleft ov">vencido hace ${Math.abs(dl)}d</span>`;
-        else if(dl===0)dlHtml=`<span class="dleft today">¡HOY!</span>`;
+        else if(dl===0)dlHtml=`<span class="dleft fin_today">¡HOY!</span>`;
         else if(dl<7)dlHtml=`<span class="dleft soon">en ${dl}d</span>`;
         else dlHtml=`<span class="dleft">en ${dl}d</span>`;
       }
@@ -5194,20 +5230,20 @@ function renderVenc(){
          (isSoon(r.fecha,r.estado)?`<span class="pill p-yellow">Próximo</span>`:
           `<span class="pill p-gray">Pendiente</span>`));
       const medioHtml = r.medio?
-        `<span class="pill ${medioPillCls(r.medio)}">${escapeHtml(r.medio)}</span>`:
+        `<span class="pill ${medioPillCls(r.medio)}">${fin_escapeHtml(r.medio)}</span>`:
         `<span style="color:var(--text3);font-style:italic;font-size:11.5px;">—</span>`;
       const rubroHtml = r.rubro?
-        `<span class="pill p-blue">${escapeHtml(r.rubro)}</span>`:
+        `<span class="pill p-blue">${fin_escapeHtml(r.rubro)}</span>`:
         `<span style="color:var(--text3);font-style:italic;font-size:11.5px;">—</span>`;
       const origenHtml = r.origen?
-        `<span class="pill p-cyan">${escapeHtml(r.origen)}</span>`:
+        `<span class="pill p-cyan">${fin_escapeHtml(r.origen)}</span>`:
         `<span style="color:var(--text3);font-style:italic;font-size:11.5px;">—</span>`;
       const togBtn = r.estado==='pagado'?
         `<button class="act-btn" onclick="togglePago('${r.id}')" title="Marcar impago">↩</button>`:
         `<button class="act-btn ok" onclick="togglePago('${r.id}')" title="Marcar pagado">✓</button>`;
       return `<tr class="${rowCls}">
         <td class="td-date">${fd(r.fecha)}${dlHtml}</td>
-        <td class="td-concepto">${escapeHtml(r.concepto)}</td>
+        <td class="td-concepto">${fin_escapeHtml(r.concepto)}</td>
         <td class="num">${r.importe===''||r.importe==null?'<span style="color:var(--text3)">—</span>':fa(r.importe)}</td>
         <td>${medioHtml}</td>
         <td>${rubroHtml}</td>
@@ -5232,7 +5268,7 @@ function renderVenc(){
       let dlHtml='';
       if(r.estado!=='pagado'&&dl!==null){
         if(dl<0)dlHtml=`<span class="dleft ov">vencido hace ${Math.abs(dl)}d</span>`;
-        else if(dl===0)dlHtml=`<span class="dleft today">¡HOY!</span>`;
+        else if(dl===0)dlHtml=`<span class="dleft fin_today">¡HOY!</span>`;
         else if(dl<7)dlHtml=`<span class="dleft soon">en ${dl}d</span>`;
         else dlHtml=`<span class="dleft">en ${dl}d</span>`;
       }
@@ -5245,22 +5281,22 @@ function renderVenc(){
         (isOv(r.fecha,r.estado)?`<span class="pill p-red">Vencido</span>`:
          (isSoon(r.fecha,r.estado)?`<span class="pill p-yellow">Próximo</span>`:
           `<span class="pill p-gray">Pendiente</span>`));
-      const medioHtml = r.medio?`<span class="pill ${medioPillCls(r.medio)}">${escapeHtml(r.medio)}</span>`:'';
-      const rubroHtml = r.rubro?`<span class="pill p-blue">${escapeHtml(r.rubro)}</span>`:'';
-      const origenHtml = r.origen?`<span class="pill p-cyan">${escapeHtml(r.origen)}</span>`:'';
+      const medioHtml = r.medio?`<span class="pill ${medioPillCls(r.medio)}">${fin_escapeHtml(r.medio)}</span>`:'';
+      const rubroHtml = r.rubro?`<span class="pill p-blue">${fin_escapeHtml(r.rubro)}</span>`:'';
+      const origenHtml = r.origen?`<span class="pill p-cyan">${fin_escapeHtml(r.origen)}</span>`:'';
       const togBtn = r.estado==='pagado'?
         `<button class="act-btn" onclick="togglePago('${r.id}')" title="Marcar impago">↩</button>`:
         `<button class="act-btn ok" onclick="togglePago('${r.id}')" title="Marcar pagado">✓</button>`;
       return `<div class="${cardCls}">
         <div class="rc-top">
-          <div class="rc-concepto">${escapeHtml(r.concepto)}</div>
+          <div class="rc-concepto">${fin_escapeHtml(r.concepto)}</div>
           <div class="rc-importe">${r.importe===''||r.importe==null?'<span style="color:var(--text3);font-size:11px;">—</span>':fa(r.importe)}</div>
         </div>
         <div class="rc-meta">
           <span>📅 <strong>${fd(r.fecha)}</strong></span>${dlHtml}
           ${rubroHtml}${medioHtml}${origenHtml}${estadoPill}
         </div>
-        ${r.obs?`<div style="font-size:11.5px;color:var(--text3);font-style:italic;">${escapeHtml(r.obs)}</div>`:''}
+        ${r.obs?`<div style="font-size:11.5px;color:var(--text3);font-style:italic;">${fin_escapeHtml(r.obs)}</div>`:''}
         <div class="rc-actions">
           ${togBtn}
           <button class="act-btn" onclick="openModalEdit('${r.id}')">✎ Editar</button>
@@ -5283,7 +5319,7 @@ async function togglePago(id){
   const r=ST.records.find(x=>x.id===id);
   if(!r)return;
   const nuevoEstado = r.estado==='pagado' ? 'impago' : 'pagado';
-  const nuevaFP = nuevoEstado==='pagado' ? today() : null;
+  const nuevaFP = nuevoEstado==='pagado' ? fin_today() : null;
   const { error } = await supa.from('pagos').update({
     estado: nuevoEstado,
     fecha_pago: nuevaFP
@@ -5308,7 +5344,7 @@ let editingId=null;
 
 function fillSelect(sel,arr,empty){
   sel.innerHTML=(empty?`<option value="">— ${empty} —</option>`:'')+
-    arr.map(v=>`<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`).join('');
+    arr.map(v=>`<option value="${fin_escapeHtml(v)}">${fin_escapeHtml(v)}</option>`).join('');
 }
 function openModalNew(){
   editingId=null;
@@ -5318,7 +5354,7 @@ function openModalNew(){
   fillSelect(document.getElementById('f-origen'),ST.origenes,'Sin definir');
   document.getElementById('f-concepto').value='';
   document.getElementById('f-importe').value='';
-  document.getElementById('f-fecha').value=today();
+  document.getElementById('f-fecha').value=fin_today();
   document.getElementById('f-medio').value='';
   document.getElementById('f-rubro').value='';
   document.getElementById('f-origen').value='';
@@ -5355,11 +5391,11 @@ function toggleFP(){
   const est=document.getElementById('f-estado').value;
   document.getElementById('fp-field').style.display=est==='pagado'?'':'none';
   if(est==='pagado'&&!document.getElementById('f-fecha-pago').value){
-    document.getElementById('f-fecha-pago').value=today();
+    document.getElementById('f-fecha-pago').value=fin_today();
   }
 }
-function closeModal(){document.getElementById('modal-main').classList.remove('open');}
-async function saveRecord(){
+function fin_closeModal(){document.getElementById('modal-main').classList.remove('open');}
+async function fin_saveRecord(){
   const concepto=document.getElementById('f-concepto').value.trim();
   if(!concepto){alert('Ingresá un concepto');return;}
   const fecha=document.getElementById('f-fecha').value;
@@ -5392,7 +5428,7 @@ async function saveRecord(){
     if(error){ alert('Error al guardar: '+error.message); return; }
     ST.records.push({id:data.id,concepto,fecha,importe:importe===''?'':Number(importe),medio,rubro,origen,estado,fechaPago,obs});
   }
-  closeModal();renderVenc();
+  fin_closeModal();renderVenc();
   if(document.getElementById('page-masiva').classList.contains('active'))renderMasiva();
 }
 async function deleteRecord(){
@@ -5401,7 +5437,7 @@ async function deleteRecord(){
   const { error } = await supa.from('pagos').delete().eq('id', editingId);
   if(error){ alert('Error al eliminar: '+error.message); return; }
   ST.records=ST.records.filter(r=>r.id!==editingId);
-  closeModal();renderVenc();
+  fin_closeModal();renderVenc();
 }
 document.querySelectorAll('.modal-overlay,.popup-overlay').forEach(o=>{
   o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');});
@@ -5416,7 +5452,7 @@ function buildMS(pg,key,arr){
   const id=`ms-${pg}-${key}`;
   let html=`<div class="ms" id="${id}">
     <button class="ms-tg" onclick="toggleMS('${id}')">
-      <span class="ms-lbl">${escapeHtml(lbl)}</span>
+      <span class="ms-lbl">${fin_escapeHtml(lbl)}</span>
       <span class="ms-arrow">▼</span>
     </button>
     <div class="ms-pop">
@@ -5426,9 +5462,9 @@ function buildMS(pg,key,arr){
       </div>`;
   arr.forEach(v=>{
     const checked=sel.includes(v);
-    html+=`<div class="ms-item${checked?' selected':''}" onclick="msToggle('${pg}','${key}','${escapeHtml(v).replace(/'/g,"\\'")}',event)">
+    html+=`<div class="ms-item${checked?' selected':''}" onclick="msToggle('${pg}','${key}','${fin_escapeHtml(v).replace(/'/g,"\\'")}',event)">
       <input type="checkbox" ${checked?'checked':''} onclick="event.stopPropagation();">
-      <span>${escapeHtml(v)}</span>
+      <span>${fin_escapeHtml(v)}</span>
     </div>`;
   });
   html+=`</div></div>`;
@@ -5570,7 +5606,7 @@ function renderPivot(pg){
     <th style="position:sticky;left:170px;z-index:18;background:var(--surface2);border-right:2px solid var(--border2);min-width:115px;text-align:right;">Subtotal</th>`;
   keys.forEach(k=>{
     const lbl=keyLabel(k,seg);
-    const isOvKey=seg==='dia'&&k!=='sin-fecha'&&k<today()&&!isHist;
+    const isOvKey=seg==='dia'&&k!=='sin-fecha'&&k<fin_today()&&!isHist;
     headHtml+=`<th style="min-width:115px;${isOvKey?'color:var(--red);':''}">${lbl}</th>`;
   });
   headHtml+=`<th class="col-total">TOTAL</th></tr></thead>`;
@@ -5589,8 +5625,8 @@ function renderPivot(pg){
 
     // ── Fila de rubro ──
     bodyHtml+=`<tr class="tr-rubro-main${expanded?' tr-rubro-expanded':''}">
-      <td class="td-rubro" style="cursor:pointer;" onclick="togglePivotRubro('${pg}','${escapeHtml(rb).replace(/'/g,"\\'")}')">
-        <span class="prov-expand-btn${expanded?' open':''}" style="margin-right:5px;font-size:10px;">${expanded?'▼':'▶'}</span>${escapeHtml(rb)}
+      <td class="td-rubro" style="cursor:pointer;" onclick="togglePivotRubro('${pg}','${fin_escapeHtml(rb).replace(/'/g,"\\'")}')">
+        <span class="prov-expand-btn${expanded?' open':''}" style="margin-right:5px;font-size:10px;">${expanded?'▼':'▶'}</span>${fin_escapeHtml(rb)}
       </td>`;
     bodyHtml+=`<td class="td-subtotal">${rowTotal?fa(rowTotal):'<span class="cell-empty">—</span>'}</td>`;
     keys.forEach(k=>{
@@ -5599,11 +5635,11 @@ function renderPivot(pg){
       colTotals[k]+=sum;
       const hasItems=items.length>0;
       const hasAmt=items.some(r=>r.importe!==''&&r.importe!=null);
-      const isOvKey=seg==='dia'&&k!=='sin-fecha'&&k<today()&&!isHist;
+      const isOvKey=seg==='dia'&&k!=='sin-fecha'&&k<fin_today()&&!isHist;
       const cls=hasItems?(isOvKey?'pcell has-val overdue':'pcell has-val'):'pcell no-val';
       const display=hasItems?(hasAmt?fs(sum):`<span style="color:var(--text2);font-size:11px">${items.length} op.</span>`):'';
       if(hasItems){
-        bodyHtml+=`<td><span class="${cls}" onclick="showPopup('${pg}','${escapeHtml(rb).replace(/'/g,"\\'")}','${k}','${seg}')">${display}</span></td>`;
+        bodyHtml+=`<td><span class="${cls}" onclick="showPopup('${pg}','${fin_escapeHtml(rb).replace(/'/g,"\\'")}','${k}','${seg}')">${display}</span></td>`;
       } else {
         bodyHtml+=`<td><span class="pcell no-val">—</span></td>`;
       }
@@ -5626,17 +5662,17 @@ function renderPivot(pg){
         let concTotal=0;
         keys.forEach(k=>{concTotal+=(conceptosMap[conc][k]||[]).reduce((s,r)=>s+(Number(r.importe)||0),0);});
         bodyHtml+=`<tr class="tr-concepto-detail">
-          <td class="td-rubro" style="padding-left:28px;font-size:12px;color:var(--text2);font-weight:400;">${escapeHtml(conc)}</td>
+          <td class="td-rubro" style="padding-left:28px;font-size:12px;color:var(--text2);font-weight:400;">${fin_escapeHtml(conc)}</td>
           <td class="td-subtotal" style="font-size:11.5px;">${concTotal?fa(concTotal):'<span class="cell-empty">—</span>'}</td>`;
         keys.forEach(k=>{
           const items=conceptosMap[conc][k]||[];
           const sum=items.reduce((s,r)=>s+(Number(r.importe)||0),0);
           const hasAmt=items.some(r=>r.importe!==''&&r.importe!=null);
-          const isOvKey=seg==='dia'&&k!=='sin-fecha'&&k<today()&&!isHist;
+          const isOvKey=seg==='dia'&&k!=='sin-fecha'&&k<fin_today()&&!isHist;
           if(items.length>0){
             const cls='pcell has-val pcell-detail'+(isOvKey?' overdue':'');
             const display=hasAmt?fs(sum):`<span style="font-size:10.5px;color:var(--text2)">${items.length} op.</span>`;
-            bodyHtml+=`<td><span class="${cls}" onclick="showPopupConcepto('${pg}','${escapeHtml(rb).replace(/'/g,"\\'")}','${escapeHtml(conc).replace(/'/g,"\\'")}','${k}','${seg}')">${display}</span></td>`;
+            bodyHtml+=`<td><span class="${cls}" onclick="showPopupConcepto('${pg}','${fin_escapeHtml(rb).replace(/'/g,"\\'")}','${fin_escapeHtml(conc).replace(/'/g,"\\'")}','${k}','${seg}')">${display}</span></td>`;
           } else {
             bodyHtml+=`<td><span class="pcell no-val" style="font-size:11px;">—</span></td>`;
           }
@@ -5666,7 +5702,7 @@ function renderPivot(pg){
   const cards=Object.entries(byM)
     .sort((a,b)=>b[1]-a[1])
     .slice(0,3)
-    .map(([f,v])=>`<div class="stat-card ${isHist?'green':'blue'}"><div class="stat-label">${escapeHtml(f)}</div><div class="stat-value" style="font-size:15px">${fa(v,'$0')}</div><div class="stat-sub">${recs.filter(r=>(r.medio||'Sin definir')===f).length} reg.</div></div>`).join('');
+    .map(([f,v])=>`<div class="stat-card ${isHist?'green':'blue'}"><div class="stat-label">${fin_escapeHtml(f)}</div><div class="stat-value" style="font-size:15px">${fa(v,'$0')}</div><div class="stat-sub">${recs.filter(r=>(r.medio||'Sin definir')===f).length} reg.</div></div>`).join('');
   document.getElementById(`sum-${pg}`).innerHTML=`<div class="stat-card ${clr}"><div class="stat-label">Total ${isHist?'Abonado':'Proyectado'}</div><div class="stat-value" style="font-size:16px">${fa(total,'$0')}</div><div class="stat-sub">${recs.length} registros · ${rubros.length} rubros · ${keys.length} períodos</div></div>${cards}`;
 }
 
@@ -5691,10 +5727,10 @@ function showPopupConcepto(pg, rubro, concepto, key, seg){
   document.getElementById('pop-sub').textContent=`${recs.length} operación${recs.length!==1?'es':''} · Total: ${fa(total,'$0')}`;
   const rows=recs.map(r=>`<tr style="border-bottom:1px solid var(--border);">
     <td style="padding:8px 10px;font-size:12px;color:var(--text2);font-family:'DM Mono',monospace;">${fd(r.fecha)}</td>
-    <td style="padding:8px 10px;font-size:13px;max-width:280px">${escapeHtml(r.concepto)}</td>
+    <td style="padding:8px 10px;font-size:13px;max-width:280px">${fin_escapeHtml(r.concepto)}</td>
     <td style="padding:8px 10px;text-align:right;font-family:'DM Mono',monospace;font-size:12.5px;font-weight:500;">${r.importe===''||r.importe==null?'<span style="color:var(--text3)">—</span>':fa(r.importe)}</td>
-    <td style="padding:8px 10px;">${r.medio?`<span class="pill ${medioPillCls(r.medio)}">${escapeHtml(r.medio)}</span>`:''}</td>
-    <td style="padding:8px 10px;text-align:center;"><button class="act-btn" onclick="closePopup();openModalEdit('${r.id}')" title="Editar">✎</button></td>
+    <td style="padding:8px 10px;">${r.medio?`<span class="pill ${medioPillCls(r.medio)}">${fin_escapeHtml(r.medio)}</span>`:''}</td>
+    <td style="padding:8px 10px;text-align:center;"><button class="act-btn" onclick="fin_closePopup();openModalEdit('${r.id}')" title="Editar">✎</button></td>
   </tr>`).join('');
   document.getElementById('pop-body').innerHTML=`<div style="overflow-x:auto;border:1px solid var(--border);border-radius:8px;"><table style="width:100%;border-collapse:collapse;"><tbody>${rows}</tbody></table></div>`;
   document.getElementById('popup-overlay').classList.add('active');
@@ -5719,11 +5755,11 @@ function showPopup(pg,rubro,key,seg){
 
   const rows=recs.map(r=>`<tr style="border-bottom:1px solid var(--border);">
     <td style="padding:8px 10px;font-size:12px;color:var(--text2);font-family:'DM Mono',monospace;">${fd(r.fecha)}</td>
-    <td style="padding:8px 10px;font-size:13px;max-width:280px">${escapeHtml(r.concepto)}</td>
+    <td style="padding:8px 10px;font-size:13px;max-width:280px">${fin_escapeHtml(r.concepto)}</td>
     <td style="padding:8px 10px;text-align:right;font-family:'DM Mono',monospace;font-size:12.5px;font-weight:500;">${r.importe===''||r.importe==null?'<span style="color:var(--text3)">—</span>':fa(r.importe)}</td>
-    <td style="padding:8px 10px;">${r.medio?`<span class="pill ${medioPillCls(r.medio)}">${escapeHtml(r.medio)}</span>`:''}</td>
+    <td style="padding:8px 10px;">${r.medio?`<span class="pill ${medioPillCls(r.medio)}">${fin_escapeHtml(r.medio)}</span>`:''}</td>
     <td style="padding:8px 10px;text-align:center;">
-      <button class="act-btn" onclick="closePopup();openModalEdit('${r.id}')" title="Editar">✎</button>
+      <button class="act-btn" onclick="fin_closePopup();openModalEdit('${r.id}')" title="Editar">✎</button>
     </td>
   </tr>`).join('');
 
@@ -5744,12 +5780,12 @@ function showPopup(pg,rubro,key,seg){
     </div>`;
   document.getElementById('popup-detail').classList.add('open');
 }
-function closePopup(){document.getElementById('popup-detail').classList.remove('open');}
+function fin_closePopup(){document.getElementById('popup-detail').classList.remove('open');}
 
 // ══════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════
-function renderConfig(){
+function fin_renderConfig(){
   // MEDIOS
   const lm=document.getElementById('list-medios');
   if(ST.medios.length===0){
@@ -5759,13 +5795,13 @@ function renderConfig(){
       const usos=ST.records.filter(r=>r.medio===m).length;
       const id=encodeURIComponent(m);
       return `<div class="config-item" id="ci-m-${id}">
-        <div class="config-item-name">${escapeHtml(m)}</div>
-        <div class="config-item-edit"><input type="text" value="${escapeHtml(m)}" id="ei-m-${id}" maxlength="40"></div>
+        <div class="config-item-name">${fin_escapeHtml(m)}</div>
+        <div class="config-item-edit"><input type="text" value="${fin_escapeHtml(m)}" id="ei-m-${id}" maxlength="40"></div>
         <span class="config-item-meta">${usos} uso${usos!==1?'s':''}</span>
         <div class="config-item-actions">
           <button class="act-btn" onclick="editMedio('${id}')" title="Renombrar">✎</button>
-          <button class="act-btn ok" id="sv-m-${id}" onclick="saveMedioEdit('${id}','${escapeHtml(m).replace(/'/g,"\\'")}')" style="display:none;" title="Guardar">✓</button>
-          <button class="act-btn danger" onclick="deleteMedio('${escapeHtml(m).replace(/'/g,"\\'")}')" title="Eliminar">🗑</button>
+          <button class="act-btn ok" id="sv-m-${id}" onclick="saveMedioEdit('${id}','${fin_escapeHtml(m).replace(/'/g,"\\'")}')" style="display:none;" title="Guardar">✓</button>
+          <button class="act-btn danger" onclick="deleteMedio('${fin_escapeHtml(m).replace(/'/g,"\\'")}')" title="Eliminar">🗑</button>
         </div>
       </div>`;
     }).join('');
@@ -5779,13 +5815,13 @@ function renderConfig(){
       const usos=ST.records.filter(rec=>rec.rubro===r).length;
       const id=encodeURIComponent(r);
       return `<div class="config-item" id="ci-r-${id}">
-        <div class="config-item-name">${escapeHtml(r)}</div>
-        <div class="config-item-edit"><input type="text" value="${escapeHtml(r)}" id="ei-r-${id}" maxlength="40"></div>
+        <div class="config-item-name">${fin_escapeHtml(r)}</div>
+        <div class="config-item-edit"><input type="text" value="${fin_escapeHtml(r)}" id="ei-r-${id}" maxlength="40"></div>
         <span class="config-item-meta">${usos} uso${usos!==1?'s':''}</span>
         <div class="config-item-actions">
           <button class="act-btn" onclick="editRubro('${id}')" title="Renombrar">✎</button>
-          <button class="act-btn ok" id="sv-r-${id}" onclick="saveRubroEdit('${id}','${escapeHtml(r).replace(/'/g,"\\'")}')" style="display:none;" title="Guardar">✓</button>
-          <button class="act-btn danger" onclick="deleteRubro('${escapeHtml(r).replace(/'/g,"\\'")}')" title="Eliminar">🗑</button>
+          <button class="act-btn ok" id="sv-r-${id}" onclick="saveRubroEdit('${id}','${fin_escapeHtml(r).replace(/'/g,"\\'")}')" style="display:none;" title="Guardar">✓</button>
+          <button class="act-btn danger" onclick="deleteRubro('${fin_escapeHtml(r).replace(/'/g,"\\'")}')" title="Eliminar">🗑</button>
         </div>
       </div>`;
     }).join('');
@@ -5799,13 +5835,13 @@ function renderConfig(){
       const usos=ST.records.filter(rec=>rec.origen===o).length;
       const id=encodeURIComponent(o);
       return `<div class="config-item" id="ci-o-${id}">
-        <div class="config-item-name">${escapeHtml(o)}</div>
-        <div class="config-item-edit"><input type="text" value="${escapeHtml(o)}" id="ei-o-${id}" maxlength="40"></div>
+        <div class="config-item-name">${fin_escapeHtml(o)}</div>
+        <div class="config-item-edit"><input type="text" value="${fin_escapeHtml(o)}" id="ei-o-${id}" maxlength="40"></div>
         <span class="config-item-meta">${usos} uso${usos!==1?'s':''}</span>
         <div class="config-item-actions">
           <button class="act-btn" onclick="editOrigen('${id}')" title="Renombrar">✎</button>
-          <button class="act-btn ok" id="sv-o-${id}" onclick="saveOrigenEdit('${id}','${escapeHtml(o).replace(/'/g,"\\'")}')" style="display:none;" title="Guardar">✓</button>
-          <button class="act-btn danger" onclick="deleteOrigen('${escapeHtml(o).replace(/'/g,"\\'")}')" title="Eliminar">🗑</button>
+          <button class="act-btn ok" id="sv-o-${id}" onclick="saveOrigenEdit('${id}','${fin_escapeHtml(o).replace(/'/g,"\\'")}')" style="display:none;" title="Guardar">✓</button>
+          <button class="act-btn danger" onclick="deleteOrigen('${fin_escapeHtml(o).replace(/'/g,"\\'")}')" title="Eliminar">🗑</button>
         </div>
       </div>`;
     }).join('');
@@ -5817,7 +5853,7 @@ function addMedio(){
   if(ST.medios.find(x=>x.toLowerCase()===v.toLowerCase())){alert('Ya existe ese medio de pago');return;}
   ST.medios.push(v);
   document.getElementById('new-medio').value='';
-  save();renderConfig();
+  fin_save();fin_renderConfig();
 }
 function editMedio(id){
   document.getElementById('ci-m-'+id).classList.add('editing');
@@ -5828,13 +5864,13 @@ function editMedio(id){
 function saveMedioEdit(id,oldVal){
   const newVal=document.getElementById('ei-m-'+id).value.trim();
   if(!newVal)return;
-  if(newVal===oldVal){renderConfig();return;}
+  if(newVal===oldVal){fin_renderConfig();return;}
   if(ST.medios.find(x=>x.toLowerCase()===newVal.toLowerCase()&&x!==oldVal)){alert('Ya existe ese medio');return;}
   const i=ST.medios.indexOf(oldVal);
   if(i>=0)ST.medios[i]=newVal;
   // actualizar registros
   ST.records.forEach(r=>{if(r.medio===oldVal)r.medio=newVal;});
-  save();renderConfig();
+  fin_save();fin_renderConfig();
 }
 function deleteMedio(v){
   const usos=ST.records.filter(r=>r.medio===v).length;
@@ -5843,15 +5879,15 @@ function deleteMedio(v){
   if(!confirm(msg))return;
   ST.records.forEach(r=>{if(r.medio===v)r.medio='';});
   ST.medios=ST.medios.filter(x=>x!==v);
-  save();renderConfig();
+  fin_save();fin_renderConfig();
 }
-function addRubro(){
+function fin_addRubro(){
   const v=document.getElementById('new-rubro').value.trim();
   if(!v)return;
   if(ST.rubros.find(x=>x.toLowerCase()===v.toLowerCase())){alert('Ya existe ese rubro');return;}
   ST.rubros.push(v);
   document.getElementById('new-rubro').value='';
-  save();renderConfig();
+  fin_save();fin_renderConfig();
 }
 function editRubro(id){
   document.getElementById('ci-r-'+id).classList.add('editing');
@@ -5862,14 +5898,14 @@ function editRubro(id){
 function saveRubroEdit(id,oldVal){
   const newVal=document.getElementById('ei-r-'+id).value.trim();
   if(!newVal)return;
-  if(newVal===oldVal){renderConfig();return;}
+  if(newVal===oldVal){fin_renderConfig();return;}
   if(ST.rubros.find(x=>x.toLowerCase()===newVal.toLowerCase()&&x!==oldVal)){alert('Ya existe ese rubro');return;}
   const i=ST.rubros.indexOf(oldVal);
   if(i>=0)ST.rubros[i]=newVal;
   ST.records.forEach(r=>{if(r.rubro===oldVal)r.rubro=newVal;});
   ST.conceptos.forEach(c=>{if(c.rubro===oldVal)c.rubro=newVal;});
   if(ST.openRubros[oldVal]!==undefined){ST.openRubros[newVal]=ST.openRubros[oldVal];delete ST.openRubros[oldVal];}
-  save();renderConfig();
+  fin_save();fin_renderConfig();
 }
 function deleteRubro(v){
   const usos=ST.records.filter(r=>r.rubro===v).length;
@@ -5881,7 +5917,7 @@ function deleteRubro(v){
   ST.conceptos=ST.conceptos.filter(c=>c.rubro!==v);
   ST.rubros=ST.rubros.filter(x=>x!==v);
   delete ST.openRubros[v];
-  save();renderConfig();
+  fin_save();fin_renderConfig();
 }
 
 // ── ORÍGENES ──
@@ -5891,7 +5927,7 @@ function addOrigen(){
   if(ST.origenes.find(x=>x.toLowerCase()===v.toLowerCase())){alert('Ya existe ese origen');return;}
   ST.origenes.push(v);
   document.getElementById('new-origen').value='';
-  save();renderConfig();
+  fin_save();fin_renderConfig();
 }
 function editOrigen(id){
   document.getElementById('ci-o-'+id).classList.add('editing');
@@ -5902,12 +5938,12 @@ function editOrigen(id){
 function saveOrigenEdit(id,oldVal){
   const newVal=document.getElementById('ei-o-'+id).value.trim();
   if(!newVal)return;
-  if(newVal===oldVal){renderConfig();return;}
+  if(newVal===oldVal){fin_renderConfig();return;}
   if(ST.origenes.find(x=>x.toLowerCase()===newVal.toLowerCase()&&x!==oldVal)){alert('Ya existe ese origen');return;}
   const i=ST.origenes.indexOf(oldVal);
   if(i>=0)ST.origenes[i]=newVal;
   ST.records.forEach(r=>{if(r.origen===oldVal)r.origen=newVal;});
-  save();renderConfig();
+  fin_save();fin_renderConfig();
 }
 function deleteOrigen(v){
   const usos=ST.records.filter(r=>r.origen===v).length;
@@ -5916,7 +5952,7 @@ function deleteOrigen(v){
   if(!confirm(msg))return;
   ST.records.forEach(r=>{if(r.origen===v)r.origen='';});
   ST.origenes=ST.origenes.filter(x=>x!==v);
-  save();renderConfig();
+  fin_save();fin_renderConfig();
 }
 
 async function clearAll(){
@@ -5925,7 +5961,7 @@ async function clearAll(){
   const { error } = await supa.from('pagos').delete().eq('user_id', CURRENT_USER.id);
   if(error){ alert('Error: '+error.message); return; }
   ST.records=[];
-  renderAll();
+  fin_renderAll();
 }
 
 // ══════════════════════════════════════════════
@@ -5938,16 +5974,16 @@ function fdShort(d){
 }
 function changeYearMasiva(d){
   ST.year+=d;
-  save();renderMasiva();
+  fin_save();renderMasiva();
 }
 function toggleRubroMasiva(rb){
   ST.openRubros[rb]=!ST.openRubros[rb];
-  save();renderMasiva();
+  fin_save();renderMasiva();
 }
 function toggleAllMasiva(){
   const allOpen=ST.rubros.every(r=>ST.openRubros[r]);
   ST.rubros.forEach(r=>ST.openRubros[r]=!allOpen);
-  save();renderMasiva();
+  fin_save();renderMasiva();
 }
 
 function renderMasiva(){
@@ -5975,21 +6011,21 @@ function renderRubroMasiva(rb,search){
   if(isOpen){
     bodyHtml=`<div class="rubro-body">
       ${conceptos.length===0?
-        `<div class="empty-rubro">Sin conceptos en este rubro. <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openModalConcepto('${escapeHtml(rb).replace(/'/g,"\\'")}')" style="margin-left:8px;">+ Crear concepto</button></div>`
+        `<div class="empty-rubro">Sin conceptos en este rubro. <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openModalConcepto('${fin_escapeHtml(rb).replace(/'/g,"\\'")}')" style="margin-left:8px;">+ Crear concepto</button></div>`
         :renderConceptoTable(rb,conceptos)
       }
       <div class="rubro-foot">
-        <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openModalConcepto('${escapeHtml(rb).replace(/'/g,"\\'")}')">+ Nuevo concepto</button>
+        <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openModalConcepto('${fin_escapeHtml(rb).replace(/'/g,"\\'")}')">+ Nuevo concepto</button>
         <span style="margin-left:auto;font-size:11.5px;color:var(--text2);">${conceptos.length} concepto${conceptos.length!==1?'s':''} · ${rubroRecs.length} vencimiento${rubroRecs.length!==1?'s':''} en ${ST.year}</span>
       </div>
     </div>`;
   }
 
   return `<div class="rubro-card ${cls}">
-    <div class="rubro-head" onclick="toggleRubroMasiva('${escapeHtml(rb).replace(/'/g,"\\'")}')">
+    <div class="rubro-head" onclick="toggleRubroMasiva('${fin_escapeHtml(rb).replace(/'/g,"\\'")}')">
       <div class="rubro-icon">🗂️</div>
       <div class="rubro-info">
-        <div class="rubro-name">${escapeHtml(rb)}</div>
+        <div class="rubro-name">${fin_escapeHtml(rb)}</div>
         <div class="rubro-meta">
           <span>${conceptos.length} concepto${conceptos.length!==1?'s':''}</span>
           <span>•</span>
@@ -6048,7 +6084,7 @@ function renderConceptoTable(rb,conceptos){
     totalAnual+=rowTotal;
     rows+=`<tr>
       <td class="td-concepto">
-        ${escapeHtml(c.nombre)}
+        ${fin_escapeHtml(c.nombre)}
         <button class="act-btn" style="float:right;font-size:11px;padding:2px 4px;" onclick="event.stopPropagation();editConcepto('${c.id}')" title="Editar concepto">✎</button>
       </td>
       ${cells}
@@ -6072,7 +6108,7 @@ function openModalConcepto(rubro){
   editingConceptoId=null;
   document.getElementById('mc-title').textContent='Nuevo Concepto';
   const sel=document.getElementById('mc-rubro');
-  sel.innerHTML=ST.rubros.map(r=>`<option value="${escapeHtml(r)}">${escapeHtml(r)}</option>`).join('');
+  sel.innerHTML=ST.rubros.map(r=>`<option value="${fin_escapeHtml(r)}">${fin_escapeHtml(r)}</option>`).join('');
   if(rubro)sel.value=rubro;
   document.getElementById('mc-nombre').value='';
   document.getElementById('modal-concepto').classList.add('open');
@@ -6084,12 +6120,12 @@ function editConcepto(cid){
   editingConceptoId=cid;
   document.getElementById('mc-title').textContent='Editar Concepto';
   const sel=document.getElementById('mc-rubro');
-  sel.innerHTML=ST.rubros.map(r=>`<option value="${escapeHtml(r)}">${escapeHtml(r)}</option>`).join('');
+  sel.innerHTML=ST.rubros.map(r=>`<option value="${fin_escapeHtml(r)}">${fin_escapeHtml(r)}</option>`).join('');
   sel.value=c.rubro;
   document.getElementById('mc-nombre').value=c.nombre;
   document.getElementById('modal-concepto').classList.add('open');
 }
-function closeModalConcepto(){document.getElementById('modal-concepto').classList.remove('open');}
+function fin_closeModalConcepto(){document.getElementById('modal-concepto').classList.remove('open');}
 function saveConcepto(){
   const rubro=document.getElementById('mc-rubro').value;
   const nombre=document.getElementById('mc-nombre').value.trim();
@@ -6111,7 +6147,7 @@ function saveConcepto(){
     ST.conceptos.push({id:'c'+(ST.nextConceptoId++),rubro,nombre});
     ST.openRubros[rubro]=true;
   }
-  save();closeModalConcepto();renderMasiva();
+  fin_save();fin_closeModalConcepto();renderMasiva();
 }
 function deleteConcepto(cid){
   const c=ST.conceptos.find(x=>x.id===cid);
@@ -6122,7 +6158,7 @@ function deleteConcepto(cid){
   if(!confirm(msg))return;
   ST.conceptos=ST.conceptos.filter(x=>x.id!==cid);
   ST.records=ST.records.filter(r=>r.conceptoId!==cid);
-  save();renderMasiva();renderVenc();
+  fin_save();renderMasiva();renderVenc();
 }
 
 // ── MODAL VENCIMIENTO MENSUAL (celda) ──
@@ -6169,10 +6205,10 @@ function toggleMvmFP(){
   const est=document.getElementById('mvm-estado').value;
   document.getElementById('mvm-fp-field').style.display=est==='pagado'?'':'none';
   if(est==='pagado'&&!document.getElementById('mvm-fecha-pago').value){
-    document.getElementById('mvm-fecha-pago').value=today();
+    document.getElementById('mvm-fecha-pago').value=fin_today();
   }
 }
-function closeModalVencMes(){document.getElementById('modal-vencmes').classList.remove('open');}
+function fin_closeModalVencMes(){document.getElementById('modal-vencmes').classList.remove('open');}
 function saveVencMes(){
   const c=ST.conceptos.find(x=>x.id===editingVencMes.conceptoId);
   if(!c)return;
@@ -6203,13 +6239,13 @@ function saveVencMes(){
       ST.records.push({id:ST.nextId++,concepto:c.nombre,conceptoId:c.id,fecha,importe:importe===''?'':Number(importe),medio,rubro:c.rubro,origen,estado,fechaPago,obs});
     }
   }
-  save();closeModalVencMes();renderMasiva();renderVenc();
+  fin_save();fin_closeModalVencMes();renderMasiva();renderVenc();
 }
 function deleteVencMes(){
   if(!editingVencMes.recId)return;
   if(!confirm('¿Eliminar este vencimiento?'))return;
   ST.records=ST.records.filter(r=>r.id!==editingVencMes.recId);
-  save();closeModalVencMes();renderMasiva();renderVenc();
+  fin_save();fin_closeModalVencMes();renderMasiva();renderVenc();
 }
 
 // ══════════════════════════════════════════════
@@ -6226,7 +6262,7 @@ function exportExcel(pg){
     const ws=XLSX.utils.aoa_to_sheet(data);
     ws['!cols']=[{wch:12},{wch:40},{wch:14},{wch:18},{wch:16},{wch:16},{wch:10},{wch:12},{wch:30}];
     XLSX.utils.book_append_sheet(wb,ws,'Vencimientos');
-    XLSX.writeFile(wb,`Vencimientos_NauticaCook_${today()}.xlsx`);
+    XLSX.writeFile(wb,`Vencimientos_NauticaCook_${fin_today()}.xlsx`);
     return;
   }
   // proy/hist: pivot
@@ -6275,18 +6311,18 @@ function exportExcel(pg){
   ws2['!cols']=[{wch:12},{wch:40},{wch:14},{wch:18},{wch:16},{wch:16},{wch:10},{wch:12},{wch:30}];
   XLSX.utils.book_append_sheet(wb,ws2,'Detalle');
 
-  XLSX.writeFile(wb,`${pg==='proy'?'Proyeccion':'Historico'}_NauticaCook_${today()}.xlsx`);
+  XLSX.writeFile(wb,`${pg==='proy'?'Proyeccion':'Historico'}_NauticaCook_${fin_today()}.xlsx`);
 }
 
 // ══════════════════════════════════════════════
 //  RENDER ALL
 // ══════════════════════════════════════════════
-function renderAll() {
+function fin_renderAll() {
   renderVenc();
   renderMasiva();
   renderPivot('proy');
   renderPivot('hist');
-  renderConfig();
+  fin_renderConfig();
 }
 
 // ══════════════════════════════════════════════
@@ -6294,7 +6330,7 @@ function renderAll() {
 // ══════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', async () => {
   // Sincronizar botón de tema con el valor guardado
-  applyTheme(localStorage.getItem('dl-theme')||'dark');
+  fin_applyTheme(localStorage.getItem('dl-theme')||'dark');
 
   const { data: { session } } = await supa.auth.getSession();
   if (session && session.user) {
@@ -6307,7 +6343,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('fin-login-screen').style.display = 'none';
     document.getElementById('app-root').style.display = '';
     await load();
-    renderAll();
+    fin_renderAll();
   } else {
     document.getElementById('app-root').style.display = 'none';
     document.getElementById('fin-login-screen').style.display = 'flex';
@@ -6348,14 +6384,14 @@ function renderProvAcuerdos(editIdx){
       if(editIdx===i){
         // Fila en modo edición
         html+=`<div class="prov-acuerdo-row prov-acuerdo-editing" id="edit-row-${i}">
-          <input id="ea-prov-${i}" value="${escapeHtml(a.proveedor)}" style="flex:1;min-width:120px;padding:3px 7px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--surface2);color:var(--text1);">
+          <input id="ea-prov-${i}" value="${fin_escapeHtml(a.proveedor)}" style="flex:1;min-width:120px;padding:3px 7px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--surface2);color:var(--text1);">
           <select id="ea-mod-${i}" style="padding:3px 6px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--surface2);color:var(--text1);">
             <option${a.modalidad==='FAC'?' selected':''}>FAC</option>
             <option${a.modalidad==='REM'?' selected':''}>REM</option>
             <option${a.modalidad==='UNICO'?' selected':''}>UNICO</option>
           </select>
           <input id="ea-dias-${i}" type="number" value="${a.diasBase}" min="0" style="width:60px;padding:3px 6px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--surface2);color:var(--text1);">
-          <input id="ea-label-${i}" value="${escapeHtml(a.label||'')}" placeholder="Descripción" style="flex:2;min-width:120px;padding:3px 7px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--surface2);color:var(--text1);">
+          <input id="ea-label-${i}" value="${fin_escapeHtml(a.label||'')}" placeholder="Descripción" style="flex:2;min-width:120px;padding:3px 7px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--surface2);color:var(--text1);">
           <label style="display:flex;align-items:center;gap:4px;font-size:11px;color:var(--text2);white-space:nowrap;cursor:pointer;">
             <input id="ea-viaj-${i}" type="checkbox"${a.viajante?' checked':''}> viajante
           </label>
@@ -6368,9 +6404,9 @@ function renderProvAcuerdos(editIdx){
                      `<span style="display:inline-block;padding:1px 7px;border-radius:20px;font-size:10.5px;font-weight:700;background:rgba(41,201,122,0.15);color:var(--green);">ÚNICO</span>`;
         const viaj=a.viajante?'<span style="font-size:10px;color:var(--text3);margin-left:4px;">🤝 viajante</span>':'';
         html+=`<div class="prov-acuerdo-row">
-          <div class="prov-acuerdo-prov">${escapeHtml(prov)}</div>
+          <div class="prov-acuerdo-prov">${fin_escapeHtml(prov)}</div>
           ${modTag}
-          <div class="prov-acuerdo-desc">${escapeHtml(a.label||'')} (${a.diasBase} días)${viaj}</div>
+          <div class="prov-acuerdo-desc">${fin_escapeHtml(a.label||'')} (${a.diasBase} días)${viaj}</div>
           <button class="btn btn-ghost btn-sm prov-acuerdo-edit" onclick="renderProvAcuerdos(${i})" title="Editar">✏️</button>
           <button class="prov-acuerdo-del" onclick="deleteAcuerdo(${i})" title="Eliminar">✕</button>
         </div>`;
@@ -6588,7 +6624,7 @@ async function importarMayor(input){
       <div style="margin-left:auto"><button class="btn btn-primary" onclick="switchProvTabById('pst-venc')">Ver vencimientos propuestos →</button></div>
     </div>`;
     if(sinAcuerdo.length>0){
-      summHtml+=`<div class="prov-warn"><strong>⚠️ ${sinAcuerdo.length} proveedor${sinAcuerdo.length>1?'es':''} sin acuerdo de pago configurado:</strong>${sinAcuerdo.map(p=>`<div style="margin-top:2px;">• ${escapeHtml(p)} — <button class="btn btn-ghost btn-sm" style="padding:1px 8px;font-size:11px;" onclick="switchProvTabById('pst-acuerdos')">Configurar →</button></div>`).join('')}</div>`;
+      summHtml+=`<div class="prov-warn"><strong>⚠️ ${sinAcuerdo.length} proveedor${sinAcuerdo.length>1?'es':''} sin acuerdo de pago configurado:</strong>${sinAcuerdo.map(p=>`<div style="margin-top:2px;">• ${fin_escapeHtml(p)} — <button class="btn btn-ghost btn-sm" style="padding:1px 8px;font-size:11px;" onclick="switchProvTabById('pst-acuerdos')">Configurar →</button></div>`).join('')}</div>`;
     }
     // Tabla resumen por proveedor
     summHtml+=`<div style="overflow-x:auto;"><table class="prov-table">
@@ -6600,7 +6636,7 @@ async function importarMayor(input){
       const vfHtml=r.vencFac?`<span style="font-size:11.5px;">${fd(r.vencFac)}</span>`:(r.saldoFac>0?`<span class="prov-tag-np">sin acuerdo</span>`:'—');
       const vrHtml=r.vencRem?`<span style="font-size:11.5px;">${fd(r.vencRem)}</span>`:(r.saldoRem>0?`<span class="prov-tag-np">sin acuerdo</span>`:'—');
       summHtml+=`<tr>
-        <td>${escapeHtml(r.prov)}</td>
+        <td>${fin_escapeHtml(r.prov)}</td>
         <td class="num ${sfCls}">${r.saldoFac>0?fa(r.saldoFac):'—'}</td>
         <td class="num ${srCls}">${r.saldoRem>0?fa(r.saldoRem):'—'}</td>
         <td class="num ${stCls}" style="font-weight:600;">${r.saldoTotal>0?fa(r.saldoTotal):'—'}</td>
@@ -6613,7 +6649,7 @@ async function importarMayor(input){
     renderProvVencimientosPropuestos();
 
   }catch(err){
-    resEl.innerHTML=`<div class="prov-warn"><strong>Error al leer el archivo:</strong>${escapeHtml(err.message)}</div>`;
+    resEl.innerHTML=`<div class="prov-warn"><strong>Error al leer el archivo:</strong>${fin_escapeHtml(err.message)}</div>`;
     console.error(err);
   }
   input.value='';
@@ -6642,7 +6678,7 @@ function renderProvVencimientosPropuestos(){
   const sinVenc=ST.provImport.filter(r=>r.saldoTotal>0&&!r.editVencFac&&!r.editVencRem&&!getAcuerdo(r.prov,'FAC')&&!getAcuerdo(r.prov,'REM'));
   let warnHtml='';
   if(sinVenc.length>0){
-    warnHtml=`<div class="prov-warn"><strong>⚠️ Proveedores con saldo sin fecha de vencimiento calculable — configurá su acuerdo de pago:</strong>${sinVenc.map(r=>`<div style="margin-top:2px;">• ${escapeHtml(r.prov)} (${fa(r.saldoTotal)})</div>`).join('')}</div>`;
+    warnHtml=`<div class="prov-warn"><strong>⚠️ Proveedores con saldo sin fecha de vencimiento calculable — configurá su acuerdo de pago:</strong>${sinVenc.map(r=>`<div style="margin-top:2px;">• ${fin_escapeHtml(r.prov)} (${fa(r.saldoTotal)})</div>`).join('')}</div>`;
   }
 
   let tableHtml=`<div style="overflow-x:auto;"><table class="prov-table prov-table-detail">
@@ -6679,7 +6715,7 @@ function renderProvVencimientosPropuestos(){
       <td style="text-align:center;padding:0 4px;">
         ${hasDetalle?`<button class="prov-expand-btn${expanded?' open':''}" onclick="toggleProvDetalle(${idx})" title="${expanded?'Ocultar':'Ver comprobantes'}">${expanded?'▼':'▶'}</button>`:''}
       </td>
-      <td style="font-weight:600;">${escapeHtml(r.prov)}</td>
+      <td style="font-weight:600;">${fin_escapeHtml(r.prov)}</td>
       <td class="num">${r.saldoFac>0?fa(r.saldoFac):'—'}</td>
       <td>${r.saldoFac>0?`<input type="date" class="prov-input-edit" value="${vfInput}"
             onchange="provSetVenc(${idx},'fac',this.value)"
@@ -6703,7 +6739,7 @@ function renderProvVencimientosPropuestos(){
             <td></td>
             <td style="padding-left:28px;font-size:12px;">
               <span class="prov-tag-fac" style="font-size:10px;">FAC</span>
-              <span style="color:var(--text2);margin-left:6px;">${escapeHtml(cp.num||'S/N')}</span>
+              <span style="color:var(--text2);margin-left:6px;">${fin_escapeHtml(cp.num||'S/N')}</span>
               <span style="color:var(--text3);font-size:11px;margin-left:6px;">${fd(cp.fecha)}</span>
             </td>
             <td class="num" style="font-size:12px;">${fa(cp.haber)}</td>
@@ -6729,7 +6765,7 @@ function renderProvVencimientosPropuestos(){
             <td></td>
             <td style="padding-left:28px;font-size:12px;">
               <span class="prov-tag-rem" style="font-size:10px;">REM</span>
-              <span style="color:var(--text2);margin-left:6px;">${escapeHtml(cp.num||'S/N')}</span>
+              <span style="color:var(--text2);margin-left:6px;">${fin_escapeHtml(cp.num||'S/N')}</span>
               <span style="color:var(--text3);font-size:11px;margin-left:6px;">${fd(cp.fecha)}</span>
             </td>
             <td></td><td></td>
@@ -6748,7 +6784,7 @@ function renderProvVencimientosPropuestos(){
         <td></td>
         <td colspan="7" style="padding:6px 0 6px 28px;">
           <button class="btn btn-primary btn-sm" style="font-size:11.5px;"
-            onclick="cargarTodosCompsProv(${idx})">📥 Cargar todos los comprobantes de ${escapeHtml(r.prov)}</button>
+            onclick="cargarTodosCompsProv(${idx})">📥 Cargar todos los comprobantes de ${fin_escapeHtml(r.prov)}</button>
           <span style="color:var(--text3);font-size:11px;margin-left:10px;">Carga un vencimiento por comprobante en vez del saldo total</span>
         </td>
       </tr>`;
@@ -6817,7 +6853,7 @@ async function cargarVencCp(idx, tipo, ci){
   const{error}=await supa.from('pagos').insert({
     user_id:CURRENT_USER.id,concepto,fecha,rubro:'PROVEEDORES',
     monto,medio:'CHEQUE',origen:ST.origenes[0]||'',estado:'impago',
-    notas:`Importado del mayor · ${tipo==='fac'?'FAC':'REM'} ${nro} · ${today()}`
+    notas:`Importado del mayor · ${tipo==='fac'?'FAC':'REM'} ${nro} · ${fin_today()}`
   });
   if(error){alert('Error al guardar: '+error.message);return;}
   cp._cargado=true;
@@ -6838,7 +6874,7 @@ async function cargarTodosCompsProv(idx){
     await supa.from('pagos').insert({
       user_id:CURRENT_USER.id,concepto:`${r.prov} · FAC${nro}`,fecha,
       rubro:'PROVEEDORES',monto:cp.haber,medio:'CHEQUE',origen:ST.origenes[0]||'',
-      estado:'impago',notas:`Importado del mayor · FAC${nro} · ${today()}`
+      estado:'impago',notas:`Importado del mayor · FAC${nro} · ${fin_today()}`
     });
     cp._cargado=true; total++;
   }
@@ -6853,7 +6889,7 @@ async function cargarTodosCompsProv(idx){
     await supa.from('pagos').insert({
       user_id:CURRENT_USER.id,concepto:`${r.prov} · REM${nro}`,fecha,
       rubro:'PROVEEDORES',monto:neto,medio:'CHEQUE',origen:ST.origenes[0]||'',
-      estado:'impago',notas:`Importado del mayor · REM${nro} · ${today()}`
+      estado:'impago',notas:`Importado del mayor · REM${nro} · ${fin_today()}`
     });
     cp._cargado=true; total++;
   }
@@ -6887,7 +6923,7 @@ async function guardarVencProv(prov, modalidad, monto, fecha){
     medio: 'CHEQUE',
     origen: ST.origenes[0]||'',
     estado: 'impago',
-    notas: `Importado del mayor · Saldo al ${today()}`
+    notas: `Importado del mayor · Saldo al ${fin_today()}`
   });
   if(error)console.error('Error guardando venc proveedor:',error);
 }
@@ -6914,7 +6950,46 @@ supa.auth.onAuthStateChange(async (event, session) => {
 
 // Expose key functions for shell activation
 window._finanzasLoad = typeof load === 'function' ? load : null;
-window._finanzasRenderAll = typeof renderAll === 'function' ? renderAll : null;
+// Expose onclick-called functions to global scope
+window.fin_closeModal = typeof fin_closeModal === 'function' ? fin_closeModal : null;
+window.fin_renderConfig = typeof fin_renderConfig === 'function' ? fin_renderConfig : null;
+window.fin_escapeHtml = typeof fin_escapeHtml === 'function' ? fin_escapeHtml : null;
+window.fin_switchTab = typeof fin_switchTab === 'function' ? fin_switchTab : null;
+window.fin_switchTabMobile = typeof fin_switchTabMobile === 'function' ? fin_switchTabMobile : null;
+window.fin_saveRecord = typeof fin_saveRecord === 'function' ? fin_saveRecord : null;
+window.fin_renderAll = typeof fin_renderAll === 'function' ? fin_renderAll : null;
+window.fin_applyTheme = typeof fin_applyTheme === 'function' ? fin_applyTheme : null;
+window.fin_today = typeof fin_today === 'function' ? fin_today : null;
+window.fin_save = typeof fin_save === 'function' ? fin_save : null;
+window.fin_closePopup = typeof fin_closePopup === 'function' ? fin_closePopup : null;
+window.fin_addRubro = typeof fin_addRubro === 'function' ? fin_addRubro : null;
+window.fin_closeModalConcepto = typeof fin_closeModalConcepto === 'function' ? fin_closeModalConcepto : null;
+window.fin_closeModalVencMes = typeof fin_closeModalVencMes === 'function' ? fin_closeModalVencMes : null;
+window.fin_toast = typeof fin_toast === 'function' ? fin_toast : null;
+window.finShowLoginScreen = typeof finShowLoginScreen === 'function' ? finShowLoginScreen : null;
+window.finHideLoginScreen = typeof finHideLoginScreen === 'function' ? finHideLoginScreen : null;
+window.finToggleTheme = typeof finToggleTheme === 'function' ? finToggleTheme : null;
+window.openModalNew = typeof openModalNew === 'function' ? openModalNew : null;
+window.openModalConcepto = typeof openModalConcepto === 'function' ? openModalConcepto : null;
+window.deleteRecord = typeof deleteRecord === 'function' ? deleteRecord : null;
+window.clearAll = typeof clearAll === 'function' ? clearAll : null;
+window.srt = typeof srt === 'function' ? srt : null;
+window.exportExcel = typeof exportExcel === 'function' ? exportExcel : null;
+window.renderVenc = typeof renderVenc === 'function' ? renderVenc : null;
+window.addMedio = typeof addMedio === 'function' ? addMedio : null;
+window.addOrigen = typeof addOrigen === 'function' ? addOrigen : null;
+window.addAcuerdo = typeof addAcuerdo === 'function' ? addAcuerdo : null;
+window.switchProvTab = typeof switchProvTab === 'function' ? switchProvTab : null;
+window.changeYearMasiva = typeof changeYearMasiva === 'function' ? changeYearMasiva : null;
+window.toggleAllMasiva = typeof toggleAllMasiva === 'function' ? toggleAllMasiva : null;
+window.saveRubroEdit = typeof saveRubroEdit === 'function' ? saveRubroEdit : null;
+window.saveMedioEdit = typeof saveMedioEdit === 'function' ? saveMedioEdit : null;
+window.saveOrigenEdit = typeof saveOrigenEdit === 'function' ? saveOrigenEdit : null;
+window.guardarVencProv = typeof guardarVencProv === 'function' ? guardarVencProv : null;
+window.cargarTodosCompsProv = typeof cargarTodosCompsProv === 'function' ? cargarTodosCompsProv : null;
+window.cargarVencCp = typeof cargarVencCp === 'function' ? cargarVencCp : null;
+window._finanzasLoad = typeof load === 'function' ? load : null;
+window._finanzasRenderAll = typeof fin_renderAll === 'function' ? fin_renderAll : null;
 window.finDoLogin = typeof finDoLogin === 'function' ? finDoLogin : null;
 })();
 </script>
@@ -6928,7 +7003,7 @@ const LS_KEY='dl_stock_v1', CFG_KEY='dl_stock_cfg_v1';
 const ls={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}};
 let DB=ls.get(LS_KEY)||{articles:{},snaps:[],movs:[],files:[],costs:{}};
 let CFG=Object.assign({pw:'lucas2026',cob:7,baseDate:null,hasta:null},ls.get(CFG_KEY)||{});
-function save(){const ok=ls.set(LS_KEY,DB);ls.set(CFG_KEY,CFG);if(!ok)toast('No se pudo guardar en el navegador (almacenamiento lleno o bloqueado). Los datos quedan sólo en esta sesión.')}
+function stk_save(){const ok=ls.set(LS_KEY,DB);ls.set(CFG_KEY,CFG);if(!ok)stk_toast('No se pudo guardar en el navegador (almacenamiento lleno o bloqueado). Los datos quedan sólo en esta sesión.')}
 const UI={tab:'tablero',ficha:null,movTipo:'',movDoc:null,stockQ:'',stockProv:'',stockAlm:'',stockEst:'',concSnap:null,concOnly:true};
 
 const TIPOS={
@@ -6949,7 +7024,7 @@ const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 const $=s=>document.querySelector(s);
 const norm=s=>String(s??'').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ /g,' ').trim().toLowerCase();
 const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-function toast(msg){const m=$('#modal');m.innerHTML=`<div class="modal-bg"><div class="modal"><div>${msg}</div><div class="row-actions"><button class="btn pri" id="mOk">Aceptar</button></div></div></div>`;$('#mOk').onclick=()=>m.innerHTML=''}
+function stk_toast(msg){const m=$('#modal');m.innerHTML=`<div class="modal-bg"><div class="modal"><div>${msg}</div><div class="row-actions"><button class="btn pri" id="mOk">Aceptar</button></div></div></div>`;$('#mOk').onclick=()=>m.innerHTML=''}
 function confirmBox(msg,fn){const m=$('#modal');m.innerHTML=`<div class="modal-bg"><div class="modal"><h3>Confirmar</h3><div>${msg}</div><div class="row-actions"><button class="btn" id="mNo">Cancelar</button><button class="btn dng" id="mYes">Confirmar</button></div></div></div>`;$('#mNo').onclick=()=>m.innerHTML='';$('#mYes').onclick=()=>{m.innerHTML='';fn()}}
 
 /* ============ LECTURA DE EXCEL (Chess) ============ */
@@ -7003,10 +7078,10 @@ async function importFiles(files){
       if(!done)log.push(`✕ ${f.name}: no se reconocen las columnas. Se espera el listado de movimientos (Tipo, Artículo, Bultos, Fecha Stock) o el listado de stock (Almacén, Artículo, Bultos).`);
     }catch(e){log.push(`✕ ${f.name}: no se pudo leer (${e.message}).`)}
   }
-  inferProviders();save();
+  inferProviders();stk_save();
   UI.lastLog=log.join('\n');
   if(UI.tab!=='datos'&&DB.snaps.length&&DB.movs.length)UI.tab='tablero';
-  renderAll();
+  stk_renderAll();
 }
 function parseMov(rows,hr,fname){
   const H=rows[hr].map(c=>norm(c&&c.v)),ix=n=>H.indexOf(n);
@@ -7166,7 +7241,7 @@ function exportXlsx(id,name){
   const strip=s=>String(s??'').replace(/<[^>]+>/g,'');
   const data=t.rows.map(r=>{const o={};t.cols.forEach(c=>{let v=c.x?c.x(r):(c.f?strip(c.f(r)):r[c.k]);o[strip(c.l)]=v});return o});
   const ws=XLSX.utils.json_to_sheet(data),wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Datos');
-  try{XLSX.writeFile(wb,name+'.xlsx')}catch(e){toast('La descarga no está disponible en esta vista. Abrí la app desde el archivo HTML para exportar.')}
+  try{XLSX.writeFile(wb,name+'.xlsx')}catch(e){stk_toast('La descarga no está disponible en esta vista. Abrí la app desde el archivo HTML para exportar.')}
 }
 
 /* ============ GRÁFICOS ============ */
@@ -7181,16 +7256,16 @@ function chart(id,cfg){if(CH[id]){CH[id].destroy();delete CH[id]}const el=docume
 
 /* ============ VISTAS ============ */
 const TABS=[['tablero','Tablero'],['stock','Stock por artículo'],['ficha','Ficha de artículo'],['movs','Movimientos'],['prov','Proveedores'],['reparto','Reparto'],['ajustes','Ajustes y vencidos'],['rotacion','Rotación'],['conc','Control vs. stock'],['datos','Datos']];
-function renderTabs(){$('#tabs').innerHTML=TABS.map(([k,l])=>`<button class="${UI.tab===k?'on':''}" data-t="${k}">${l}</button>`).join('');$('#tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{UI.tab=b.dataset.t;renderAll();window.scrollTo(0,0)})}
+function renderTabs(){$('#tabs').innerHTML=TABS.map(([k,l])=>`<button class="${UI.tab===k?'on':''}" data-t="${k}">${l}</button>`).join('');$('#tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{UI.tab=b.dataset.t;stk_renderAll();window.scrollTo(0,0)})}
 function renderPeriod(){
   const b=baseSnap(),r=movRange();
   if(!b){$('#period').innerHTML='<span>Sin datos cargados</span><button class="btn pri" id="hdrImp">Importar planillas</button>';$('#hdrImp').onclick=()=>$('#fileIn').click();return}
   const h=hasta();
   $('#period').innerHTML=`<span>Stock base <b>${fD(b.date)}</b></span><span class="arrow">→</span><label for="hastaIn">Movimientos hasta</label><input type="date" id="hastaIn" value="${h||''}" min="${r.mn||''}" max="${r.mx||''}" ${r.mx?'':'disabled'}><button class="btn pri" id="hdrImp">Importar</button>`;
-  $('#hastaIn').onchange=e=>{CFG.hasta=e.target.value||null;save();renderAll()};
+  $('#hastaIn').onchange=e=>{CFG.hasta=e.target.value||null;stk_save();stk_renderAll()};
   $('#hdrImp').onclick=()=>$('#fileIn').click();
 }
-function renderAll(){CALC=calc();renderTabs();renderPeriod();renderView()}
+function stk_renderAll(){CALC=calc();renderTabs();renderPeriod();renderView()}
 function renderView(){
   const v=$('#view');
   if(UI.tab!=='datos'&&(!DB.snaps.length||!DB.movs.length)){v.innerHTML=emptyState();bindDrop();return}
@@ -7251,7 +7326,7 @@ function vTablero(){
     <div class="card"><h3>Alertas</h3><div class="alerts">${alerts.map(a=>`<div class="alert">${chip(a[0])}<div><div class="t">${a[1]}</div><div class="d">${a[2]}</div></div><div class="n">${a[3]}</div></div>`).join('')}</div>
       <div style="margin-top:10px"><button class="btn" id="goAlerts">Ver artículos con alerta</button></div></div>
     <div class="card"><h3>Top 10 por salida neta (cargas − descargas)</h3>
-      ${table('top',[{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'venta',l:'Bultos',n:1,f:o=>fB(o.venta)},{k:'fin',l:'Stock final',n:1,f:o=>fB(o.fin)},{k:'cob',l:'Cobertura',n:1,f:o=>o.cob==null?'–':NF1.format(o.cob)+' d'}],top,{sort:'venta',click:o=>{UI.ficha=o.a;UI.tab='ficha';renderAll()},short:1})}</div>
+      ${table('top',[{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'venta',l:'Bultos',n:1,f:o=>fB(o.venta)},{k:'fin',l:'Stock final',n:1,f:o=>fB(o.fin)},{k:'cob',l:'Cobertura',n:1,f:o=>o.cob==null?'–':NF1.format(o.cob)+' d'}],top,{sort:'venta',click:o=>{UI.ficha=o.a;UI.tab='ficha';stk_renderAll()},short:1})}</div>
   </div>
   <div class="card"><h3>Resumen por tipo de movimiento</h3>${table('tipos',[{k:'t',l:'Código',cls:'code'},{k:'l',l:'Movimiento'},{k:'s',l:'Efecto',f:r=>r.s>0?'<span class="chip c-ok">Suma</span>':'<span class="chip c-a">Resta</span>'},{k:'docs',l:'Comprobantes',n:1,f:r=>fB(r.docs)},{k:'b',l:'Bultos',n:1,f:r=>fB(r.b)},{k:'k',l:'Kg',n:1,f:r=>fK(r.k)},{k:'v',l:'Valor estimado',n:1,f:r=>fM(r.v)}],
     TORD.filter(t=>t!=='RCS').map(t=>({t,l:TIPOS[t].l,s:TIPOS[t].s,docs:new Set(C.movs.filter(m=>m.t===t&&m.d===1).map(m=>m.n)).size,b:T(t),k:TK(t),v:t==='REM'||t==='DEV'?sum(C.movs.filter(m=>m.t===t),m=>m.st):TV(t)})),{short:1})}
@@ -7259,7 +7334,7 @@ function vTablero(){
   return html;
 }
 vTablero.after=()=>{
-  const C=CALC;$('#goAlerts').onclick=()=>{UI.tab='stock';UI.stockEst='alert';renderAll()};
+  const C=CALC;$('#goAlerts').onclick=()=>{UI.tab='stock';UI.stockEst='alert';stk_renderAll()};
   const navy=css('--navy'),org=css('--orange');
   chart('chDaily',{type:'bar',data:{labels:C.days.map(fDs),datasets:[{label:'Ingresos',data:C.days.map(d=>C.daily[d].in),backgroundColor:navy,borderRadius:4,maxBarThickness:22},{label:'Egresos',data:C.days.map(d=>C.daily[d].out),backgroundColor:org,borderRadius:4,maxBarThickness:22}]},
     options:{scales:{x:{grid:{display:false}},y:{ticks:{callback:v=>NF0.format(v)}}}},tip:{label:c=>`${c.dataset.label}: ${NF0.format(c.raw)} bultos`}});
@@ -7299,7 +7374,7 @@ function vStock(){
     <select id="sAlm" aria-label="Almacén"><option value="">Todos los almacenes</option>${alms.map(a=>`<option value="${a}" ${UI.stockAlm===String(a)?'selected':''}>Almacén ${a}</option>`).join('')}</select>
     <select id="sEst" aria-label="Estado"><option value="">Todos los estados</option><option value="activos" ${UI.stockEst==='activos'?'selected':''}>Con stock o movimiento</option><option value="alert" ${UI.stockEst==='alert'?'selected':''}>Con alerta (negativo, quiebre, cobertura)</option>${Object.entries(EST).map(([k,v])=>`<option value="${k}" ${UI.stockEst===k?'selected':''}>${v[0]}</option>`).join('')}</select>
   </div>
-  ${table('stock',cols,rows,{sort:'a',dir:1,foot,click:o=>{UI.ficha=o.a;UI.tab='ficha';renderAll()}})}
+  ${table('stock',cols,rows,{sort:'a',dir:1,foot,click:o=>{UI.ficha=o.a;UI.tab='ficha';stk_renderAll()}})}
   <p class="small muted" style="margin:0">Proveedor en <span class="inf">cursiva</span>: deducido por la marca de la descripción porque el artículo no tuvo remitos en el período. En pesables, “bultos” son piezas y el peso se muestra en kg.</p>`;
 }
 vStock.after=()=>{
@@ -7376,7 +7451,7 @@ function vProv(){
   return`<div class="sec-h"><div><h2>Proveedores</h2><p>Compras y devoluciones por proveedor en el período, y el stock teórico final de sus artículos. Los artículos sin remitos se asignan por la marca de la descripción.</p></div><button class="btn" id="expProv">Exportar a Excel</button></div>
   <div class="card"><h3>Importe comprado por proveedor</h3><div class="chart-box" id="provBox"><canvas id="chProv"></canvas></div></div>
   ${table('prov',[{k:'p',l:'Proveedor'},{k:'nRem',l:'Remitos',n:1},{k:'nArt',l:'Artículos',n:1},{k:'remB',l:'Bultos comprados',n:1,f:r=>fB(r.remB)},{k:'remK',l:'Kg comprados',n:1,f:r=>fK(r.remK)},{k:'remV',l:'Importe compras',n:1,f:r=>fM(r.remV)},{k:'nDev',l:'Devoluciones',n:1},{k:'devB',l:'Bultos devueltos',n:1,f:r=>fB(r.devB)},{k:'devV',l:'Importe devuelto',n:1,f:r=>fM(r.devV)},{k:'pDev',l:'% devuelto',n:1,f:r=>fP(r.pDev)},{k:'falV',l:'Faltante neto $',n:1,f:r=>fM(r.falV)},{k:'ensV',l:'A vencidos $',n:1,f:r=>fM(r.ensV)},{k:'stB',l:'Stock final (bultos)',n:1,f:r=>fB(r.stB)},{k:'stV',l:'Valor stock final',n:1,f:r=>fM(r.stV)}],rows,{sort:'remV',
-    foot:{p:'Total',nRem:fB(sum(rows,r=>r.nRem)),remB:fB(sum(rows,r=>r.remB)),remK:fK(sum(rows,r=>r.remK)),remV:fM(sum(rows,r=>r.remV)),nDev:fB(sum(rows,r=>r.nDev)),devB:fB(sum(rows,r=>r.devB)),devV:fM(sum(rows,r=>r.devV)),falV:fM(sum(rows,r=>r.falV)),ensV:fM(sum(rows,r=>r.ensV)),stB:fB(sum(rows,r=>r.stB)),stV:fM(sum(rows,r=>r.stV))},click:r=>{UI.stockProv=r.p;UI.stockEst='';UI.tab='stock';renderAll()}})}`;
+    foot:{p:'Total',nRem:fB(sum(rows,r=>r.nRem)),remB:fB(sum(rows,r=>r.remB)),remK:fK(sum(rows,r=>r.remK)),remV:fM(sum(rows,r=>r.remV)),nDev:fB(sum(rows,r=>r.nDev)),devB:fB(sum(rows,r=>r.devB)),devV:fM(sum(rows,r=>r.devV)),falV:fM(sum(rows,r=>r.falV)),ensV:fM(sum(rows,r=>r.ensV)),stB:fB(sum(rows,r=>r.stB)),stV:fM(sum(rows,r=>r.stV))},click:r=>{UI.stockProv=r.p;UI.stockEst='';UI.tab='stock';stk_renderAll()}})}`;
 }
 vProv.after=()=>{
   $('#expProv').onclick=()=>exportXlsx('prov','Proveedores');
@@ -7395,7 +7470,7 @@ function vReparto(){
   return`<div class="sec-h"><div><h2>Reparto</h2><p>Planillas de carga (salen a reparto) y de descarga (vuelven al depósito) por chofer. El porcentaje de retorno es bultos descargados sobre bultos cargados.</p></div><button class="btn" id="expRep">Exportar a Excel</button></div>
   <div class="card"><h3>Bultos cargados y descargados por chofer</h3><div class="legend"><span><i style="background:var(--navy)"></i>Cargados</span><span><i style="background:var(--orange)"></i>Descargados</span></div><div class="chart-box"><canvas id="chRep"></canvas></div></div>
   ${table('rep',[{k:'t',l:'Chofer / transporte'},{k:'nDays',l:'Días',n:1},{k:'nCar',l:'Planillas carga',n:1},{k:'carB',l:'Bultos cargados',n:1,f:r=>fB(r.carB)},{k:'prom',l:'Bultos/día',n:1,f:r=>fB(r.prom)},{k:'carK',l:'Kg cargados',n:1,f:r=>fK(r.carK)},{k:'nDes',l:'Planillas descarga',n:1},{k:'desB',l:'Bultos descargados',n:1,f:r=>fB(r.desB)},{k:'desK',l:'Kg descargados',n:1,f:r=>fK(r.desK)},{k:'desV',l:'Valor descargado',n:1,f:r=>fM(r.desV)},{k:'ret',l:'% retorno',n:1,f:r=>fP(r.ret)}],rows,{sort:'carB',foot:{t:'Total',nCar:fB(sum(rows,r=>r.nCar)),carB:fB(sum(rows,r=>r.carB)),carK:fK(sum(rows,r=>r.carK)),nDes:fB(sum(rows,r=>r.nDes)),desB:fB(sum(rows,r=>r.desB)),desK:fK(sum(rows,r=>r.desK)),desV:fM(sum(rows,r=>r.desV)),ret:fP(sum(rows,r=>r.desB)/sum(rows,r=>r.carB))}})}
-  <div class="card"><h3>Artículos que más vuelven del reparto</h3>${table('repart',[{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'prov',l:'Proveedor',f:provCell},{k:'car',l:'Cargados',n:1,f:r=>fB(r.car)},{k:'des',l:'Descargados',n:1,f:r=>fB(r.des)},{k:'ret',l:'% retorno',n:1,f:r=>fP(r.ret)}],arts,{sort:'des',short:1,click:o=>{UI.ficha=o.a;UI.tab='ficha';renderAll()}})}</div>`;
+  <div class="card"><h3>Artículos que más vuelven del reparto</h3>${table('repart',[{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'prov',l:'Proveedor',f:provCell},{k:'car',l:'Cargados',n:1,f:r=>fB(r.car)},{k:'des',l:'Descargados',n:1,f:r=>fB(r.des)},{k:'ret',l:'% retorno',n:1,f:r=>fP(r.ret)}],arts,{sort:'des',short:1,click:o=>{UI.ficha=o.a;UI.tab='ficha';stk_renderAll()}})}</div>`;
 }
 vReparto.after=()=>{
   $('#expRep').onclick=()=>exportXlsx('rep','Reparto_choferes');
@@ -7417,9 +7492,9 @@ function vAjustes(){
     <div class="kpi"><span class="l">A vencidos / roturas</span><span class="v">${fB(tot(ven,r=>r.ens))} <small>bultos</small></span><span class="s">${fK(tot(ven,r=>r.ensK))} kg · ${fM(tot(ven,r=>r.ensV))} · ${ven.length} artículos</span></div>
   </div>
   <div class="card"><div class="sec-h" style="margin-bottom:10px"><h3 style="margin:0">Faltantes y sobrantes por artículo</h3><button class="btn" id="expAj">Exportar</button></div>
-  ${table('aj',[{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'prov',l:'Proveedor',f:provCell},{k:'veces',l:'Ajustes',n:1},{k:'fal',l:'Falt. bultos',n:1,f:r=>fB(r.fal)},{k:'falK',l:'Falt. kg',n:1,f:r=>fK(r.falK)},{k:'sob',l:'Sobr. bultos',n:1,f:r=>fB(r.sob)},{k:'sobK',l:'Sobr. kg',n:1,f:r=>fK(r.sobK)},{k:'net',l:'Neto bultos',n:1,f:r=>fB(r.net),cls:r=>r.net<0?'neg':r.net>0?'pos':''},{k:'netK',l:'Neto kg',n:1,f:r=>fK(r.netK),cls:r=>r.netK<-0.005?'neg':r.netK>0.005?'pos':''},{k:'netV',l:'Neto $',n:1,f:r=>r.hasV?fM(r.netV):'s/costo',cls:r=>r.netV<0?'neg':''}],adj,{sort:'netV',dir:1,short:1,click:o=>{UI.ficha=o.a;UI.tab='ficha';renderAll()}})}</div>
+  ${table('aj',[{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'prov',l:'Proveedor',f:provCell},{k:'veces',l:'Ajustes',n:1},{k:'fal',l:'Falt. bultos',n:1,f:r=>fB(r.fal)},{k:'falK',l:'Falt. kg',n:1,f:r=>fK(r.falK)},{k:'sob',l:'Sobr. bultos',n:1,f:r=>fB(r.sob)},{k:'sobK',l:'Sobr. kg',n:1,f:r=>fK(r.sobK)},{k:'net',l:'Neto bultos',n:1,f:r=>fB(r.net),cls:r=>r.net<0?'neg':r.net>0?'pos':''},{k:'netK',l:'Neto kg',n:1,f:r=>fK(r.netK),cls:r=>r.netK<-0.005?'neg':r.netK>0.005?'pos':''},{k:'netV',l:'Neto $',n:1,f:r=>r.hasV?fM(r.netV):'s/costo',cls:r=>r.netV<0?'neg':''}],adj,{sort:'netV',dir:1,short:1,click:o=>{UI.ficha=o.a;UI.tab='ficha';stk_renderAll()}})}</div>
   <div class="card"><div class="sec-h" style="margin-bottom:10px"><h3 style="margin:0">Enviado a depósito de vencidos / roturas</h3><button class="btn" id="expVen">Exportar</button></div>
-  ${table('ven',[{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'prov',l:'Proveedor',f:provCell},{k:'ens',l:'Bultos',n:1,f:r=>fB(r.ens)},{k:'ensK',l:'Kg',n:1,f:r=>fK(r.ensK)},{k:'pct',l:'% sobre cargas',n:1,f:r=>fP(r.pct)},{k:'ensV',l:'Valor',n:1,f:r=>r.ensV==null?'s/costo':fM(r.ensV)}],ven,{sort:'ensV',short:1,click:o=>{UI.ficha=o.a;UI.tab='ficha';renderAll()}})}</div>`;
+  ${table('ven',[{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'prov',l:'Proveedor',f:provCell},{k:'ens',l:'Bultos',n:1,f:r=>fB(r.ens)},{k:'ensK',l:'Kg',n:1,f:r=>fK(r.ensK)},{k:'pct',l:'% sobre cargas',n:1,f:r=>fP(r.pct)},{k:'ensV',l:'Valor',n:1,f:r=>r.ensV==null?'s/costo':fM(r.ensV)}],ven,{sort:'ensV',short:1,click:o=>{UI.ficha=o.a;UI.tab='ficha';stk_renderAll()}})}</div>`;
 }
 vAjustes.after=()=>{$('#expAj').onclick=()=>exportXlsx('aj','Faltantes_sobrantes');$('#expVen').onclick=()=>exportXlsx('ven','Envios_vencidos')};
 
@@ -7434,11 +7509,11 @@ function vRot(){
   <div class="kpis">${['A','B','C'].map(k=>`<div class="kpi"><span class="l">Clase ${k}</span><span class="v">${cls[k].length} <small>artículos</small></span><span class="s">${fB(sum(cls[k],o=>o.venta))} bultos · ${fP(sum(cls[k],o=>o.venta)/tot)} de la salida · stock ${fM(sum(cls[k],o=>o.valFin))}</span></div>`).join('')}
   <div class="kpi"><span class="l">Sin salidas en el período</span><span class="v">${inm.length} <small>artículos</small></span><span class="s">Con stock inmovilizado por ${fM(sum(inm,o=>o.valFin))}</span></div></div>
   <div class="card"><div class="sec-h" style="margin-bottom:10px"><h3 style="margin:0">Curva ABC</h3><button class="btn" id="expAbc">Exportar</button></div>
-  ${table('abc',[{k:'abc',l:'Clase',f:o=>`<span class="chip ${cc[o.abc]}">${o.abc}</span>`},{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'prov',l:'Proveedor',f:provCell},{k:'venta',l:'Salida neta',n:1,f:o=>fB(o.venta)},{k:'acc',l:'% acumulado',n:1,f:o=>fP(o.acc)},{k:'prom',l:'Prom./día',n:1,f:o=>NF1.format(o.prom)},{k:'fin',l:'Stock final',n:1,f:o=>fB(o.fin),cls:o=>o.fin<0?'neg':''},{k:'cob',l:'Cobertura',n:1,f:o=>o.cob==null?'–':NF1.format(o.cob)+' d'},{k:'est',l:'Estado',f:o=>chip(o.est)}],act,{sort:'venta',short:1,click:o=>{UI.ficha=o.a;UI.tab='ficha';renderAll()}})}</div>
+  ${table('abc',[{k:'abc',l:'Clase',f:o=>`<span class="chip ${cc[o.abc]}">${o.abc}</span>`},{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'prov',l:'Proveedor',f:provCell},{k:'venta',l:'Salida neta',n:1,f:o=>fB(o.venta)},{k:'acc',l:'% acumulado',n:1,f:o=>fP(o.acc)},{k:'prom',l:'Prom./día',n:1,f:o=>NF1.format(o.prom)},{k:'fin',l:'Stock final',n:1,f:o=>fB(o.fin),cls:o=>o.fin<0?'neg':''},{k:'cob',l:'Cobertura',n:1,f:o=>o.cob==null?'–':NF1.format(o.cob)+' d'},{k:'est',l:'Estado',f:o=>chip(o.est)}],act,{sort:'venta',short:1,click:o=>{UI.ficha=o.a;UI.tab='ficha';stk_renderAll()}})}</div>
   <div class="grid g2" style="align-items:start">
-  <div class="card"><h3>Quiebres y stock negativo (${qb.length})</h3>${table('qb',[{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'fin',l:'Final',n:1,f:o=>fB(o.fin),cls:o=>o.fin<0?'neg':''},{k:'venta',l:'Salida neta',n:1,f:o=>fB(o.venta)},{k:'lastOut',l:'Última carga',f:o=>fD(o.lastOut)},{k:'est',l:'Estado',f:o=>chip(o.est)}],qb,{sort:'venta',short:1,click:o=>{UI.ficha=o.a;UI.tab='ficha';renderAll()},empty:'Ningún artículo en quiebre.'})}</div>
-  <div class="card"><h3>Cobertura menor a ${CFG.cob} días (${cob.length})</h3>${table('cob',[{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'prov',l:'Proveedor',f:provCell},{k:'fin',l:'Final',n:1,f:o=>fB(o.fin)},{k:'prom',l:'Prom./día',n:1,f:o=>NF1.format(o.prom)},{k:'cob',l:'Días',n:1,f:o=>NF1.format(o.cob)}],cob,{sort:'cob',dir:1,short:1,click:o=>{UI.ficha=o.a;UI.tab='ficha';renderAll()},empty:'Ningún artículo con cobertura baja.'})}</div></div>
-  <div class="card"><h3>Con stock y sin salidas en el período (${inm.length})</h3>${table('inm',[{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'prov',l:'Proveedor',f:provCell},{k:'alm',l:'Alm.',n:1},{k:'fin',l:'Bultos',n:1,f:o=>fB(o.fin)},{k:'finK',l:'Kg',n:1,f:o=>fK(o.finK)},{k:'ens',l:'A vencidos',n:1,sv:o=>o.b.ENS||0,f:o=>fB(o.b.ENS||0)},{k:'valFin',l:'Valor',n:1,f:o=>fM(o.valFin)}],inm,{sort:'fin',short:1,click:o=>{UI.ficha=o.a;UI.tab='ficha';renderAll()}})}</div>`;
+  <div class="card"><h3>Quiebres y stock negativo (${qb.length})</h3>${table('qb',[{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'fin',l:'Final',n:1,f:o=>fB(o.fin),cls:o=>o.fin<0?'neg':''},{k:'venta',l:'Salida neta',n:1,f:o=>fB(o.venta)},{k:'lastOut',l:'Última carga',f:o=>fD(o.lastOut)},{k:'est',l:'Estado',f:o=>chip(o.est)}],qb,{sort:'venta',short:1,click:o=>{UI.ficha=o.a;UI.tab='ficha';stk_renderAll()},empty:'Ningún artículo en quiebre.'})}</div>
+  <div class="card"><h3>Cobertura menor a ${CFG.cob} días (${cob.length})</h3>${table('cob',[{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'prov',l:'Proveedor',f:provCell},{k:'fin',l:'Final',n:1,f:o=>fB(o.fin)},{k:'prom',l:'Prom./día',n:1,f:o=>NF1.format(o.prom)},{k:'cob',l:'Días',n:1,f:o=>NF1.format(o.cob)}],cob,{sort:'cob',dir:1,short:1,click:o=>{UI.ficha=o.a;UI.tab='ficha';stk_renderAll()},empty:'Ningún artículo con cobertura baja.'})}</div></div>
+  <div class="card"><h3>Con stock y sin salidas en el período (${inm.length})</h3>${table('inm',[{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'prov',l:'Proveedor',f:provCell},{k:'alm',l:'Alm.',n:1},{k:'fin',l:'Bultos',n:1,f:o=>fB(o.fin)},{k:'finK',l:'Kg',n:1,f:o=>fK(o.finK)},{k:'ens',l:'A vencidos',n:1,sv:o=>o.b.ENS||0,f:o=>fB(o.b.ENS||0)},{k:'valFin',l:'Valor',n:1,f:o=>fM(o.valFin)}],inm,{sort:'fin',short:1,click:o=>{UI.ficha=o.a;UI.tab='ficha';stk_renderAll()}})}</div>`;
 }
 vRot.after=()=>{$('#expAbc').onclick=()=>exportXlsx('abc','Curva_ABC')};
 
@@ -7462,7 +7537,7 @@ function vConc(){
   ${dateNote}
   <div class="kpis"><div class="kpi"><span class="l">Artículos comparados</span><span class="v">${all}</span></div><div class="kpi hl"><span class="l">Con diferencia</span><span class="v">${withDif}</span><span class="s">${fP(withDif/all)} del total</span></div><div class="kpi"><span class="l">Diferencia valorizada</span><span class="v">${fM(sum(rows,r=>r.difV))}</span></div>${hasRec?`<div class="kpi"><span class="l">Recuento físico</span><span class="v">${s.rec} <small>artículos</small></span><span class="s">Diferencia recuento − sistema: ${fB(sum(rows,r=>r.drec||0))} bultos</span></div>`:''}</div>
   ${table('conc',[{k:'a',l:'Art.',cls:'code'},{k:'d',l:'Descripción',cls:'desc'},{k:'th',l:'Teórico',n:1,f:r=>fB(r.th)},{k:'sys',l:'Chess',n:1,f:r=>fB(r.sys)},{k:'dif',l:'Diferencia',n:1,f:r=>fB(r.dif),cls:r=>r.dif<0?'neg':r.dif>0?'pos':''},{k:'thK',l:'Kg teórico',n:1,f:r=>fK(r.thK)},{k:'sysK',l:'Kg Chess',n:1,f:r=>fK(r.sysK)},{k:'difK',l:'Dif. kg',n:1,f:r=>fK(r.difK),cls:r=>r.difK<-0.01?'neg':r.difK>0.01?'pos':''},{k:'difV',l:'Dif. $',n:1,f:r=>r.difV==null?'s/costo':fM(r.difV)},
-    ...(hasRec?[{k:'rec',l:'Recuento',n:1,f:r=>r.rec==null?'–':fB(r.rec)},{k:'drec',l:'Rec. − Chess',n:1,f:r=>r.drec==null?'–':fB(r.drec),cls:r=>r.drec<0?'neg':r.drec>0?'pos':''}]:[])],rows,{sort:'difV',dir:1,click:o=>{UI.ficha=o.a;UI.tab='ficha';renderAll()},empty:'Sin diferencias: el stock teórico coincide con Chess.'})}`;
+    ...(hasRec?[{k:'rec',l:'Recuento',n:1,f:r=>r.rec==null?'–':fB(r.rec)},{k:'drec',l:'Rec. − Chess',n:1,f:r=>r.drec==null?'–':fB(r.drec),cls:r=>r.drec<0?'neg':r.drec>0?'pos':''}]:[])],rows,{sort:'difV',dir:1,click:o=>{UI.ficha=o.a;UI.tab='ficha';stk_renderAll()},empty:'Sin diferencias: el stock teórico coincide con Chess.'})}`;
 }
 vConc.after=()=>{bindDrop();const s=$('#cSnap');if(!s)return;s.onchange=e=>{UI.concSnap=e.target.value;renderView()};$('#cOnly').onchange=e=>{UI.concOnly=e.target.checked;renderView()};$('#expConc').onclick=()=>exportXlsx('conc','Control_stock')};
 
@@ -7496,21 +7571,21 @@ function vDatos(){
 }
 vDatos.after=()=>{
   bindDrop();
-  document.querySelectorAll('[data-sd]').forEach(i=>i.onchange=e=>{const s=DB.snaps[+i.dataset.sd];const old=s.date;s.date=e.target.value;if(CFG.baseDate===old)CFG.baseDate=s.date;DB.snaps.sort((x,y)=>x.date<y.date?-1:1);save();renderAll()});
-  document.querySelectorAll('[data-sb]').forEach(bt=>bt.onclick=()=>{CFG.baseDate=DB.snaps[+bt.dataset.sb].date;CFG.hasta=null;save();renderAll()});
-  document.querySelectorAll('[data-sx]').forEach(bt=>bt.onclick=()=>{const s=DB.snaps[+bt.dataset.sx];confirmBox(`¿Quitar el listado de stock del ${fD(s.date)}?`,()=>{DB.snaps.splice(+bt.dataset.sx,1);save();renderAll()})});
-  const cm=$('#clrMov');if(cm)cm.onclick=()=>confirmBox('¿Borrar todos los movimientos cargados? El stock y la configuración se mantienen.',()=>{DB.movs=[];DB.costs={};DB.files=DB.files.filter(f=>f.kind!=='mov');inferProviders();save();renderAll()});
-  $('#saveCob').onclick=()=>{const v=parseInt($('#cfgCob').value);if(v>0){CFG.cob=v;save();renderAll();toast('Parámetro guardado.')}};
-  $('#savePw').onclick=()=>{const v=$('#newPw').value.trim();if(v.length<4){toast('La contraseña debe tener al menos 4 caracteres.');return}CFG.pw=v;save();$('#newPw').value='';toast('Contraseña actualizada.')};
-  $('#bkOut').onclick=()=>{try{const blob=new Blob([JSON.stringify({DB,CFG})],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`respaldo_stock_DL_${new Date().toISOString().slice(0,10)}.json`;a.click()}catch(e){toast('La descarga no está disponible en esta vista.')}};
+  document.querySelectorAll('[data-sd]').forEach(i=>i.onchange=e=>{const s=DB.snaps[+i.dataset.sd];const old=s.date;s.date=e.target.value;if(CFG.baseDate===old)CFG.baseDate=s.date;DB.snaps.sort((x,y)=>x.date<y.date?-1:1);stk_save();stk_renderAll()});
+  document.querySelectorAll('[data-sb]').forEach(bt=>bt.onclick=()=>{CFG.baseDate=DB.snaps[+bt.dataset.sb].date;CFG.hasta=null;stk_save();stk_renderAll()});
+  document.querySelectorAll('[data-sx]').forEach(bt=>bt.onclick=()=>{const s=DB.snaps[+bt.dataset.sx];confirmBox(`¿Quitar el listado de stock del ${fD(s.date)}?`,()=>{DB.snaps.splice(+bt.dataset.sx,1);stk_save();stk_renderAll()})});
+  const cm=$('#clrMov');if(cm)cm.onclick=()=>confirmBox('¿Borrar todos los movimientos cargados? El stock y la configuración se mantienen.',()=>{DB.movs=[];DB.costs={};DB.files=DB.files.filter(f=>f.kind!=='mov');inferProviders();stk_save();stk_renderAll()});
+  $('#saveCob').onclick=()=>{const v=parseInt($('#cfgCob').value);if(v>0){CFG.cob=v;stk_save();stk_renderAll();stk_toast('Parámetro guardado.')}};
+  $('#savePw').onclick=()=>{const v=$('#newPw').value.trim();if(v.length<4){stk_toast('La contraseña debe tener al menos 4 caracteres.');return}CFG.pw=v;stk_save();$('#newPw').value='';stk_toast('Contraseña actualizada.')};
+  $('#bkOut').onclick=()=>{try{const blob=new Blob([JSON.stringify({DB,CFG})],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`respaldo_stock_DL_${new Date().toISOString().slice(0,10)}.json`;a.click()}catch(e){stk_toast('La descarga no está disponible en esta vista.')}};
   $('#bkInB').onclick=()=>$('#bkIn').click();
-  $('#clrAll').onclick=()=>confirmBox('¿Borrar todos los datos (stock, movimientos y costos)? Esta acción no se puede deshacer.',()=>{DB={articles:{},snaps:[],movs:[],files:[],costs:{}};CFG.baseDate=null;CFG.hasta=null;save();renderAll()});
+  $('#clrAll').onclick=()=>confirmBox('¿Borrar todos los datos (stock, movimientos y costos)? Esta acción no se puede deshacer.',()=>{DB={articles:{},snaps:[],movs:[],files:[],costs:{}};CFG.baseDate=null;CFG.hasta=null;stk_save();stk_renderAll()});
 };
 
 /* ============ ARRANQUE ============ */
 $('#fileIn').onchange=e=>{const f=[...e.target.files];e.target.value='';if(f.length)importFiles(f)};
-$('#bkIn').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;try{const o=JSON.parse(await f.text());if(!o.DB||!o.DB.snaps)throw new Error();DB=o.DB;CFG=Object.assign(CFG,o.CFG||{});save();renderAll();toast('Respaldo restaurado.')}catch(err){toast('El archivo no es un respaldo válido de esta app.')}};
-function unlock(){$('#login').hidden=true;try{sessionStorage.setItem('dl_stock_ok','1')}catch(e){}renderAll()}
+$('#bkIn').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;try{const o=JSON.parse(await f.text());if(!o.DB||!o.DB.snaps)throw new Error();DB=o.DB;CFG=Object.assign(CFG,o.CFG||{});stk_save();stk_renderAll();stk_toast('Respaldo restaurado.')}catch(err){stk_toast('El archivo no es un respaldo válido de esta app.')}};
+function unlock(){$('#login').hidden=true;try{sessionStorage.setItem('dl_stock_ok','1')}catch(e){}stk_renderAll()}
 $('#loginForm').onsubmit=e=>{e.preventDefault();if($('#pw').value===CFG.pw)unlock();else{$('#pwErr').textContent='Contraseña incorrecta.';$('#pw').select()}};
 
 // ── Recibir sesión desde el tablero padre ──────────────────────────
@@ -7522,7 +7597,7 @@ window.addEventListener('message', (e) => {
 
 let ok=false;try{ok=sessionStorage.getItem('dl_stock_ok')==='1'}catch(e){}
 if(ok){unlock();}else{
-  renderAll();
+  stk_renderAll();
   setTimeout(()=>{
     // Pedir token al padre si estamos en iframe
     if(window.parent && window.parent !== window){
@@ -7536,6 +7611,12 @@ window.addEventListener('resize',()=>{});
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>renderView());
 
 // Expose unlock for shell activation
+// Expose stock onclick functions to global scope
+window.stk_save = typeof stk_save === 'function' ? stk_save : null;
+window.stk_toast = typeof stk_toast === 'function' ? stk_toast : null;
+window.stk_renderAll = typeof stk_renderAll === 'function' ? stk_renderAll : null;
+window.confirmBox = typeof confirmBox === 'function' ? confirmBox : null;
+window.unlock = typeof unlock === 'function' ? unlock : null;
 window._stockUnlock = typeof unlock === 'function' ? unlock : null;
 })();
 </script>
