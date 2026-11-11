@@ -340,8 +340,8 @@ body{
 /* ═══ VENTAS MODULE CSS ═══ */
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-* {box-sizing:border-box;margin:0;padding:0}
-:root{
+*{box-sizing:border-box;margin:0;padding:0}
+:root {
   --azul:#1e3a6e;--azul2:#2a4f96;--azul3:#e8edf8;--azul4:#d0dbf0;--azulx:#f0f4fc;
   --nar:#F26522;--nar2:#ff7a3d;--nar3:#fff1ea;--nar4:#ffd6bd;
   --bg:#f2f5fb;--w:#ffffff;--s1:#f7f9fd;--s2:#eef1f8;
@@ -355,24 +355,9 @@ body{
   --sh:0 1px 3px rgba(30,58,110,.08),0 1px 2px rgba(30,58,110,.05);
   --sh2:0 4px 20px rgba(30,58,110,.13),0 2px 6px rgba(30,58,110,.07);
 }
-/* ═══ VENTAS DARK MODE OVERRIDE ═══ */
-html:not([data-theme="light"]) #pageVentas {
-  --azul:#4f7fff;--azul2:#7aabff;--azul3:#1a2a50;--azul4:#1e3060;--azulx:#141e38;
-  --nar:#f26522;--nar2:#ff8040;--nar3:#2a1800;--nar4:#3a2200;
-  --bg:#0d1017;--w:#141820;--s1:#1a2030;--s2:#202840;
-  --brd:#263050;--brd2:#304060;
-  --tx:#dde3f0;--tx2:#7a88a8;--tx3:#3e4e6a;
-  --gn:#2dbd7e;--gn2:#0a2820;--gn3:#0a3828;
-  --rd:#e05555;--rd2:#2a0a0a;--rd3:#3a1010;
-  --yl:#e8b84b;--yl2:#2a1e00;--yl3:#3a2a00;
-  --bl:#4f7fff;--bl2:#0a1428;--bl3:#0e1e3a;
-  --sh:0 2px 12px rgba(0,0,0,.4);
-  --sh2:0 8px 40px rgba(0,0,0,.55);
-}
-#pageVentas body {background:var(--bg);color:var(--tx);font-family:var(--sf);min-height:100vh;font-size:13px;line-height:1.5}
+body {background:var(--bg);color:var(--tx);font-family:var(--sf);min-height:100vh;font-size:13px;line-height:1.5}
 
 /* LOGIN */
-
 #pageVentas #loginBg {position:fixed;inset:0;background:var(--azul);display:flex;align-items:center;justify-content:center;z-index:2000;flex-direction:column;gap:18px}
 #pageVentas .login-box {background:var(--w);border-radius:16px;padding:36px 40px;box-shadow:var(--sh2);width:100%;max-width:340px;text-align:center}
 #pageVentas .login-ttl {font-size:15px;font-weight:800;color:var(--azul);margin:14px 0 4px}
@@ -382,95 +367,70 @@ html:not([data-theme="light"]) #pageVentas {
 #pageVentas .login-err {color:var(--rd);font-size:11px;margin-top:8px;min-height:14px}
 
 /* NAV */
-
 #pageVentas nav {background:var(--w);border-bottom:2px solid var(--azul4);padding:0 24px;
-
-#pageVentas display:flex;align-items:stretch;position:sticky;top:0;z-index:300;box-shadow:var(--sh)}
-.n-logo {display:flex;align-items:center;padding:4px 14px 4px 0;border-right:1px solid var(--brd);margin-right:6px;flex-shrink:0}
-#pageVentas .n-logo img {width:32px;height:32px;border-radius:7px;object-fit:contain;background:#fff;padding:3px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  display:flex;align-items:stretch;position:sticky;top:0;z-index:300;box-shadow:var(--sh)}
+#pageVentas .n-logo {display:flex;align-items:center;gap:10px;padding:8px 20px 8px 0;border-right:1px solid var(--brd);margin-right:6px;flex-shrink:0}
 #pageVentas .n-tabs {display:flex;flex:1;overflow-x:auto}
 #pageVentas .n-tab {padding:0 16px;display:flex;align-items:center;gap:6px;cursor:pointer;
-
-#pageVentas font-size:11.5px;font-weight:600;color:var(--tx3);border-bottom:3px solid transparent;
+  font-size:11.5px;font-weight:600;color:var(--tx3);border-bottom:3px solid transparent;
   margin-bottom:-2px;transition:.15s;white-space:nowrap}
-.n-tab:hover {color:var(--azul);background:var(--azulx)}
+#pageVentas .n-tab:hover {color:var(--azul);background:var(--azulx)}
 #pageVentas .n-tab.on {color:var(--azul);border-bottom-color:var(--nar);font-weight:700}
 #pageVentas .n-tab .pill {font-family:var(--mn);font-size:9px;background:var(--nar3);color:var(--nar);
-
-#pageVentas border:1px solid var(--nar4);padding:1px 6px;border-radius:10px}
-.sp {flex:1}
+  border:1px solid var(--nar4);padding:1px 6px;border-radius:10px}
+#pageVentas .sp {flex:1}
 
 /* PAGES */
-
 #pageVentas .page {display:none;flex-direction:column;min-height:calc(100vh - 54px)}
 #pageVentas .page.on {display:flex}
 
 /* BUTTONS */
-
 #pageVentas .btn {padding:7px 14px;border-radius:7px;border:none;cursor:pointer;font-family:var(--sf);
-
-#pageVentas font-size:12px;font-weight:600;transition:.15s;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
-.b-azul {background:var(--azul);color:#fff}
-#pageVentas .b-azul:hover {background:var(--azul2);box-shadow:var(--sh2)}
-#pageVentas .b-nar {background:var(--nar);color:#fff}
-#pageVentas .b-nar:hover {background:var(--nar2)}
-#pageVentas .b-gn {background:var(--gn2);color:var(--gn);border:1px solid var(--gn3)}
-#pageVentas .b-gn:hover {background:var(--gn3)}
-#pageVentas .b-bl {background:var(--bl2);color:var(--bl);border:1px solid var(--bl3)}
-#pageVentas .b-bl:hover {background:var(--bl3)}
-#pageVentas .b-rd {background:var(--rd2);color:var(--rd);border:1px solid var(--rd3)}
-#pageVentas .b-rd:hover {background:var(--rd3)}
-#pageVentas .b-gh {background:var(--w);color:var(--tx2);border:1px solid var(--brd);box-shadow:var(--sh)}
-#pageVentas .b-gh:hover {border-color:var(--azul);color:var(--azul)}
+  font-size:12px;font-weight:600;transition:.15s;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+#pageVentas .b-azul {background:var(--azul);color:#fff}.b-azul:hover{background:var(--azul2);box-shadow:var(--sh2)}
+#pageVentas .b-nar {background:var(--nar);color:#fff}.b-nar:hover{background:var(--nar2)}
+#pageVentas .b-gn {background:var(--gn2);color:var(--gn);border:1px solid var(--gn3)}.b-gn:hover{background:var(--gn3)}
+#pageVentas .b-bl {background:var(--bl2);color:var(--bl);border:1px solid var(--bl3)}.b-bl:hover{background:var(--bl3)}
+#pageVentas .b-rd {background:var(--rd2);color:var(--rd);border:1px solid var(--rd3)}.b-rd:hover{background:var(--rd3)}
+#pageVentas .b-gh {background:var(--w);color:var(--tx2);border:1px solid var(--brd);box-shadow:var(--sh)}.b-gh:hover{border-color:var(--azul);color:var(--azul)}
 #pageVentas .b-sm {padding:5px 11px;font-size:11px}
 #pageVentas .btn:disabled {opacity:.45;cursor:not-allowed}
 
 /* UPLOAD */
-
 #pageVentas .center {flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:40px 24px}
 #pageVentas .dz {width:100%;max-width:520px;border:2px dashed var(--brd2);border-radius:14px;
-
-#pageVentas padding:40px 28px;text-align:center;cursor:pointer;transition:.2s;background:var(--w);position:relative;box-shadow:var(--sh)}
-.dz:hover,.dz.drag {border-color:var(--nar);background:var(--nar3)}
+  padding:40px 28px;text-align:center;cursor:pointer;transition:.2s;background:var(--w);position:relative;box-shadow:var(--sh)}
+#pageVentas .dz:hover, #pageVentas .dz.drag {border-color:var(--nar);background:var(--nar3)}
 #pageVentas .dz input {position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
 #pageVentas .dz-ico {font-size:38px;margin-bottom:10px}
 #pageVentas .dz-ttl {font-size:15px;font-weight:700;margin-bottom:5px;color:var(--tx)}
 #pageVentas .dz-sub {color:var(--tx3);font-size:11px;font-family:var(--mn)}
 #pageVentas .note {max-width:520px;width:100%;font-size:11.5px;color:var(--tx2);background:var(--w);
+  border:1px solid var(--brd);border-radius:10px;padding:13px 17px;line-height:1.8;box-shadow:var(--sh)}
+#pageVentas .note strong {color:var(--nar)}.note code{font-family:var(--mn);font-size:10px;background:var(--azul3);color:var(--azul);padding:1px 5px;border-radius:4px}
 
-#pageVentas border:1px solid var(--brd);border-radius:10px;padding:13px 17px;line-height:1.8;box-shadow:var(--sh)}
-.note strong {color:var(--nar)}
-#pageVentas .note code {font-family:var(--mn);font-size:10px;background:var(--azul3);color:var(--azul);padding:1px 5px;border-radius:4px}
 #pageVentas .spin {width:32px;height:32px;border:3px solid var(--brd2);border-top-color:var(--azul);border-radius:50%;animation:sp .7s linear infinite}
-@keyframes sp {to{transform:rotate(360deg)}}
+@keyframes sp{to{transform:rotate(360deg)}}
 
 /* KPI */
-
 #pageVentas .kpi-row {display:flex;gap:10px;padding:14px 20px;flex-wrap:wrap;border-bottom:1px solid var(--brd);background:var(--w)}
 #pageVentas .kpi {background:var(--s1);border:1px solid var(--brd);border-radius:10px;padding:12px 16px;flex:1;min-width:130px}
 #pageVentas .kpi-v {font-size:20px;font-weight:800;font-family:var(--mn);line-height:1;color:var(--azul)}
 #pageVentas .kpi-l {font-size:9.5px;color:var(--tx3);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
-#pageVentas .kpi.c-rd .kpi-v {color:var(--rd)}
-#pageVentas .kpi.c-gn .kpi-v {color:var(--gn)}
-#pageVentas .kpi.c-yl .kpi-v {color:var(--yl)}
-#pageVentas .kpi.c-nar .kpi-v {color:var(--nar)}
+#pageVentas .kpi.c-rd .kpi-v {color:var(--rd)}.kpi.c-gn .kpi-v{color:var(--gn)}.kpi.c-yl .kpi-v{color:var(--yl)}.kpi.c-nar .kpi-v{color:var(--nar)}
 
 /* CTRL BAR */
-
 #pageVentas .c-bar {background:var(--w);border-bottom:1px solid var(--brd);padding:10px 20px;
-
-#pageVentas display:flex;align-items:center;gap:10px;flex-wrap:wrap;box-shadow:var(--sh)}
-.cb-ttl {font-size:14px;font-weight:800;color:var(--azul)}
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;box-shadow:var(--sh)}
+#pageVentas .cb-ttl {font-size:14px;font-weight:800;color:var(--azul)}
 #pageVentas .cb-sub {font-family:var(--mn);font-size:10px;color:var(--tx3);margin-top:1px}
 
 /* FILTER */
-
 #pageVentas .fbar {padding:8px 20px;display:flex;gap:6px;align-items:center;border-bottom:1px solid var(--brd);background:var(--s1);flex-wrap:wrap}
 #pageVentas .fl {font-size:9px;color:var(--tx3);font-family:var(--mn);text-transform:uppercase;letter-spacing:.6px}
 #pageVentas .fb {padding:4px 12px;border-radius:20px;border:1.5px solid var(--brd);background:var(--w);
-
-#pageVentas color:var(--tx3);cursor:pointer;font-size:11px;font-weight:600;transition:.12s}
-.fb.on {background:var(--azul);color:#fff;border-color:var(--azul)}
+  color:var(--tx3);cursor:pointer;font-size:11px;font-weight:600;transition:.12s}
+#pageVentas .fb.on {background:var(--azul);color:#fff;border-color:var(--azul)}
 #pageVentas .fb.on.fv {background:var(--rd);color:#fff;border-color:var(--rd)}
 #pageVentas .fb.on.fg {background:var(--gn);color:#fff;border-color:var(--gn)}
 #pageVentas .fb.on.fy {background:var(--yl);color:#fff;border-color:var(--yl)}
@@ -479,14 +439,12 @@ html:not([data-theme="light"]) #pageVentas {
 #pageVentas .srch:focus {border-color:var(--nar)}
 
 /* TABLE */
-
 #pageVentas .tbl-wrap {flex:1;overflow-x:auto;overflow-y:auto}
 #pageVentas table {width:100%;border-collapse:collapse;font-size:12px}
 #pageVentas thead th {background:var(--azul);color:#fff;padding:8px 10px;text-align:left;
-
-#pageVentas font-size:9.5px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;
+  font-size:9.5px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;
   position:sticky;top:0;z-index:2;border-right:1px solid rgba(255,255,255,.1)}
-th.r {text-align:right}
+#pageVentas th.r {text-align:right}
 #pageVentas tbody tr {border-bottom:1px solid var(--brd);transition:.07s}
 #pageVentas tbody tr:nth-child(even) {background:var(--s1)}
 #pageVentas tbody tr:hover td {background:var(--azul3)!important}
@@ -494,33 +452,27 @@ th.r {text-align:right}
 #pageVentas td.mn {font-family:var(--mn);font-size:10.5px}
 #pageVentas td.r {text-align:right;font-family:var(--mn)}
 #pageVentas td.bold {font-weight:700;color:var(--tx)}
-#pageVentas tr.row-r {background:#fff6f5!important}
-#pageVentas tr.row-r:hover td {background:#ffe8e5!important}
-#pageVentas tr.row-y {background:#fffcf0!important}
-#pageVentas tr.row-y:hover td {background:#fff4d6!important}
+#pageVentas tr.row-r {background:#fff6f5!important}tr.row-r:hover td{background:#ffe8e5!important}
+#pageVentas tr.row-y {background:#fffcf0!important}tr.row-y:hover td{background:#fff4d6!important}
 
 /* SEMAFORO */
-
 #pageVentas .sem {display:inline-flex;align-items:center;gap:5px;font-family:var(--mn);font-weight:700;font-size:11px;padding:2px 9px;border-radius:20px}
 #pageVentas .sem-r {background:var(--rd2);color:var(--rd)}
 #pageVentas .sem-y {background:var(--yl2);color:var(--yl)}
 #pageVentas .sem-g {background:var(--gn2);color:var(--gn)}
 #pageVentas .dot {width:7px;height:7px;border-radius:50%;display:inline-block}
-#pageVentas .dot-r {background:var(--rd)}
-#pageVentas .dot-y {background:var(--yl)}
-#pageVentas .dot-g {background:var(--gn)}
+#pageVentas .dot-r {background:var(--rd)}.dot-y{background:var(--yl)}.dot-g{background:var(--gn)}
+
 #pageVentas .var-up {color:var(--rd);font-weight:700}
 #pageVentas .var-dn {color:var(--gn);font-weight:700}
 #pageVentas .var-eq {color:var(--tx3)}
 
 /* SELECT/INPUT generic */
-
-#pageVentas select,input[type=text],input[type=number] {font-family:var(--sf);font-size:12px;padding:6px 10px;border:1.5px solid var(--brd2);border-radius:7px;outline:none;background:var(--w);color:var(--tx)}
-#pageVentas select:focus,input:focus {border-color:var(--nar)}
+#pageVentas select, #pageVentas input[type=text], #pageVentas input[type=number] {font-family:var(--sf);font-size:12px;padding:6px 10px;border:1.5px solid var(--brd2);border-radius:7px;outline:none;background:var(--w);color:var(--tx)}
+#pageVentas select:focus, #pageVentas input:focus {border-color:var(--nar)}
 #pageVentas label.fld {display:flex;flex-direction:column;gap:4px;font-size:10.5px;color:var(--tx3);font-family:var(--mn);text-transform:uppercase;letter-spacing:.4px}
 
 /* CONFIG FORM */
-
 #pageVentas .cfg-wrap {padding:24px;max-width:640px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:18px}
 #pageVentas .cfg-card {background:var(--w);border:1px solid var(--brd);border-radius:12px;padding:18px 22px;box-shadow:var(--sh)}
 #pageVentas .cfg-card h3 {font-size:13px;color:var(--azul);margin-bottom:12px;display:flex;align-items:center;gap:6px}
@@ -530,7 +482,6 @@ th.r {text-align:right}
 #pageVentas .cfg-hint {font-size:10px;color:var(--tx3);margin-top:2px}
 
 /* MODAL */
-
 #pageVentas .modal-bg {position:fixed;inset:0;background:rgba(20,30,60,.5);display:none;align-items:center;justify-content:center;z-index:900;padding:20px}
 #pageVentas .modal-bg.on {display:flex}
 #pageVentas .modal {background:var(--w);border-radius:14px;width:100%;max-width:640px;max-height:85vh;display:flex;flex-direction:column;box-shadow:var(--sh2);overflow:hidden}
@@ -539,17 +490,16 @@ th.r {text-align:right}
 #pageVentas .modal-close {background:none;border:none;font-size:16px;cursor:pointer;color:var(--tx3)}
 #pageVentas .modal-body {flex:1;overflow-y:auto;padding:16px 20px}
 #pageVentas .modal-footer {padding:12px 20px;border-top:1px solid var(--brd);display:flex;justify-content:flex-end;gap:8px}
-#pageVentas .toast {position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--tx);color:#fff;
 
-#pageVentas padding:11px 22px;border-radius:9px;font-size:12px;font-weight:600;
+#pageVentas .toast {position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--tx);color:#fff;
+  padding:11px 22px;border-radius:9px;font-size:12px;font-weight:600;
   z-index:1000;opacity:0;transition:.22s;pointer-events:none;box-shadow:var(--sh2)}
-.toast.on {transform:translateX(-50%) translateY(0);opacity:1}
+#pageVentas .toast.on {transform:translateX(-50%) translateY(0);opacity:1}
 #pageVentas .err {background:var(--rd2);border:1px solid var(--rd3);border-radius:10px;padding:11px 15px;font-size:12px;color:var(--rd);max-width:520px;width:100%}
 #pageVentas .empty {flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--tx3);padding:40px}
 #pageVentas .empty-ico {font-size:38px;opacity:.5}
 
 /* TABLERO */
-
 #pageVentas .tbl-grid {display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px 20px}
 #pageVentas .chart-card {background:var(--w);border:1px solid var(--brd);border-radius:12px;padding:16px 18px;box-shadow:var(--sh)}
 #pageVentas .chart-card h4 {font-size:12px;color:var(--azul);margin-bottom:10px;display:flex;align-items:center;gap:6px}
@@ -567,7 +517,6 @@ th.r {text-align:right}
 #pageVentas .progbar-fill.over {background:var(--nar)}
 
 /* HOJA IMPRIMIBLE DE OFERTAS */
-
 #pageVentas .print-sheet {background:#fff;border:1px solid var(--brd);border-radius:10px;padding:30px 34px;font-family:var(--sf);color:#1a2540;max-width:640px;margin:0 auto;box-shadow:var(--sh)}
 #pageVentas .print-sheet h1 {font-size:17px;text-align:center;margin-bottom:2px;letter-spacing:.4px}
 #pageVentas .print-sheet .ps-sub {text-align:center;color:#8892b0;font-size:10.5px;margin-bottom:20px;font-family:var(--mn)}
@@ -578,19 +527,18 @@ th.r {text-align:right}
 #pageVentas .ps-item-desc .ps-precio-pub {font-weight:800;color:var(--nar);font-size:14px}
 #pageVentas .ps-promos {margin-top:18px;padding-top:14px;border-top:2px solid var(--azul3);font-size:11.5px;white-space:pre-wrap;color:#333}
 #pageVentas .ps-footer {text-align:center;margin-top:20px;font-size:11px;color:#8892b0}
-@media print {
-
-#pageVentas body * {visibility:hidden}
-#pageVentas #printSheetWrap, #printSheetWrap * {visibility:visible}
-#pageVentas #printSheetWrap {position:absolute;left:0;top:0;width:100%;margin:0;padding:0}
-#pageVentas .no-print {display:none!important}
-#pageVentas .print-sheet {box-shadow:none;border:none;max-width:100%}
+@media print{
+  #pageVentas body * {visibility:hidden}
+  #pageVentas #printSheetWrap, #pageVentas #printSheetWrap * {visibility:visible}
+  #pageVentas #printSheetWrap {position:absolute;left:0;top:0;width:100%;margin:0;padding:0}
+  #pageVentas .no-print {display:none!important}
+  #pageVentas .print-sheet {box-shadow:none;border:none;max-width:100%}
 }
 
-::-webkit-scrollbar{width:5px;height:5px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--brd2);border-radius:3px}
-#pageVentas input:focus-visible,select:focus-visible {outline:2px solid var(--azul);outline-offset:1px}
+#pageVentas ::-webkit-scrollbar {width:5px;height:5px}
+#pageVentas ::-webkit-scrollbar-track {background:var(--bg)}
+#pageVentas ::-webkit-scrollbar-thumb {background:var(--brd2);border-radius:3px}
+#pageVentas input:focus-visible, #pageVentas select:focus-visible {outline:2px solid var(--azul);outline-offset:1px}
 
 /* ═══ FINANZAS MODULE CSS ═══ */
 :root{
@@ -1412,9 +1360,12 @@ select option{background:var(--surface2);}
 
   <!-- VENTAS MODULE -->
   <div id="pageVentas" class="module-page">
-<div id="v-loginBg">
+<div id="loginBg" style="display:none!important">
   <div class="login-box">
-    <img src="data:image/png;base64,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" alt="Distribuidora Lucas" style="height:60px;object-fit:contain;margin:0 auto;display:block">
+    <svg height="34" viewBox="0 0 168 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto">
+      <text x="2" y="15" font-family="'Arial Black',Arial,sans-serif" font-size="10.5" font-weight="900" fill="#1e3a6e" letter-spacing="1.2">DISTRIBUIDORA</text>
+      <text x="1" y="42" font-family="'Arial Black',Arial,sans-serif" font-size="28" font-weight="900" fill="#F26522" font-style="italic" letter-spacing="-1">Lucas</text>
+    </svg>
     <div class="login-ttl">Precios y Márgenes</div>
     <div class="login-sub">ingresá la clave para continuar</div>
     <input type="password" class="login-inp" id="v-loginInp" placeholder="••••••" maxlength="20"/>
@@ -1423,9 +1374,12 @@ select option{background:var(--surface2);}
   </div>
 </div>
 
-<nav>
+<nav style="display:none">
   <div class="n-logo">
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABgCAYAAADvhgd/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAACsaSURBVHhe7X0HWFRJm+7cu/fe3buzu3/a/5+gkkGU0HQ3oJizjtkxO6YZ46jjjDmDCChGwJxARZGckZyj5AyC5JwFydBV7z5VNCg9OqP/5Blfn/Mg9Dl1qr636kv19TnvvfcrBYD/JT3+NzsopZMppYsopcaEEAdKadj3HYQQD3Y+pXQlux7Av0vb423L3vMdXoGXSPgXSqkGpXQbIcSREFKDHxGEkGZCiCeldDeldCy7Xz9Zsn36w0JKBhPM/6WUriaEOBFCamWF+VOCENJNCPGilG6klP69nyjZvv4hIJ2h/49SOoMQcp8Q8lxWYL8ECCE9hBBnSukaSul/MZJk+/67BID/A+BPlNIthJAKWcH8mkAIqaeUGlJKP2D9lh3L7wJsYJTSjwAcJ4Q0ygrh1wxCSBsh5AKlVJGpXNmx/SYh9ab+P6X0ECGkXXbQvyUQQgil9DSl9K+/aRVXVlbGCJlLCHkiO8jfMggh1cxRYa637Jh/1WCeFqV0KPN0ZAf1ewIhJJ5Sqvqb8OCktmQUIaRUdiC/R7CYiFI6i1L6r7Ky+NVAaks+J4R0yQ7g9w5KqRGA/5CVyS8O5vNTSi1lO/xHAiHEV+p5/vIZBKnXpUwpDZXt6B8RhJBCSqneLxr3SCP3CYSQStkO/pFBCOmllC4H8G+yMvvJITXy61gnZDv2Dn2glB5gdldWdj8ZpNnfRbIdeYdX4uDPQo6UlDnvVsqbQyKRsO2Fn9adppROJYRIZG/+Dt8NSumGnyyNQykdQQh5JnvTd/h+UEqZhpkmK9MfDErp3wghybI3fIc3h3QnVkFWtv80mPEihDyQvdE7vD0IIeFsP0pWxv8UKKVfyt7gHX4QzH9w4pMtPUJIh2zL7/DDQCkdLyvrNwaL7Akh7rKNvsMPByEkDcCfZWX+RqCULpFt8B1+PBBCTGRl/r1g2eJ3ObCfFlITMVRW9t8JVgwn29A7/PiglF6Slf1rwXTf25QWEQlBT08PPySSwUkBSimbGfyQ/Tv48eL3bmkbA+cQ6bWUgv3j/5cQfu6LdiWD2mbN9bfd9w8gtO/+r+pD3xkv/c7/9tL/pb/3t8HbfgXYuFnfv/U55SvjW/188TllBSpyshy8EpTSfbLXy6JbQlBdU4Pa6mpUVVSiqKAAleUVaG1t5Z+zjqYkJyMwIADh4eEIDQlFaGgoSktK+Od5+fkI8PdHV2cXqqqrERwUhMjISEREhPNrWFu52TkIDw1DcHAw/P39ERYaioiwcNTX1yMoMAhhoWGIjozifw8PC0NtbS06Ojr5Z0UFhejs6kRgUBDCwsIQFRXFz4mKjERjYyOam5v5/Wtq+6pvJb29vA+5ublo72hHUGAg8vLy0NbWhpCQEISEBPNxsHPiHz9GS0sLv66+ro63y/rMzvPz9UNaahp6e3v5PUICgxAR9qKfbIzPmpoG5JidmYlbN29ekeXgWwDw/utsC+O7uakJtbk5yPFwx6Njh+Fx/Rr8ff3wyNsHifEJqK+r5+d2dXZi66YtmDx+As6cPg0TY2MsW7wE27dtQ+vzVly0tIK6qho///rVaxALdGBudhIW5y5g2ZKlcHZ0go+XN06fPIX1a9ZCS0MTRw4dwrkzZ5GclAyRQAfbtmzl5x8+eAij9UfB9t491NbUQqgtwK0bN9FQXw9tDU18vnYdjh8zxPYvt8FAT58LPSc7G5ojRiI0JIT3t7OjA3pCMc6eOYOKygqIBUJYnL+AstJSjNLVw7rVa3Du9Bns27MXc2Z9Ahtra7S3t8PUxAQL5s3DiePGuHb1KjZv2oxF8xcgLi4OGRkZEGppY9fOr2Fx/jwO7juAUbq68Pb05Pdk5K5cvgLz58ztMDAwkJflYhAopcsGsSFFV1cn8h7HINn8BOIXTUf88A+RoymH67u+wiWri7h98xbCQ0JRV9tXdsyI2bJhE75Yt36gDX8/fwwbMgSJCQmwsrCEmrIKn3E2t29j4dx5uHzxEhwe2uPCufPwcHvhpTs5OnKB1tT0ze4nuU/4gE+fOsVXDf981GguLEaMQEsbN65f58Qw4R89cgTOjo64fu0axDpCeLi7IzsrCyOHq/PZzvvb1ck/O3PKHJUVFRBqCXDh3DmUMmLEerB78CLx8cX6LzBl0iTk5ORg5PDhuGNtM/AZEzb7bM+u3UhLS+N9YZMwPDQUDnYPoScUwdnZmZ/r7u6OUdKJMnXiZHNZLgbA9qqlKYNB6OnpRqaLAwJnTcQzrWGAYBggVoC/vhZMjxnxWWN96zbiY+Pw/HlfCTIjZvMXG7F65Sp0dnaio72dC4StkoT4eFhesICKohJfMfFxcTA9YcJXw5GDhzBj6jRs3bwZrdK2Htx/AH2xLkqkajAnNwcCDU2sWfUZDI8ew5bNW/iAmYphE4Otrn5imPB3bN2GS5ZWOHXyJHSFIly5eAm5Obn8MzcXV6522QRhq8vKwgIVFRUQaGjh/NmznBi2ktjE6+nuQUN9A59sbNUwYhiZN2/c4GNk7ZQWl2DalKk4uP8AJ0ZjxEhs/PwLGB09hs0bNnCSs7KyUFdbh4XzF/Bz7e4/wJJFnxa99957r65TY199GMSIFLXFhYiaIES3UB4QKYKKldAiVIDFvNkwPW6C0+bmcHFyxJPcXHR3d/Nrurq6sG/XHqxavoKrOk8PD6562ExinzFVw2Z5Q0M9rly6hPXr1sHX5xECAwJx6MBBbN64ietoBhdnF8yeOQtlZWX89/z8fEyfMhWB/gH8d/b36VOn4q7NHU705ImTuFprbGjAxHETcNHSEpEREXjk64vlS5dxkphgmIo7sG8/fLy9+WqbO2s2X0FV1VWYOmkyrl+9ivLycsycNh0nDI0Q6OeP+3fuYvWKVbh/z5arsiOHDmPt6tV8Ffj4+HDt8dnylfx+jLipU6ZwtcZQWFCAKRMmcll4enjyfpqZmOKM+RmcNT+NlcuWzZPlhINSen6ADSl6Jb2IuWyBNl0lULEiiLjvZ6pACYZbt8LE+AQuWVkhKCAANdXVA14Jmz0R4eFcQGw12d69h8jwcLQ86xN2Rno6Hto9REdHB1qam+Ht7Y3zZ8/h/LnzePjwIZ+1/ch/kgdXF9cBg9vU1MRtUHFxMf+dteHm6oq4mFhurB0dHPmsZHbDwd4ed2xseB/u2Nzhxre1tW8llhSXwPq2NU6fMuc2ICYqmve7rbWNq7601FSuAVycnDjp1rdvw8nBEZnp6dy499+b2SmLCxe4LbW5bY38vDz+GZsYrJ3Kyj6Tzfrm7OSEhPgEREVEws/PTzrCPoSGhLnJcsKrXQgh+S+fyBzF0qICOIzTgUTct1LY0S1SwGU9IYyOHOGM37WxQVJCAr/xO7wd2ERobnmOpMQkxEZEPqusrBysziilKrIXMd/d/641nuqqgkpVGNFVRIWOAg4sWQzTEydw7swZuLu6ovDp04FZ9HsG0we9hKC9uxutHR1o7+hEV3f3q2OU7wA7n7nzRYVFCHJxxo0v1mL/gnnITE2dPIgYiUSyVfZiZsCdtqxHt3SlcGLESvDSVsaRPXs5Mcw+hAWHckP7c6E/8HtbsNkpYUGi7AdvACb2tq5uFJSWIDE6EnE+Pkh0d0WUnx9ycnJR39AwYF9fBRYkt3d1oaC4FFlZ2aiorER6ejo8zEzgMX0CcnWUcNVADykJCacHEUMIcZFtrKwgH8GTdDkZECkAInl06sjj0JhROGFsjLOnz3CPIj0tjXslPwT9kfl3CZwJlTkOz1ta0NbaCiKTZZAF+7ShpQUFJSU8cHxaWIjyqirUNzWh+flztDx/zu0QI+y77vu8vQO5ySlIt7NF1MHdCFw6F1GfTEb6rIkIXDwXfiYnEBcZiZrqmm+tHGYOJBKC+voGJHh7wu/wQez9bDXsrSzhuvNLxOqqQ6LD5KsM39lTkZGWljBAirQ6f9CUZw3GOj5EkZ4KesWKKNMfjgxdVQTrqOHwtm24duUqHj54wCNzZqhlO/QmYKJoaW/jBpbFKHV1ddzTeRWaW5/D5eFD5OXmIjszi0f2bEW/Cm0dHSjIzkaipwf8L5yH075dMN7wOSxMTsDt8iV4Xb2MADs7RISEIu/JEzQ1Nn2LZEZUZ3cXyktLEGp9C8FrliNMdwSSxeooFsiBCBQAbUVIBArI1RsJd9MTSE9N5WHBy2ATKS0tAwFW5xH7yQQEKX2AJf/1PlxGa+OJ+kecECpSgUSkAt/li5Cfm9tDKf1PTgyl9B+DWmOxS2833Hd+iU5dJdSLFOC+6Qtc2Pg5jq5ZA+tbNxEcEIi0lBSeYmlve7UwvwutnR1IDQ6E7yVLpCYncTc1OTGJe3Yvo4dS5KanIcb6FszE2nCwtoaPlw+SEhL5qpEFUxEJ1jcQuWkNwsboIFFDAbHqw2A25K+4KR6JUAMBAnVHIGjaOFz6+ivuGRXmP0WvNEcnAUFhSTEiIqOQFBaKxGP7ECxSw2PRcAStWgov4+O4uOATJGoqgIhUuFCJUAl+C2YhJChoQKUzYlnuj3mHt3ZsQ5hQBZ0CORwZ+g98qSSHXl1loP96kQp6xKq4u2E9KsrK2bWj+4lh338fhM7ODjgvnoNesRIS9NXh5eSMm9bWuHDxIrw9vVBcUMhTK0yvMifhTdEtkSAvOxuZd28jbPp43NFUhf09Wx49s7ikvKzshctNKZIe+SBw7TIkjdZChlAJVsbHeQzxODaOE/OyCqqrqUHo8SNI1R+Odu0hgPZQdGkPRY1QEeU68ugRyXF1zILjHsEwXJ4+EXZ2dsjKyEBvbw9Ky8p4Xsv54B5cXzQXkauXoEogj4TxQjzcvQtB/oHILyqC7b37MJT/GL1SoRKhCkJGacPb3Z3HPUx7dHR1IiI0FJZfbUOsUAUSsQKKteWxbc4c7Fm4EKGqQ1ExYgh62coTqqJKWwnXjxzmxEokks/7ifnWnn7r8xaEfDqLE+O+aA6PU25cvYab12/whFx/hP+m6O6VoKauDun+fgj6fCUKDDQh0VHAXT0Bzpqb48qly/wetTU1Us9HgifhIYicMR6tAnlIBIp4oKeJ06amsLO9z+0aUxP9YInDIMODKNFVA0RyeCYYhmgDAezHiuCt9jGgqwQwl1+37+gQK+DGsk/haO+AJzk5qCivgOlX23Fr/idI01ZEucZHqNT4GAFjxbA5boTI6FhUVVahu6sLxYWFWKOkgG6Rch8xIhUEaanAw9EBJUVF6OnuRlpMNFyWz4e72keQcI9WEXEjhsJox1ewt74Dk8WfwmXpAiTMHI8WkSr8BGrwcXXjIQf7OmE/MRcHSZFFqdlZSJkg5kx6njsLXx9fbldYLovp+JfT89+HXtKLGDcXJBgeRMr8GXjO0jo6iqjRVsDB+fNwysyMB6D96okR8/xZI2LXLEaPUJEPvFZHBUcXzOcRsoerGwoLC7kzwNZq2uM43F+/Eqmaclz4zUI5eM0Yh7N7dmP7hs3YM0IZXTxAfnEU6Cjiwq5deOTtjdKSUgTeu4erCv9AGeubSAESkQJCxolgaXgM0bGxqK6qGVB3ZcUlWKKogC6RKu+bRKgML01luDs6orioEC0tzXDc8zXvB3QVAe7NKqJQII9VeroICQxEXHw8omNi4X77JmzHiGC5fDHy8/J5yCGRSLz6PTKflwXJBBNha4NysSqiJugjPiKCR9osjRLg589nztsY+5aGegTMn4HqkXLo0VbgerVXpAQ3LTUc/PobnjdjmWSWZ2Lpd3b/eFdn1BlocaMoEasgQ6SGvZs38XRKcGAQdxQYHgcGwn/lQhQKWFZCAR1COfhP0oPVcWN4eXnjvs0d3Fw4G90vEcOCZUd9LVyxtODbANVVlQjdsh6E6X1d1o4i8vVG4Nq+fQgND0NVVdWgGC0p7jHmf/h3dIv7VkuvUBkOOiPg6eaG0rJS1NXVwnrBTBCx/EuTQRHduoowVx2K6xetuMrr7OpCeWUlLpqZ4f6tW2hoaOCqmRCS1U9MX4pVCtaJqJ1b0KSrinDDw0iMj+d6/YHt/b5Z/ZYRfmVMNJrHagNCNpC+5d8oVoLx7FkwMzXDHWtrbjNYaoaxwtxhz1VL0NU/cJEy7ITqOHbgAE+tsCRoW3s7ggMD4DJ3Gp7pKABiZS6IKP2RuLDrazg49KVUKsvLYbfiU/Rw26LEBV8ukMP5z1bCwcGe7/mUF+QjdeooHkQzldemMwx282bAxckFT/Pz0d3VzV1qZk87Ojtx6ex5rPnwv3m/WP+YSrOZMAp+Pt6orq7m+z0Wyxehl6nNl1YpI6dYoADzubP43kxzSzPPajOPtLioaEA1E0KK+4lJYH/oYf48y0XV1CD3k/EoGquDJD8/BAUEwvrmLZ6JZXkg2V3K14G53IzktMN70dNvKKWu4SOhCoy+2YVz587By8OTu7/sXHb/RA83FI7RHji/RagMo2mT+X6No4MDX/LZWTk4NXsqqgRMffUNukyohPPrVsPG5g5iY2L4hholBH4W5xEgGo7SkR+hVHMY7D+ZAttr1xAdFc2zyo8ePEC6UBW9QgXkDP8Y0WMEsD5piriYGJ54fBwby+2fl7s7bO/cwdxJk3Bs2AcDxLQLVXBp4VyEhYbg2bNnXMA2Z84gT0eeT8TB5CghSWMobLZtQlJyMt9Y7Hdg+n8SQur6iSng6iM0BPGhwUgJDECl/gh4GogQ6OMDJwcHHuGzPRLG7HcFYy9DQglqiorwZIIYlK+WPg+mmpEyZxZP9d+6cYMnH/uTmwVZWYheMh/dIiVOILvmiVANx7/8EhctLOHv58c9Qs/D+5GmzQaqwAfbIVKE06wpsLpwgatbtsHF1Q+laGxqgtnWzXBevQzeW77Agxs3ERsXx7PS3d1dsLlwHs7KHyJLbwRuLl4IR+PjiIyJQeaTXISEhfEEp4nRcRzZfwBffr4Rn4wbB3t1hQFiGsVqOLfhC77twJKaTD6ZWZlwnD8DbXw1DyaG2cHHImXc2LsHubk56GgfXLZHKZX0E1PBssieOzbDft8uOB7ci2am05XkcOHMady8fp13zsPNjc/sNyWml1BkOdujQ199gJheoQridTVguHcf339xcXLm6oLZrKryCkTt2IR6ATOWfYNm9sh7lBCmR47A+tYtxMbGwufKFWSO0eLn9NuMBH0NnN+/D/Z2D3n2V1bdpmdmIjE5FakZmXxfh6VQWI6Lrevs9DRYrv0MQSdN4OHtg4DQCHg7O8Hj9Ek82LoBd1Yuhd2yxXBdtgieixfAdtpEFIpUB4jJFKjCyug4sjIzB2xRV083QhwdETdtNEqHfwiJjlSVSsnp1VWAi44arExMUVZaBknvYC3EiZEQUl5dWoz0GWPhum4lnGdMQK1ACdP/9lccObC/Lx1/lqkcD5QUFb8xMcxtjNy+Eb3iPu+FHUylPZw+iW81X718BaHBITyNX11dg4hD+xAsUEWHlBSuJkSqODljOt/kYq6tv7sbAqeNRbfwhf6uEirg0rJPceXyJYQEBXOX+3XOCVPD/Z+x/rGjm0gQFB6OR/7+CHGwR8j+3Yj7dDZSROrIHTkMBSOHoWKkHOo15dCirYAmbQVIxKp9jolIBXba6nC8/4BvI/S3zWTU2PQM4fds4L1xDR7raaBNe2jffpZu3ypvFMrh3GhdBD7y5XtPL8uVE9Pb21ua4GSHUj01mAg1kaGvjsSR8jCQV8AJQ0OcNDXj26MsAKytfvNHhz3JzED0WOGAkNlRr6uG81u2cEGzeCQjLR0lJaXwO3IYIXOm4f7KpWjRU+tbLUIVZAlUcXjrVlhZWsHf15+nV1oGub6KcNXXximjo9yVZ7P25fjmVWBCCAsJ4V4g2zDLzs7Bjf37ELJuObIWTEWR5jC0aQxFi5Y86jXl0aIlB4mWPKDN8oUqgyL25yJlWC6cx415Y0PjIOGy/z9rbUVadiZ8zpyG7eRRiBSqokcstYu6iigSKuHh2lVISUrsU4PSazkxPT1dKRFfb0GFjiK2f/BXNOmqwEVVDkvGT+Azm9kCFljGREVxj+lNwFSjs8U5VImGD5DCZlfceF2YGxnBwsoKHl5eSItPQJLJUTiPN0Dw2dOw+XoH2qXeGEt1uBuIYHrcmG/tsjRQ6IxxkLzk7dTpKMJo4QJYWVrwHcbqqqrvXNH19XUw3rcXW9etR3xCAoLY7uq2TTgz7O94qKGIlDmTkLluKRK2b0DEN18i8KstiNi+AWnrViBp5gRkaymip99eipSRoqOCWyYmSE5JQUtzyysdIxbHVVXXwM3RES4njBA/VpuPAWKm3hSRK1CE10kz7p2xnhNCmjgxdTVloSnTDVBooAmL0WK0iVVgr66E/SuW8x1KMxMT2N65i5Sk5O+djf1gmQOPtcvRI+6b/exgfv/9uTNgZGiIo1s3w/qMOcK+/hIhBlpwOrAXbs7OeDB35kB8wNTe5dkzcMrsJLcd10+fRrHe8AHbwo44LWUY7t7F7c9jtoP5ivwZAxsw88BM9+3ByjGjcdbMFLa3b8Nj1WI80huJi/Nm4caRgwi1t0dyRBgyUtP41nBO3hPk5GQjNykRcR6usF04G60vufGX9HT4ambeIksnsVn/KrDJ0iuR8EIPP4tzuK6phDKBAo+dmI30XzAbBU/6bC0hhO3/v/de6iNP/xo9NWQsmgWf+TNRI1CCm4YiTmzeBBNjkz7BMDWRkcl9+peL+5g7Kg2K+g5J38+yvBwkTdQf8KzY0SRSxsGF82C87FME6g9H8uRR8BKo4Obna3l84mhvDx+xJnqlEXWTaDiOfbaC2zc3FxccXLwQ7XpqXI30EaMAv9E6OGVszDPdTC32R+f9aGprQ3FxIZKCA7Fr40asmzsHDlcvI9TPD/cXzUGZjhweTh3DK3MCg4NRUlaO1vZ29PZK+or8KOVhRGFZGXw9POC6YCY6pTaQxS8WOiNh8+lcGO/YgZysbLS/IsZjC7i/nedt7UhMz8CyGTNgrzoEEl0ldInk4Dl3Bgry8vrlmMeJCdmz806HrgpsZ0xA/AQ9eCgPhb+2Io7u/AqGxidgaGaK29Z3uOuYlf8E6bk5SM3JQXpeHnILn+JJYQGeFBSgqLgIRU8LUVxYhIfnTqNU9GK1MIKC1T7GNpEQj4Uq6NX+GHHqQ3Ft9UpctLoEZycXWF+9jjANZalRVUWouhKO7t7d56q7uuHQBAP06PaTosTVQeiUMTA3MR1IFfWn75lwI30fIdzUEFnbv8DtT+di04rlsLtzB8lJiXA4dAClbOaLFWGqORxfb9/OPURmo1iGu66+HhXV1SjJz4fv3bsI270T0XOmoZxPmj5i2AR6IpCHg74G7llYoCAvH61tbXje0YG65hZU1tWjpLICecVFyM3JQXx0DG8r2PgYPOdMRuKIj9CiNQzeAkU8umiF2tqa/okewIl5PG3c4WptRexV/BhVumoIGC6HBB0lnF40D5YrluLa8oXwWLkIj7ashe+xA/A7egB+B3fDZ/8ueO77Bq57vsGDvbtgeGA/3zjz9vLCmZ1foVTnxWqRiJQRO3wIIkfIg2gORZSGPE4vWwKL8xZcIKnJKbh16Qq81OUhYQZSqIarIh2YGBnzujMPZ1cY6WnzpOrLxKSM1YG5iTHu3b2LhIQENDW3ID44CJnnzBE/dxISNYchaNoY2OzcgUdenryeLDczE+7TxgJ6fTFFoNpH2DJCFUsXzMfObdtwaN8enDx0CPYHDuDGus+wT6CBdB0l9GgpcsNPRGyrXRUQKiNHrAbHo4cQGxWNsKBguNy/D98bVxFucQ7RJscRdWg3Yr/aioQNq5CwbB4SJoiRriGPOJX/RvQYHUSuXwXXs+Z4yvaXXkT+fZWZmXrqcxsECggePpSnQZ4LVdAkVEKOnjqe6qmjRKyKOoECKoVKKBujhaox2qjWH4kqvREo0x2BYl115OqNwGU9bRxbvxYHdu3CsXXrpLPrBTldQmVIdBQRJ1LH+bWreGzk7OyEtJRUNDU0ID4uFkZyH6BbpIpWAYumF/CUDSM72D8AlpMMpJlaKTkiJdToqmL/ooUwOnGCb0t4mJ9C8qJpKBapIF2sBr9Vn8LZygIhIWEoePqUe2QNtbWwmzkJ0SOGok4wDL3iYQhX+wjLtTWwdNJELNEV4Ut9XRiN0sdnH3+Aa0P+hljFv6JVqMxTP9wzEyghU0cVrvt2wf+RL+7cvIXj+/fjytbNcF+7Au6L58J5/iw4L5wD96UL4LNiEQJWLUbU5ysRsWMzAo4fRZjNHSTHxPKsOyPlpQzADk5MmVBZhYhVINHt8837XEJlQNgXEPGUua4KoKva93cdJb6D1yGQR4OWPMpGDsGTkUPgP0IOyzU1sGrhQhiOHY12afzS72J2CRQQY6CDi1s348rly/Bw9+B2gZXdMhXEaoYPzf0ErbrKaBCr4sr2L3nRnauzC7IzMnGfeWws5yVkbivbju3LbYVpKcF2xkQELPoEcUIVJGsrwHPuVLgZHYW3swvSMjJ4fXRnRycfPEuUOl20wGY9EexXLED2aHVUanyEWB0VhOprwEdbCa4GApjOm40p6urYryfGpcULYKGtjvMf/RnxWkoIGCuCl+ERxMbGoKCgANFRUfD18kKirw8yPdwQ7+SIcCcHhLu7I8LXF1EhoYiJCOdFkamZGSivrkFLWzu6enpeFXNN4sRglsq/SoQqvf2++YtDCWwlRap9DDf5/8aDj/+Cy3//Dxj95X3s+vO/Y+uf38faP/07lv7X+1jwp/cx5y//Ca1/fIAJmprwEA7nKgmMcIEiyrTk4D59Iq7t+ga3b1vztAlLILLEJdOr/YgO8Ienhjye6qvD5sxZrsb6MtqVyE9LRcLG1SjQUcIzHSWUag2Du9rHeDBGjFPKQxGioYSAZQvhcewgnO7dQWx8IkpLy3g+StaNZQXxt2/cxPI5c3Bg+iQEfb0V4euWI2LdSsTu3YHIsycRZG+PB3fvwtnRGeERUbhoaoady5fB4YQR7C5ZIjQqGmlMNeY9RU7uE6SkpCAqJAzeTi5wvH4Nd06exPWjR3B5315c2L0LFw7sh7XVJaQlJeP5a7xHBkrpEE4MJ0eoFM6EyFcE+ylQBLTlUK72IWyG/A0n1BRgPGY0DGfOwNYF87Fh2XJs+/wL7N6+HYf27seJY4Y8yXjZwhIWRobI1VaCRGMYcpX/AZ8Jo3F//SpcPmUOR0cnREdGorio+Fs7kAys+t/B6BguTxyD8MAgBPkH8Iw2J5AV6WVlIsvmJrItziDa3BSO5qfhfOcubM+eRfT1q4gKDERySiqKS0p4QrG35/UlVawE1+mhPS9YZFvb0WFhSIiJRWpaGjLz8lBUXonymlqU1dQiv6QMjwKDcfbUSVwyM4WD2QluxOP2f4OEHZsQv2EVYlfMh+/MybAdLcZlkSZOa4+AiUADx8UCHB+tC9NZM3Bmyzb4uDijqXFwMNoPQsjTQU9uchdrHvBU+hBxw4cgQOnvCJ8yBv5L5sJz4zo4Hd4P1wvn4P/gPqJ9fBEbEY7kxETkZGXx3TxWacgyuUx/s/3/hupqJB8/ipQv1iDc2BD+D2zh7u6B8IhIZGdn83jiZZ0qi8zMDAS6uaKiohwF+U9RXlY+aGOurbsLTc+eoba+HvWNTXjW8hzPWlrQ2s7qvDr4VzFY7RdbI92SHjzv7ERjayvqnjWjprEJ1Y0NqKpvREVdPbLz8vEoIADuXl7w8PDku4j+dnYItrZG2OWLCDY3QyCrjNm0FiHL5iNi5nhE6GsgREcFIeLhCB0tgP/kMfCYMx2uKxbDdfsWBBgdQci5Mwi9fBFh1jcRcd8WcS7OSPHzRWZ0DArynry2kIRSen2AFIaDmzbprRIJEcgIsLJEwL278HKwR4B/INLSM1BUUoK6hga0tLbyRtkeObMLTLgvf/mHN87232trUJGXj9qGBp7d5fsU9fW8XOgVOnUQ2J4H8/m7uru4oN+mNIrbEEJRUVGJx5GR8LN7ADcrC7iYmcL5+DG4Hj0E5wP78GDX17i1ZSOurV0Jt9XL8HjFPKQtmY3c+VOQO30UUscLET1BDJ9JBrCZMBoXRothYSDG3RlT4LZ6BYL27kLUaVPE3LqGx85OSA4M4lkM9r2fqtpa7h02t7byosC2ri50sJxcr7Su7TUTkoE9TmsQMWFhYf925eLFurrGRjQ2t/DChKKiYv5lILYKXvltqTcEJ+97OvQyWBFGV08vD8YaW1pQ3/QMdU1NqGlsRHVDA6rq6lFZX8/jhIraepRWVqOgtBS5T58iNT0d1y0tcfKzlUhdsRDpsychc4o+ciaIkTdegILxAhSNEaBAfySytOWRPOJjZKgPQZKGPEJHyMFLQwGe08cj7MuNiDxhhMhrVxDx8AFCXd0R6uWNqMAgJMUn4OnTAk5AQ3MzrzvrYlvCbzHGV4E9JR3Ah4OIYWior3/ITmBC7GjrQEcbi4Bfr6N/LLChNHd34WlJCULDwuHm4ACHW7dgf/kS7KwsYX/hPOzPn4P9+bNwPncW7mfOwOv0afidOgn/E8cRsH8vgr7ZjvCdmxD7xSo8Gi9GjLYSevSHg+qrAezQU+WFi8+15ZA//CPEitQRMW8aQjavQ8ihvQgwP4nAi1YItLZGhLc3stLSUFxaihquJdrQ2dWN7u5e9PTtyUtJkB3JDwMhJFqWEw4AE/tP4rP8x76zDJ53diM9MgKJV60Qe+AbPN6wCmnL5iBz3lRkfzIOOdNHI32CGHFjdRAxWou7suF6GogapYHH+pp8DyZBOByPtZTxWFMB8ZqKSNBUQLKOCrIMBEibpIfkmeOQtHAGolcuhu+GNQjc+w2CzU0Rcusmojw8kBQTy0tcSysqeYUmW6XtnV1clfZ99/PnA3usviwnHOzx6KwQQPaCHwMD+TRmA0BRUlyElFMmKFo+B1VT9VBvoIFGkTKKdZSQMkob4dPHIuDT2fDb8BmC9uxE+JH9iDQ6iugTRog1M0a8mQnizc2QYG6Gx2fMEXfuNGItziP2khVir19F3B0bPH5ohwR3V6T6+SI1PBwpCfG8VJYVQDQ8a8bztja+WcaSi6+ylT8nKKXsqVZ/keVkABKJ5BvZi/4ZMOF3si+ItrWj9tkzlFbX4GlpGdJzcxHo4QH/jWtRNVmMntEjAIPhKBQrw37cKNxlXqCpCbytbyPE0wMJUVEDJbEse1tZUYnqqmrUVNfyr/Wxo6aunkfPzDmpb2hEQ9OzAeP7vJ2tgE50sk0xqR1gk+NV+Kk1xHeBUnpPlotBYMbnbZ8dwyxWXUsLCsvLkZadg5DgYLjevwc3K0t4mhgiYP8uRH69HRFb1yFs9VIkzJmE6lEjAYORvFQ0ebQGrny+GpdMTOBk78BrrorLytDU3IxOplZ6e0HIS1/1lu3Aa/72G4NIlotvgVJ6RfYqWbS3tiLS2QmhN67Cz/QE3HftxKPPVyJ8yRwkzZuKnFnjUDxZDxUThKgbp4XmsVpoMRiBFn1VdIqV0C5SRrqGHNxnTYbt0SO4d+cOQoJDkJeb1xcY/gxOhyy+z43/qSB91P73P/2PPRCA9j0Y4LXICA1B6qxxKJ+mj+oJOjyhWSFQQoWmHKo05VCvJY86TXn+/yJNOU5CjJYiQsUjED7ZAJ5rVsDhyEG42tggKCgYqawGrKKCV8v/UirlF7yvriwHrwUh5JJsA/1obKxH8PrlaBMqoGjkEHhrKOK+gQh3506H3erlcNmyER7f7IDH/t1wP7wfnoZH4X7KDH5XriDU1hZRLi6IDQ5BSnIKCgoKuZ1g6Zn+urI/EtjL7d7q2WXs4TOU0m/ZmmeNDYjetQ3FOnLInTMFLnt347qRIe5aWcLLyRHRoaE8SZf/JJfXoLHarcrKKlRX13LDzFInLHvAaqmY/WBfVfilVMivAZRSoazsvxeU0qOyDYXa2yF8lAaiv9qEzAA//vAAn0e+SEpK5jXN7e0dfcb6Z44BfosghNi/1Wrph/TRWOyBZwMofZKLkpBANFaU8yQiU0VPnz7ltWG/hMH+rYK9uZBS+t2PKfkusEcEyjTIYwEGlj9jWWJWbP1LGc7fMNbLyvqtIP3+/zXZVt/hnwchxPtHeSEDe1kaISRF9gbv8Pb4wSpMFpTSke+eUv7DIH19yQxZ2f5g9Pb2zpO92Tu8OVj1yxtF+G8L6Ttj9sje8B2+H8w1/klfVyJ9QZyx7I3f4fWQfsf19Sn9HwuU0vcppVdlO/AO3wYhJJA5T7Iy/MnAHqvxJlnoPzIIIY/ZW/5kZfeTg733kVJqKtuhd+CkOLa3t38sK7OfDczmAFgqrfB4B6n3NfCgnl8SzFsDIGbffpbt5B8JhJB69qow9rIKWRn9YpA+WusD2ads/FFACElkr3T5p7LFPwekHpuhbMd/zyCE3P5VqK7vg/SNsvMJIW9e2/obBBsfpXTTj5KQ/LkgfV/mUEKIFWElLr8zEELuSR/w+su9U/mHQLp6NAghgx8y/BsFISSOUjr2J3/h6M8BqWPwr5TSTwghv8m3mLNXTVJKV7Bx/CpeC/9jgnks0hU0ihBiJzv4XyMIIcGU0pms379aj+vHAptx0ky1GqXUjBBSLiuQXxLssVSU0luUUn1Wz/27WyFvAukqYiTpEkJush0+WUH9HCCEtBBCbCmlc6UB87/8IQmRhXQVMZKYN6dBKd3G8k3S1+D+6CCENBNCPCmlh5kxlxLB7v+OjO+ClChOFtvWZo8gZvtAhBBLSmkYIWTwA5pfA7YdLj3/OrueOSCUUlE/Cb9mIv4H2HcQTL3f2rIAAAAASUVORK5CYII=" alt="Distribuidora Lucas">
+    <svg height="32" viewBox="0 0 168 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="2" y="15" font-family="'Arial Black',Arial,sans-serif" font-size="10.5" font-weight="900" fill="#1e3a6e" letter-spacing="1.2">DISTRIBUIDORA</text>
+      <text x="1" y="42" font-family="'Arial Black',Arial,sans-serif" font-size="28" font-weight="900" fill="#F26522" font-style="italic" letter-spacing="-1">Lucas</text>
+    </svg>
   </div>
   <div class="n-tabs">
     <div class="n-tab on" onclick="navTo('p-maestro',this)">📦 Maestro de Artículos</div>
@@ -1468,24 +1422,18 @@ select option{background:var(--surface2);}
 <div class="page" id="p-config"></div>
 
 <!-- MODAL matching manual -->
-<div class="modal-bg" id="v-modalBg">
+<div class="modal-bg" id="modalBg">
   <div class="modal">
     <div class="modal-hdr">
-      <div class="modal-ttl" id="v-modalTtl">Detalle</div>
-      <button class="modal-close" onclick="v_closeModal()">✕</button>
+      <div class="modal-ttl" id="modalTtl">Detalle</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
-    <div class="modal-body" id="v-modalBody"></div>
-    <div class="modal-footer" id="v-modalFooter"></div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer" id="modalFooter"></div>
   </div>
 </div>
 
 <div class="toast" id="v-toast"></div>
-
-
-
-
-
-
   </div><!-- /pageVentas -->
 
   <!-- FINANZAS MODULE -->
@@ -2382,12 +2330,12 @@ document.addEventListener('keydown',e=>{
 </script>
 
 <!-- ═══ VENTAS JS ═══ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <script>
+// ── Ventas IIFE — scope aislado, funciones globales expuestas via window ──
 (function(){
-// Expose initApp for activation
-const _origInitApp = window.initApp;
-
-pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
 
 
 /* ============================================================
@@ -2402,7 +2350,7 @@ const LS_RUBROS='dl_precios_rubros_v1';
 const LS_ANULADOS='dl_precios_anulados_v1';
 
 function defCfg(){return{password:'lucas2026',margenRojo:15,margenAmarillo:25,margenRojoRev:10,margenAmarilloRev:18,
-  listas:{iva:21,lista2:3,lista3:20,lista4:-10}};}
+  listas:{iva:21,lista2:3,lista3:20,lista4:-10,lista5:0}};}
 function loadCfg(){try{const s=localStorage.getItem(LS_CFG);return s?Object.assign(defCfg(),JSON.parse(s)):defCfg();}catch{return defCfg();}}
 function saveCfg(c){localStorage.setItem(LS_CFG,JSON.stringify(c));}
 let CFG=loadCfg();
@@ -2428,42 +2376,18 @@ let ARTICULOS_DATA = null;       // bridge EAN desde plantilla de Artículos de 
 /* ============================================================
    LOGIN
 ============================================================ */
-function tryLogin(){
-  const v=document.getElementById('v-loginInp').value;
-  if(v===CFG.password){
-    sessionStorage.setItem(LS_SESSION,'1');
-    document.getElementById('v-loginBg').style.display='none';
-    initApp();
-  }else{
-    document.getElementById('v-loginErr').textContent='Clave incorrecta';
-  }
-}
-// ── Recibir sesión desde el tablero padre ──────────────────────────
-window.addEventListener('message', (e) => {
-  if (!e.data || e.data.type !== 'DL_SESSION') return;
-  sessionStorage.setItem(LS_SESSION,'1');
-  document.getElementById('v-loginBg').style.display='none';
-  if(!_appInited){ _appInited=true; initApp(); }
-});
-let _appInited = false;
-
-document.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('v-loginInp').addEventListener('keydown',e=>{if(e.key==='Enter')tryLogin();});
-  if(sessionStorage.getItem(LS_SESSION)==='1'){
-    document.getElementById('v-loginBg').style.display='none';
-    _appInited=true; initApp();
-  } else {
-    // Pedir token al tablero padre si estamos en iframe
-    if(window.parent && window.parent !== window){
-      window.parent.postMessage({ type: 'DL_REQUEST_TOKEN' }, '*');
-    }
-  }
-});
+function tryLogin(){ /* login manejado por tablero unificado */ }
+// En el tablero unificado, initApp se llama via window._ventasInitApp() desde _activateVentas()
+// El DOMContentLoaded ya ocurrió; registramos el listener si el elemento existe
+(function(){
+  const inp = document.getElementById('v-loginInp');
+  if(inp) inp.addEventListener('keydown',e=>{if(e.key==='Enter')tryLogin();});
+})();
 
 /* ============================================================
    HELPERS
 ============================================================ */
-function v_toast(msg){const el=document.getElementById('v-toast');el.textContent=msg;el.classList.add('on');clearTimeout(window._tt);window._tt=setTimeout(()=>el.classList.remove('on'),3200);}
+function toast(msg){const el=document.getElementById('v-toast')||document.getElementById('toast');if(!el)return;el.textContent=msg;el.classList.add('on');clearTimeout(window._tt);window._tt=setTimeout(()=>el.classList.remove('on'),3200);}
 function fmtMoney(n){if(n===null||n===undefined||isNaN(n))return '—';return '$ '+n.toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function fmtPct(n){if(n===null||n===undefined||isNaN(n))return '—';return (n*100).toFixed(1)+'%';}
 function toPct(frac){return (frac===null||frac===undefined||isNaN(frac))?'':+(frac*100).toFixed(4);}
@@ -2525,10 +2449,11 @@ function navTo(pid,el){
   if(pid==='p-tablero')renderTablero();
   if(pid==='p-hist')renderHist();
   if(pid==='p-export')renderExport();
-  if(pid==='p-config')v_renderConfig();
+  if(pid==='p-config')renderConfig();
 }
 
 function initApp(){
+  try{ if(MAESTRO&&MAESTRO.items&&MAESTRO.items.length&&!localStorage.getItem(LS_AGRUP))aplicarAgrupacionVendedor(true); }catch(e){console.error(e);}
   document.getElementById('navH').textContent=HIST.length;
   renderMaestro();
 }
@@ -2570,6 +2495,8 @@ function formulasBuiltin(){
       parcial1:'COSTO*(1-DESC1)', parcial2:'PARCIAL1*(1-DESC2)', neto:'MARGEN<1?PARCIAL2/(1-MARGEN):PARCIAL2'},
     {id:'suma_venta', nombre:'Descuentos en suma simple + margen % sobre precio de venta', builtin:true,
       parcial1:'COSTO', parcial2:'COSTO*(1-(DESC1+DESC2))', neto:'MARGEN<1?PARCIAL2/(1-MARGEN):PARCIAL2'},
+    {id:'estandar_iva', nombre:'Estándar con costo con IVA incluido (Parcial 2 ÷ 1,21)', builtin:true,
+      parcial1:'COSTO*(1-DESC1)', parcial2:'PARCIAL1*(1-DESC2)/1.21', neto:'PARCIAL2*(1+MARGEN)'},
     {id:'donyeyo_deviano', nombre:'DON YEYO / DEVIANO (fórmula real del Excel, marca propia)', builtin:true,
       parcial1:'COSTO-(DESC1*COSTO)', parcial2:'((PARCIAL1/3*4)+((PARCIAL1*1.21)-PARCIAL1))/1.21', neto:'PARCIAL2*(1+MARGEN)'},
   ];
@@ -2667,7 +2594,63 @@ function guardarVersionMaestro(motivo){
 /* ============================================================
    MAESTRO — IMPORTAR EXCEL (formato FORMADOR)
 ============================================================ */
+// Importa el FORMADOR sobre el maestro armado desde Chess: no agrega ni saca artículos (la base manda),
+// solo completa por código COSTO (col. D), DESC 1, DESC 2, MARGEN (+ margen revendedor y precio súper).
+// Parcial 1 y Parcial 2 se calculan con la fórmula del proveedor (igual a las columnas F y H del Excel).
+function importarFormadorSobreBase(result,fileName){
+  const porCod={}; MAESTRO.items.forEach(i=>{porCod[i.cod]=i;});
+  let cargados=0, fueraDeBase=0; const netosExcel=[];
+  result.items.forEach(f=>{
+    const it=porCod[f.cod];
+    if(!it){fueraDeBase++;return;}
+    it.costo=f.costo; it.desc1=f.desc1; it.desc2=f.desc2; it.margen=f.margen;
+    if(f.netoExcel!=null&&isFinite(f.netoExcel))netosExcel.push({it,neto:f.netoExcel});
+    it.margenRev=f.margenRev; it.precioSinIvaSuper=f.precioSinIvaSuper; it.neto=f.neto;
+    if(f.prov)it.prov=f.prov;
+    it.fechaActualizado=new Date().toISOString();
+    cargados++;
+  });
+  const inf=inferirFormulasPorProveedor(netosExcel);
+  MAESTRO.fecha=new Date().toISOString();
+  MAESTRO.fuente=fileName+' (costos) sobre base Chess';
+  MAESTRO.revCount=MAESTRO.items.filter(i=>i.margenRev!=null).length;
+  saveMaestro(MAESTRO);
+  guardarVersionMaestro('Costos desde FORMADOR: '+fileName);
+  const sinCosto=MAESTRO.items.filter(i=>!i.costo).length;
+  toast('Hoja "'+(result.hoja||'?')+'" importada: '+cargados+' artículos con costo, descuentos y margen. '+(fueraDeBase?fueraDeBase+' del Excel no están en la base activa de Chess (se ignoraron). ':'')+'Sin costo: '+sinCosto+'.'+(inf.asignadas?' Fórmula detectada por proveedor: '+inf.asignadas+'.':'')+(inf.difieren?' '+inf.difieren+' artículos no coinciden con el Neto del Excel (revisalos en Márgenes).':''));
+}
+// Para cada proveedor prueba las fórmulas conocidas contra el NETO que traía el Excel y guarda la que mejor coincide
+// (solo si el proveedor no tenía ya una fórmula elegida a mano).
+function inferirFormulasPorProveedor(pares){
+  const porProv={};
+  pares.forEach(x=>{ (porProv[normKey(x.it.prov)]=porProv[normKey(x.it.prov)]||{label:x.it.prov,list:[]}).list.push(x); });
+  const cand=['estandar','estandar_iva','donyeyo_deviano'];
+  let asignadas=0, difieren=0;
+  const usadas=[];
+  Object.keys(porProv).forEach(k=>{
+    const g=porProv[k];
+    const score=id=>{
+      const f=getFormulaById(id);
+      return g.list.filter(x=>{
+        const base={COSTO:x.it.costo,DESC1:x.it.desc1,DESC2:x.it.desc2,MARGEN:x.it.margen};
+        const p1=evalFormulaExpr(f.parcial1,base);
+        const p2=evalFormulaExpr(f.parcial2,Object.assign({},base,{PARCIAL1:p1}));
+        const n=evalFormulaExpr(f.neto,Object.assign({},base,{PARCIAL1:p1,PARCIAL2:p2}));
+        return Math.abs(n-x.neto)<=Math.max(0.01,Math.abs(x.neto)*0.0005);
+      }).length;
+    };
+    let mejor=null,mejorN=-1;
+    const actual=getFormulaCfg(g.label).id;
+    [actual].concat(cand.filter(c=>c!==actual)).forEach(id=>{const n=score(id); if(n>mejorN){mejorN=n;mejor=id;}});
+    if(mejor!==actual && !FORMULACFG[k]){
+      guardarFormulaCfg(g.label,mejor); asignadas++; usadas.push(g.label+' → '+getFormulaById(mejor).nombre.split(' (')[0]);
+    }
+    difieren+=g.list.length-mejorN;
+  });
+  return {asignadas,difieren,usadas};
+}
 function handleMaestroFile(file){
+  if(!file)return;
   const reader=new FileReader();
   reader.onload=e=>{
     try{
@@ -2682,7 +2665,12 @@ function handleMaestroFile(file){
           renderMaestro();
           return;
         }
-        v_toast('No pude reconocer el formato. Revisá que tenga una hoja con columnas COD / ARTICULO / COSTO.');
+        toast('No pude reconocer el formato. Revisá que tenga una hoja con columnas COD / ARTICULO / COSTO.');
+        return;
+      }
+      if(MAESTRO&&MAESTRO.baseChess&&MAESTRO.items&&MAESTRO.items.length){
+        importarFormadorSobreBase(result,file.name);
+        renderMaestro();
         return;
       }
       const rubroPorCod={};
@@ -2692,18 +2680,18 @@ function handleMaestroFile(file){
       saveMaestro(MAESTRO);
       if(ARTICULOS_DATA){mergeArticulos();}else{aplicarAnulados();}
       guardarVersionMaestro('Carga de Excel: '+file.name);
-      v_toast('Maestro actualizado: '+MAESTRO.items.length+' artículos ('+MAESTRO.eanCount+' con EAN, '+result.revCount+' con margen revendedor)'+textoAnulados());
+      toast('Maestro actualizado: '+MAESTRO.items.length+' artículos ('+MAESTRO.eanCount+' con EAN, '+result.revCount+' con margen revendedor)'+textoAnulados());
       renderMaestro();
     }catch(err){
       console.error(err);
-      v_toast('Error leyendo el archivo: '+err.message);
+      toast('Error leyendo el archivo: '+err.message);
     }
   };
   reader.readAsArrayBuffer(file);
 }
 
 function parseMaestroWorkbook(wb){
-  let primary=null, rev=null, superList=null;
+  let primary=null, rev=null, superList=null; const candPrim=[];
   wb.SheetNames.forEach(name=>{
     const aoa=XLSX.utils.sheet_to_json(wb.Sheets[name],{header:1,defval:null,raw:true});
     // intento FORMADOR-like (COD + ARTICULO + COSTO)
@@ -2722,17 +2710,18 @@ function parseMaestroWorkbook(wb){
       for(let r=hIdx+1;r<aoa.length;r++){
         const row=aoa[r]; if(!row) continue;
         const cod=row[iCod], art=iArt>=0?row[iArt]:null;
-        if(cod===undefined||cod===null||cod===''||!art) continue;
+        if(cod===undefined||cod===null||cod==='') continue;
         if(isNaN(Number(cod))) continue;
         rows.push({
-          cod:Number(cod), prov: iProv>=0?String(row[iProv]||'').trim():'', articulo:String(art).trim(),
+          cod:Number(cod), prov: iProv>=0?String(row[iProv]||'').trim():'', articulo:art?String(art).trim():('Artículo '+Number(cod)),
           costo:iCosto>=0?numOr(row[iCosto]):0, desc1:iDesc1>=0?numOr(row[iDesc1]):0, desc2:iDesc2>=0?numOr(row[iDesc2]):0,
           margen:iMargen>=0?numOr(row[iMargen]):0, netoOriginal:iNeto>=0?numOr(row[iNeto]):null
         });
       }
       if(rows.length){
-        if(/REVEND/i.test(name) && !rev){ rev=rows; }
-        else if(!primary){ primary=rows; }
+        const tieneDesc=iDesc1>=0||iMargen>=0;
+        if(/REVEND/i.test(name)){ if(!rev && tieneDesc) rev=rows; }
+        else candPrim.push({name,rows,score:(/^\s*FORMADOR\s*$/i.test(name)?100:0)+(tieneDesc?10:0)+(/LISTA/i.test(name)?-50:0)});
       }
     }
     // intento hoja tipo LISTA SUPERMERCADO (COD LUCAS + CODIGO BARRA)
@@ -2751,6 +2740,7 @@ function parseMaestroWorkbook(wb){
       if(rows.length) superList=rows;
     }
   });
+  if(candPrim.length){candPrim.sort((x,y)=>y.score-x.score); primary=candPrim[0].rows;}
   if(!primary) return null;
   const revMap={}; (rev||[]).forEach(r=>revMap[r.cod]={margenRev:r.margen,netoRevOriginal:r.netoOriginal});
   const superMap={}; (superList||[]).forEach(r=>superMap[r.cod]=r);
@@ -2781,28 +2771,29 @@ function parseMaestroWorkbook(wb){
       margenRev: rv? rv.margenRev : null,
       precioSinIvaSuper: sp? sp.precioSinIva : null,
       neto:netoOverride /* override manual o de seguridad; null = usar calculado */,
-      fechaActualizado:null
+      fechaActualizado:null, netoExcel:it.netoOriginal
     };
   });
-  return {items,revCount,eanCount};
+  return {items,revCount,eanCount,hoja:candPrim.length?candPrim[0].name:''};
 }
 
 /* ============================================================
    MAESTRO — IMPORTAR EXCEL DE ARTÍCULOS DE CHESS (puente de EAN)
 ============================================================ */
 function handleArticulosFile(file){
+  if(!file)return;
   const reader=new FileReader();
   reader.onload=e=>{
     try{
       const wb=XLSX.read(new Uint8Array(e.target.result),{type:'array'});
       const result=parseArticulosChessWorkbook(wb);
       if(!result||!result.count){
-        v_toast('No reconocí columnas Código / Descripción / Cód. Barra en ese archivo.');
+        toast('No reconocí columnas Código / Descripción / Cód. Barra en ese archivo.');
         return;
       }
       aplicarArticulosComoBase(result,file.name);
       renderMaestro();
-    }catch(err){console.error(err);v_toast('Error leyendo el archivo: '+err.message);}
+    }catch(err){console.error(err);toast('Error leyendo el archivo: '+err.message);}
   };
   reader.readAsArrayBuffer(file);
 }
@@ -2869,9 +2860,10 @@ function aplicarArticulosComoBase(result,fileName){
   ARTICULOS_DATA={byCod:result.byCod,fuente:fileName,count:result.count,eanCount:result.eanCount};
   guardarAnuladosDeArchivo(result);
   const r=construirMaestroDesdeArticulos(result,fileName);
+  const conRubro=aplicarAgrupacionVendedor(true);
   const sinCosto=MAESTRO.items.filter(i=>!i.costo).length;
   guardarVersionMaestro('Base de artículos: '+fileName);
-  v_toast('Maestro armado desde Chess: '+r.total+' artículos activos ('+(result.anulados?result.anulados.length:0)+' anulados quedaron afuera'+(r.quitados?', '+r.quitados+' que ya no están se sacaron':'')+'). Sin costo todavía: '+sinCosto+' — se completan con "Cargar proveedor".');
+  toast('Maestro armado desde Chess: '+r.total+' artículos activos ('+(result.anulados?result.anulados.length:0)+' anulados quedaron afuera'+(r.quitados?', '+r.quitados+' que ya no están se sacaron':'')+'). Sin costo todavía: '+sinCosto+' — se completan con "Cargar proveedor". Rubros de la lista de vendedor asignados: '+conRubro+'.');
 }
 // Quita del maestro los artículos anulados en Chess (columna "Anulado" = SI). Devuelve cuántos sacó.
 let ultimosAnuladosQuitados=0;
@@ -2913,33 +2905,88 @@ function mergeArticulos(){
 ============================================================ */
 let maestroFilter='';
 let maestroRubroFiltro='';
+// Buscadores: al escribir se vuelve a dibujar la pantalla; esto devuelve el cursor al mismo campo y posición
+// para poder seguir escribiendo sin tener que hacer clic de nuevo.
+function rf(el,fn){
+  const page=el.closest('.page');
+  const sel=page?'#'+page.id+' input.srch':'input.srch';
+  const idx=[...document.querySelectorAll(sel)].indexOf(el);
+  let a=null,b=null; try{a=el.selectionStart;b=el.selectionEnd;}catch(e){}
+  fn();
+  const ni=[...document.querySelectorAll(sel)][idx];
+  if(ni){ ni.focus(); try{ni.setSelectionRange(a==null?ni.value.length:a,b==null?ni.value.length:b);}catch(e){} }
+}
+// Búsqueda por varias palabras (cualquier orden) en artículo, proveedor, código y rubro
+function coincideBusqueda(it,q){
+  const words=normText(q).split(/\s+/).filter(Boolean);
+  if(!words.length)return true;
+  const hay=normText(it.articulo)+' '+normText(it.prov)+' '+String(it.cod)+' '+normText(it.rubro||'');
+  return words.every(w=>hay.includes(w));
+}
 function asegurarRubro(nombre){
   if(!nombre)return;
   if(!RUBROS.some(r=>normText(r)===normText(nombre))){
-    RUBROS.push(nombre); RUBROS.sort((a,b)=>a.localeCompare(b,'es'));
+    RUBROS.push(nombre);   // se agrega al final: el orden de los rubros es el orden en que salen en la lista de vendedor
     saveRubros(RUBROS);
   }
+}
+/* Agrupación de la LISTA VENDEDOR (hoja del Excel original): cada grupo = un rubro. Los grupos son los bloques
+   separados por una fila en blanco; el vendedor los conoce así ("si ofrece uno, ofrece el otro"). */
+/* Las 4 listas del Excel (VENDEDOR, LISTA 3, LISTA 4, REVENDEDOR): qué artículos lleva cada una, en qué orden y cómo se agrupan
+   (bloques separados por fila en blanco), presentación (kg) y precios fijos escritos a mano. */
+const LISTAS_EXCEL={"vendedor":{"grupos":[["Crudos y bondiolas",[197,117,168,138,2]],["Cocidos y lomos",[3,4,275,328,660,156,196,412]],["Paletas, pernil y fiambres cocidos",[5,238,287,155,346,663,664,665,442]],["Mortadelas, salchichones y pâtés",[11,16,14,59,494,133,130,666,9,289,286,34,33,35,39,21,36,131,134]],["Salames y chorizos secos",[67,159,143,144,505,46,150,151,142,141,140,427]],["Fiambres feteados",[9021,9016,9006,9004,9020,9018,9013,9001,9022,9019,9017,9031]],["Panceta, pastrón y embutidos frescos",[12,25,26,128,129,139,136,283,369,394,60,61,62,57,413]],["Salchichas",[65,22,66,24]],["Grasa de cerdo",[79]],["Danbo, Tybo y mozzarellas",[359,360,650,71,704,630,631,635,701,702,703,705,706,707]],["Quesos cremosos y Por Salut",[77,146,145,390,421,422]],["Quesos semiduros y de colonia",[1000,388,409,721,722,623,624,626,405,628,396,395]],["Quesos duros y rallados",[73,223,227,224,493]],["Quesos azules",[247,627]],["Hamburguesas, medallones y congelados",[900,901,380,484,251,218,491,357,440,445,482,473,472,20,500,501,5050,5051,5052,5053,5054]],["Papas y congelados Simplot",[5000,5002,5012,5003,5005,5006,5019,5008,5009,5013,5016,5017,5014]],["Por Salut fraccionados",[414,416,262,393,374,375,376]],["Quesos en fetas",[527,529,528,521,525,708,709,710]],["Chatel",[522,523]],["Queso blanco, ricotta y queso crema",[469,470,471,475,476,477]],["Cremas de leche y chantilly",[362,361,30,31,483,367,365,343,370]],["Postres y arroz con leche",[441,444,506,530,508,486,487]],["Yogur batido y firme",[301,302,303,304,305,640,641,642,643,646,647]],["Yogur natural y con frutas",[327,329,381,382,431,432,417,418,419,451,452,453]],["Yogur bebible",[448,443,436,437,454,455,456,457,458,459,460,468,423,424,461,462,485,489]],["Leche UAT",[449,450,467,463,464,465,466]],["Leche chocolatada",[337,338,342,345]],["Manteca",[340,339]],["Dulce de leche",[153,447,438,509,268]],["Leche en polvo",[363,364]],["Tapas de empanadas y pascualinas",[349]],["Pastas frescas y fideos",[96,99,164,105,202,171,172,188,173,81,174,167,165,276,190,175,119,490,183,492,488,179,182,180,198,201,203,199,176,177,322,323,324]],["Pan dulce y budines",[84,85,87,83,88,92,94]],["Panificados y pan de mesa",[185,157,194,406,124,126,402,403,404,195,193,189,192,242,191,233,426,241,120,121]],["Individuales y mermeladas",[515,516,601,602,603,604,607,608,609,610,611]],["Maní, snacks y papas",[230,231,398,366,319,325,326,330,379]],["Mayonesas y salsas",[106,368,298,435,439,112,293,296,308]],["Caldos, salsas y almidón",[257,258,259,263,333,266,127,307,309,312]],["Aceitunas a granel",[90,219,220,58,72,27]],["Aceitunas fraccionadas y conservas",[371,271,318,531,225,221,532,533,534,535,428,429,316,317,226]],["Aceite de oliva",[274,378]]],"pres":{"2":"1KG","9":"C X4","11":"C X3","12":"2KG","14":"25KG","16":"C X3","21":"C X26","22":"C X24","24":"C X6","25":"1,8KG","26":"1,8KG","30":"C X6","31":"C X6","33":"C X16","34":"C X16","35":"C X14","36":"C X24","39":"C X16","46":"1,5KG","57":"C X14","59":"4KG","60":"2,5KG","61":"C X14","62":"C X14","65":"C X24","66":"C X6","67":"1,8KG","71":"4,2KG","73":"2,8KG","77":"3,8KG","83":"Cj x8u","84":"Cj x8u","85":"Cj x8u","87":"Cj x8u","88":"Cj x12u","92":"Cj x12u","94":"Cj x12u","106":"C X3","117":"2,5KG","120":"C X18","121":"C X18","128":"2KG","129":"1,5KG","130":"2,8KG","131":"C X24","133":"4KG","134":"C X24","136":"1,8KG","138":"1,2KG","139":"1,5KG","140":"1KG","141":"T X4","142":"T X4","143":"2,4KG","144":"2,4KG","145":"3,6KG","146":"4KG","150":"1,5KG","151":"1,5KG","153":"C X20","155":"5,2KG","156":"2,2KG","159":"2,4KG","168":"5KG","196":"1KG","197":"2,5KG","223":"3KG","224":"C X24","227":"5KG","231":"B X10","233":"C X20","238":"5,3KG","247":"2,4KG","257":"C X6","258":"C X6","259":"C X6","262":"C X24","266":"C X3","268":"C X8","274":"C X12","275":"5,7KG","283":"1,8KG","286":"2,2KG","287":"3,5KG","289":"2,8KG","298":"C X3","301":"C X20","302":"C X20","303":"C X20","304":"C X20","305":"C X20","307":"C X12","319":"C X24","325":"C X24","326":"C X24","327":"Cj x18u","328":"4,8KG","329":"Cj x18u","330":"C X24","333":"C X6","339":"Cj x 12u","340":"Cj x 18u","342":"C X12","343":"C X12","345":"C X12","346":"3,5KG","359":"3,8KG","360":"3,8KG","361":"C X12","362":"C X12","363":"Cj x12u","364":"Cj x12u","365":"C X12","366":"B X10","367":"C X12","368":"C X3","369":"2,5KG","370":"C X12","374":"C X10","375":"C X12","376":"C X12","378":"C X2","379":"C X6","381":"Cj x18u","382":"Cj x18u","388":"4,5KG","390":"3,6KG","393":"C X12","394":"C X14","395":"6KG","396":"9KG","398":"B X10","405":"4,2KG","409":"4,5KG","412":"1,2KG","413":"C X12","414":"C X12","416":"C X12","417":"Cj x12u","418":"Cj x12u","419":"Cj x12u","421":"3,8KG","422":"3,8KG","423":"Cj x 18u","424":"Cj x 18u","426":"C X35","427":"T X4","431":"Cj x18u","432":"Cj x18u","435":"C X3","436":"Cj x 12u","437":"Cj x 12u","438":"C X10","439":"C X3","441":"C X12","442":"5,2KG","443":"Cj x 12u","444":"C X12","447":"C X10","448":"Cj x 12u","449":"Cj x 18u","450":"Cj x 18u","451":"Cj x 24u","452":"Cj x 24u","453":"Cj x 24u","454":"Cj x 24u","455":"Cj x 24u","456":"Cj x 24u","457":"Cj x 18u","458":"Cj x 18u","459":"Cj x 18u","460":"Cj x 18u","461":"Cj x 18u","462":"Cj x 18u","463":"Cj x 18u","464":"Cj x 18u","465":"Cj x 18u","466":"Cj x 18u","467":"Cj x 18u","468":"Cj x 18u","469":"C X12","470":"C X12","471":"C X12","475":"C X12","476":"C X12","477":"C X12","483":"C X12","485":"Cj x 18u","486":"C X12","487":"C X12","489":"Cj x 18u","494":"4,3KG","500":"C X20","501":"C X10","505":"2KG","508":"C X24","509":"C X10","515":"C X3","521":"C X18","522":"C X2","523":"C X2","525":"C X18","527":"C X6","528":"C X18","529":"C X6","623":"4KG","624":"4,2KG","626":"5KG","627":"2 KG","628":"7KG","630":"3KG","631":"5KG","635":"10KG","640":"C X12","641":"C X12","642":"C X12","643":"C X12","646":"C X12","647":"C X12","650":"3,8KG","660":"3,5KG","663":"6,5KG","664":"3.5KG","665":"6,5KG","666":"3KG","701":"10KG","702":"5KG","703":"3KG","704":"4KG","705":"C X18","706":"C X18","707":"C X18","708":"C X24","709":"C X24","710":"C X24","721":"3KG","722":"C X25","900":"C X30","901":"C X60","1000":"2,5KG","5000":"Cj x6u","5002":"Cj x8u","5003":"Cj x5u","5005":"Cj x6u","5006":"Cj x8u","5008":"Cj x6u","5009":"Cj x7u","5012":"Cj x 6u","5013":"Cj x6u","5014":"Cj x12u","5016":"Cj x12u","5017":"Cj x12u","5019":"Cj x7u","5050":"C X20","5051":"C X20","5052":"C X8","5053":"C X8","5054":"C X8","9001":"C X12","9013":"C X20","9016":"C X20","9017":"C X15","9018":"C X15","9019":"C X15","9020":"C X20","9021":"C X20","9022":"C X20","9031":"C X20"},"fijo":{"11":{"l2":47475},"77":{"l2":8400},"238":{"l2":8300},"287":{"l2":8300},"660":{"l2":11350}}},"lista3":{"grupos":[["Crudos y bondiolas",[197,117,168,668,138,2,669]],["Cocidos y lomos",[3,4,275,328,660,156,196,412]],["Paletas, pernil y fiambres cocidos",[5,238,287,155,346,663,664,665,273,442]],["Mortadelas, salchichones y pâtés",[11,16,14,494,133,130,666,9,289,286,15,34,33,35,39,21,36,131,134]],["Salames y chorizos secos",[67,159,143,144,505,46,150,151,142,141,140,427,408]],["Fiambres feteados",[9021,9016,9006,9011,9004,9020,9018,9013,9001,9022,9019,9017,9030,9031]],["Panceta, pastrón y embutidos frescos",[12,25,26,128,129,139,136,283,369,394,240,243,60,61,413]],["Salchichas",[65,22,66,24]],["Grasa de cerdo",[79]],["Danbo, Tybo y mozzarellas",[359,360,650,71,704,630,631,633,635,701,702,703,705,706,707,708,709,710]],["Quesos cremosos y Por Salut",[77,146,145,390,421,422]],["Quesos semiduros y de colonia",[1000,388,409,721,722,623,624,626,405,628,396,395]],["Quesos duros y rallados",[73,223,227,224,493]],["Quesos azules",[247,627]],["Hamburguesas, medallones y congelados",[900,901,380,484,251,218,491,357,440,445,482,500,501,473,472,20]],["Papas y congelados Simplot",[5000,5001,5002,5012,5018,5003,5004,5005,5006,5007,5019,5008,5009,5013,5015,5016,5017,5014,5011]],["Por Salut fraccionados",[414,416,262,393,374,375,376]],["Quesos en fetas",[527,529,528,520,521,524,525]],["Chatel",[522,523]],["Queso blanco, ricotta y queso crema",[469,470,471,475,476,477]],["Cremas de leche y chantilly",[362,361,30,31,483,367,343,370]],["Postres y arroz con leche",[441,444,506,530,508,486,487]],["Yogur batido y firme",[301,302,303,304,305,640,641,642,643,646,647]],["Yogur natural y con frutas",[327,329,381,382,431,432,417,418,419,451,452,453]],["Yogur bebible",[448,443,436,437,454,455,456,457,458,459,460,468,423,424,461,462,485,489]],["Leche UAT",[449,450,467,463,464,465,466]],["Leche chocolatada",[337,338,342,345]],["Manteca",[340,339]],["Dulce de leche",[153,447,438,438,509,268]],["Leche en polvo",[363,364]],["Tapas de empanadas y pascualinas",[349,350,353]],["Pastas frescas y fideos",[96,99,164,105,202,171,172,188,173,81,174,167,165,276,190,175,119,490,183,492,488,179,182,180,198,201,203,199,176,177,322,323,324]],["Pan dulce y budines",[84,83,85,87,94,92,88]],["Panificados y pan de mesa",[185,157,194,406,124,126,402,403,404,195,193,189,192,242,191,233,426,241,120,121]],["Individuales y mermeladas",[515,516,601,602,603,604,607,608,609,610,611]],["Maní, snacks y papas",[230,231,398,366,319,325,326,330,379]],["Mayonesas y salsas",[106,368,298,104,435,439,112,293,296,37,308]],["Caldos, salsas y almidón",[257,258,259,263,333,266,127,307,309,310,312]],["Aceitunas a granel",[90,219,220,58,72,27]],["Aceitunas fraccionadas y conservas",[371,271,318,531,225,221,532,533,534,535,428,429,316,317,226]],["Aceite de oliva",[274,378]],["Hamburguesas, medallones y congelados",[5050,5051,5052,5053,5054,5025,5026,5027,5034,5035,5036,5037,5038,5039,5040,5041]]],"pres":{"2":"1KG","9":"C X4","11":"C X3","12":"2KG","14":"25KG","15":"C X12","16":"C X3","21":"C X26","22":"C X24","24":"C X6","25":"1,8KG","26":"1,8KG","30":"C X6","31":"C X6","33":"C X16","34":"C X16","35":"C X14","36":"C X24","39":"C X16","46":"1,5KG","60":"2,3KG","61":"C X14","65":"C X24","66":"C X6","67":"2,4KG","71":"4,2KG","73":"2,8KG","77":"3,8KG","83":"Cj x8u","84":"Cj x8u","85":"Cj x8u","87":"Cj x8u","88":"Cj x12u","92":"Cj x12u","94":"Cj x12u","104":"C X3","106":"C X3","117":"2KG","120":"C X18","121":"C X18","129":"2KG","130":"2,8KG","131":"C X24","133":"4KG","134":"C X24","136":"1,8KG","138":"1,2KG","139":"2KG","140":"1KG","141":"T X4","142":"T X4","143":"2,4KG","144":"2,4KG","145":"3,6KG","146":"4KG","150":"1,5KG","151":"1,5KG","153":"C X20","155":"5,2KG","156":"2,2KG","159":"2,4KG","168":"5KG","196":"1KG","197":"2KG","223":"3KG","224":"C X24","227":"5KG","238":"5,3KG","240":"2,4KG","247":"2,4KG","262":"C X24","268":"C X8","273":"6KG","274":"C X12","275":"5,7KG","283":"1,8KG","286":"2,2KG","287":"3,5KG","289":"2,8KG","298":"C X3","301":"C X20","302":"C X20","303":"C X20","304":"C X20","305":"C X20","319":"C X24","325":"C X24","326":"C X24","327":"Cj x18u","328":"4,8KG","329":"Cj x18u","330":"C X24","339":"Cj x 12u","340":"Cj x 18u","342":"C X12","343":"C X12","345":"C X12","346":"3,5KG","350":"C X10","353":"C X10","359":"3,8KG","360":"3,8KG","361":"C X12","362":"C X12","363":"Cj x12u","364":"Cj x12u","367":"C X12","368":"C X3","369":"2,5KG","370":"C X12","374":"C X10","375":"C X12","376":"C X12","378":"C X2","379":"C X6","381":"Cj x18u","382":"Cj x18u","388":"4,5KG","390":"3,6KG","393":"C X12","394":"C X14","395":"6KG","396":"9KG","405":"4,2KG","408":"C X10","409":"4,5KG","413":"C X12","414":"C X12","416":"C X12","417":"Cj x12u","418":"Cj x12u","419":"Cj x12u","421":"3,8KG","422":"3,8KG","423":"Cj x 18u","424":"Cj x 18u","427":"T X4","431":"Cj x18u","432":"Cj x18u","435":"C X3","436":"Cj x 12u","437":"Cj x 12u","438":"C X10","439":"C X3","441":"C X12","442":"5,2KG","443":"Cj x 12u","444":"C X12","447":"C X10","448":"Cj x 12u","449":"Cj x 20u","450":"Cj x 20u","451":"Cj x 24u","452":"Cj x 24u","453":"Cj x 24u","454":"Cj x 24u","455":"Cj x 24u","456":"Cj x 24u","457":"Cj x 18u","458":"Cj x 18u","459":"Cj x 18u","460":"Cj x 18u","461":"Cj x 18u","462":"Cj x 18u","463":"Cj x 18u","464":"Cj x 18u","465":"Cj x 18u","466":"Cj x 18u","467":"Cj x 20u","468":"Cj x 18u","469":"C X12","470":"C X12","471":"C X12","475":"C X12","476":"C X12","477":"C X12","483":"C X12","485":"Cj x 18u","486":"C X12","487":"C X12","489":"Cj x 18u","494":"4,3KG","500":"C X20","501":"C X10","505":"2KG","508":"C X24","509":"C X10","515":"C X3","520":"C X18","521":"C X18","522":"C X2","523":"C X2","524":"C X18","525":"C X18","527":"C X6","528":"C X18","529":"C X6","624":"4,2KG","626":"5KG","627":"2 KG","628":"7KG","630":"3KG","631":"5KG","633":"C X18","635":"10KG","640":"C X12","641":"C X12","642":"C X12","643":"C X12","646":"C X12","647":"C X12","650":"3,8KG","660":"3,5KG","663":"7KG","664":"3.5KG","665":"7KG","666":"3KG","668":"2,4KG","669":"1,5KG","701":"10KG","702":"5KG","703":"3KG","704":"4KG","705":"C X18","706":"C X18","707":"C X18","708":"C X24","709":"C X24","710":"C X24","721":"3KG","722":"C X25","900":"C X35","901":"C X70","1000":"2,5KG","5000":"Cj x6u","5001":"Cj x7u","5002":"Cj x8u","5003":"Cj x5u","5004":"Cj x5u","5005":"Cj x6u","5006":"Cj x8u","5007":"Cj x8u","5008":"Cj x6u","5009":"Cj x5u","5011":"Cj x20u","5012":"Cj x 6u","5013":"Cj x6u","5014":"Cj x12u","5015":"Cj x10u","5016":"Cj x12u","5017":"Cj x12u","5018":"Cj x 5u","5019":"Cj x7u","5025":"C X12","5026":"C X12","5027":"C X12","5034":"Cj x8u","5035":"Cj x8u","5036":"Cj x8u","5037":"Cj x8u","5038":"Cj x8u","5039":"Cj x8u","5040":"Cj x8u","5041":"Cj x8u","5050":"C X20","5051":"C X20","5052":"C X8","5053":"C X8","5054":"C X8","9001":"C X12","9013":"C X20","9016":"C X20","9017":"C X15","9018":"C X15","9019":"C X15","9020":"C X20","9021":"C X20","9022":"C X20","9030":"C X20","9031":"C X20"},"fijo":{}},"lista4":{"grupos":[["Crudos y bondiolas",[197,117,168,138,2,669]],["Cocidos y lomos",[3,4,275,328,660,156,196,412]],["Paletas, pernil y fiambres cocidos",[5,238,287,155,346,663,664,665,273,442]],["Mortadelas, salchichones y pâtés",[11,16,14,59,494,133,130,666,9,289,286,15,34,33,35,39,21,36,131,134]],["Salames y chorizos secos",[67,159,143,144,505,46,150,151,142,141,140,427]],["Fiambres feteados",[9021,9016,9006,9004,9020,9018,9013,9001,9022,9019,9017,9031]],["Panceta, pastrón y embutidos frescos",[12,25,26,128,129,139,136,283,369,394,240,243,60,61,62,57,413]],["Salchichas",[65,22,66,24]],["Grasa de cerdo",[79]],["Danbo, Tybo y mozzarellas",[359,360,650,71,332,704,630,631,635,701,702,703,705,706,707,708,709,710]],["Quesos cremosos y Por Salut",[77,146,145,390,421,422]],["Quesos semiduros y de colonia",[1000,388,409,721,722,623,624,626,405,628,396,395]],["Quesos duros y rallados",[73,223,227,224,493]],["Quesos azules",[247,627]],["Hamburguesas, medallones y congelados",[900,901,380,484,251,218,491,357,440,445,482,500,501,473,472,20]],["Papas y congelados Simplot",[5000,5002,5012,5003,5005,5006,5019,5008,5009,5013,5016,5017,5014]],["Por Salut fraccionados",[414,416,262,393,374,375,376]],["Quesos en fetas",[527,529,528,521,525]],["Chatel",[522,523]],["Queso blanco, ricotta y queso crema",[469,470,471,475,476,477]],["Cremas de leche y chantilly",[362,361,30,31,483,367,365,343,370]],["Postres y arroz con leche",[441,444,506,530,508,486,487]],["Yogur batido y firme",[301,302,303,304,305,640,641,642,643,646,647]],["Yogur natural y con frutas",[327,329,381,382,431,432,417,418,419,451,452,453]],["Yogur bebible",[448,443,436,437,454,455,456,457,458,459,460,468,423,424,461,462,485,489]],["Leche UAT",[449,450,467,463,464,465,466]],["Leche chocolatada",[337,338,342,345]],["Manteca",[340,339]],["Dulce de leche",[153,447,438,509,268]],["Leche en polvo",[363,364]],["Tapas de empanadas y pascualinas",[349]],["Pastas frescas y fideos",[96,99,164,105,202,171,172,188,173,81,174,167,165,276,190,175,119,490,183,492,488,179,182,180,198,201,203,199,176,177,322,323,324]],["Panificados y pan de mesa",[185,157,194,406,124,126,402,403,404,195,193,189,192,242,191,233,426,241,120,121]],["Individuales y mermeladas",[515,516,601,602,603,604,607,608,609,610,611]],["Maní, snacks y papas",[230,231,398,366,319,325,326,330,379]],["Mayonesas y salsas",[106,368,298,104,435,439,112,293,296,37,308]],["Caldos, salsas y almidón",[257,258,259,263,333,266,127,307,309,310,312]],["Aceitunas a granel",[90,219,220,58,72,27]],["Aceitunas fraccionadas y conservas",[371,271,318,531,225,221,532,533,534,535,428,429,316,317,226]],["Aceite de oliva",[274,378]],["Hamburguesas, medallones y congelados",[5050,5051,5052,5053,5054]]],"pres":{"2":"1KG","9":"C X4","11":"C X3","12":"2KG","14":"25KG","15":"C X12","16":"C X3","21":"C X26","22":"C X24","24":"C X6","25":"1,8KG","26":"1,8KG","30":"C X6","31":"C X6","33":"C X16","34":"C X16","35":"C X14","36":"C X24","39":"C X16","46":"1,5KG","57":"C X14","59":"4KG","60":"2,3KG","61":"C X14","62":"C X14","65":"C X24","66":"C X6","67":"2,4KG","71":"4,2KG","73":"2,8KG","77":"3,8KG","104":"C X3","106":"C X3","117":"2KG","120":"C X18","121":"C X18","129":"2KG","130":"2,8KG","131":"C X24","133":"4KG","134":"C X24","136":"1,8KG","138":"1,2KG","139":"2KG","140":"1KG","141":"T X4","142":"T X4","143":"2,4KG","144":"2,4KG","145":"3,6KG","146":"4KG","150":"1,5KG","151":"1,5KG","153":"C X20","155":"5,2KG","156":"2,2KG","159":"2,4KG","168":"5KG","196":"1KG","197":"2KG","223":"3KG","224":"C X24","227":"5KG","238":"5,3KG","240":"2,4KG","247":"2,4KG","257":"C X6","258":"C X6","259":"C X6","262":"C X24","266":"C X3","268":"C X8","273":"6KG","274":"C X12","275":"5,7KG","283":"1,8KG","286":"2,2KG","287":"3,5KG","289":"2,8KG","298":"C X3","301":"C X20","302":"C X20","303":"C X20","304":"C X20","305":"C X20","307":"C X12","319":"C X24","325":"C X24","326":"C X24","327":"Cj x18u","328":"4,8KG","329":"Cj x18u","330":"C X24","332":"2,7KG","339":"Cj x 12u","340":"Cj x 18u","342":"C X12","343":"C X12","345":"C X12","346":"3,5KG","359":"3,8KG","360":"3,8KG","361":"C X12","362":"C X12","363":"Cj x12u","364":"Cj x12u","365":"C X12","367":"C X12","368":"C X3","369":"2,5KG","370":"C X12","374":"C X10","375":"C X12","376":"C X12","378":"C X2","379":"C X6","381":"Cj x18u","382":"Cj x18u","388":"4,5KG","390":"3,6KG","393":"C X12","394":"C X14","395":"6KG","396":"9KG","405":"4,2KG","409":"4,5KG","413":"C X12","414":"C X12","416":"C X12","417":"Cj x12u","418":"Cj x12u","419":"Cj x12u","421":"3,8KG","422":"3,8KG","423":"Cj x 18u","424":"Cj x 18u","427":"T X4","431":"Cj x18u","432":"Cj x18u","435":"C X3","436":"Cj x 12u","437":"Cj x 12u","438":"C X10","439":"C X3","441":"C X12","442":"5,2KG","443":"Cj x 12u","444":"C X12","447":"C X10","448":"Cj x 12u","449":"Cj x 20u","450":"Cj x 20u","451":"Cj x 24u","452":"Cj x 24u","453":"Cj x 24u","454":"Cj x 24u","455":"Cj x 24u","456":"Cj x 24u","457":"Cj x 18u","458":"Cj x 18u","459":"Cj x 18u","460":"Cj x 18u","461":"Cj x 18u","462":"Cj x 18u","463":"Cj x 18u","464":"Cj x 18u","465":"Cj x 18u","466":"Cj x 18u","467":"Cj x 20u","468":"Cj x 18u","469":"C X12","470":"C X12","471":"C X12","475":"C X12","476":"C X12","477":"C X12","483":"C X12","485":"Cj x 18u","486":"C X12","487":"C X12","489":"Cj x 18u","494":"4,3KG","500":"C X20","501":"C X10","505":"2KG","508":"C X24","509":"C X10","515":"C X3","521":"C X18","522":"C X2","523":"C X2","525":"C X18","527":"C X6","528":"C X18","529":"C X6","624":"4,2KG","626":"5KG","627":"2 KG","628":"7KG","630":"3KG","631":"5KG","635":"10KG","640":"C X12","641":"C X12","642":"C X12","643":"C X12","646":"C X12","647":"C X12","650":"3,8KG","660":"3,5KG","663":"7KG","664":"3.5KG","665":"7KG","666":"3KG","669":"1,5KG","701":"10KG","702":"5KG","703":"3KG","704":"4KG","705":"C X18","706":"C X18","707":"C X18","708":"C X24","709":"C X24","710":"C X24","721":"4,5KG","722":"C X25","900":"C X30","901":"C X60","1000":"2,5KG","5000":"Cj x6u","5002":"Cj x8u","5003":"Cj x7u","5005":"Cj x6u","5006":"Cj x8u","5008":"Cj x6u","5009":"Cj x7u","5012":"Cj x 6u","5013":"Cj x6u","5014":"Cj x12u","5016":"Cj x12u","5017":"Cj x12u","5019":"Cj x7u","5050":"C X20","5051":"C X20","5052":"C X8","5053":"C X8","5054":"C X8","9001":"C X12","9013":"C X20","9016":"C X20","9017":"C X15","9018":"C X15","9019":"C X15","9020":"C X20","9021":"C X20","9022":"C X20","9031":"C X20"},"fijo":{}},"revendedor":{"grupos":[["Crudos y bondiolas",[116,168,197]],["Cocidos y lomos",[3,4,156,275,280,411,328,6,412,196,138,2]],["Mortadelas, salchichones y pâtés",[11,16,15,9,21,36,34,35,133,130,289,286,494]],["Salames y chorizos secos",[67,159,143,505,408,142,141,150,151,152,46]],["Paletas, pernil y fiambres cocidos",[5,7,287,238,155,346,222,237,442,281]],["Fiambres feteados",[9021,9016,9007,9011,9004,9020,9018,9013,9001,9022,9019,9017]],["Panceta, pastrón y embutidos frescos",[12,25,128,26,129,369,60,240,394,243,413,136,283]],["Grasa de cerdo",[49,79]],["Salchichas",[22,65,24]],["Individuales y mermeladas",[601,602,603,604,607,608,609,610,611]],["Yogur batido y firme",[640,641,642,643]],["Hamburguesas, medallones y congelados",[380,484,251,218,491,440,445,482,473,472,20]],["Papas y congelados Simplot",[5001,5002,5003,5004,5010]],["Yogur batido y firme",[301,302,303,304,305]],["Postres y arroz con leche",[441,444,530]],["Quesos en fetas",[529,528,629]],["Chatel",[522,523]],["Cremas de leche y chantilly",[483,30,31,361,362,370,367]],["Queso blanco, ricotta y queso crema",[469,470,471,475,476,478]],["Yogur bebible",[327,329,451,452,453,448,443,454,455,456,457,458,459,460,468]],["Yogur bebible",[461,462]],["Leche UAT",[449,450,463,464,465,466]],["Postres y arroz con leche",[487,486]],["Por Salut fraccionados",[71,332,229,359,414,374,376,375,69,620,621,622,623,624,625,626,627,628]],["Quesos cremosos y Por Salut",[77,421,422,390,145,146,246,247,580,581,582,583,584,585]],["Quesos semiduros y de colonia",[409,1000,396,388,405,73,395,78,223,224,493]],["Dulce de leche",[314,315,153,447,438,269,268]],["Individuales y mermeladas",[515,516,518,517]],["Pastas frescas y fideos",[96,99,164,105,202,171,172,188,109,174,167,165,169,173,276,81]],["Pastas frescas y fideos",[190,175,119,183,488,179,182,180,198,201,203,292,199,322,479,176]],["Pan dulce y budines",[84,83,85,87,94,92,88]],["Panificados y pan de mesa",[185,157,194,406,124,402,404,195,193,192,242,191,233]],["Grupo 33",[550,551,552,553,554,555]],["Leche chocolatada",[337,338,342,345,340,339,341,349,350,353]],["Leche en polvo",[363,364]],["Maní, snacks y papas",[230,231,398,366,379,295,294,563,564,561,562]],["Mayonesas y salsas",[106,368,298,104,435]],["Mayonesas y salsas",[112,293,296]],["Aceitunas a granel",[90,219,220,58,72,27,371,271]],["Aceitunas fraccionadas y conservas",[221,225,316,531,532,533,534,535,317,318,428,429,226]],["Aceite de oliva",[274,378]],["Caldos, salsas y almidón",[257,258,263,333]],["Caldos, salsas y almidón",[266,127,309,312,310]]],"pres":{"2":"28395.815987385005","3":"82349.99971746218","4":"72863.856202896","5":"72360.45163681486","6":"30871.445061599996","7":"58496.1364845","9":"23911.617886992","11":"42727.49758982797","12":"33804.0815508","15":"6024.154384512","16":"25824.509829518396","20":"32057.805516659995","21":"2363.013572832","22":"2188.23070851","24":"9950.607195705","25":"26494.113381119998","26":"28657.355758416","27":"26518.590000000004","30":"2556.8156196","31":"2556.8156196","34":"3468.4650408157195","35":"3795.2921952","36":"2222.3009555999997","46":"15961.418550000002","49":"3614.099148","58":"52487.99999999999","60":"7627.4586927","65":"1229.7122143020001","67":"14575.60466618236","69":"8639.910000000002","71":"11880.003348503691","72":"38791.305","73":"10383.3","77":"7560.003566399708","78":"28946.8179","79":"50302.65239999999","81":"1052.99873316","83":"3934.2847176000005","84":"3105.0039794062504","85":"4342.49932528125","87":"4652.99994459375","88":"2357.9960985562498","90":"19071.855","92":"2357.9960985562498","94":"2357.9960985562498","96":"2129.1240663","99":"2129.1240663","104":"12830.4","105":"1743.6532311000003","106":"15043.740826751999","109":"0","112":"15568.602548400002","116":"23815.090799999998","119":"2139.097051575","124":"2874.6632879999993","127":"54527.0193","128":"12690.004319999998","129":"19155.851945999995","130":"6575.889474","133":"9722.21085","136":"16457.996016","138":"30976.97526","141":"3863.9070359999996","142":"3863.9070359999996","143":"15606.72036","145":"11629.7303661","146":"9180.001707471738","150":"15961.418550000002","151":"15961.418550000002","152":"15961.418550000002","153":"1335.91185","155":"6106.183082999999","156":"15606.72036","157":"3367.68501825","159":"15606.72036","164":"2129.1240663","165":"1835.0086639499998","167":"1659.92965875","168":"47873.50721999999","169":"0","171":"1237.0317671249998","172":"1237.0317671249998","173":"1346.1364322999996","174":"1726.4506050000002","175":"2083.1369501249997","176":"2652.4221767999998","179":"2411.9994295188","180":"2474.9962713630002","182":"2411.9994295188","183":"1839.4124537249998","185":"2263.0192562250004","188":"1237.0317671249998","190":"2083.1369501249997","191":"1959.4354922999996","192":"1945.7331462","193":"1604.1243613499996","194":"2263.0192562250004","195":"1604.1243613499996","196":"19011.822983999995","197":"40442.349815999994","198":"4452.297044958674","199":"3690.5202180000006","201":"4452.2990168664155","202":"1743.6532311000003","203":"4452.2990168664155","218":"59120.17589016001","219":"51014.204999999994","220":"47256.21","221":"5365.44","222":"4599.338380757999","223":"17279.99767789511","224":"3271.50295945011","225":"5163.75","226":"6767.550000000001","229":"8261.1","230":"6301.961325","231":"5757.628078125001","233":"2875.73004","237":"4665.99545874","238":"7469.998330643145","240":"12163.12812","242":"2262.84747165","243":"7265.938679999999","246":"20077.691534999998","247":"23959.633717799996","251":"82123.52531922","257":"12315.420000000002","258":"12315.420000000002","263":"10520.06076","266":"11286.86175","268":"32654.57895","269":"76050.030771","271":"5511.24","274":"11331.09","275":"11946.879945","276":"1435.5017162320728","280":"10692","281":"33455.699504172","283":"22849.319591999996","286":"6526.446696","287":"7469.998330643145","289":"6526.446696","292":"0","293":"15622.809562800001","294":"16897.9864284","295":"10664.203473000001","296":"13024.2953808","298":"12294.747788400002","301":"1264.530959406","302":"1264.530959406","303":"1264.530959406","304":"1264.530959406","305":"1264.530959406","309":"90119.0043","310":"167722.433541","312":"45791.308368","314":"3042.0012308399996","315":"1521.00712764","316":"6155.1900000000005","317":"5010.660000000001","318":"3405.645","322":"3113.9963263406244","327":"701.996774193","328":"15302.898072","329":"701.996774193","332":"13529.576134800001","333":"17479.8","337":"18554.3988742728","338":"18554.3988742728","339":"2407.49859769155","340":"976.5024081318","341":"1795.5706427999996","342":"1546.2044255899295","345":"2016.0006466792497","346":"6200.1243612","349":"245699.998730936","350":"8307.000856440001","353":"7020.00384228","359":"10709.997438400129","361":"3163.49892945207","362":"3163.49892945207","363":"1322.9976291839998","364":"2403.001321636608","366":"5308.252228125","367":"2163.6020375145004","368":"12942.512391599997","369":"10366.98971616","370":"2293.0695","371":"4191.75","374":"18852.925360499998","375":"18382.031306100005","376":"34267.6231128","378":"90782.37","379":"11519.997886376863","380":"91260.50562966548","388":"15299.998421129132","390":"12209.169406499997","394":"12507.864137999999","395":"10646.997795719999","396":"19152.368234999994","398":"5242.71825","402":"2148.7218839999996","404":"3078.3795840000002","405":"16389.693064799998","406":"3406.5891719999995","408":"5645.00179782","409":"15721.9404804","411":"20195.277862913998","412":"19800.7097211","413":"4491.388852335","414":"13157.8910694","421":"8423.99940096","422":"7955.999102875983","428":"5404.32","429":"4488.210000000001","435":"15197.173873200001","438":"2807.7192","440":"25016.466944699998","441":"2182.4968683573","442":"5675.17104","443":"1402.1027460000003","444":"3564.0014496471","445":"25016.466944699998","447":"2544.64245","448":"1402.1027460000003","449":"2065.2843617999997","450":"2065.2843617999997","451":"701.996774193","452":"701.996774193","453":"701.996774193","454":"1454.422662","455":"1454.422662","456":"1454.422662","457":"1587.4592579999999","458":"1454.422662","459":"1454.422662","460":"1454.422662","461":"1474.1296415999998","462":"1474.1296415999998","463":"2065.2843617999997","464":"2065.2843617999997","465":"2065.2843617999997","466":"2065.2843617999997","468":"1587.4592579999999","469":"2008.8003759515998","470":"2008.8003759515998","471":"2008.8003759515998","472":"27048.504288959994","473":"32057.88982704","475":"2008.8003759515998","476":"2008.8003759515998","478":"1410.422706","479":"0","482":"18104.6661642","483":"2670.2785296","484":"20021.578318898646","486":"6747.30293868","487":"6933.1185000000005","488":"2474.9962713630002","491":"70794.648193698","493":"22725.0000342585","494":"17607.4285464","505":"10578.604806","515":"14146.026300000001","516":"16704.6138","517":"21684.852","518":"23473.17","522":"20834.996677632003","523":"21032.998536924","528":"1895.5093500000003","529":"23317.113599999997","530":"31160.060099999995","531":"6286.41","532":"6677.639999999999","533":"5139.45","534":"3784.724999999999","535":"4397.085000000001","550":"2892.9150000000004","551":"2892.9150000000004","552":"2892.9150000000004","553":"2892.9150000000004","554":"2892.9150000000004","555":"2892.9150000000004","561":"4500.830166525","562":"3298.6980675","563":"4358.8779955875","564":"9282.86082405","580":"8641.619999999999","581":"8838.18","582":"1530.9","583":"20880.468","584":"3411.4500000000003","585":"2783.448","601":"10545.0048","602":"10545.0048","603":"10545.0048","604":"11207.1168","607":"26854.217279999997","608":"19105.415999999997","609":"18785.511359999997","610":"11765.38176","611":"11765.38176","620":"8672.670000000002","621":"12232.35","622":"15496.65","623":"16274.7","624":"13760.814455999998","625":"13827.51","626":"14835.6","627":"14823.9","628":"13827.51","629":"10766.3985","640":"916.196391","641":"1285.2034376939998","642":"916.196391","643":"916.196391","1000":"11529.000000000002","5001":"9334.53774","5002":"11384.22753468","5003":"9945.821405519999","5004":"22121.8371","5010":"4136.39982855","9001":"4303.3542552","9004":"3347.594712","9007":"7211.213380800001","9011":"2903.1790392000003","9013":"2821.8995639999994","9016":"5151.649535999999","9017":"4270.1345280000005","9018":"3900.6002376","9019":"3679.7919839999995","9020":"6238.481119199999","9021":"4810.417919999999","9022":"3488.1454079999994"},"fijo":{}}};
+const GRUPOS_VENDEDOR=LISTAS_EXCEL.vendedor.grupos;
+const ORDEN_VENDEDOR={}; const RUBRO_VENDEDOR_POR_COD={};
+(function(){let n=0;GRUPOS_VENDEDOR.forEach(([nom,cods])=>cods.forEach(c=>{ORDEN_VENDEDOR[c]=n++;RUBRO_VENDEDOR_POR_COD[c]=nom;}));})();
+const LS_AGRUP='dl_precios_agrup_v2';
+function aplicarAgrupacionVendedor(soloSinRubro){
+  if(!MAESTRO||!MAESTRO.items)return 0;
+  const nombres=GRUPOS_VENDEDOR.map(g=>g[0]);
+  // migración: el grupo "Bolsas de queso en fetas" era parte de "Quesos en fetas" en la hoja original
+  MAESTRO.items.forEach(it=>{ if(it.rubro==='Bolsas de queso en fetas')it.rubro='Quesos en fetas'; });
+  RUBROS=nombres.concat(RUBROS.filter(r=>!nombres.includes(r)&&r!=='Bolsas de queso en fetas'));
+  saveRubros(RUBROS);
+  let n=0;
+  MAESTRO.items.forEach(it=>{
+    const r=RUBRO_VENDEDOR_POR_COD[it.cod];
+    if(r&&(!soloSinRubro||!it.rubro)){ if(it.rubro!==r)n++; it.rubro=r; }
+  });
+  saveMaestro(MAESTRO);
+  try{localStorage.setItem(LS_AGRUP,'1');}catch(e){}
+  return n;
+}
+function cfgAplicarAgrupacion(){
+  if(!MAESTRO||!MAESTRO.items||!MAESTRO.items.length){toast('Primero cargá el maestro');return;}
+  const ya=MAESTRO.items.filter(i=>RUBRO_VENDEDOR_POR_COD[i.cod]&&i.rubro&&i.rubro!==RUBRO_VENDEDOR_POR_COD[i.cod]).length;
+  if(ya&&!confirm(ya+' artículos tienen un rubro distinto al de la lista de vendedor. ¿Reemplazarlos por la agrupación original?'))return;
+  const n=aplicarAgrupacionVendedor(false);
+  toast('Agrupación de la lista de vendedor aplicada: '+n+' artículos asignados a '+GRUPOS_VENDEDOR.length+' rubros');
+  refrescarRubrosCfg(); if(typeof renderMaestro==='function')renderMaestro();
+}
+function rubroIdx(it){const i=RUBROS.indexOf(it.rubro);return i<0?9999:i;}
+function ordenarPorRubro(items){
+  return items.slice().sort((a,b)=>rubroIdx(a)-rubroIdx(b)||((ORDEN_VENDEDOR[a.cod]!=null?ORDEN_VENDEDOR[a.cod]:1e6)-(ORDEN_VENDEDOR[b.cod]!=null?ORDEN_VENDEDOR[b.cod]:1e6))||a.cod-b.cod);
 }
 let _pedirTextoCb=null, _pedirTextoCancel=null;
 function pedirTexto(titulo,label,valor,onOk,onCancel){
   _pedirTextoCb=onOk; _pedirTextoCancel=onCancel||null;
-  document.getElementById('v-modalTtl').textContent=titulo;
-  document.getElementById('v-modalBody').innerHTML=`<label class="fld">${v_escapeHtml(label)}<input type="text" id="ptInput" value="${v_escapeHtml(valor||'')}" autocomplete="off" onkeydown="if(event.key==='Enter'){event.preventDefault();pedirTextoOk();}"></label>`;
-  document.getElementById('v-modalFooter').innerHTML=`<button class="btn b-gh" onclick="pedirTextoCancel()">Cancelar</button><button class="btn b-nar" onclick="pedirTextoOk()">Aceptar</button>`;
-  document.getElementById('v-modalBg').classList.add('on');
+  document.getElementById('modalTtl').textContent=titulo;
+  document.getElementById('modalBody').innerHTML=`<label class="fld">${escapeHtml(label)}<input type="text" id="ptInput" value="${escapeHtml(valor||'')}" autocomplete="off" onkeydown="if(event.key==='Enter'){event.preventDefault();pedirTextoOk();}"></label>`;
+  document.getElementById('modalFooter').innerHTML=`<button class="btn b-gh" onclick="pedirTextoCancel()">Cancelar</button><button class="btn b-nar" onclick="pedirTextoOk()">Aceptar</button>`;
+  document.getElementById('modalBg').classList.add('on');
   setTimeout(()=>{const i=document.getElementById('ptInput'); if(i){i.focus();i.select();}},30);
 }
 function pedirTextoOk(){
   const i=document.getElementById('ptInput');
   const t=(i?i.value:'').trim();
-  if(!t){v_toast('Escribí un nombre');return;}
+  if(!t){toast('Escribí un nombre');return;}
   const cb=_pedirTextoCb; _pedirTextoCb=null; _pedirTextoCancel=null;
-  v_closeModal();
+  closeModal();
   if(cb)cb(t);
 }
 function pedirTextoCancel(){
   const cb=_pedirTextoCancel; _pedirTextoCb=null; _pedirTextoCancel=null;
-  v_closeModal();
+  closeModal();
   if(cb)cb();
 }
 // Pide el nombre de un rubro nuevo en un cuadro propio (prompt() del navegador está bloqueado en muchos entornos)
@@ -2953,7 +3000,7 @@ function pedirRubroNuevo(onOk,onCancel){
 }
 function rubroOptionsHtml(valorActual){
   return `<option value="">— sin rubro —</option>`
-    + RUBROS.map(r=>`<option value="${v_escapeHtml(r)}" ${r===valorActual?'selected':''}>${v_escapeHtml(r)}</option>`).join('')
+    + RUBROS.map(r=>`<option value="${escapeHtml(r)}" ${r===valorActual?'selected':''}>${escapeHtml(r)}</option>`).join('')
     + `<option value="__nuevo__">+ Nuevo rubro...</option>`;
 }
 function asignarRubroItem(cod,valor){
@@ -2964,7 +3011,7 @@ function asignarRubroItem(cod,valor){
   }
   it.rubro=valor||null;
   saveMaestro(MAESTRO);
-  v_toast('Rubro actualizado');
+  toast('Rubro actualizado');
   renderMaestro();
 }
 function maestroFiltrados(){
@@ -3000,13 +3047,13 @@ function aplicarRubroSeleccion(){
     pedirRubroNuevo(t=>{renderMaestro();document.getElementById('bulkRubroSel').value=t;aplicarRubroSeleccion();},()=>renderMaestro());
     return;
   }
-  if(!valor){v_toast('Elegí un rubro para asignar');return;}
+  if(!valor){toast('Elegí un rubro para asignar');return;}
   const afectados=MAESTRO.items.filter(i=>maestroSel.has(i.cod));
-  if(!afectados.length){v_toast('No hay artículos seleccionados — tildá los que quieras');return;}
+  if(!afectados.length){toast('No hay artículos seleccionados — tildá los que quieras');return;}
   afectados.forEach(it=>{it.rubro=valor;});
   saveMaestro(MAESTRO);
   maestroSel.clear();
-  v_toast('✓ Rubro "'+valor+'" asignado a '+afectados.length+' artículos');
+  toast('✓ Rubro "'+valor+'" asignado a '+afectados.length+' artículos');
   renderMaestro();
 }
 function actualizarInfoMaestro(){
@@ -3021,7 +3068,7 @@ function renderMaestroLista(){
   if(!box){renderMaestro();return;}
   const filtered=maestroFiltrados();
   box.innerHTML=`<div class="tbl-wrap"><table>
-    <thead><tr><th><input type="checkbox" id="maestroChkAll" title="Seleccionar los visibles" onchange="toggleSelTodos(this.checked)"></th><th>Cod</th><th>Proveedor</th><th>Artículo</th><th class="r">Costo</th><th class="r">Desc.1</th><th class="r">Desc.2</th><th class="r">Margen</th><th class="r">Neto</th><th class="r">Neto Rev.</th><th>EAN</th><th>Rubro</th><th></th></tr></thead>
+    <thead><tr><th><input type="checkbox" id="maestroChkAll" title="Seleccionar los visibles" onchange="toggleSelTodos(this.checked)"></th><th>Cod</th><th>Proveedor</th><th>Artículo</th><th class="r">Costo</th><th class="r">Desc.1</th><th class="r">Parcial 1</th><th class="r">Desc.2</th><th class="r">Parcial 2</th><th class="r">Margen</th><th class="r">Neto</th><th class="r">Neto Rev.</th><th>EAN</th><th>Rubro</th><th></th></tr></thead>
     <tbody>${filtered.slice(0,400).map(rowMaestroHtml).join('')}</tbody>
   </table></div>
   ${filtered.length>400?`<div style="padding:8px 20px;color:var(--tx3);font-family:var(--mn);font-size:10px">mostrando 400 de ${filtered.length} — afiná la búsqueda (o usá "Tildar todos los filtrados")</div>`:''}`;
@@ -3034,13 +3081,13 @@ function aplicarRubroMasivo(){
     pedirRubroNuevo(t=>{renderMaestro();document.getElementById('bulkRubroSel').value=t;aplicarRubroMasivo();},()=>renderMaestro());
     return;
   }
-  if(!valor){v_toast('Elegí un rubro para asignar');return;}
+  if(!valor){toast('Elegí un rubro para asignar');return;}
   const afectados=maestroFiltrados();
-  if(!afectados.length){v_toast('No hay artículos que coincidan con el filtro actual');return;}
+  if(!afectados.length){toast('No hay artículos que coincidan con el filtro actual');return;}
   if(!confirm(`Vas a asignar el rubro "${valor}" a ${afectados.length} artículo(s) (los que ves filtrados ahora). ¿Confirmar?`))return;
   afectados.forEach(it=>{it.rubro=valor;});
   saveMaestro(MAESTRO);
-  v_toast('✓ Rubro asignado a '+afectados.length+' artículos');
+  toast('✓ Rubro asignado a '+afectados.length+' artículos');
   renderMaestro();
 }
 function renderMaestro(){
@@ -3050,7 +3097,7 @@ function renderMaestro(){
     <div class="center">
       <div class="dz" id="dzA" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')"
         ondrop="event.preventDefault();this.classList.remove('drag');handleArticulosFile(event.dataTransfer.files[0])">
-        <input type="file" id="fiA" accept=".xlsx,.xls" onchange="handleArticulosFile(this.files[0])"/>
+        <input type="file" id="fiA" accept=".xlsx,.xls" onchange="handleArticulosFile(this.files[0]);this.value=''"/>
         <div class="dz-ico">📦</div>
         <div class="dz-ttl">Subir Excel de Artículos de Chess</div>
         <div class="dz-sub">.xlsx — plantilla de Artículos. Arma el maestro con los artículos <strong>activos</strong> (Anulado = NO), con su proveedor y código de barras</div>
@@ -3058,7 +3105,7 @@ function renderMaestro(){
       <div class="note"><strong>Así se reemplaza el Excel de costos y formador:</strong> el maestro sale de Chess y los costos se cargan desde <strong>Cargar proveedor</strong> con cada lista de precios. Los artículos nuevos arrancan sin costo; los que ya tenían costo, descuentos y margen los conservan. Se actualiza <strong>cuando haya altas o bajas en Chess</strong>.</div>
       <div class="dz" id="dzM" style="border-color:var(--bl3);opacity:.85" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')"
         ondrop="event.preventDefault();this.classList.remove('drag');handleMaestroFile(event.dataTransfer.files[0])">
-        <input type="file" id="fiM" accept=".xlsx,.xls" onchange="handleMaestroFile(this.files[0])"/>
+        <input type="file" id="fiM" accept=".xlsx,.xls" onchange="handleMaestroFile(this.files[0]);this.value=''"/>
         <div class="dz-ico">🕘</div>
         <div class="dz-ttl">Opcional: traer costos del Excel anterior (FORMADOR)</div>
         <div class="dz-sub">Solo para arrancar con los costos, descuentos y márgenes que ya tenías. Después no hace falta.</div>
@@ -3079,21 +3126,21 @@ function renderMaestro(){
     <div class="kpi c-bl"><div class="kpi-v">${MAESTRO.revCount||0}</div><div class="kpi-l">Con margen revendedor</div></div>
     <div class="kpi ${sinRubro?'c-yl':''}"><div class="kpi-v">${sinRubro}</div><div class="kpi-l">Sin rubro asignado</div></div>
     <div class="kpi ${sinCosto?'c-yl':''}"><div class="kpi-v">${sinCosto}</div><div class="kpi-l">Sin costo cargado</div></div>
-    <div class="kpi"><div class="kpi-v" style="font-size:11px">${new Date(MAESTRO.fecha).toLocaleDateString('es-AR')}</div><div class="kpi-l">Costos · ${v_escapeHtml(MAESTRO.fuente)}</div></div>
-    <div class="kpi"><div class="kpi-v" style="font-size:11px">${MAESTRO.fechaArticulos?new Date(MAESTRO.fechaArticulos).toLocaleDateString('es-AR'):'— sin cargar —'}</div><div class="kpi-l">EAN · ${MAESTRO.fuenteArticulos?v_escapeHtml(MAESTRO.fuenteArticulos):'subí el Excel de Artículos'}</div></div>
+    <div class="kpi"><div class="kpi-v" style="font-size:11px">${new Date(MAESTRO.fecha).toLocaleDateString('es-AR')}</div><div class="kpi-l">Costos · ${escapeHtml(MAESTRO.fuente)}</div></div>
+    <div class="kpi"><div class="kpi-v" style="font-size:11px">${MAESTRO.fechaArticulos?new Date(MAESTRO.fechaArticulos).toLocaleDateString('es-AR'):'— sin cargar —'}</div><div class="kpi-l">EAN · ${MAESTRO.fuenteArticulos?escapeHtml(MAESTRO.fuenteArticulos):'subí el Excel de Artículos'}</div></div>
   </div>
   <div class="c-bar">
-    <input class="srch" placeholder="🔎 Buscar artículo, proveedor o código..." value="${v_escapeHtml(maestroFilter)}" oninput="maestroFilter=this.value;renderMaestroLista()"/>
+    <input class="srch" placeholder="🔎 Buscar artículo, proveedor o código..." value="${escapeHtml(maestroFilter)}" oninput="maestroFilter=this.value;renderMaestroLista()"/>
     <select id="maestroRubroSel" style="max-width:180px" onchange="maestroRubroFiltro=this.value;renderMaestro()">
       <option value="" ${maestroRubroFiltro===''?'selected':''}>Todos los rubros</option>
       <option value="__sin__" ${maestroRubroFiltro==='__sin__'?'selected':''}>— sin rubro —</option>
-      ${RUBROS.map(r=>`<option value="${v_escapeHtml(r)}" ${maestroRubroFiltro===r?'selected':''}>${v_escapeHtml(r)}</option>`).join('')}
+      ${RUBROS.map(r=>`<option value="${escapeHtml(r)}" ${maestroRubroFiltro===r?'selected':''}>${escapeHtml(r)}</option>`).join('')}
     </select>
     <div class="sp"></div>
     <button class="btn b-bl b-sm" onclick="document.getElementById('fiA2').click()">📦 Actualizar maestro (Artículos Chess)</button>
-    <input type="file" id="fiA2" accept=".xlsx,.xls" style="display:none" onchange="handleArticulosFile(this.files[0])"/>
+    <input type="file" id="fiA2" accept=".xlsx,.xls" style="display:none" onchange="handleArticulosFile(this.files[0]);this.value=''"/>
     <button class="btn b-gh b-sm" onclick="document.getElementById('fiM2').click()">🕘 Importar costos del Excel anterior</button>
-    <input type="file" id="fiM2" accept=".xlsx,.xls" style="display:none" onchange="if(confirm('Esto reemplaza los costos, descuentos y márgenes por los del Excel. ¿Continuar?'))handleMaestroFile(this.files[0])"/>
+    <input type="file" id="fiM2" accept=".xlsx,.xls" style="display:none" onchange="if(confirm('Esto reemplaza los costos, descuentos y márgenes por los del Excel. ¿Continuar?'))handleMaestroFile(this.files[0]);this.value=''"/>
   </div>
   <div class="c-bar" style="border-top:none;flex-wrap:wrap">
     <span id="maestroInfo" style="font-size:11px;color:var(--tx3);font-family:var(--mn)"></span>
@@ -3114,11 +3161,13 @@ function rowMaestroHtml(it){
   return `<tr>
     <td><input type="checkbox" ${maestroSel.has(it.cod)?'checked':''} onchange="toggleSel(${it.cod},this.checked)"></td>
     <td class="mn">${it.cod}</td>
-    <td>${v_escapeHtml(it.prov)}</td>
-    <td>${v_escapeHtml(it.articulo)}</td>
+    <td>${escapeHtml(it.prov)}</td>
+    <td>${escapeHtml(it.articulo)}</td>
     <td class="r">${fmtMoney(it.costo)}</td>
     <td class="r">${fmtPct(it.desc1)}</td>
+    <td class="r">${it.desc2>0?fmtMoney(c.parcial1):'—'}</td>
     <td class="r">${fmtPct(it.desc2)}</td>
+    <td class="r">${it.costo?fmtMoney(c.parcial2):'—'}</td>
     <td class="r">${fmtPct(it.margen)}</td>
     <td class="r bold">${fmtMoney(it.neto!==null?it.neto:c.neto)}</td>
     <td class="r">${it.margenRev!==null?fmtMoney(c.netoRev):'—'}</td>
@@ -3127,12 +3176,12 @@ function rowMaestroHtml(it){
     <td><button class="btn b-gh b-sm" onclick="openEditItem(${it.cod})">✎</button></td>
   </tr>`;
 }
-function v_escapeHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function escapeHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 
 function openEditItem(cod){
   const it=MAESTRO.items.find(i=>i.cod===cod); if(!it)return;
-  document.getElementById('v-modalTtl').textContent='Editar · '+it.articulo;
-  document.getElementById('v-modalBody').innerHTML=`
+  document.getElementById('modalTtl').textContent='Editar · '+it.articulo;
+  document.getElementById('modalBody').innerHTML=`
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
       <label class="fld">Costo<input type="number" step="0.01" id="edCosto" value="${it.costo}"></label>
       <label class="fld">Margen %<input type="number" step="0.1" id="edMargen" value="${toPct(it.margen)}"></label>
@@ -3144,8 +3193,8 @@ function openEditItem(cod){
       <label class="fld" id="edRubroNuevoWrap" style="display:none">Nombre del rubro nuevo<input type="text" id="edRubroNuevo" autocomplete="off"></label>
     </div>
     <div class="note" style="margin-top:14px">Costo Final y Neto se recalculan automáticamente con estos valores.</div>`;
-  document.getElementById('v-modalFooter').innerHTML=`<button class="btn b-gh" onclick="v_closeModal()">Cancelar</button><button class="btn b-nar" onclick="saveEditItem(${cod})">Guardar</button>`;
-  document.getElementById('v-modalBg').classList.add('on');
+  document.getElementById('modalFooter').innerHTML=`<button class="btn b-gh" onclick="closeModal()">Cancelar</button><button class="btn b-nar" onclick="saveEditItem(${cod})">Guardar</button>`;
+  document.getElementById('modalBg').classList.add('on');
 }
 function saveEditItem(cod){
   const it=MAESTRO.items.find(i=>i.cod===cod); if(!it)return;
@@ -3166,9 +3215,9 @@ function saveEditItem(cod){
   }
   it.rubro=rubroVal||null;
   saveMaestro(MAESTRO);
-  v_closeModal(); v_toast('Artículo actualizado'); renderMaestro();
+  closeModal(); toast('Artículo actualizado'); renderMaestro();
 }
-function v_closeModal(){document.getElementById('v-modalBg').classList.remove('on');}
+function closeModal(){document.getElementById('modalBg').classList.remove('on');}
 
 /* ============================================================
    PAGE: CARGAR PROVEEDOR
@@ -3198,7 +3247,7 @@ function renderCarga(){
         <label style="font-weight:600;font-size:12px">1. ¿De qué proveedor es la lista de precios?</label>
         <select id="cargaProv" style="padding:9px;border:1.5px solid var(--brd2);border-radius:9px;font-size:13px" onchange="cargaProvSel=this.value;var e=document.getElementById('errBoxP');if(e)e.style.display='none'">
           <option value="">— Elegí un proveedor del sistema —</option>
-          ${proveedoresSistema().map(x=>`<option value="${v_escapeHtml(x.nombre)}" ${x.nombre===cargaProvSel?'selected':''}>${v_escapeHtml(x.nombre)} (${x.cant} artículos)</option>`).join('')}
+          ${proveedoresSistema().map(x=>`<option value="${escapeHtml(x.nombre)}" ${x.nombre===cargaProvSel?'selected':''}>${escapeHtml(x.nombre)} (${x.cant} artículos)</option>`).join('')}
         </select>
       </div>
       <div class="dz" id="dzP" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')"
@@ -3381,7 +3430,7 @@ function renderCargaReview(){
   const conMatch=total-sinMatch;
   p.innerHTML=`
   <div class="c-bar">
-    <div><div class="cb-ttl">Revisar carga · ${v_escapeHtml(st.proveedor)}</div><div class="cb-sub">${v_escapeHtml(st.fuente)}</div></div>
+    <div><div class="cb-ttl">Revisar carga · ${escapeHtml(st.proveedor)}</div><div class="cb-sub">${escapeHtml(st.fuente)}</div></div>
     <div class="sp"></div>
     <span class="pill" style="background:var(--gn2);color:var(--gn);border-color:var(--gn3)">${conMatch} emparejados</span>
     <span class="pill" style="background:var(--rd2);color:var(--rd);border-color:var(--rd3)">${sinMatch} sin coincidencia</span>
@@ -3408,8 +3457,8 @@ function rowCargaHtml(it,idx){
   const rowCls = it.matchCod===null? 'row-r' : (it.matchScore<0.99&&it.matchScore>0?'row-y':'');
   return `<tr class="${rowCls}">
     <td><input type="checkbox" ${it.usar?'checked':''} ${it.matchCod===null?'disabled':''} onchange="CARGA_STATE.items[${idx}].usar=this.checked"></td>
-    <td style="max-width:220px">${v_escapeHtml(it.raw.descripcion)}<div class="cb-sub" style="margin-top:2px">cod prov: ${v_escapeHtml(it.raw.codigoProv||'—')} ${it.raw.ean?'· EAN '+v_escapeHtml(it.raw.ean):''}</div></td>
-    <td>${m? v_escapeHtml(m.articulo)+' <span class="mn" style="color:var(--tx3)">('+m.cod+')</span>' : `<button class="btn b-gh b-sm" onclick="abrirMatchManual(${idx})">🔍 Buscar manualmente</button>`}</td>
+    <td style="max-width:220px">${escapeHtml(it.raw.descripcion)}<div class="cb-sub" style="margin-top:2px">cod prov: ${escapeHtml(it.raw.codigoProv||'—')} ${it.raw.ean?'· EAN '+escapeHtml(it.raw.ean):''}</div></td>
+    <td>${m? escapeHtml(m.articulo)+' <span class="mn" style="color:var(--tx3)">('+m.cod+')</span>' : `<button class="btn b-gh b-sm" onclick="abrirMatchManual(${idx})">🔍 Buscar manualmente</button>`}</td>
     <td class="mn" style="font-size:10px">${it.matchCod===null?'—':it.method+' '+(it.matchScore<1?'('+Math.round(it.matchScore*100)+'%)':'')}</td>
     <td class="r">${costoActual!=null?fmtMoney(costoActual):'—'}</td>
     <td class="r">
@@ -3423,14 +3472,14 @@ function rowCargaHtml(it,idx){
 
 function abrirMatchManual(idx){
   const it=CARGA_STATE.items[idx];
-  document.getElementById('v-modalTtl').textContent='Emparejar manualmente';
-  const opts=MAESTRO.items.map(m=>`<option value="${m.cod}">${m.cod} — ${v_escapeHtml(m.articulo)} (${v_escapeHtml(m.prov)})</option>`).join('');
-  document.getElementById('v-modalBody').innerHTML=`
-    <div style="margin-bottom:10px;color:var(--tx2)">Proveedor dice: <strong>${v_escapeHtml(it.raw.descripcion)}</strong></div>
+  document.getElementById('modalTtl').textContent='Emparejar manualmente';
+  const opts=MAESTRO.items.map(m=>`<option value="${m.cod}">${m.cod} — ${escapeHtml(m.articulo)} (${escapeHtml(m.prov)})</option>`).join('');
+  document.getElementById('modalBody').innerHTML=`
+    <div style="margin-bottom:10px;color:var(--tx2)">Proveedor dice: <strong>${escapeHtml(it.raw.descripcion)}</strong></div>
     <input class="srch" style="width:100%;margin-bottom:10px" id="matchSearch" placeholder="🔎 Filtrar artículo del maestro..." oninput="filtrarMatchSelect()">
     <select id="matchSelect" size="10" style="width:100%">${opts}</select>`;
-  document.getElementById('v-modalFooter').innerHTML=`<button class="btn b-gh" onclick="v_closeModal()">Cancelar</button><button class="btn b-nar" onclick="confirmarMatchManual(${idx})">Usar este artículo</button>`;
-  document.getElementById('v-modalBg').classList.add('on');
+  document.getElementById('modalFooter').innerHTML=`<button class="btn b-gh" onclick="closeModal()">Cancelar</button><button class="btn b-nar" onclick="confirmarMatchManual(${idx})">Usar este artículo</button>`;
+  document.getElementById('modalBg').classList.add('on');
 }
 function filtrarMatchSelect(){
   const q=normText(document.getElementById('matchSearch').value);
@@ -3440,19 +3489,19 @@ function filtrarMatchSelect(){
 function confirmarMatchManual(idx){
   const sel=document.getElementById('matchSelect');
   const cod=Number(sel.value);
-  if(!cod){v_toast('Elegí un artículo');return;}
+  if(!cod){toast('Elegí un artículo');return;}
   const it=CARGA_STATE.items[idx];
   it.matchCod=cod; it.matchScore=1; it.method='manual'; it.usar=true;
   // guardar en memoria persistente
   const mapKey=normKey(CARGA_STATE.proveedor)+'|'+normText(it.raw.descripcion);
   MAPDB[mapKey]=cod; saveMap(MAPDB);
-  v_closeModal(); renderCargaReview();
+  closeModal(); renderCargaReview();
 }
 
 function confirmarAplicar(){
   const st=CARGA_STATE;
   const aplicar=st.items.filter(i=>i.usar&&i.matchCod!==null&&i.nuevoCosto!=null);
-  if(!aplicar.length){v_toast('No hay cambios seleccionados para aplicar');return;}
+  if(!aplicar.length){toast('No hay cambios seleccionados para aplicar');return;}
   if(!confirm('Vas a actualizar el costo de '+aplicar.length+' artículos. ¿Confirmar?'))return;
   const detalle=[];
   aplicar.forEach(a=>{
@@ -3472,7 +3521,7 @@ function confirmarAplicar(){
   HIST.unshift({id:uid(),fecha:new Date().toISOString(),proveedor:st.proveedor,fuente:st.fuente,cantidad:detalle.length,variacionPromedio:variacionProm,detalle});
   saveHist(HIST);
   document.getElementById('navH').textContent=HIST.length;
-  v_toast('✓ '+detalle.length+' costos actualizados');
+  toast('✓ '+detalle.length+' costos actualizados');
   const provAplicado=st.proveedor;
   CARGA_STATE=null; cargaProvSel='';
   renderCarga();
@@ -3512,7 +3561,7 @@ function renderMargenes(){
   let filtered=items;
   if(margenFiltro!=='all')filtered=filtered.filter(i=>i.sem===margenFiltro);
   if(margenProv)filtered=filtered.filter(i=>i.prov===margenProv);
-  if(margenBusq)filtered=filtered.filter(i=>normText(i.articulo).includes(normText(margenBusq))||normText(i.prov).includes(normText(margenBusq)));
+  if(margenBusq)filtered=filtered.filter(i=>coincideBusqueda(i,margenBusq));
   filtered=filtered.sort((a,b)=>a.margenReal-b.margenReal);
 
   const mem = margenProv? DESCMEM[normKey(margenProv)] : null;
@@ -3534,17 +3583,17 @@ function renderMargenes(){
     <span class="fl" style="margin-left:8px">Proveedor:</span>
     <select id="margenProvSel" onchange="margenProv=this.value;mostrarEditorFormula=false;renderMargenes()" style="min-width:170px">
       <option value="">— Todos —</option>
-      ${provs.map(pv=>`<option value="${v_escapeHtml(pv)}" ${margenProv===pv?'selected':''}>${v_escapeHtml(pv)}</option>`).join('')}
+      ${provs.map(pv=>`<option value="${escapeHtml(pv)}" ${margenProv===pv?'selected':''}>${escapeHtml(pv)}</option>`).join('')}
     </select>
     <div class="sp"></div>
     <label style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--tx3);cursor:pointer;white-space:nowrap">
       <input type="checkbox" ${margenDetalle?'checked':''} onchange="margenDetalle=this.checked;renderMargenes()"> Ver fórmula completa (Parcial 1 / Parcial 2)
     </label>
-    <input class="srch" placeholder="🔎 Buscar..." value="${v_escapeHtml(margenBusq)}" oninput="margenBusq=this.value;renderMargenes()">
+    <input class="srch" placeholder="🔎 Buscar..." value="${escapeHtml(margenBusq)}" oninput="rf(this,()=>{margenBusq=this.value;renderMargenes()})">
   </div>
   ${margenProv?`
   <div class="cfg-card" style="margin:12px 20px">
-    <h3>⚙ Acciones masivas · ${v_escapeHtml(margenProv)} <span class="cb-sub">(${filtered.length} artículos con este filtro)</span></h3>
+    <h3>⚙ Acciones masivas · ${escapeHtml(margenProv)} <span class="cb-sub">(${filtered.length} artículos con este filtro)</span></h3>
     <div class="cfg-row">
       <div><div class="cfg-lbl">Actualizar costo de todos los artículos filtrados</div><div class="cfg-hint">ej: 8 para +8%, -5 para -5%</div></div>
       <div style="display:flex;gap:6px;align-items:center">
@@ -3554,7 +3603,7 @@ function renderMargenes(){
     </div>
     <div class="cfg-row">
       <div><div class="cfg-lbl">Aplicar descuentos a todos los artículos filtrados</div>
-        <div class="cfg-hint">${mem?`último usado para ${v_escapeHtml(margenProv)}: Desc.1 ${fmtPct(mem.desc1)} · Desc.2 ${fmtPct(mem.desc2)} (${new Date(mem.fecha).toLocaleDateString('es-AR')})`:'sin descuentos guardados para este proveedor todavía'}</div></div>
+        <div class="cfg-hint">${mem?`último usado para ${escapeHtml(margenProv)}: Desc.1 ${fmtPct(mem.desc1)} · Desc.2 ${fmtPct(mem.desc2)} (${new Date(mem.fecha).toLocaleDateString('es-AR')})`:'sin descuentos guardados para este proveedor todavía'}</div></div>
       <div style="display:flex;gap:6px;align-items:center">
         <input type="number" step="0.1" id="bulkDesc1" placeholder="Desc.1 %" value="${mem?toPct(mem.desc1):''}" style="width:80px">
         <input type="number" step="0.1" id="bulkDesc2" placeholder="Desc.2 %" value="${mem?toPct(mem.desc2):''}" style="width:80px">
@@ -3562,15 +3611,15 @@ function renderMargenes(){
       </div>
     </div>
     <div class="cfg-row">
-      <div><div class="cfg-lbl">Fórmula de cálculo para ${v_escapeHtml(margenProv)}</div>
-        <div class="cfg-hint">${fcGuardada?`guardada el ${new Date(fcGuardada.fecha).toLocaleDateString('es-AR')}`:(FORMULA_DEFAULT_POR_PROV[normKey(margenProv)]?`usando "${v_escapeHtml(fc.nombre)}" (fórmula por defecto para ${v_escapeHtml(margenProv)}, todavía no la guardaste explícitamente)`:'usando la fórmula estándar (todavía no se guardó una específica para este proveedor)')}</div></div>
+      <div><div class="cfg-lbl">Fórmula de cálculo para ${escapeHtml(margenProv)}</div>
+        <div class="cfg-hint">${fcGuardada?`guardada el ${new Date(fcGuardada.fecha).toLocaleDateString('es-AR')}`:(FORMULA_DEFAULT_POR_PROV[normKey(margenProv)]?`usando "${escapeHtml(fc.nombre)}" (fórmula por defecto para ${escapeHtml(margenProv)}, todavía no la guardaste explícitamente)`:'usando la fórmula estándar (todavía no se guardó una específica para este proveedor)')}</div></div>
       <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
         <select id="fcFormulaSel" style="min-width:280px" onchange="if(this.value==='__nueva__'){mostrarEditorFormula=true;renderMargenes();}">
-          ${FORMULAS.map(f=>`<option value="${f.id}" ${fc.id===f.id?'selected':''}>${v_escapeHtml(f.nombre)}${f.builtin?'':' (personalizada)'}</option>`).join('')}
+          ${FORMULAS.map(f=>`<option value="${f.id}" ${fc.id===f.id?'selected':''}>${escapeHtml(f.nombre)}${f.builtin?'':' (personalizada)'}</option>`).join('')}
           <option value="__nueva__">➕ Crear fórmula nueva…</option>
         </select>
         <button class="btn b-nar b-sm" onclick="guardarFormulaProveedor()">Guardar para este proveedor</button>
-        ${!fc.builtin?`<button class="btn b-rd b-sm" onclick="if(confirm('¿Borrar la fórmula personalizada \\'${v_escapeHtml(fc.nombre).replace(/'/g,"\\'")}\\'? Los proveedores que la tengan asignada vuelven a la fórmula estándar.')){borrarFormula('${fc.id}');renderMargenes();}">🗑 Borrar esta fórmula</button>`:''}
+        ${!fc.builtin?`<button class="btn b-rd b-sm" onclick="if(confirm('¿Borrar la fórmula personalizada \\'${escapeHtml(fc.nombre).replace(/'/g,"\\'")}\\'? Los proveedores que la tengan asignada vuelven a la fórmula estándar.')){borrarFormula('${fc.id}');renderMargenes();}">🗑 Borrar esta fórmula</button>`:''}
       </div>
       <div id="fcComposicion" class="cfg-hint mn" style="width:100%;margin-top:6px;line-height:1.7">${composicionFormulaHtml(fc)}</div>
     </div>
@@ -3584,7 +3633,7 @@ function renderMargenes(){
       <div class="cfg-row"><div class="cfg-lbl">Neto</div><input id="nfNeto" value="PARCIAL2*(1+MARGEN)" oninput="actualizarPreviewFormula()" style="flex:1;min-width:200px;font-family:var(--mn)"></div>
       <div class="cfg-hint">Vista previa con Costo=$1000 · Desc.1=10% · Desc.2=5% · Margen=20%: <b id="nfPreview" class="mn">${(()=>{const r=previewFormula('COSTO*(1-DESC1)','PARCIAL1*(1-DESC2)','PARCIAL2*(1+MARGEN)');return `Parcial1 ${fmtMoney(r.p1)} · Parcial2 ${fmtMoney(r.p2)} · Neto ${fmtMoney(r.neto)}`;})()}</b></div>
       <div style="display:flex;gap:6px;margin-top:10px">
-        <button class="btn b-bl b-sm" onclick="guardarNuevaFormula()">Guardar y usar en ${v_escapeHtml(margenProv)}</button>
+        <button class="btn b-bl b-sm" onclick="guardarNuevaFormula()">Guardar y usar en ${escapeHtml(margenProv)}</button>
         <button class="btn b-sm" onclick="mostrarEditorFormula=false;renderMargenes()">Cancelar</button>
       </div>
     </div>`:''}
@@ -3599,7 +3648,7 @@ function renderMargenes(){
 function rowMargenHtml(it){
   const l1 = it.neto*(1+(CFG.listas.iva||0)/100);
   return `<tr class="${it.sem==='r'?'row-r':it.sem==='y'?'row-y':''}">
-    <td class="mn">${it.cod}</td><td>${v_escapeHtml(it.prov)}</td><td>${v_escapeHtml(it.articulo)}</td>
+    <td class="mn">${it.cod}</td><td>${escapeHtml(it.prov)}</td><td>${escapeHtml(it.articulo)}</td>
     <td class="r"><input type="number" step="0.01" value="${it.costo}" style="width:88px;text-align:right" onchange="editMargenCampo(${it.cod},'costo',this.value)"></td>
     <td class="r"><input type="number" step="0.1" value="${toPct(it.desc1)}" style="width:64px;text-align:right" onchange="editMargenCampo(${it.cod},'desc1',this.value)"></td>
     ${margenDetalle?`<td class="r mn" title="Costo × (1 − Desc.1)">${fmtMoney(it.parcial1)}</td>`:''}
@@ -3652,14 +3701,14 @@ function redondearArriba(v){
 function editListaCampo(cod,valor){
   const it=MAESTRO.items.find(i=>i.cod===cod); if(!it)return;
   const l1=numOr(valor);
-  if(!l1||l1<=0){v_toast('Ingresá un precio de Lista 1 válido');renderMargenes();return;}
+  if(!l1||l1<=0){toast('Ingresá un precio de Lista 1 válido');renderMargenes();return;}
   const ivaFrac=(CFG.listas.iva||0)/100;
   const netoDeseado=l1/(1+ivaFrac);
   it.margen=invertMargenDesdeNeto(it,netoDeseado);
   it.neto=null; // el margen ya refleja el precio pedido; no forzamos un neto aparte
   it.fechaActualizado=new Date().toISOString();
   saveMaestro(MAESTRO);
-  v_toast('✓ Margen recalculado a partir de Lista 1');
+  toast('✓ Margen recalculado a partir de Lista 1');
   renderMargenes();
 }
 function redondearLista(cod){
@@ -3672,9 +3721,9 @@ function redondearLista(cod){
 }
 function aplicarCostoMasivo(){
   const pct=numOr(document.getElementById('bulkPct').value);
-  if(!pct){v_toast('Ingresá un porcentaje distinto de cero');return;}
+  if(!pct){toast('Ingresá un porcentaje distinto de cero');return;}
   const afectados=MAESTRO.items.filter(i=>i.prov===margenProv);
-  if(!afectados.length){v_toast('No hay artículos de ese proveedor');return;}
+  if(!afectados.length){toast('No hay artículos de ese proveedor');return;}
   if(!confirm(`Vas a ${pct>0?'aumentar':'reducir'} el costo ${Math.abs(pct)}% de ${afectados.length} artículos de ${margenProv}. ¿Confirmar?`))return;
   const detalle=[];
   afectados.forEach(it=>{
@@ -3688,14 +3737,14 @@ function aplicarCostoMasivo(){
   HIST.unshift({id:uid(),fecha:new Date().toISOString(),proveedor:margenProv,fuente:'actualización masiva '+pct+'%',cantidad:detalle.length,variacionPromedio:pct/100,detalle});
   saveHist(HIST);
   document.getElementById('navH').textContent=HIST.length;
-  v_toast('✓ Costo actualizado en '+detalle.length+' artículos');
+  toast('✓ Costo actualizado en '+detalle.length+' artículos');
   renderMargenes();
 }
 function aplicarDescuentoMasivo(){
   const d1=document.getElementById('bulkDesc1').value, d2=document.getElementById('bulkDesc2').value;
-  if(d1===''&&d2===''){v_toast('Ingresá al menos un descuento');return;}
+  if(d1===''&&d2===''){toast('Ingresá al menos un descuento');return;}
   const afectados=MAESTRO.items.filter(i=>i.prov===margenProv);
-  if(!afectados.length){v_toast('No hay artículos de ese proveedor');return;}
+  if(!afectados.length){toast('No hay artículos de ese proveedor');return;}
   if(!confirm(`Vas a aplicar Desc.1 ${d1?d1+'%':'(sin cambio)'} · Desc.2 ${d2?d2+'%':'(sin cambio)'} a ${afectados.length} artículos de ${margenProv}. ¿Confirmar?`))return;
   afectados.forEach(it=>{
     if(d1!=='')it.desc1=fromPct(d1);
@@ -3704,15 +3753,15 @@ function aplicarDescuentoMasivo(){
   });
   saveMaestro(MAESTRO);
   recordarDescuento(margenProv, d1!==''?fromPct(d1):afectados[0].desc1, d2!==''?fromPct(d2):afectados[0].desc2);
-  v_toast('✓ Descuento aplicado a '+afectados.length+' artículos');
+  toast('✓ Descuento aplicado a '+afectados.length+' artículos');
   renderMargenes();
 }
 function guardarFormulaProveedor(){
   if(!margenProv)return;
   const sel=document.getElementById('fcFormulaSel').value;
-  if(sel==='__nueva__'){v_toast('Completá y guardá la fórmula nueva primero');return;}
+  if(sel==='__nueva__'){toast('Completá y guardá la fórmula nueva primero');return;}
   guardarFormulaCfg(margenProv,sel);
-  v_toast('✓ Fórmula guardada para '+margenProv);
+  toast('✓ Fórmula guardada para '+margenProv);
   renderMargenes();
 }
 function previewFormula(p1expr,p2expr,netoExpr){
@@ -3724,10 +3773,10 @@ function previewFormula(p1expr,p2expr,netoExpr){
 }
 function composicionFormulaHtml(f){
   const r=previewFormula(f.parcial1,f.parcial2,f.neto);
-  return `<div>Composición de "<b>${v_escapeHtml(f.nombre)}</b>":</div>
-    <div>Parcial 1 = <span class="mn">${v_escapeHtml(f.parcial1)}</span></div>
-    <div>Parcial 2 (Costo Final) = <span class="mn">${v_escapeHtml(f.parcial2)}</span></div>
-    <div>Neto = <span class="mn">${v_escapeHtml(f.neto)}</span></div>
+  return `<div>Composición de "<b>${escapeHtml(f.nombre)}</b>":</div>
+    <div>Parcial 1 = <span class="mn">${escapeHtml(f.parcial1)}</span></div>
+    <div>Parcial 2 (Costo Final) = <span class="mn">${escapeHtml(f.parcial2)}</span></div>
+    <div>Neto = <span class="mn">${escapeHtml(f.neto)}</span></div>
     <div style="margin-top:4px">Con Costo=$1.000 · Desc.1=10% · Desc.2=5% · Margen=20% da: Parcial1 ${fmtMoney(r.p1)} · Parcial2 ${fmtMoney(r.p2)} · Neto ${fmtMoney(r.neto)}</div>`;
 }
 function mostrarComposicionFormula(formulaId){
@@ -3745,17 +3794,17 @@ function actualizarPreviewFormula(){
 }
 function guardarNuevaFormula(){
   const nombre=(document.getElementById('nfNombre').value||'').trim();
-  if(!nombre){v_toast('Ingresá un nombre para la fórmula');return;}
+  if(!nombre){toast('Ingresá un nombre para la fórmula');return;}
   const p1e=document.getElementById('nfP1').value.trim();
   const p2e=document.getElementById('nfP2').value.trim();
   const netoe=document.getElementById('nfNeto').value.trim();
-  if(!p1e||!p2e||!netoe){v_toast('Completá las 3 fórmulas');return;}
+  if(!p1e||!p2e||!netoe){toast('Completá las 3 fórmulas');return;}
   const r=previewFormula(p1e,p2e,netoe);
-  if(!isFinite(r.p1)||!isFinite(r.p2)||!isFinite(r.neto)){v_toast('La fórmula tiene un error de sintaxis, revisala');return;}
+  if(!isFinite(r.p1)||!isFinite(r.p2)||!isFinite(r.neto)){toast('La fórmula tiene un error de sintaxis, revisala');return;}
   const f=crearFormula(nombre,p1e,p2e,netoe);
   guardarFormulaCfg(margenProv,f.id);
   mostrarEditorFormula=false;
-  v_toast('✓ Fórmula "'+nombre+'" creada y aplicada a '+margenProv);
+  toast('✓ Fórmula "'+nombre+'" creada y aplicada a '+margenProv);
   renderMargenes();
 }
 
@@ -3780,20 +3829,20 @@ function renderHist(){
   const buscadorHtml=`
   <div class="cfg-card" style="margin:14px 20px">
     <h3>🔎 Buscar precio anterior de un artículo</h3>
-    <input class="srch" style="width:100%" placeholder="Nombre del artículo..." value="${v_escapeHtml(histBusq)}" oninput="histBusq=this.value;renderHist()">
+    <input class="srch" style="width:100%" placeholder="Nombre del artículo..." value="${escapeHtml(histBusq)}" oninput="rf(this,()=>{histBusq=this.value;renderHist()})">
     ${!VERSIONES.length?'<div class="cfg-hint" style="margin-top:8px">Todavía no hay versiones guardadas — se crean solas cada vez que subís un Excel, cargás una lista de proveedor, o aplicás una actualización masiva.</div>':''}
     ${q&&resultadosArt.length?resultadosArt.map(r=>`
       <div style="margin-top:12px">
-        <strong>${v_escapeHtml(r.nombre)}</strong> <span class="cb-sub">(${r.cod})</span>
+        <strong>${escapeHtml(r.nombre)}</strong> <span class="cb-sub">(${r.cod})</span>
         <table style="margin-top:6px"><thead><tr><th>Fecha</th><th>Motivo</th><th class="r">Costo</th><th class="r">Margen</th><th class="r">Neto</th></tr></thead>
-        <tbody>${r.puntos.map(p=>`<tr><td class="mn">${new Date(p.fecha).toLocaleDateString('es-AR')}</td><td class="cb-sub">${v_escapeHtml(p.motivo)}</td><td class="r">${fmtMoney(p.item.costo)}</td><td class="r">${fmtPct(p.item.margen)}</td><td class="r bold">${fmtMoney(p.item.neto)}</td></tr>`).join('')}</tbody></table>
+        <tbody>${r.puntos.map(p=>`<tr><td class="mn">${new Date(p.fecha).toLocaleDateString('es-AR')}</td><td class="cb-sub">${escapeHtml(p.motivo)}</td><td class="r">${fmtMoney(p.item.costo)}</td><td class="r">${fmtPct(p.item.margen)}</td><td class="r bold">${fmtMoney(p.item.neto)}</td></tr>`).join('')}</tbody></table>
       </div>`).join(''):(q?'<div class="cfg-hint" style="margin-top:8px">No encontré ningún artículo guardado con ese nombre en versiones anteriores.</div>':'')}
   </div>
   ${VERSIONES.length?`
   <div class="cfg-card" style="margin:0 20px 14px">
     <h3>📚 Versiones completas guardadas (${VERSIONES.length})</h3>
     ${VERSIONES.map(v=>`<div class="cfg-row">
-      <div><strong>${new Date(v.fecha).toLocaleString('es-AR')}</strong><div class="cb-sub">${v_escapeHtml(v.motivo)} · ${v.items.length} artículos</div></div>
+      <div><strong>${new Date(v.fecha).toLocaleString('es-AR')}</strong><div class="cb-sub">${escapeHtml(v.motivo)} · ${v.items.length} artículos</div></div>
       <div style="display:flex;gap:6px">
         <button class="btn b-gh b-sm" onclick="verVersionCompleta('${v.id}')">👁 Ver</button>
         <button class="btn b-gn b-sm" onclick="exportarVersion('${v.id}')">⬇ Excel</button>
@@ -3813,27 +3862,27 @@ function renderHist(){
   ${HIST.map(h=>`
     <div class="cfg-card">
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <div><strong style="color:var(--azul)">${v_escapeHtml(h.proveedor)}</strong> <span class="cb-sub">· ${new Date(h.fecha).toLocaleString('es-AR')}</span></div>
+        <div><strong style="color:var(--azul)">${escapeHtml(h.proveedor)}</strong> <span class="cb-sub">· ${new Date(h.fecha).toLocaleString('es-AR')}</span></div>
         <div><span class="pill" style="background:var(--azul3);color:var(--azul);border-color:var(--brd2)">${h.cantidad} artículos</span>
         <span class="pill" style="background:${h.variacionPromedio>0?'var(--rd2)':'var(--gn2)'};color:${h.variacionPromedio>0?'var(--rd)':'var(--gn)'};border-color:${h.variacionPromedio>0?'var(--rd3)':'var(--gn3)'}">variación prom. ${(h.variacionPromedio*100).toFixed(1)}%</span></div>
       </div>
-      <div class="cfg-hint" style="margin-top:6px">Archivo: ${v_escapeHtml(h.fuente)}</div>
+      <div class="cfg-hint" style="margin-top:6px">Archivo: ${escapeHtml(h.fuente)}</div>
       <details style="margin-top:8px"><summary style="cursor:pointer;font-size:11px;color:var(--tx3)">Ver detalle</summary>
         <table style="margin-top:8px"><thead><tr><th>Cod</th><th>Artículo</th><th class="r">Costo Anterior</th><th class="r">Costo Nuevo</th></tr></thead>
-        <tbody>${h.detalle.map(d=>`<tr><td class="mn">${d.cod}</td><td>${v_escapeHtml(d.articulo)}</td><td class="r">${fmtMoney(d.costoAnterior)}</td><td class="r">${fmtMoney(d.costoNuevo)}</td></tr>`).join('')}</tbody></table>
+        <tbody>${h.detalle.map(d=>`<tr><td class="mn">${d.cod}</td><td>${escapeHtml(d.articulo)}</td><td class="r">${fmtMoney(d.costoAnterior)}</td><td class="r">${fmtMoney(d.costoNuevo)}</td></tr>`).join('')}</tbody></table>
       </details>
     </div>`).join('')}
   </div>`;
 }
 function verVersionCompleta(id){
   const v=VERSIONES.find(x=>x.id===id); if(!v)return;
-  document.getElementById('v-modalTtl').textContent='Versión del '+new Date(v.fecha).toLocaleString('es-AR');
-  document.getElementById('v-modalBody').innerHTML=`
-    <div class="cfg-hint" style="margin-bottom:10px">${v_escapeHtml(v.motivo)}</div>
+  document.getElementById('modalTtl').textContent='Versión del '+new Date(v.fecha).toLocaleString('es-AR');
+  document.getElementById('modalBody').innerHTML=`
+    <div class="cfg-hint" style="margin-bottom:10px">${escapeHtml(v.motivo)}</div>
     <table><thead><tr><th>Cod</th><th>Proveedor</th><th>Artículo</th><th class="r">Costo</th><th class="r">Margen</th><th class="r">Neto</th></tr></thead>
-    <tbody>${v.items.map(it=>`<tr><td class="mn">${it.cod}</td><td>${v_escapeHtml(it.prov)}</td><td>${v_escapeHtml(it.articulo)}</td><td class="r">${fmtMoney(it.costo)}</td><td class="r">${fmtPct(it.margen)}</td><td class="r bold">${fmtMoney(it.neto)}</td></tr>`).join('')}</tbody></table>`;
-  document.getElementById('v-modalFooter').innerHTML=`<button class="btn b-gh" onclick="v_closeModal()">Cerrar</button>`;
-  document.getElementById('v-modalBg').classList.add('on');
+    <tbody>${v.items.map(it=>`<tr><td class="mn">${it.cod}</td><td>${escapeHtml(it.prov)}</td><td>${escapeHtml(it.articulo)}</td><td class="r">${fmtMoney(it.costo)}</td><td class="r">${fmtPct(it.margen)}</td><td class="r bold">${fmtMoney(it.neto)}</td></tr>`).join('')}</tbody></table>`;
+  document.getElementById('modalFooter').innerHTML=`<button class="btn b-gh" onclick="closeModal()">Cerrar</button>`;
+  document.getElementById('modalBg').classList.add('on');
 }
 function exportarVersion(id){
   const v=VERSIONES.find(x=>x.id===id); if(!v)return;
@@ -3869,7 +3918,7 @@ function exportarChess(){
 function exportarSoloModificados(){
   const hoy=new Date().toDateString();
   const items=MAESTRO.items.filter(it=>it.fechaActualizado&&new Date(it.fechaActualizado).toDateString()===hoy);
-  if(!items.length){v_toast('No hay artículos actualizados hoy');return;}
+  if(!items.length){toast('No hay artículos actualizados hoy');return;}
   const rows=[['COD','PROVEEDOR','ARTICULO','NETO','NETO REVENDEDOR','PRECIO SIN IVA SUPER']];
   items.forEach(it=>{
     const c=calcItem(it);
@@ -3888,14 +3937,14 @@ function dateStamp(){const d=new Date();return d.toISOString().slice(0,10);}
 /* ============================================================
    PAGE: CONFIG
 ============================================================ */
-function v_renderConfig(){
+function renderConfig(){
   const p=document.getElementById('p-config');
   p.innerHTML=`
   <div class="cfg-wrap">
     <div class="cfg-card">
       <h3>🔒 Acceso</h3>
       <div class="cfg-row"><div><div class="cfg-lbl">Cambiar clave</div><div class="cfg-hint">se pide al abrir la app</div></div>
-      <input type="text" id="cfgPass" value="${v_escapeHtml(CFG.password)}" style="width:160px"></div>
+      <input type="text" id="cfgPass" value="${escapeHtml(CFG.password)}" style="width:160px"></div>
     </div>
     <div class="cfg-card">
       <h3>📊 Umbrales de margen (lista normal)</h3>
@@ -3906,7 +3955,7 @@ function v_renderConfig(){
     <div class="cfg-card">
       <h3>🗺 Emparejamiento aprendido</h3>
       <div class="cfg-row"><div class="cfg-lbl">Coincidencias guardadas</div><span class="mn">${Object.keys(MAPDB).length}</span></div>
-      <button class="btn b-rd b-sm" style="margin-top:8px" onclick="if(confirm('¿Borrar toda la memoria de emparejamiento?')){MAPDB={};saveMap(MAPDB);v_toast('Memoria borrada');v_renderConfig();}">🗑 Borrar memoria de emparejamiento</button>
+      <button class="btn b-rd b-sm" style="margin-top:8px" onclick="if(confirm('¿Borrar toda la memoria de emparejamiento?')){MAPDB={};saveMap(MAPDB);toast('Memoria borrada');renderConfig();}">🗑 Borrar memoria de emparejamiento</button>
     </div>
     <div class="cfg-card">
       <h3>⚠ Zona de riesgo</h3>
@@ -3919,18 +3968,20 @@ function rubrosCfgHtml(){
   const cuenta={};
   ((MAESTRO&&MAESTRO.items)||[]).forEach(i=>{ if(i.rubro)cuenta[i.rubro]=(cuenta[i.rubro]||0)+1; });
   const filas=RUBROS.length? RUBROS.map((r,i)=>`
-    <div class="cfg-row"><div class="cfg-lbl">${v_escapeHtml(r)} <span class="mn" style="color:var(--tx3)">· ${cuenta[r]||0} artículos</span></div>
+    <div class="cfg-row"><div class="cfg-lbl">${escapeHtml(r)} <span class="mn" style="color:var(--tx3)">· ${cuenta[r]||0} artículos</span></div>
       <div style="display:flex;gap:6px"><button class="btn b-gh b-sm" onclick="cfgRenombrarRubro(${i})">✎ Renombrar</button><button class="btn b-rd b-sm" onclick="cfgBorrarRubro(${i})">🗑</button></div></div>`).join('')
     : `<div class="cfg-hint" style="padding:6px 0">Todavía no hay rubros creados.</div>`;
   return `<h3>🏷 Rubros</h3>${filas}
-    <button class="btn b-nar b-sm" style="margin-top:8px" onclick="cfgNuevoRubro()">+ Nuevo rubro</button>`;
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"><button class="btn b-nar b-sm" onclick="cfgNuevoRubro()">+ Nuevo rubro</button>
+    <button class="btn b-gh b-sm" onclick="cfgAplicarAgrupacion()">↻ Aplicar agrupación de la lista de vendedor (${GRUPOS_VENDEDOR.length} rubros)</button></div>
+    <div class="cfg-hint" style="margin-top:6px">Cada rubro es un grupo de la lista de vendedor: se ofrecen juntos. El orden de acá es el orden en que salen en la lista.</div>`;
 }
 function refrescarRubrosCfg(){
   const c=document.getElementById('cfgRubrosCard');
   if(c)c.innerHTML=rubrosCfgHtml();
 }
 function cfgNuevoRubro(){
-  pedirRubroNuevo(()=>{v_toast('Rubro creado');refrescarRubrosCfg();});
+  pedirRubroNuevo(()=>{toast('Rubro creado');refrescarRubrosCfg();});
 }
 function cfgRenombrarRubro(i){
   const viejo=RUBROS[i]; if(viejo===undefined)return;
@@ -3945,7 +3996,7 @@ function cfgRenombrarRubro(i){
     asegurarRubro(nuevo);
     saveRubros(RUBROS);
     if(maestroRubroFiltro===viejo)maestroRubroFiltro=nuevo;
-    v_toast('Rubro actualizado');
+    toast('Rubro actualizado');
     refrescarRubrosCfg();
   });
 }
@@ -3958,7 +4009,7 @@ function cfgBorrarRubro(i){
   RUBROS=RUBROS.filter((x,k)=>k!==i);
   saveRubros(RUBROS);
   if(maestroRubroFiltro===r)maestroRubroFiltro='';
-  v_toast('Rubro borrado');
+  toast('Rubro borrado');
   refrescarRubrosCfg();
 }
 function borrarTodoLocal(){
@@ -3966,7 +4017,7 @@ function borrarTodoLocal(){
   try{
     Object.keys(localStorage).filter(k=>k.indexOf('dl_precios_')===0).forEach(k=>localStorage.removeItem(k));
   }catch(e){}
-  v_toast('Todo borrado — recargando...');
+  toast('Todo borrado — recargando...');
   setTimeout(()=>location.reload(),600);
 }
 function guardarConfig(){
@@ -3974,13 +4025,13 @@ function guardarConfig(){
   CFG.margenRojo=numOr(document.getElementById('cfgRojo').value);
   CFG.margenAmarillo=numOr(document.getElementById('cfgAmar').value);
   saveCfg(CFG);
-  v_toast('Configuración guardada');
+  toast('Configuración guardada');
 }
 
 /* ============================================================
    PAGE: LISTAS DE PRECIOS
 ============================================================ */
-let listasBusq='', listasProv='';
+let listasBusq='', listasProv='', listasRubro='', listasAgrupar=true;
 function calcListas(it){
   const c=calcItem(it);
   const neto = it.neto!=null? it.neto : c.neto;
@@ -3988,7 +4039,8 @@ function calcListas(it){
   const l2 = l1*(1+CFG.listas.lista2/100);
   const l3 = l1*(1+CFG.listas.lista3/100);
   const l4 = l1*(1+CFG.listas.lista4/100);
-  return {neto,l1,l2,l3,l4};
+  const l5 = l1*(1+(CFG.listas.lista5||0)/100);
+  return {neto,l1,l2,l3,l4,l5};
 }
 function renderListas(){
   const p=document.getElementById('p-listas');
@@ -3996,34 +4048,58 @@ function renderListas(){
   const provs=[...new Set(MAESTRO.items.map(i=>i.prov).filter(Boolean))].sort();
   let items=MAESTRO.items;
   if(listasProv)items=items.filter(i=>i.prov===listasProv);
-  if(listasBusq)items=items.filter(i=>normText(i.articulo).includes(normText(listasBusq))||normText(i.prov).includes(normText(listasBusq)));
+  if(listasBusq)items=items.filter(i=>coincideBusqueda(i,listasBusq));
+  if(listasRubro==='__sin__')items=items.filter(i=>!i.rubro); else if(listasRubro)items=items.filter(i=>i.rubro===listasRubro);
+  let grupoPorCod=null;
+  if(listasExcel){
+    const gs=gruposDeLista(listasExcel); const orden=[]; grupoPorCod={};
+    gs.forEach((g,gi)=>g.items.forEach(it=>{orden.push(it.cod);grupoPorCod[it.cod]={gi,nombre:g.nombre};}));
+    const en=new Set(orden); const pos={}; orden.forEach((c,i)=>pos[c]=i);
+    items=items.filter(i=>en.has(i.cod)).sort((a,b)=>pos[a.cod]-pos[b.cod]);
+  }else if(listasAgrupar)items=ordenarPorRubro(items);
   const L=CFG.listas;
   p.innerHTML=`
   <div class="cfg-card" style="margin:16px 20px">
     <h3>⚙ Definición de las listas <span class="cb-sub">se aplican sobre el Neto de cada artículo</span></h3>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:6px">
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:6px">
       <label class="fld">Lista 1 = Neto + IVA<div style="display:flex;align-items:center;gap:4px"><input type="number" step="0.1" id="lIva" value="${L.iva}" style="width:70px">%</div></label>
       <label class="fld">Lista 2 = Lista 1 +<div style="display:flex;align-items:center;gap:4px"><input type="number" step="0.1" id="l2pct" value="${L.lista2}" style="width:70px">%</div></label>
       <label class="fld">Lista 3 = Lista 1 +<div style="display:flex;align-items:center;gap:4px"><input type="number" step="0.1" id="l3pct" value="${L.lista3}" style="width:70px">%</div></label>
       <label class="fld">Lista 4 = Lista 1 +<div style="display:flex;align-items:center;gap:4px"><input type="number" step="0.1" id="l4pct" value="${L.lista4}" style="width:70px">% <span class="cb-sub">(negativo = descuento)</span></div></label>
+      <label class="fld">Lista 5 = Lista 1 +<div style="display:flex;align-items:center;gap:4px"><input type="number" step="0.1" id="l5pct" value="${L.lista5||0}" style="width:70px">% <span class="cb-sub">(negativo = descuento)</span></div></label>
     </div>
     <button class="btn b-nar b-sm" style="margin-top:12px" onclick="guardarListas()">Guardar y recalcular</button>
   </div>
   <div class="c-bar">
     <select id="listasProvSel" onchange="listasProv=this.value;renderListas()" style="min-width:170px">
       <option value="">— Todos los proveedores —</option>
-      ${provs.map(pv=>`<option value="${v_escapeHtml(pv)}" ${listasProv===pv?'selected':''}>${v_escapeHtml(pv)}</option>`).join('')}
+      ${provs.map(pv=>`<option value="${escapeHtml(pv)}" ${listasProv===pv?'selected':''}>${escapeHtml(pv)}</option>`).join('')}
     </select>
-    <input class="srch" placeholder="🔎 Buscar artículo..." value="${v_escapeHtml(listasBusq)}" oninput="listasBusq=this.value;renderListas()">
+    <select onchange="listasRubro=this.value;renderListas()" style="min-width:170px">
+      <option value="">— Todos los rubros —</option><option value="__sin__" ${listasRubro==='__sin__'?'selected':''}>— sin rubro —</option>
+      ${RUBROS.map(r=>`<option value="${escapeHtml(r)}" ${listasRubro===r?'selected':''}>${escapeHtml(r)}</option>`).join('')}
+    </select>
+    <select onchange="listasExcel=this.value;renderListas()" style="min-width:190px" title="Ver cada lista con los artículos y la agrupación de su hoja del Excel">
+      <option value="">— Todas (sin lista del Excel) —</option>
+      ${Object.keys(DEF_LISTAS).map(k=>`<option value="${k}" ${listasExcel===k?'selected':''}>${escapeHtml(DEF_LISTAS[k].nombre)}</option>`).join('')}
+    </select>
+    <label style="font-size:11px;display:flex;align-items:center;gap:4px"><input type="checkbox" ${listasAgrupar?'checked':''} onchange="listasAgrupar=this.checked;renderListas()"> Agrupar</label>
+    <input class="srch" placeholder="🔎 Buscar artículo..." value="${escapeHtml(listasBusq)}" oninput="rf(this,()=>{listasBusq=this.value;renderListas()})">
     <div class="sp"></div>
+    <button class="btn b-nar b-sm" onclick="exportarListaExcel(listasExcel)">⬇ Descargar lista elegida (agrupada)</button>
     <button class="btn b-gn b-sm" onclick="exportarListas()">⬇ Descargar Excel de listas</button>
   </div>
   <div class="tbl-wrap"><table>
-    <thead><tr><th>Cod</th><th>Proveedor</th><th>Artículo</th><th class="r">Neto</th><th class="r">Lista 1</th><th class="r">Lista 2</th><th class="r">Lista 3</th><th class="r">Lista 4</th></tr></thead>
-    <tbody>${items.slice(0,400).map(it=>{const l=calcListas(it);return `<tr>
-      <td class="mn">${it.cod}</td><td>${v_escapeHtml(it.prov)}</td><td>${v_escapeHtml(it.articulo)}</td>
-      <td class="r">${fmtMoney(l.neto)}</td><td class="r bold">${fmtMoney(l.l1)}</td><td class="r">${fmtMoney(l.l2)}</td><td class="r">${fmtMoney(l.l3)}</td><td class="r">${fmtMoney(l.l4)}</td>
-    </tr>`;}).join('')}</tbody>
+    <thead><tr><th>Cod</th><th>Proveedor</th><th>Artículo</th><th class="r">Neto</th><th class="r">Lista 1</th><th class="r">Lista 2</th><th class="r">Lista 3</th><th class="r">Lista 4</th><th class="r">Lista 5</th></tr></thead>
+    <tbody>${(()=>{let ult=null;return items.slice(0,400).map(it=>{const l=calcListas(it);
+      let hdr='';
+      const gk=listasExcel? (grupoPorCod[it.cod]?grupoPorCod[it.cod].gi:-1) : (it.rubro||'');
+      const gTitulo=listasExcel? (grupoPorCod[it.cod]?grupoPorCod[it.cod].nombre:'') : (it.rubro||'');
+      if(listasAgrupar&&gk!==ult){ult=gk;hdr=`<tr><td colspan="9" style="background:var(--bg2,#f2efe8);font-weight:700;padding:8px 10px">${escapeHtml(gTitulo||'Sin rubro')}</td></tr>`;}
+      return hdr+`<tr>
+      <td class="mn">${it.cod}</td><td>${escapeHtml(it.prov)}</td><td>${escapeHtml(it.articulo)}</td>
+      <td class="r">${fmtMoney(l.neto)}</td><td class="r bold">${fmtMoney(l.l1)}</td><td class="r">${fmtMoney(l.l2)}</td><td class="r">${fmtMoney(l.l3)}</td><td class="r">${fmtMoney(l.l4)}</td><td class="r">${fmtMoney(l.l5)}</td>
+    </tr>`;}).join('');})()}</tbody>
   </table></div>
   ${items.length>400?`<div style="padding:8px 20px;color:var(--tx3);font-family:var(--mn);font-size:10px">mostrando 400 de ${items.length} — afiná la búsqueda</div>`:''}
   `;
@@ -4033,15 +4109,78 @@ function guardarListas(){
     iva:numOr(document.getElementById('lIva').value),
     lista2:numOr(document.getElementById('l2pct').value),
     lista3:numOr(document.getElementById('l3pct').value),
-    lista4:numOr(document.getElementById('l4pct').value)
+    lista4:numOr(document.getElementById('l4pct').value),
+    lista5:numOr(document.getElementById('l5pct').value)
   };
   saveCfg(CFG);
-  v_toast('Listas actualizadas');
+  toast('Listas actualizadas');
   renderListas();
 }
+// Lista para los vendedores: igual a la hoja LISTA VENDEDOR — Cód · Descripción · Proveedor · Lista 1 · Lista 2,
+// con una fila en blanco entre cada grupo (rubro) para que se vea qué artículos se ofrecen juntos.
+const DEF_LISTAS={
+  vendedor:{nombre:'Lista vendedor (Lista 1 y 2)', src:'vendedor', cols:[['LISTA 1','l1'],['LISTA 2','l2']]},
+  lista3:{nombre:'Lista 3 (Listas 1, 2 y 3)', src:'lista3', cols:[['LISTA 1','l1'],['LISTA 2','l2'],['LISTA 3','l3']]},
+  lista4:{nombre:'Lista 4', src:'lista4', cols:[['LISTA 4','l4']]},
+  revendedor:{nombre:'Lista revendedor (costo)', src:'revendedor', cols:[['COSTO','costo']], sinPres:true},
+  lista5:{nombre:'Lista 5 (agrupada como vendedor)', src:'vendedor', cols:[['LISTA 5','l5']]}
+};
+let listasExcel='';
+// Grupos de una lista, en el orden del Excel, con los artículos activos del maestro
+function gruposDeLista(id){
+  const def=DEF_LISTAS[id]; if(!def)return [];
+  const porCod={}; MAESTRO.items.forEach(i=>{porCod[i.cod]=i;});
+  return LISTAS_EXCEL[def.src].grupos.map(([nombre,cods])=>({nombre,items:cods.map(c=>porCod[c]).filter(Boolean)})).filter(g=>g.items.length);
+}
+function precioListaExcel(id,it,key){
+  if(key==='costo')return it.costo||0;                 // COSTO = columna D del maestro (costo de lista del proveedor)
+  const def=DEF_LISTAS[id], fijo=(LISTAS_EXCEL[def.src].fijo||{})[it.cod];
+  if(fijo&&fijo[key]!=null)return fijo[key];          // precio escrito a mano en el Excel (se respeta)
+  return calcListas(it)[key];
+}
+function exportarListaExcel(id){
+  const def=DEF_LISTAS[id]; if(!def){toast('Elegí qué lista descargar');return;}
+  const L=LISTAS_EXCEL[def.src];
+  const rows=[['','','','LISTA DE PRECIOS AL:',new Date().toLocaleDateString('es-AR')],[],
+    ['Cód','Descripción','PROVEEDOR','']];
+  if(!def.sinPres)rows[2].push(...def.cols.map(c=>c[0])); else rows[2]=['Cód','Descripción','PROVEEDOR',def.cols[0][0]];
+  let n=0,sinPrecio=0,primero=true;
+  gruposDeLista(id).forEach(g=>{
+    const filas=[];
+    g.items.forEach(it=>{
+      const precios=def.cols.map(c=>precioListaExcel(id,it,c[1]));
+      if(!(precios[0]>0)){sinPrecio++;return;}
+      const redondeado=precios.map(x=>Math.round(x*100)/100);
+      filas.push(def.sinPres? [it.cod,it.articulo,it.prov].concat(redondeado) : [it.cod,it.articulo,it.prov,(L.pres||{})[it.cod]||''].concat(redondeado));
+      n++;
+    });
+    if(!filas.length)return;
+    if(!primero)rows.push([]);
+    primero=false; filas.forEach(f=>rows.push(f));
+  });
+  if(!n){toast('Esta lista todavía no tiene artículos con costo cargado.');return;}
+  descargarXLSX(rows,def.nombre.split(' (')[0].replace(/\s+/g,'_')+'_'+dateStamp()+'.xlsx');
+  toast(def.nombre+': '+n+' artículos'+(sinPrecio?' ('+sinPrecio+' sin costo quedaron afuera)':''));
+}
+function exportarListaVendedor(){
+  const conRubro=ordenarPorRubro(MAESTRO.items.filter(i=>i.rubro));
+  if(!conRubro.length){toast('Todavía no hay artículos con rubro. Aplicá la agrupación en Config → Rubros.');return;}
+  const rows=[['Cód','Descripción','PROVEEDOR','LISTA 1','LISTA 2']];
+  let ult=null,sinPrecio=0,n=0;
+  conRubro.forEach(it=>{
+    const l=calcListas(it);
+    if(!(l.l1>0)){sinPrecio++;return;}
+    if(ult!==null&&it.rubro!==ult)rows.push([]);
+    ult=it.rubro; n++;
+    rows.push([it.cod,it.articulo,it.prov,Math.round(l.l1*100)/100,Math.round(l.l2*100)/100]);
+  });
+  if(!n){toast('Los artículos con rubro todavía no tienen costo cargado.');return;}
+  descargarXLSX(rows,'Lista_vendedor_'+dateStamp()+'.xlsx');
+  toast('Lista de vendedor: '+n+' artículos'+(sinPrecio?' ('+sinPrecio+' sin costo quedaron afuera)':''));
+}
 function exportarListas(){
-  const rows=[['COD','PROVEEDOR','ARTICULO','NETO','LISTA 1','LISTA 2','LISTA 3','LISTA 4']];
-  MAESTRO.items.forEach(it=>{const l=calcListas(it);rows.push([it.cod,it.prov,it.articulo,l.neto.toFixed(2),l.l1.toFixed(2),l.l2.toFixed(2),l.l3.toFixed(2),l.l4.toFixed(2)]);});
+  const rows=[['COD','PROVEEDOR','ARTICULO','RUBRO','NETO','LISTA 1','LISTA 2','LISTA 3','LISTA 4','LISTA 5']];
+  MAESTRO.items.forEach(it=>{const l=calcListas(it);rows.push([it.cod,it.prov,it.articulo,it.rubro||'',l.neto.toFixed(2),l.l1.toFixed(2),l.l2.toFixed(2),l.l3.toFixed(2),l.l4.toFixed(2),l.l5.toFixed(2)]);});
   descargarXLSX(rows,'Listas_de_precios_'+dateStamp()+'.xlsx');
 }
 
@@ -4110,7 +4249,7 @@ let OFERTA_META=loadMeta();
 let VENDEDORES=loadListSeed(LS_VENDEDORES,[]);
 let CLIENTES=loadListSeed(LS_CLIENTES,[]);
 let OBJETIVOS=loadObjetivos();
-let ofertaBusq='';
+let ofertaBusq='', ofertaTodasMarcas=false;
 let ofertaDestino='marca'; // 'cliente' | 'vendedor' | 'marca'
 let ofertaPreviewNombre=null;
 let objFormMarca=null;
@@ -4128,7 +4267,7 @@ function renderOfertas(){
   }catch(e){
     console.error('Error en Ofertas:', e);
     p.innerHTML=`<div class="empty"><div class="empty-ico">⚠</div><div>Hubo un error mostrando Ofertas.</div>
-      <div class="cfg-hint" style="max-width:420px;text-align:center">${v_escapeHtml(e.message)}</div>
+      <div class="cfg-hint" style="max-width:420px;text-align:center">${escapeHtml(e.message)}</div>
       <button class="btn b-rd b-sm" onclick="if(confirm('¿Borrar ofertas, objetivos y contactos guardados para intentar solucionarlo?')){
         localStorage.removeItem(LS_OFERTAS);localStorage.removeItem(LS_OFERTA_META);localStorage.removeItem(LS_OBJETIVOS);
         localStorage.removeItem(LS_VENDEDORES);localStorage.removeItem(LS_CLIENTES);
@@ -4140,10 +4279,10 @@ function renderOfertasInner(p){
   if(!MAESTRO||!MAESTRO.items.length){p.innerHTML=`<div class="empty"><div class="empty-ico">🎁</div><div>Subí el Maestro de Artículos primero</div></div>`;return;}
   const provs=provsDisponibles();
   let busqResults=[];
-  if(ofertaDestino==='marca'){
-    busqResults=MAESTRO.items.filter(i=>i.prov===OFERTA_META.marcaSeleccionada && (!ofertaBusq||normText(i.articulo).includes(normText(ofertaBusq)))).slice(0,50);
+  if(ofertaDestino==='marca'&&!ofertaTodasMarcas){
+    busqResults=MAESTRO.items.filter(i=>i.prov===OFERTA_META.marcaSeleccionada && coincideBusqueda(i,ofertaBusq)).slice(0,50);
   }else if(ofertaBusq){
-    busqResults=MAESTRO.items.filter(i=>normText(i.articulo).includes(normText(ofertaBusq))||normText(i.prov).includes(normText(ofertaBusq))).slice(0,25);
+    busqResults=MAESTRO.items.filter(i=>coincideBusqueda(i,ofertaBusq)).slice(0,50);
   }
   const lista=destinoList();
   p.innerHTML=`
@@ -4157,9 +4296,9 @@ function renderOfertasInner(p){
         <button class="fb ${ofertaDestino==='marca'?'on':''}" onclick="ofertaDestino='marca';renderOfertas()">🏬 Por Marca</button>
       </div>
       ${ofertaDestino==='marca'?`<label class="fld" style="max-width:280px;margin-top:12px">Marca / Proveedor<select id="ofMarcaSel" onchange="OFERTA_META.marcaSeleccionada=this.value;saveMeta(OFERTA_META);renderOfertas()">
-        ${provs.map(pv=>`<option value="${v_escapeHtml(pv)}" ${OFERTA_META.marcaSeleccionada===pv?'selected':''}>${v_escapeHtml(pv)}</option>`).join('')}
+        ${provs.map(pv=>`<option value="${escapeHtml(pv)}" ${OFERTA_META.marcaSeleccionada===pv?'selected':''}>${escapeHtml(pv)}</option>`).join('')}
       </select></label>
-      <div class="cfg-hint" style="margin-top:6px">Los artículos de abajo se filtran solo a ${v_escapeHtml(OFERTA_META.marcaSeleccionada)}.</div>`:
+      <div class="cfg-hint" style="margin-top:6px">Los artículos de abajo se filtran solo a ${escapeHtml(OFERTA_META.marcaSeleccionada)}.</div>`:
       `<div class="cfg-hint" style="margin-top:8px">${ofertaDestino==='cliente'?'Ofertas puntuales para un cliente, con precio fijo o por vencimiento.':'Ofertas generales para que tus vendedores ofrezcan en la calle.'}</div>`}
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
         <label class="fld">Vigencia desde<input type="date" id="ofDesde" value="${OFERTA_META.desde||''}" onchange="OFERTA_META.desde=this.value;saveMeta(OFERTA_META)"></label>
@@ -4170,14 +4309,15 @@ function renderOfertasInner(p){
 
     <div class="cfg-card">
       <h3>➕ Agregar artículo a la oferta</h3>
-      ${ofertaDestino!=='marca'?`<input class="srch" style="width:100%" placeholder="🔎 Buscar artículo por nombre o proveedor..." value="${v_escapeHtml(ofertaBusq)}" oninput="ofertaBusq=this.value;renderOfertas()">`
-      :`<input class="srch" style="width:100%" placeholder="🔎 Filtrar dentro de ${v_escapeHtml(OFERTA_META.marcaSeleccionada)}..." value="${v_escapeHtml(ofertaBusq)}" oninput="ofertaBusq=this.value;renderOfertas()">`}
-      ${busqResults.length?`<div style="margin-top:10px;max-height:220px;overflow-y:auto;border:1px solid var(--brd);border-radius:9px">
+      ${ofertaDestino!=='marca'||ofertaTodasMarcas?`<input class="srch" style="width:100%" placeholder="🔎 Buscar producto por nombre, proveedor, código o rubro..." value="${escapeHtml(ofertaBusq)}" oninput="rf(this,()=>{ofertaBusq=this.value;renderOfertas()})">`
+      :`<input class="srch" style="width:100%" placeholder="🔎 Filtrar dentro de ${escapeHtml(OFERTA_META.marcaSeleccionada)}..." value="${escapeHtml(ofertaBusq)}" oninput="rf(this,()=>{ofertaBusq=this.value;renderOfertas()})">`}
+      ${ofertaDestino==='marca'?`<label style="display:flex;align-items:center;gap:5px;font-size:11px;margin-top:6px"><input type="checkbox" ${ofertaTodasMarcas?'checked':''} onchange="ofertaTodasMarcas=this.checked;renderOfertas()"> Buscar en todas las marcas (no solo ${escapeHtml(OFERTA_META.marcaSeleccionada)})</label>`:''}
+      ${busqResults.length?`<div style="margin-top:10px;max-height:260px;overflow-y:auto;border:1px solid var(--brd);border-radius:9px">
         ${busqResults.map(it=>{const l=calcListas(it);return `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid var(--s2)">
-          <div><strong>${v_escapeHtml(it.articulo)}</strong><div class="cb-sub">${v_escapeHtml(it.prov)} · Costo ${fmtMoney(it.costo)} · Lista 1: ${fmtMoney(l.l1)}</div></div>
+          <div><strong>${escapeHtml(it.articulo)}</strong><div class="cb-sub">${escapeHtml(it.prov)}${it.rubro?' · '+escapeHtml(it.rubro):''} · Costo ${fmtMoney(it.costo)} · Lista 1: ${fmtMoney(l.l1)}</div></div>
           <button class="btn b-nar b-sm" onclick="agregarOferta(${it.cod})">+ Agregar</button>
         </div>`;}).join('')}
-      </div>`:(ofertaDestino==='marca'?`<div class="cfg-hint" style="margin-top:8px">No hay artículos de ${v_escapeHtml(OFERTA_META.marcaSeleccionada)} que coincidan.</div>`:'')}
+      </div>`:((ofertaDestino==='marca'&&!ofertaTodasMarcas)||ofertaBusq?`<div class="cfg-hint" style="margin-top:8px">${ofertaBusq&&(ofertaDestino!=='marca'||ofertaTodasMarcas)?'No hay productos que coincidan con la búsqueda.':'No hay artículos de '+escapeHtml(OFERTA_META.marcaSeleccionada)+' que coincidan.'}</div>`:'')}
     </div>
 
     <div class="cfg-card">
@@ -4189,7 +4329,7 @@ function renderOfertasInner(p){
     <div class="cfg-card">
       <h3>📦 Promociones por volumen</h3>
       ${(OFERTA_META.promosVolumen||[]).length?(OFERTA_META.promosVolumen||[]).map(pv=>`<div class="cfg-row">
-        <div><strong>${v_escapeHtml(pv.grupo)}</strong><div class="cb-sub">por ${pv.cantidad} ${v_escapeHtml(pv.unidad||'unidades')} o más → ${pv.descuentoPct}% descuento</div></div>
+        <div><strong>${escapeHtml(pv.grupo)}</strong><div class="cb-sub">por ${pv.cantidad} ${escapeHtml(pv.unidad||'unidades')} o más → ${pv.descuentoPct}% descuento</div></div>
         <button class="btn b-rd b-sm" onclick="quitarPromoVolumen('${pv.id}')">✕</button>
       </div>`).join(''):'<div class="cfg-hint">Sin promociones por volumen cargadas.</div>'}
       <div style="display:grid;grid-template-columns:1.4fr 0.8fr 0.9fr 0.7fr auto;gap:6px;margin-top:10px;align-items:end">
@@ -4206,7 +4346,7 @@ function renderOfertasInner(p){
     ${ofertaDestino!=='marca'?`
     <div class="cfg-card">
       <h3>👤 ${destinoLabel()}</h3>
-      <div id="destList">${lista.length?lista.map((v,i)=>`<div class="cfg-row"><div>${v_escapeHtml(v.nombre)} ${v.telefono?'<span class="cb-sub">'+v_escapeHtml(v.telefono)+'</span>':''}</div><button class="btn b-rd b-sm" onclick="eliminarDestinatario(${i})">✕</button></div>`).join(''):'<div class="cfg-hint">Sin '+destinoLabel().toLowerCase()+' cargados todavía.</div>'}</div>
+      <div id="destList">${lista.length?lista.map((v,i)=>`<div class="cfg-row"><div>${escapeHtml(v.nombre)} ${v.telefono?'<span class="cb-sub">'+escapeHtml(v.telefono)+'</span>':''}</div><button class="btn b-rd b-sm" onclick="eliminarDestinatario(${i})">✕</button></div>`).join(''):'<div class="cfg-hint">Sin '+destinoLabel().toLowerCase()+' cargados todavía.</div>'}</div>
       <div style="display:flex;gap:8px;margin-top:10px">
         <input type="text" id="destNombre" placeholder="Nombre">
         <input type="text" id="destTelefono" placeholder="Teléfono (opcional)">
@@ -4219,7 +4359,7 @@ function renderOfertasInner(p){
       <h3>🖨 Vista previa e impresión</h3>
       <div class="cfg-hint" style="margin-bottom:10px">Usá "Imprimir" y elegí "Guardar como PDF" en el diálogo del navegador.</div>
       ${ofertaDestino!=='marca'&&lista.length?`<label class="fld" style="max-width:260px;margin-bottom:12px">Mostrar oferta para<select id="previewNombreSel" onchange="ofertaPreviewNombre=this.value;renderOfertas()">
-        ${lista.map(v=>`<option value="${v_escapeHtml(v.nombre)}" ${ofertaPreviewNombre===v.nombre?'selected':''}>${v_escapeHtml(v.nombre)}</option>`).join('')}
+        ${lista.map(v=>`<option value="${escapeHtml(v.nombre)}" ${ofertaPreviewNombre===v.nombre?'selected':''}>${escapeHtml(v.nombre)}</option>`).join('')}
       </select></label>`:''}
       <button class="btn b-nar" onclick="window.print()">🖨 Imprimir / Guardar como PDF</button>
     </div>
@@ -4264,7 +4404,7 @@ function rowOfertaHtml(o){
       ${dias!=null?`<span class="cb-sub" style="align-self:center;color:${dias<0?'var(--rd)':dias<=7?'var(--yl)':'var(--tx3)'}">${dias<0?'vencido hace '+Math.abs(dias)+'d':'vence en '+dias+'d'}</span>`:''}`;
   }
   return `<div class="cfg-row" style="align-items:flex-end;flex-wrap:wrap;gap:8px">
-    <div style="flex:1;min-width:200px"><strong>${v_escapeHtml(it.articulo)}</strong><div class="cb-sub">${v_escapeHtml(it.prov)} (${it.cod}) · lista 1 normal ${fmtMoney(l.l1)}</div>
+    <div style="flex:1;min-width:200px"><strong>${escapeHtml(it.articulo)}</strong><div class="cb-sub">${escapeHtml(it.prov)} (${it.cod}) · lista 1 normal ${fmtMoney(l.l1)}</div>
       <div class="modo-tabs">
         <span class="modo-tab ${o.modo==='precio'?'on':''}" onclick="cambiarModoOferta(${o.cod},'precio')">Precio fijo</span>
         <span class="modo-tab ${o.modo==='descuento'?'on':''}" onclick="cambiarModoOferta(${o.cod},'descuento')">% Descuento</span>
@@ -4277,7 +4417,7 @@ function rowOfertaHtml(o){
 }
 
 function agregarOferta(cod){
-  if(OFERTAS.find(o=>o.cod===cod)){v_toast('Ya está en la oferta');return;}
+  if(OFERTAS.find(o=>o.cod===cod)){toast('Ya está en la oferta');return;}
   const it=MAESTRO.items.find(i=>i.cod===cod);
   const l=calcListas(it);
   const modoDefault = ofertaDestino==='marca'?'descuento':'precio';
@@ -4286,7 +4426,7 @@ function agregarOferta(cod){
   else{ nuevo.precioOferta=+(l.l1*0.9).toFixed(2); }
   OFERTAS.push(nuevo);
   saveOfertas(OFERTAS);
-  v_toast('Agregado a ofertas');
+  toast('Agregado a ofertas');
   ofertaBusq=''; renderOfertas();
 }
 function cambiarModoOferta(cod,modo){
@@ -4312,7 +4452,7 @@ function agregarPromoVolumen(){
   const cantidad=numOr(document.getElementById('pvCantidad').value);
   const unidad=document.getElementById('pvUnidad').value.trim();
   const descuentoPct=numOr(document.getElementById('pvDescuento').value);
-  if(!grupo||!cantidad||!descuentoPct){v_toast('Completá grupo, cantidad y descuento');return;}
+  if(!grupo||!cantidad||!descuentoPct){toast('Completá grupo, cantidad y descuento');return;}
   if(!OFERTA_META.promosVolumen)OFERTA_META.promosVolumen=[];
   OFERTA_META.promosVolumen.push({id:uid(),grupo,cantidad,unidad,descuentoPct});
   saveMeta(OFERTA_META);
@@ -4326,7 +4466,7 @@ function quitarPromoVolumen(id){
 function agregarDestinatario(){
   const nombre=document.getElementById('destNombre').value.trim();
   const telefono=document.getElementById('destTelefono').value.trim();
-  if(!nombre){v_toast('Completá el nombre');return;}
+  if(!nombre){toast('Completá el nombre');return;}
   const list=destinoList();
   list.push({nombre,telefono});
   saveList(destinoStorageKey(),list);
@@ -4352,7 +4492,7 @@ function renderOfertaPreview(nombreDestino){
     if(o.modo==='precio'){
       const precioOf = o.precioOferta!=null? o.precioOferta : 0;
       itemsHtml+=`<div class="ps-item-desc">
-        <div class="ps-nombre">${v_escapeHtml(it.articulo)}</div>
+        <div class="ps-nombre">${escapeHtml(it.articulo)}</div>
         <div class="ps-linea">Costo ---- $${it.costo.toFixed(0)}</div>
         <div class="ps-linea">Precio: <span class="ps-precio-pub">$${precioOf.toFixed(0)}</span></div>
       </div>`;
@@ -4360,7 +4500,7 @@ function renderOfertaPreview(nombreDestino){
       const pDist=it.costo*(1-(o.descuentoPct||0)/100);
       const pPub = o.precioPublico!=null? o.precioPublico : pDist*(1+(o.margenPublico||0)/100);
       itemsHtml+=`<div class="ps-item-desc">
-        <div class="ps-nombre">${v_escapeHtml(it.articulo)}</div>
+        <div class="ps-nombre">${escapeHtml(it.articulo)}</div>
         <div class="ps-linea">Costo ---- $${it.costo.toFixed(0)} &nbsp;·&nbsp; Descuento ${o.descuentoPct}%</div>
         <div class="ps-linea">Precio Venta Distribuidor: $${pDist.toFixed(2)}</div>
         <div class="ps-linea">Precio Venta Público: <span class="ps-precio-pub">$${pPub.toFixed(0)}</span></div>
@@ -4369,7 +4509,7 @@ function renderOfertaPreview(nombreDestino){
       const pDist=it.costo*(1-(o.descuentoPct||0)/100);
       const pPub = o.precioPublico!=null? o.precioPublico : pDist*(1+(o.margenPublico||0)/100);
       itemsHtml+=`<div class="ps-item-desc">
-        <div class="ps-nombre">${v_escapeHtml(it.articulo)}${o.fechaVencimiento?' — VTO '+fmtDateAR(o.fechaVencimiento):''}</div>
+        <div class="ps-nombre">${escapeHtml(it.articulo)}${o.fechaVencimiento?' — VTO '+fmtDateAR(o.fechaVencimiento):''}</div>
         <div class="ps-linea">Costo ---- $${it.costo.toFixed(0)} &nbsp;·&nbsp; Descuento ${o.descuentoPct}%</div>
         <div class="ps-linea">Precio Venta Distribuidor: $${pDist.toFixed(2)}</div>
         <div class="ps-linea">Precio Venta Público: <span class="ps-precio-pub">$${pPub.toFixed(0)}</span></div>
@@ -4379,9 +4519,9 @@ function renderOfertaPreview(nombreDestino){
   const promosHtml=(OFERTA_META.promosVolumen||[]).map(pv=>`▪ ${pv.grupo} — por ${pv.cantidad} ${pv.unidad||'unidades'} o más: ${pv.descuentoPct}% descuento`).join('\n');
   return `<div class="print-sheet">
     <h1>DISTRIBUIDORA LUCAS</h1>
-    <div class="ps-sub">${v_escapeHtml(tituloDestino(nombreDestino))}${encabezadoFecha?' · '+encabezadoFecha:''}</div>
+    <div class="ps-sub">${escapeHtml(tituloDestino(nombreDestino))}${encabezadoFecha?' · '+encabezadoFecha:''}</div>
     ${itemsHtml}
-    ${promosHtml?`<div class="ps-promos">${v_escapeHtml(promosHtml)}</div>`:''}
+    ${promosHtml?`<div class="ps-promos">${escapeHtml(promosHtml)}</div>`:''}
     <div class="ps-footer">Consultanos por más info</div>
   </div>`;
 }
@@ -4399,11 +4539,11 @@ function renderObjetivosPanel(){
       ${OBJETIVOS.length?OBJETIVOS.map((o,i)=>rowObjetivoHtml(o,i)).join(''):'<div class="cfg-hint">Sin objetivos cargados todavía.</div>'}
       <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--s2)">
         <label class="fld" style="max-width:260px">Marca<select id="objMarcaSel" onchange="objFormMarca=this.value;renderOfertas()">
-          ${provs.map(pv=>`<option value="${v_escapeHtml(pv)}" ${objFormMarca===pv?'selected':''}>${v_escapeHtml(pv)}</option>`).join('')}
+          ${provs.map(pv=>`<option value="${escapeHtml(pv)}" ${objFormMarca===pv?'selected':''}>${escapeHtml(pv)}</option>`).join('')}
         </select></label>
-        <label class="fld" style="margin-top:8px">Artículos de ${v_escapeHtml(objFormMarca)} <span class="cb-sub">(Ctrl/Cmd+click para elegir varios)</span>
+        <label class="fld" style="margin-top:8px">Artículos de ${escapeHtml(objFormMarca)} <span class="cb-sub">(Ctrl/Cmd+click para elegir varios)</span>
           <select id="objArticulos" multiple size="6" style="width:100%">
-            ${articulosMarca.map(a=>`<option value="${a.cod}">${v_escapeHtml(a.articulo)}</option>`).join('')}
+            ${articulosMarca.map(a=>`<option value="${a.cod}">${escapeHtml(a.articulo)}</option>`).join('')}
           </select>
         </label>
         <div style="display:grid;grid-template-columns:0.8fr 0.9fr 0.7fr 0.7fr 1fr 1fr auto;gap:6px;margin-top:10px;align-items:end">
@@ -4427,9 +4567,9 @@ function rowObjetivoHtml(o,i){
   const arts = codigos.map(c=>{const m=MAESTRO.items.find(x=>x.cod===c);return m?m.articulo:c;}).join(', ');
   return `<div class="cfg-row" style="flex-direction:column;align-items:stretch">
     <div style="display:flex;justify-content:space-between;gap:10px">
-      <div><strong>${v_escapeHtml(o.marca)}</strong> <span class="cb-sub">${v_escapeHtml(arts)}</span><div class="cb-sub">${fmtDateAR(o.vigenciaDesde)} al ${fmtDateAR(o.vigenciaHasta)}</div></div>
+      <div><strong>${escapeHtml(o.marca)}</strong> <span class="cb-sub">${escapeHtml(arts)}</span><div class="cb-sub">${fmtDateAR(o.vigenciaDesde)} al ${fmtDateAR(o.vigenciaHasta)}</div></div>
       <div style="display:flex;gap:8px;align-items:center;flex-shrink:0">
-        <span class="mn" style="font-size:11px">${vendido} / ${o.objetivoValor} ${v_escapeHtml(o.objetivoUnidad||'')} ${cumplido?'✅':''}</span>
+        <span class="mn" style="font-size:11px">${vendido} / ${o.objetivoValor} ${escapeHtml(o.objetivoUnidad||'')} ${cumplido?'✅':''}</span>
         <span class="cb-sub">recompensa ${o.recompensaValor}${o.recompensaTipo}</span>
         <button class="btn b-rd b-sm" onclick="eliminarObjetivo(${i})">✕</button>
       </div>
@@ -4447,7 +4587,7 @@ function agregarObjetivo(){
   const recompensaTipo=document.getElementById('objRecompTipo').value;
   const vigenciaDesde=document.getElementById('objDesde').value;
   const vigenciaHasta=document.getElementById('objHasta').value;
-  if(!marca||!codigos.length||!objetivoValor){v_toast('Completá marca, artículos y objetivo');return;}
+  if(!marca||!codigos.length||!objetivoValor){toast('Completá marca, artículos y objetivo');return;}
   OBJETIVOS.push({marca,codigos,objetivoValor,objetivoUnidad,recompensaValor,recompensaTipo,vigenciaDesde,vigenciaHasta});
   saveObjetivos(OBJETIVOS);
   renderOfertas();
@@ -4533,7 +4673,7 @@ function handleVentasFile(file){
       VENTAS={items:parsed.items,fecha:new Date().toISOString(),fuente:file.name,rangoDesde:parsed.rangoDesde,rangoHasta:parsed.rangoHasta};
       saveVentas(VENTAS);
       guardarResumenMes();
-      v_toast('Ventas cargadas: '+parsed.items.length+' líneas');
+      toast('Ventas cargadas: '+parsed.items.length+' líneas');
       renderTablero();
     }catch(err){console.error(err);showErrV('Error leyendo el archivo: '+err.message);}
   };
@@ -4684,7 +4824,7 @@ function renderTableroDashboard(){
 
   p.innerHTML=`
   <div class="c-bar">
-    <div><div class="cb-ttl">Tablero de Ventas</div><div class="cb-sub">${v_escapeHtml(VENTAS.fuente)} · ${VENTAS.rangoDesde?new Date(VENTAS.rangoDesde).toLocaleDateString('es-AR'):'?'} al ${VENTAS.rangoHasta?new Date(VENTAS.rangoHasta).toLocaleDateString('es-AR'):'?'}</div></div>
+    <div><div class="cb-ttl">Tablero de Ventas</div><div class="cb-sub">${escapeHtml(VENTAS.fuente)} · ${VENTAS.rangoDesde?new Date(VENTAS.rangoDesde).toLocaleDateString('es-AR'):'?'} al ${VENTAS.rangoHasta?new Date(VENTAS.rangoHasta).toLocaleDateString('es-AR'):'?'}</div></div>
     <div class="sp"></div>
     <button class="btn b-gh b-sm" onclick="document.getElementById('fiV2').click()">🔁 Reemplazar ventas</button>
     <input type="file" id="fiV2" accept=".xlsx,.xls" style="display:none" onchange="handleVentasFile(this.files[0])"/>
@@ -4694,7 +4834,7 @@ function renderTableroDashboard(){
     <div class="kpi"><div class="kpi-v">${totalBultos.toLocaleString('es-AR')}</div><div class="kpi-l">Bultos vendidos</div></div>
     <div class="kpi"><div class="kpi-v">${provList.length}</div><div class="kpi-l">Proveedores con venta</div></div>
     ${proy?`<div class="kpi c-nar"><div class="kpi-v">${fmtMoney(totalImporte*proy.factor)}</div><div class="kpi-l">Proyección fin de mes (día ${proy.diasTranscurridos}/${proy.diasDelMes})</div></div>`:''}
-    ${varMes!=null?`<div class="kpi ${varMes>=0?'c-gn':'c-rd'}"><div class="kpi-v">${varMes>0?'+':''}${(varMes*100).toFixed(1)}%</div><div class="kpi-l">vs. mes anterior (${v_escapeHtml(mesAnterior.mesLabel)})</div></div>`:''}
+    ${varMes!=null?`<div class="kpi ${varMes>=0?'c-gn':'c-rd'}"><div class="kpi-v">${varMes>0?'+':''}${(varMes*100).toFixed(1)}%</div><div class="kpi-l">vs. mes anterior (${escapeHtml(mesAnterior.mesLabel)})</div></div>`:''}
   </div>
   <div class="tbl-grid">
     <div class="chart-card"><h4>📊 Ventas por proveedor</h4><canvas id="chProv" height="220"></canvas></div>
@@ -4708,7 +4848,7 @@ function renderTableroDashboard(){
       <h4>🏆 Ranking de proveedores</h4>
       <table><thead><tr><th>Proveedor</th><th class="r">Facturado</th><th class="r">%</th><th class="r">Bultos</th><th class="r">Artículos</th><th class="r">Margen realizado</th></tr></thead>
       <tbody>${provList.map(p=>`<tr>
-        <td>${v_escapeHtml(p.prov)}</td><td class="r bold">${fmtMoney(p.importe)}</td><td class="r">${(p.participacion*100).toFixed(1)}%</td>
+        <td>${escapeHtml(p.prov)}</td><td class="r bold">${fmtMoney(p.importe)}</td><td class="r">${(p.participacion*100).toFixed(1)}%</td>
         <td class="r">${p.bultos.toLocaleString('es-AR')}</td><td class="r">${p.articulos}</td>
         <td class="r">${p.margenReal!=null?fmtPct(p.margenReal):'—'}</td>
       </tr>`).join('')}</tbody></table>
@@ -4716,7 +4856,7 @@ function renderTableroDashboard(){
     <div class="chart-card full">
       <h4>🔝 Top 10 artículos por facturación</h4>
       <table><thead><tr><th>Cod</th><th>Artículo</th><th>Proveedor</th><th class="r">Facturado</th><th class="r">Bultos</th></tr></thead>
-      <tbody>${topArt.map(a=>`<tr><td class="mn">${a.cod}</td><td>${v_escapeHtml(a.descripcion)}</td><td>${v_escapeHtml(a.prov)}</td><td class="r">${fmtMoney(a.importe)}</td><td class="r">${a.bultos.toLocaleString('es-AR')}</td></tr>`).join('')}</tbody></table>
+      <tbody>${topArt.map(a=>`<tr><td class="mn">${a.cod}</td><td>${escapeHtml(a.descripcion)}</td><td>${escapeHtml(a.prov)}</td><td class="r">${fmtMoney(a.importe)}</td><td class="r">${a.bultos.toLocaleString('es-AR')}</td></tr>`).join('')}</tbody></table>
     </div>
   </div>`;
 
@@ -4731,12 +4871,12 @@ function renderDecisionPanel(provList,topArt){
   // proveedores de alto volumen y margen bajo el objetivo/umbral
   provList.filter(p=>p.margenReal!=null).forEach(p=>{
     if(p.participacion>=0.05 && p.margenReal<umbralRojo){
-      items.push({tipo:'alerta',txt:`<strong>${v_escapeHtml(p.prov)}</strong> representa el ${(p.participacion*100).toFixed(1)}% de la facturación pero su margen realizado es de ${fmtPct(p.margenReal)} — por debajo del umbral de ${CFG.margenRojo}%. Prioridad para renegociar costos o ajustar precio.`});
+      items.push({tipo:'alerta',txt:`<strong>${escapeHtml(p.prov)}</strong> representa el ${(p.participacion*100).toFixed(1)}% de la facturación pero su margen realizado es de ${fmtPct(p.margenReal)} — por debajo del umbral de ${CFG.margenRojo}%. Prioridad para renegociar costos o ajustar precio.`});
     }
   });
   const buenos = provList.filter(p=>p.margenReal!=null&&p.margenReal>=umbralRojo&&p.participacion>=0.03).sort((a,b)=>b.margenReal-a.margenReal).slice(0,2);
   buenos.forEach(p=>{
-    items.push({tipo:'oport',txt:`<strong>${v_escapeHtml(p.prov)}</strong> combina buen volumen (${(p.participacion*100).toFixed(1)}%) con margen sano (${fmtPct(p.margenReal)}) — candidato a potenciar o pedir mejores condiciones por escala.`});
+    items.push({tipo:'oport',txt:`<strong>${escapeHtml(p.prov)}</strong> combina buen volumen (${(p.participacion*100).toFixed(1)}%) con margen sano (${fmtPct(p.margenReal)}) — candidato a potenciar o pedir mejores condiciones por escala.`});
   });
   // articulos con costo actualizado recientemente y alta venta
   const recientes=HIST.length?HIST[0]:null;
@@ -4744,7 +4884,7 @@ function renderDecisionPanel(provList,topArt){
     const codsRecientes=new Set(recientes.detalle.map(d=>d.cod));
     const impactados=topArt.filter(a=>codsRecientes.has(a.cod));
     if(impactados.length){
-      items.push({tipo:'info',txt:`${impactados.length} de los artículos más vendidos tuvieron cambio de costo en la última actualización (${new Date(recientes.fecha).toLocaleDateString('es-AR')}) — revisar si el precio de venta ya lo refleja: ${impactados.map(a=>v_escapeHtml(a.descripcion)).slice(0,4).join(', ')}${impactados.length>4?'...':''}`});
+      items.push({tipo:'info',txt:`${impactados.length} de los artículos más vendidos tuvieron cambio de costo en la última actualización (${new Date(recientes.fecha).toLocaleDateString('es-AR')}) — revisar si el precio de venta ya lo refleja: ${impactados.map(a=>escapeHtml(a.descripcion)).slice(0,4).join(', ')}${impactados.length>4?'...':''}`});
     }
   }
   const sinIdent=provList.find(p=>p.prov==='SIN IDENTIFICAR');
@@ -4781,30 +4921,14 @@ function dibujarCharts(topProv,mesAnterior){
   }
 }
 
-// Expose for shell activation
-// Expose onclick-called functions to global scope
-window.navTo = typeof navTo === 'function' ? navTo : null;
-window.tryLogin = typeof tryLogin === 'function' ? tryLogin : null;
-window.v_closeModal = typeof v_closeModal === 'function' ? v_closeModal : null;
-window.v_toast = typeof v_toast === 'function' ? v_toast : null;
-window.v_renderConfig = typeof v_renderConfig === 'function' ? v_renderConfig : null;
-window.v_escapeHtml = typeof v_escapeHtml === 'function' ? v_escapeHtml : null;
-window.renderMaestro = typeof renderMaestro === 'function' ? renderMaestro : null;
-window.renderCarga = typeof renderCarga === 'function' ? renderCarga : null;
-window.renderMargenes = typeof renderMargenes === 'function' ? renderMargenes : null;
-window.renderListas = typeof renderListas === 'function' ? renderListas : null;
-window.renderOfertas = typeof renderOfertas === 'function' ? renderOfertas : null;
-window.renderTablero = typeof renderTablero === 'function' ? renderTablero : null;
-window.renderHist = typeof renderHist === 'function' ? renderHist : null;
-window.renderExport = typeof renderExport === 'function' ? renderExport : null;
-window.saveEditItem = typeof saveEditItem === 'function' ? saveEditItem : null;
-window.confirmarMatchManual = typeof confirmarMatchManual === 'function' ? confirmarMatchManual : null;
-window.guardarNuevaFormula = typeof guardarNuevaFormula === 'function' ? guardarNuevaFormula : null;
-window.borrarFormula = typeof borrarFormula === 'function' ? borrarFormula : null;
-window.saveMap = typeof saveMap === 'function' ? saveMap : null;
-window.pedirTextoOk = typeof pedirTextoOk === 'function' ? pedirTextoOk : null;
-window.eliminarDestinatario = typeof eliminarDestinatario === 'function' ? eliminarDestinatario : null;
-window._ventasInitApp = typeof initApp === 'function' ? initApp : (typeof window.initApp === 'function' ? window.initApp : null);
+// ── Exponer initApp para activación desde el tablero unificado ──
+window._ventasInitApp = initApp;
+
+
+// ── Exponer funciones necesarias para onclick handlers ──
+window.closeModal = typeof closeModal !== "undefined" ? closeModal : window.closeModal;
+window.tryLogin = tryLogin;
+window._ventasInitApp = initApp;
 })();
 </script>
 
