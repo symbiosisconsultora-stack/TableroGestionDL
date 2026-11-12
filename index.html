@@ -2460,13 +2460,21 @@ function navTo(pid,el){
   if(target)target.classList.add('on');
   if(!el)el=scope.querySelector(".n-tab[onclick*=\"'"+pid+"'\"]");
   if(el)el.classList.add('on');
+  if(pid==='p-maestro')renderMaestro();
+  if(pid==='p-carga')renderCarga();
+  if(pid==='p-margenes')renderMargenes();
+  if(pid==='p-listas')renderListas();
+  if(pid==='p-ofertas')renderOfertas();
+  if(pid==='p-tablero')renderTablero();
+  if(pid==='p-hist')renderHist();
+  if(pid==='p-export')renderExport();
+  if(pid==='p-config')renderConfig();
 }
 
 function initApp(){
   try{ if(MAESTRO&&MAESTRO.items&&MAESTRO.items.length&&!localStorage.getItem(LS_AGRUP))aplicarAgrupacionVendedor(true); }catch(e){console.error(e);}
   document.getElementById('navH').textContent=HIST.length;
-  navTo('p-maestro');   // activa la primera página (.page.on)
-  renderMaestro();
+  navTo('p-maestro');
 }
 
 /* ============================================================
