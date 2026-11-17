@@ -8246,7 +8246,21 @@ async function _stk_load_db() {
 
 let DB={articles:{},snaps:[],movs:[],files:[],costs:{}};
 let CFG={pw:'lucas2026',cob:7,baseDate:null,hasta:null};
-function stk_save(){ _stk_save_db(DB, CFG); }
+let _stk_pendingSave = null;
+function stk_save(){
+  // Cancelar guardado anterior pendiente (debounce 800ms)
+  if(_stk_pendingSave) clearTimeout(_stk_pendingSave);
+  _stk_pendingSave = setTimeout(()=>{
+    _stk_pendingSave = null;
+    if(!_stk_uid()){ console.warn('[stock] stk_save: sin usuario, no se guarda'); return; }
+    _stk_save_db(DB, CFG).catch(e=>console.warn('[stock] stk_save error',e));
+  }, 800);
+}
+// Forzar guardado inmediato al cerrar/navegar
+window.addEventListener('beforeunload', ()=>{
+  if(_stk_pendingSave){ clearTimeout(_stk_pendingSave); _stk_pendingSave=null; }
+  if(_stk_uid()) _stk_save_db(DB, CFG);
+});
 
 async function _stockLoadAll() {
   const row = await _stk_load_db();
@@ -8844,8 +8858,13 @@ function unlock(){
 // Carga inicial desde Supabase (llamada desde _activateStock)
 window._stockInitFromSupa = async function(){
   await _stockLoadAll();
-  // Si hay sesión activa, renderizar directamente sin pedir login
-  try{ if(sessionStorage.getItem('dl_stock_ok')==='1'){ $('#login').hidden=true; stk_renderAll(); } }catch(e){}
+  // Siempre renderizar después de cargar datos para reflejar lo persistido
+  try{
+    if(sessionStorage.getItem('dl_stock_ok')==='1'){
+      $('#login').hidden=true;
+      stk_renderAll();
+    }
+  }catch(e){}
 };
 $('#loginForm').onsubmit=e=>{e.preventDefault();if($('#pw').value===CFG.pw)unlock();else{$('#pwErr').textContent='Contraseña incorrecta.';$('#pw').select()}};
 
@@ -8857,7 +8876,10 @@ window.addEventListener('message', (e) => {
 });
 
 let ok=false;try{ok=sessionStorage.getItem('dl_stock_ok')==='1'}catch(e){}
-if(ok){unlock();}else{
+// IMPORTANTE: si ya hay sesión en sessionStorage, NO renderizar aún con DB vacío.
+// _stockInitFromSupa (llamado por _activateStock al navegar a stock) cargará los
+// datos de Supabase y luego llamará stk_renderAll() con los datos correctos.
+if(ok){ $('#login').hidden=true; }else{
   stk_renderAll();
   setTimeout(()=>{
     // Pedir token al padre si estamos en iframe
