@@ -8225,23 +8225,39 @@ const _stk_supa = () => window.supa;
 const _stk_uid  = () => window.CURRENT_USER?.id;
 
 async function _stk_save_db(db, cfg) {
-  if (!_stk_uid()) return;
+  if (!_stk_uid()) {
+    console.warn('[stock] _stk_save_db: sin uid, no se guarda');
+    return;
+  }
   try {
-    await _stk_supa().from('stock_data').upsert({
+    const {error} = await _stk_supa().from('stock_data').upsert({
       user_id: _stk_uid(), db: db, cfg: cfg,
       updated_at: new Date().toISOString()
     }, { onConflict: 'user_id' });
-  } catch(e) { console.warn('[stock] save error', e); }
+    if(error) throw error;
+    console.log('[stock] guardado OK, snaps=', (db.snaps||[]).length, 'movs=', (db.movs||[]).length);
+  } catch(e) {
+    console.error('[stock] save ERROR', e);
+    if(typeof stk_toast==='function') stk_toast('⚠️ Error al guardar stock: '+e.message, 'error');
+  }
 }
 
 async function _stk_load_db() {
-  if (!_stk_uid()) return null;
+  if (!_stk_uid()) {
+    console.warn('[stock] _stk_load_db: sin uid, no se carga');
+    return null;
+  }
   try {
     const { data, error } = await _stk_supa().from('stock_data')
       .select('*').eq('user_id', _stk_uid()).maybeSingle();
     if (error) throw error;
+    if(data) console.log('[stock] cargado OK, snaps=', (data.db?.snaps||[]).length, 'movs=', (data.db?.movs||[]).length);
+    else console.warn('[stock] no hay fila en stock_data para este usuario');
     return data;
-  } catch(e) { console.warn('[stock] load error', e); return null; }
+  } catch(e) {
+    console.error('[stock] load ERROR', e);
+    return null;
+  }
 }
 
 let DB={articles:{},snaps:[],movs:[],files:[],costs:{}};
@@ -8857,14 +8873,21 @@ function unlock(){
 }
 // Carga inicial desde Supabase (llamada desde _activateStock)
 window._stockInitFromSupa = async function(){
+  console.log('[stock] _stockInitFromSupa iniciando, uid=', _stk_uid());
   await _stockLoadAll();
-  // Siempre renderizar después de cargar datos para reflejar lo persistido
+  console.log('[stock] _stockLoadAll completo, snaps=', DB.snaps.length, 'movs=', DB.movs.length);
+  // Renderizar siempre con los datos recién cargados
   try{
-    if(sessionStorage.getItem('dl_stock_ok')==='1'){
+    let authed = sessionStorage.getItem('dl_stock_ok')==='1';
+    // Si hay datos en Supabase y el usuario está logueado en el tablero, auto-unlock
+    if(!authed && _stk_uid() && (DB.snaps.length>0 || DB.movs.length>0)){
+      console.log('[stock] datos en Supabase detectados, auto-unlock');
+      unlock();
+    } else if(authed){
       $('#login').hidden=true;
       stk_renderAll();
     }
-  }catch(e){}
+  }catch(e){ console.warn('[stock] _stockInitFromSupa render error', e); }
 };
 $('#loginForm').onsubmit=e=>{e.preventDefault();if($('#pw').value===CFG.pw)unlock();else{$('#pwErr').textContent='Contraseña incorrecta.';$('#pw').select()}};
 
