@@ -2198,30 +2198,219 @@ const LS_SESSION='dl_precios_sesion_v1';
 const LS_RUBROS='dl_precios_rubros_v1';
 const LS_ANULADOS='dl_precios_anulados_v1';
 
-function defCfg(){return{password:'lucas2026',margenRojo:15,margenAmarillo:25,margenRojoRev:10,margenAmarilloRev:18,
+/* ============================================================
+   SUPABASE STORAGE HELPERS — Módulo Ventas
+   Reemplazan todas las funciones load/save de localStorage.
+   Estrategia:
+     - Tablas de tipo "singleton por usuario": upsert con user_id
+     - Carga asíncrona al iniciar; variables in-memory igual que antes
+     - save* son async; los callers no esperan el resultado (fire-and-forget)
+       para no cambiar el flujo de la UI
+============================================================ */
+
+// Referencia global al cliente supabase del tablero
+const _supa = () => window.supa;
+const _uid  = () => window.CURRENT_USER?.id;
+
+// Upsert genérico para tablas singleton (una fila por user_id)
+async function _vSave(table, payload) {
+  if (!_uid()) return;
+  try {
+    await _supa().from(table).upsert({ user_id: _uid(), ...payload, updated_at: new Date().toISOString() });
+  } catch(e) { console.warn('[ventas] save error', table, e); }
+}
+
+// Leer genérico para tablas singleton
+async function _vLoad(table) {
+  if (!_uid()) return null;
+  try {
+    const { data, error } = await _supa().from(table).select('*').eq('user_id', _uid()).maybeSingle();
+    if (error) throw error;
+    return data;
+  } catch(e) { console.warn('[ventas] load error', table, e); return null; }
+}
+
+// ── CFG ──────────────────────────────────────────────────────
+function defCfg(){return{margenRojo:15,margenAmarillo:25,margenRojoRev:10,margenAmarilloRev:18,
   listas:{iva:21,lista2:3,lista3:20,lista4:-10,lista5:0}};}
-function loadCfg(){try{const s=localStorage.getItem(LS_CFG);return s?Object.assign(defCfg(),JSON.parse(s)):defCfg();}catch{return defCfg();}}
-function saveCfg(c){localStorage.setItem(LS_CFG,JSON.stringify(c));}
+function loadCfg(){ return defCfg(); } // sincrono, se sobreescribe en initLoad
+function saveCfg(c){ _vSave('ventas_config', {config: c}); }
+
+// ── MAESTRO ──────────────────────────────────────────────────
+function loadMaestro(){ return null; }
+function saveMaestro(m){
+  if (!m) return;
+  _vSave('ventas_maestro', {
+    fecha: m.fecha || new Date().toISOString(),
+    fuente: m.fuente || null,
+    rev_count: m.revCount || 0,
+    ean_count: m.eanCount || 0,
+    items: m.items || []
+  });
+}
+
+// ── HIST ─────────────────────────────────────────────────────
+function loadHist(){ return []; }
+function saveHist(h){
+  // HIST es un array de entradas; guardamos el array completo
+  _vSave('ventas_hist_data', { items: h });
+}
+
+// ── MAP ──────────────────────────────────────────────────────
+function loadMap(){ return {}; }
+function saveMap(m){ _vSave('ventas_map', { mapa: m }); }
+
+// ── ANULADOS ─────────────────────────────────────────────────
+function loadAnulados(){ return []; }
+function saveAnulados(a){ _vSave('ventas_anulados', { anulados: a }); }
+
+// ── RUBROS ───────────────────────────────────────────────────
+function loadRubros(){ return []; }
+function saveRubros(r){ _vSave('ventas_rubros', { rubros: r }); }
+
+// ── FÓRMULAS ─────────────────────────────────────────────────
+function loadFormulasCustom(){ return []; }
+function saveFormulasCustom(list){ _vSave('ventas_formulas', { formulas: list.filter(f=>!f.builtin) }); }
+
+// ── FORMULA CFG ───────────────────────────────────────────────
+// loadFormulaCfg/saveFormulaCfg migrados a supabase helpers
+// ── VERSIONES ────────────────────────────────────────────────
+function loadVersiones(){ return []; }
+function saveVersiones(v){ _vSave('ventas_versiones_data', { items: v }); }
+
+// ── DESC MEM ─────────────────────────────────────────────────
+function loadDescMem(){ return {}; }
+function saveDescMem(m){ _vSave('ventas_descmem', { descmem: m }); }
+
+// ── OFERTAS ──────────────────────────────────────────────────
+function loadOfertas(){ return []; }
+function saveOfertas(o){ _vSave('ventas_ofertas', { items: o }); }
+
+function loadMeta(){
+  const m={};
+  if(!m.desde)m.desde=primerDiaMes();
+  if(!m.hasta)m.hasta=ultimoDiaMes();
+  if(!m.promosVolumen)m.promosVolumen=[];
+  if(!m.marcaSeleccionada){const provs=provsDisponibles();m.marcaSeleccionada=provs.includes('DON YEYO')?'DON YEYO':(provs[0]||'');}
+  return m;
+}
+function saveMeta(m){ _vSave('ventas_ofertas', { meta: m }); }
+
+function loadListSeed(key, seed){
+  // en la versión supa ya no tiene sentido; retornar seed
+  return seed;
+}
+function saveList(key, arr){
+  if(key === LS_VENDEDORES) _vSave('ventas_ofertas', { vendedores: arr });
+  else if(key === LS_CLIENTES) _vSave('ventas_ofertas', { clientes: arr });
+}
+
+function loadObjetivos(){
+  return [];
+}
+function saveObjetivos(o){ _vSave('ventas_ofertas', { objetivos: o }); }
+
+// ── VENTAS ───────────────────────────────────────────────────
+function loadVentas(){ return null; }
+function saveVentas(v){
+  if (!v) return;
+  _vSave('ventas_ventas', {
+    fecha: v.fecha || new Date().toISOString(),
+    fuente: v.fuente || null,
+    rango_desde: v.rangoDesde || null,
+    rango_hasta: v.rangoHasta || null,
+    items: v.items || []
+  });
+}
+
+function loadVentasHist(){ return []; }
+function saveVentasHist(v){ _vSave('ventas_ventas_hist_data', { items: v }); }
+
+/* ============================================================
+   CARGA INICIAL ASYNC — llama a esto desde _ventasInitApp
+   antes de initApp(), para poblar las variables in-memory
+============================================================ */
+async function _ventasLoadAll() {
+  if (!_uid()) { console.warn('[ventas] sin usuario, no se carga desde supabase'); return; }
+  try {
+    const [
+      rCfg, rMaestro, rHistD, rMap, rAnulados, rRubros,
+      rFormulas, rFormulaCfg, rVersionesD, rDescmem,
+      rOfertas, rVentas, rVentasHistD
+    ] = await Promise.all([
+      _vLoad('ventas_config'),
+      _vLoad('ventas_maestro'),
+      _vLoad('ventas_hist_data'),
+      _vLoad('ventas_map'),
+      _vLoad('ventas_anulados'),
+      _vLoad('ventas_rubros'),
+      _vLoad('ventas_formulas'),
+      _vLoad('ventas_formula_cfg'),
+      _vLoad('ventas_versiones_data'),
+      _vLoad('ventas_descmem'),
+      _vLoad('ventas_ofertas'),
+      _vLoad('ventas_ventas'),
+      _vLoad('ventas_ventas_hist_data')
+    ]);
+
+    if (rCfg?.config)       CFG      = Object.assign(defCfg(), rCfg.config);
+    if (rMaestro?.items)    MAESTRO  = { items: rMaestro.items, fecha: rMaestro.fecha, fuente: rMaestro.fuente, revCount: rMaestro.rev_count, eanCount: rMaestro.ean_count };
+    if (rHistD?.items)      HIST     = rHistD.items;
+    if (rMap?.mapa)         MAPDB    = rMap.mapa;
+    if (rAnulados?.anulados) ANULADOS = rAnulados.anulados;
+    if (rRubros?.rubros)    RUBROS   = rRubros.rubros;
+    if (rFormulas?.formulas) {
+      const custom = rFormulas.formulas.filter(f=>!f.builtin);
+      FORMULAS = [...FORMULAS.filter(f=>f.builtin), ...custom];
+    }
+    if (rFormulaCfg?.cfg) {
+      // Migración de versiones viejas igual que loadFormulaCfg original
+      const raw = rFormulaCfg.cfg;
+      Object.keys(raw).forEach(k=>{
+        const v=raw[k];
+        if(v&&!v.formulaId){
+          if(v.modoDesc==='suma'&&v.modoMargen==='margenventa') v.formulaId='suma_venta';
+          else if(v.modoDesc==='suma') v.formulaId='suma_recargo';
+          else if(v.modoMargen==='margenventa') v.formulaId='encadenado_venta';
+          else v.formulaId='estandar';
+        }
+      });
+      FORMULACFG = raw;
+    }
+    if (rVersionesD?.items) VERSIONES = rVersionesD.items;
+    if (rDescmem?.descmem)  DESCMEM   = rDescmem.descmem;
+    if (rOfertas) {
+      if (rOfertas.items)      OFERTAS    = rOfertas.items;
+      if (rOfertas.meta) {
+        const m = rOfertas.meta;
+        if(!m.desde) m.desde=primerDiaMes();
+        if(!m.hasta) m.hasta=ultimoDiaMes();
+        if(!m.promosVolumen) m.promosVolumen=[];
+        OFERTA_META = m;
+      }
+      if (rOfertas.vendedores) VENDEDORES = rOfertas.vendedores;
+      if (rOfertas.clientes)   CLIENTES   = rOfertas.clientes;
+      if (rOfertas.objetivos)  OBJETIVOS  = rOfertas.objetivos;
+    }
+    if (rVentas?.items) VENTAS = { items: rVentas.items, fecha: rVentas.fecha, fuente: rVentas.fuente, rangoDesde: rVentas.rango_desde, rangoHasta: rVentas.rango_hasta };
+    if (rVentasHistD?.items) VENTAS_HIST = rVentasHistD.items;
+
+    console.log('[ventas] datos cargados desde supabase');
+  } catch(e) {
+    console.error('[ventas] error cargando datos:', e);
+  }
+}
+
+
 let CFG=loadCfg();
 
-function loadMaestro(){try{const s=localStorage.getItem(LS_MAESTRO);return s?JSON.parse(s):null;}catch{return null;}}
-function saveMaestro(m){localStorage.setItem(LS_MAESTRO,JSON.stringify(m));}
-function loadHist(){try{const s=localStorage.getItem(LS_HIST);return s?JSON.parse(s):[];}catch{return [];}}
-function saveHist(h){localStorage.setItem(LS_HIST,JSON.stringify(h));}
-function loadMap(){try{const s=localStorage.getItem(LS_MAP);return s?JSON.parse(s):{};}catch{return {};}}
-function saveMap(m){localStorage.setItem(LS_MAP,JSON.stringify(m));}
-function loadAnulados(){try{const s=localStorage.getItem(LS_ANULADOS);return s?JSON.parse(s):[];}catch{return [];}}
-function saveAnulados(a){try{localStorage.setItem(LS_ANULADOS,JSON.stringify(a));}catch(e){}}
-function loadRubros(){try{const s=localStorage.getItem(LS_RUBROS);return s?JSON.parse(s):[];}catch{return [];}}
-function saveRubros(r){localStorage.setItem(LS_RUBROS,JSON.stringify(r));}
-
-let MAESTRO = loadMaestro();     // {items:[...], fecha, fuente}
+function loadMaestro_OLD(){try{const s=localStorage.getItem(LS_MAESTRO);return s?JSON.parse(s):null;}catch{return null;}}
+let MAESTRO = loadMaestro();
 let HIST = loadHist();
 let MAPDB = loadMap();
-let ANULADOS = loadAnulados();   // códigos marcados como Anulado=SI en el Excel de Artículos de Chess (no se importan)
-let RUBROS = loadRubros();       // ['Almacén','Bebidas',...] — lista editable de rubros/categorías
-let ARTICULOS_DATA = null;       // bridge EAN desde plantilla de Artículos de Chess (en memoria de sesión)
-
+let ANULADOS = loadAnulados();
+let RUBROS = loadRubros();
+let ARTICULOS_DATA = null;
 /* ============================================================
    LOGIN
 ============================================================ */
@@ -2235,13 +2424,15 @@ function tryLogin(){
     document.getElementById('v-loginErr').textContent='Clave incorrecta';
   }
 }
-window._ventasInitApp = function(){
+window._ventasInitApp = async function(){
   try{
     const inpEl=document.getElementById('v-loginInp');
     if(inpEl) inpEl.addEventListener('keydown',e=>{if(e.key==='Enter')tryLogin();});
   }catch(e){}
-  if(sessionStorage.getItem(LS_SESSION)==='1') initApp();
-};;
+  // Cargar datos desde Supabase antes de renderizar
+  await _ventasLoadAll();
+  initApp();
+};
 
 /* ============================================================
    HELPERS
@@ -2363,8 +2554,8 @@ function formulasBuiltin(){
   ];
 }
 const LS_FORMULAS='dl_precios_formulas_v1';
-function loadFormulasCustom(){try{const s=localStorage.getItem(LS_FORMULAS);return s?JSON.parse(s).filter(f=>!f.builtin):[];}catch{return [];}}
-function saveFormulasCustom(list){localStorage.setItem(LS_FORMULAS,JSON.stringify(list.filter(f=>!f.builtin)));}
+// migrado a supabase helpers
+// migrado a supabase helpers
 let FORMULAS=formulasBuiltin().concat(loadFormulasCustom());
 function getFormulaById(id){ return FORMULAS.find(f=>f.id===id) || FORMULAS[0]; }
 function evalFormulaExpr(expr,vars){
@@ -2438,8 +2629,8 @@ function margenEfectivo(it){ // margen real resultante (costo final vs neto), po
    VERSIONES DEL MAESTRO — foto completa en cada cambio importante
 ============================================================ */
 const LS_VERSIONES='dl_precios_versiones_v1';
-function loadVersiones(){try{const s=localStorage.getItem(LS_VERSIONES);return s?JSON.parse(s):[];}catch{return [];}}
-function saveVersiones(v){localStorage.setItem(LS_VERSIONES,JSON.stringify(v));}
+// migrado a supabase helpers
+// migrado a supabase helpers
 let VERSIONES=loadVersiones();
 function guardarVersionMaestro(motivo){
   if(!MAESTRO||!MAESTRO.items)return;
@@ -3395,8 +3586,8 @@ function confirmarAplicar(){
    MEMORIA DE DESCUENTOS POR PROVEEDOR
 ============================================================ */
 const LS_DESCMEM='dl_precios_descmem_v1';
-function loadDescMem(){try{const s=localStorage.getItem(LS_DESCMEM);return s?JSON.parse(s):{};}catch{return {};}}
-function saveDescMem(m){localStorage.setItem(LS_DESCMEM,JSON.stringify(m));}
+// migrado a supabase helpers
+// migrado a supabase helpers
 let DESCMEM=loadDescMem();
 function recordarDescuento(prov,desc1,desc2){
   DESCMEM[normKey(prov)]={desc1,desc2,fecha:new Date().toISOString(),provLabel:prov};
@@ -4053,8 +4244,8 @@ const LS_OFERTA_META='dl_precios_oferta_meta_v1';
 const LS_VENDEDORES='dl_precios_vendedores_v1';
 const LS_CLIENTES='dl_precios_clientes_v1';
 const LS_OBJETIVOS='dl_precios_objetivos_v1';
-function loadOfertas(){try{const s=localStorage.getItem(LS_OFERTAS);return s?JSON.parse(s):[];}catch{return [];}}
-function saveOfertas(o){localStorage.setItem(LS_OFERTAS,JSON.stringify(o));}
+// migrado a supabase helpers
+// migrado a supabase helpers
 function loadListSeed(key,seed){
   try{const s=localStorage.getItem(key); if(s)return JSON.parse(s);}catch{}
   localStorage.setItem(key,JSON.stringify(seed));
@@ -4073,7 +4264,7 @@ function loadMeta(){
   if(!m.marcaSeleccionada){const provs=provsDisponibles();m.marcaSeleccionada=provs.includes('DON YEYO')?'DON YEYO':(provs[0]||'');}
   return m;
 }
-function saveMeta(m){localStorage.setItem(LS_OFERTA_META,JSON.stringify(m));}
+// migrado a supabase helpers
 function migrarObjetivo(o){
   let codigos=o.codigos;
   if(typeof codigos==='string') codigos=codigos.split(',').map(s=>Number(s.trim())).filter(n=>!isNaN(n));
@@ -4103,7 +4294,7 @@ function loadObjetivos(){
     return arr;
   }catch{return [];}
 }
-function saveObjetivos(o){localStorage.setItem(LS_OBJETIVOS,JSON.stringify(o));}
+// migrado a supabase helpers
 
 let OFERTAS=loadOfertas();
 let OFERTA_META=loadMeta();
@@ -4460,10 +4651,10 @@ function eliminarObjetivo(i){OBJETIVOS.splice(i,1);saveObjetivos(OBJETIVOS);rend
 ============================================================ */
 const LS_VENTAS='dl_precios_ventas_v1';
 const LS_VENTAS_HIST='dl_precios_ventas_hist_v1';
-function loadVentas(){try{const s=localStorage.getItem(LS_VENTAS);return s?JSON.parse(s):null;}catch{return null;}}
-function saveVentas(v){localStorage.setItem(LS_VENTAS,JSON.stringify(v));}
-function loadVentasHist(){try{const s=localStorage.getItem(LS_VENTAS_HIST);return s?JSON.parse(s):[];}catch{return [];}}
-function saveVentasHist(v){localStorage.setItem(LS_VENTAS_HIST,JSON.stringify(v));}
+// migrado a supabase helpers
+// migrado a supabase helpers
+// migrado a supabase helpers
+// migrado a supabase helpers
 let VENTAS=loadVentas();
 let VENTAS_HIST=loadVentasHist();
 let chartsTablero=[];
