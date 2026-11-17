@@ -2217,7 +2217,10 @@ const _uid  = () => window.CURRENT_USER?.id;
 async function _vSave(table, payload) {
   if (!_uid()) return;
   try {
-    await _supa().from(table).upsert({ user_id: _uid(), ...payload, updated_at: new Date().toISOString() });
+    await _supa().from(table).upsert(
+      { user_id: _uid(), ...payload, updated_at: new Date().toISOString() },
+      { onConflict: 'user_id' }
+    );
   } catch(e) { console.warn('[ventas] save error', table, e); }
 }
 
@@ -7179,7 +7182,7 @@ async function _stk_save_db(db, cfg) {
     await _stk_supa().from('stock_data').upsert({
       user_id: _stk_uid(), db: db, cfg: cfg,
       updated_at: new Date().toISOString()
-    });
+    }, { onConflict: 'user_id' });
   } catch(e) { console.warn('[stock] save error', e); }
 }
 
