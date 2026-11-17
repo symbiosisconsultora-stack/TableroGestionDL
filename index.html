@@ -2074,7 +2074,8 @@ function _activateFinanzas(){
 
 function _activateStock(){
   try{
-    if(typeof window._stockUnlock==='function') window._stockUnlock();
+    if(typeof window._stockInitFromSupa==='function') window._stockInitFromSupa();
+    else if(typeof window._stockUnlock==='function') window._stockUnlock();
     else if(typeof window.unlock==='function') window.unlock();
   }catch(e){console.warn('Stock activate:',e);}
 }
@@ -7167,10 +7168,42 @@ window.finDoLogin = typeof finDoLogin === 'function' ? finDoLogin : null;
 
 /* ============ ESTADO Y PERSISTENCIA ============ */
 const LS_KEY='dl_stock_v1', CFG_KEY='dl_stock_cfg_v1';
-const ls={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}};
-let DB=ls.get(LS_KEY)||{articles:{},snaps:[],movs:[],files:[],costs:{}};
-let CFG=Object.assign({pw:'lucas2026',cob:7,baseDate:null,hasta:null},ls.get(CFG_KEY)||{});
-function stk_save(){const ok=ls.set(LS_KEY,DB);ls.set(CFG_KEY,CFG);if(!ok)stk_toast('No se pudo guardar en el navegador (almacenamiento lleno o bloqueado). Los datos quedan sólo en esta sesión.')}
+
+/* ── Supabase helpers (stock) ── */
+const _stk_supa = () => window.supa;
+const _stk_uid  = () => window.CURRENT_USER?.id;
+
+async function _stk_save_db(db, cfg) {
+  if (!_stk_uid()) return;
+  try {
+    await _stk_supa().from('stock_data').upsert({
+      user_id: _stk_uid(), db: db, cfg: cfg,
+      updated_at: new Date().toISOString()
+    });
+  } catch(e) { console.warn('[stock] save error', e); }
+}
+
+async function _stk_load_db() {
+  if (!_stk_uid()) return null;
+  try {
+    const { data, error } = await _stk_supa().from('stock_data')
+      .select('*').eq('user_id', _stk_uid()).maybeSingle();
+    if (error) throw error;
+    return data;
+  } catch(e) { console.warn('[stock] load error', e); return null; }
+}
+
+let DB={articles:{},snaps:[],movs:[],files:[],costs:{}};
+let CFG={pw:'lucas2026',cob:7,baseDate:null,hasta:null};
+function stk_save(){ _stk_save_db(DB, CFG); }
+
+async function _stockLoadAll() {
+  const row = await _stk_load_db();
+  if (row) {
+    if (row.db)  DB  = Object.assign({articles:{},snaps:[],movs:[],files:[],costs:{}}, row.db);
+    if (row.cfg) CFG = Object.assign({pw:'lucas2026',cob:7,baseDate:null,hasta:null}, row.cfg);
+  }
+}
 const UI={tab:'tablero',ficha:null,movTipo:'',movDoc:null,stockQ:'',stockProv:'',stockAlm:'',stockEst:'',concSnap:null,concOnly:true};
 
 const TIPOS={
@@ -7752,7 +7785,17 @@ vDatos.after=()=>{
 /* ============ ARRANQUE ============ */
 $('#fileIn').onchange=e=>{const f=[...e.target.files];e.target.value='';if(f.length)importFiles(f)};
 $('#bkIn').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;try{const o=JSON.parse(await f.text());if(!o.DB||!o.DB.snaps)throw new Error();DB=o.DB;CFG=Object.assign(CFG,o.CFG||{});stk_save();stk_renderAll();stk_toast('Respaldo restaurado.')}catch(err){stk_toast('El archivo no es un respaldo válido de esta app.')}};
-function unlock(){$('#login').hidden=true;try{sessionStorage.setItem('dl_stock_ok','1')}catch(e){}stk_renderAll()}
+function unlock(){
+  $('#login').hidden=true;
+  try{sessionStorage.setItem('dl_stock_ok','1')}catch(e){}
+  stk_renderAll();
+}
+// Carga inicial desde Supabase (llamada desde _activateStock)
+window._stockInitFromSupa = async function(){
+  await _stockLoadAll();
+  // Si hay sesión activa, renderizar directamente sin pedir login
+  try{ if(sessionStorage.getItem('dl_stock_ok')==='1'){ $('#login').hidden=true; stk_renderAll(); } }catch(e){}
+};
 $('#loginForm').onsubmit=e=>{e.preventDefault();if($('#pw').value===CFG.pw)unlock();else{$('#pwErr').textContent='Contraseña incorrecta.';$('#pw').select()}};
 
 // ── Recibir sesión desde el tablero padre ──────────────────────────
